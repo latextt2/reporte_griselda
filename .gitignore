@@ -19,4 +19,4 @@
 *.idx
 *.ilg
 *.ind
-
+!logos/*
