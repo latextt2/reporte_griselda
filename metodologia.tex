@@ -23,7 +23,7 @@ Un campo magnético es producido cuando existen cargas eléctricas en movimiento. 
 	 d \overrightarrow{H}=  \frac{Id \overrightarrow{l}\times\hat{r} }{4\pi r^{2}}
 \end{equation}
 La ley de Biot-Savart nos permite calcular la intensidad del campo magnético H generado por un segmento diferencial del corriente eléctrico. Nótese su magnitud decrece con el cuadrado de la distancia.\\
-¿Qué forma tiene estos campos? El campo circula alrededor de un conductor simple en la dirección dada por la regla de la mano derecha:\\\\\\\\
+¿Qué forma tiene estos campos? El campo circula alrededor de un conductor simple en la dirección dada por la regla de la mano derecha:\\
 
 \begin{figure}[htb]
 \begin{center}
@@ -534,13 +534,14 @@ En parte se pueden clasificar como:
 \item Variantes o invariantes en el tiempo
 \end{itemize}
 
-\subsection[1]{LTI}
+	\subsection[1]{LTI}
 Los sistemas lineales invariates en el tiempo (LTI por sus siglas en ingles) son sistemas que tienen una ecuacion diferencial de la forma
 
+\begin{equation}
+a_n\frac{d^ny(t)}{dt^n} + a_{n-1}\frac{d^{n-1}y(t)}{dt^{n-1}} + ... + a_1\frac{dy(t)}{dt} +a_0y(t) = b_0F(t) + b_1\frac{dF(t)}{dt} +...+ b_{m-1}\frac{d^{m-1}F(t)}{dt^{m-1}} + b_m\frac{d^mF(t)}{dt^m}
+\end{equation}
 
-$$ a_n\frac{d^ny}{dt^n} + a_n-1\frac{d^n-1y}{dt^n-1} 
- + a_1\frac{dy}{dt} +a_0y+ = F$$
-Este tipo de ecuaciones tienen co
+Este tipo de ecuaciones tienen como
 \subsection{Dinamica de una particula}
 
 Ley de Newton
@@ -622,7 +623,7 @@ El proceso de diseño mecatrónico puede simplificarse en tres fases: modelado y s
 
 \begin{figure}[htb]
 \centering
-	\includegraphics[width=\textwidth]{images/Capitulo_1/Disen_mecatronico}
+	\includegraphics[width=\textwidth]{images/Capitulo_1/Disen_Mecatronico}
 	\caption{\textit{Fases del diseño mecatrónico [...].}}
 	\label{fig:system:example1}
 \end{figure}
