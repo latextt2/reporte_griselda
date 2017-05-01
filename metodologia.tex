@@ -490,28 +490,15 @@ Un peligro para los circuitos osciladores  es que la frecuencia variaría de mane
 Distancia entre los electrodos\\
 La capacitancia depende del entrehierro o distancia entre los electrodos conductivos. Esta distancia pude incrementar o decrementar dependiendo de las condiciones ambientales, y del material que podrían generar un mediciones poco exactas, por ejemplo suciedad en la superficie del sensor.
 
-
-
-\section{Modelado dinamico, control y simulacion}
-
-Ahora que diseñamos los sensores y actuadores podemos continuar con el modelado dinamico del eje y el control.
-A cotinuacion se presenta:
-\begin{itemize}
-\item El modelo dinamico del rotor
-\item La linearizacion del modelo dinamico
-\item El diseño de various esquemas de control
-\item El algoritmo final de control
-\end{itemize}
-
-
-\subsection{Modelado dinamico}
-\subsection{Conceptos de sistemas}
+\section{Sistemas dinamicos}
+\subsection{Sistemas}
+\todo[inline]{La definicion de sistema, su clasificacsion, la definicion de sistema dinamico}
 Un sistema es un objeto o proceso en el cual se tiene al menos una entrada y una salida bien definidas. Estos suelen representarse mediante un bloque mostrando sus respectivas entradas y salidas.  
 
 \begin{figure}
 \begin{center}
 \centering
-\missingfigure[figwidth=6cm]{Diagrama de bloque de un sistema}
+\missingfigure[figwidth=8cm]{Diagrama de bloque de un sistema}
 \caption{Representacion de bloque de un sistema}
 \end{center}
 \end{figure}
@@ -524,9 +511,6 @@ sistema, las ecuaciones resultantes incluiran terminos tanto del dominio mecanic
 del dominio electromagnetico. Posteriormente este conjnto de ecuaciones no lineales seran linearizadas con fin de aprovechar las tecnicas de control moderno.
 
 
-\subsection{Sistemas dinamicos}
-Un sistema es cualquier proceso o 
-
 En parte se pueden clasificar como:
 \begin{itemize}
 \item lineales o no lineales
@@ -534,44 +518,82 @@ En parte se pueden clasificar como:
 \item Variantes o invariantes en el tiempo
 \end{itemize}
 
-	\subsection[1]{LTI}
+
+\subsection{Sistema LTI}
 Los sistemas lineales invariates en el tiempo (LTI por sus siglas en ingles) son sistemas que tienen una ecuacion diferencial de la forma
 
 \begin{equation}
 a_n\frac{d^ny(t)}{dt^n} + a_{n-1}\frac{d^{n-1}y(t)}{dt^{n-1}} + ... + a_1\frac{dy(t)}{dt} +a_0y(t) = b_0F(t) + b_1\frac{dF(t)}{dt} +...+ b_{m-1}\frac{d^{m-1}F(t)}{dt^{m-1}} + b_m\frac{d^mF(t)}{dt^m}
 \end{equation}
 
-Este tipo de ecuaciones tienen como
-\subsection{Dinamica de una particula}
+\todo[inline]{Aqui se explican la particularidades de los sistemas LTI}
+\subsection{Diferentes representanciones}
+\todo[inline]{Aqui se explican las diferentes formas de representar
+un sistema, ecuacion diferencial, funcion de transferencia y variables de estado}
+\subsection{Respuestas de los sistemas LTI de segundo orden}
+\todo[inline]{Se describne las diferencias en la respuesta de un sistema segun el lugar de las raices, amortiguado, subamortiguado, criticamente amorgituado}
+\subsection{Estabilidad}
+\todo[inline]{Se introduce el concepto del estabilidad leapunov y como el lugar de las raices afecta esto, inluyendo los eigenvalores de la matriz de espcio de estados}
 
-Ley de Newton
+
+\section{Dinamica}
+\subsection{Ley de Newton}
+\todo[inline]{Se describle la ley de newton y el tipo de ecuaciones diferenciales que resultan de esta}
 La ley de newton establece que 
-$$ \vec{F} = m\vec{a} $$
-para una masa puntual con grado de libertad esta equacion puede
-escribirse como
+$$ \sum{\vec{F}} = \frac{d\vec{P}}{dt} = m\vec{a} $$
+para una masa puntual con grado de libertad esta ecuacion puede escribirse como
 $$ \frac{d^2x}{dt^2}=\frac{F(t,x)}{m}$$
 la cual es una ecuacion diferencial de segundo grado donde la fuerza puede ser una
 funcion dependiente de la posicion $x$ y del tiempo $t$.
 Donde $F$ es el conjunto de fuerzas que actuan sobre la particula, si estas fuerzas pueden ser representadas como una combinacion lineal de derivadas de la posicion $x$ de la forma.
+\subsection{Dinamica del cuerpo rigido}
+\subsubsection{Torque}
+\todo[inline]{Se introduce la definicion de torque}
+\subsubsection{Momento de inercia}
+\todo[inline]{Se define el momento de inercia}
+\subsubsection{Momento angular}
+\todo[inline]{Se define el momento angular, la Ley de Newton para cuerpo regido, y los problemas para relizar los calculos}
+\subsubsection{Angulos de Euler}
+\todo[inline]{Se introducen los angulos de auler, y porque estos solucion el problema de calcular el momento angular}
+\subsubsection{Las ecuaciones de Euler}
+\todo[inline]{Se presenta la version a usar de las ecucaciones de Euler}
+\subsubsection{Precesion}
+\todo[inline]{Se explican los efectos de nutacion y precesion como resultado de la ecuaciones de euler}
 
-\subsection{Dinamica de un cuerpo rigido}
-
-Momento de inercia
-
-Torque y aceleracion angular
-
-Ecuaciones de euler
-
-Precesion
-\subsection{Integrando los electroimanes}
-\subsection{Linearizacion}
+\pagebreak
 \section{Control}
-\subsection{Control retroalimentado}
+\todo[inline]{Se explica el objectivo del contro}
+\subsection{Linearizacion}
+\todo[inline]{Se presentan las formulas y el proceso para linearizar un sistema no lineal, en variables de estado}
+\subsection{Control retroalimentado} 
+\subsubsection{Controlador de estados}
+\todo[inline]{esquema de control retrolimentado}
+\todo[inline]{formulas}
+\subsubsection{Observador de estados}
+\todo[inline]{porque es necesario un observador}
+\todo[inline]{esquema del observador}
+\todo[inline]{formulas}
 \subsection{Control integral}
+\todo[inline]{Se explican las limitacion del control retroalimentado}
+\todo[inline]{Se se explica la idea del servocontrol}
+\todo[inline]{esquema}
+\todo[inline]{formulas}
 \subsection{Control calendarizado}
+\todo[inline]{se explican las limtaciones del control lineal de un sistema no lineal}
+\todo[inline]{formulas}
 \subsection{Discretizacion de controladores}
-\subsection{Accionamiento hibrido}
-
+\todo[inline]{Se explican la necesidad de discretizar un controlador}
+\todo[inline]{diagrama}
+\todo[inline]{formulas}
+\subsection{El observador de Kalman}
+\subsubsection{Distribuciones probabilisticas}
+\todo[inline]{Se define funcion probabilistica y sis propiedades}
+\subsubsection{Procesos estocasticos}
+\todo[inline]{Se define proceso estocatico y sus propiedades}
+\subsubsection{La medicion como un proceso estocastico}
+\todo[inline]{se explica porque medir y predecir un sistema puede ser modelado como un proceso estocastico}
+\subsubsection{El filtro de Kalman}
+\todo[inline]{Se muestran las formulas del filtro de kalman}
 \newpage
 
 \section{Diseño de Ingeniería }
