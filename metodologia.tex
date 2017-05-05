@@ -541,8 +541,11 @@ La capacitancia depende del entrehierro o distancia entre los electrodos conduct
 
 \section{Sistemas dinamicos}
 \subsection{Sistemas}
-\todo[inline]{La definicion de sistema, su clasificacsion, la definicion de sistema dinamico}
-Un sistema es un objeto o proceso en el cual se tiene al menos una entrada y una salida bien definidas. Estos suelen representarse mediante un bloque mostrando sus respectivas entradas y salidas.  
+\todo[inline]{La definicion de sistema, su clasificacsion, la definicion de sistema dinamico (OK falta tu imagen)}
+Un sistema es un conjunto de partes o elementos organizadas y relacionadas que interactúan entre sí para lograr un objetivo. Los sistemas reciben \textbf{(entrada)} datos, energía o materia del ambiente y proveen \textbf{(salida)} información, energía o materia.  Los sistemas pueden  ser  de \textbf{fisicos} (compuestos por equipos, maquinaria, objetos y cosas reales) o \textbf{abstractos} (compuestos por conceptos, planes, hipótesis e ideas). De la misma forma pueden ser \textbf{cerrados} (no presentan intercambio con el medio ambiente que los rodea, son herméticos a cualquier influencia ambiental. No reciben ningún recurso externo y nada producen que sea enviado hacia fuera. En rigor, no existen sistemas cerrados. Se da el nombre de sistema cerrado a aquellos sistemas cuyo comportamiento es determinista y programado y que opera con muy pequeño intercambio de energía y materia con el ambiente. Se aplica el término a los sistemas completamente estructurados, donde los elementos y relaciones se combinan de una manera peculiar y rígida produciendo una salida invariable, como las máquinas) o \textbf{abiertos} (presentan intercambio con el ambiente, a través de entradas y salidas. Intercambian energía y materia con el ambiente. Son adaptativos para sobrevivir. Su estructura es óptima cuando el conjunto de elementos del sistema se organiza, aproximándose a una operación adaptativa).
+
+
+El cual se tiene al menos una entrada y una salida bien definidas. Estos suelen representarse mediante un bloque mostrando sus respectivas entradas y salidas.
 
 \begin{figure}[htb]
 \begin{center}
@@ -552,7 +555,13 @@ Un sistema es un objeto o proceso en el cual se tiene al menos una entrada y una
 \end{center}
 \end{figure}
 
-Un sistema que responde a un entrada con una salida, unicamente pdespues de que esta fue aplicada es conocido como causal.
+\newpage
+
+Los sistemas \textbf{dinámicos} son sistemas cuyos parámetros internos (variables de estado) siguen una serie de reglas temporales. Se llaman sistemas porque están descritos por un conjunto de ecuaciones \textbf{(sistemas)} y dinámicos porque sus parámetros varían con respeto a alguna variable que generalmente es el tiempo. 
+Los sistemas dinámicos pueden dividirse en dos grandes clases: aquellos en los que le tiempo varia \textbf{continuamente} y en los que el tiempo varia \textbf{discretamente}. Los sistemas de tiempo dinámico de tiempo continuo se expresan en ecuaciones diferenciales ordinarias. Por otro lado, si el tiempo es discreto los sistemas se describen por medio de ecuaciones de diferencias también conocidos como mapas iterados.\\
+
+
+Un sistema que responde a un entrada con una salida, unicamente despues de que esta fue aplicada es conocido como causal.
 Lo que se busca en el modelado es, a partir de un conjunto de un 
 conjunto de leyes fisicas llegar a un sistema de ecuaciones diferenciales que despues 
 seran de ayuda para diseñar un control adecuado. Debido a la naturaleza mixta del 
@@ -566,6 +575,7 @@ En parte se pueden clasificar como:
 \item Deterministicos o Estocasticos
 \item Variantes o invariantes en el tiempo
 \end{itemize}
+
 
 
 \subsection{Sistema LTI}
