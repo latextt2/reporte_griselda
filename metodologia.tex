@@ -558,16 +558,34 @@ En parte se pueden clasificar como:
 
 
 \subsection{Sistema LTI}
-Los sistemas lineales invariates en el tiempo (LTI por sus siglas en ingles) son sistemas que tienen una ecuacion diferencial de la forma
+
+Los sistemas lineales e invariantes en el tiempo (o sistemas \textbf{LTI} por sus siglas en inglé   \textbf{\textit{Linear and Time Invariant}}) corresponden a una importante clase de sistemas en el análisis de fenómenos reales, al permitir modelar comportamientos complejos con herramientas matemáticas tan poderosas como las transformadas de Fourier y Laplace.
+Los sistemas LTI son sistemas que tienen una ecuacion diferencial de la forma
 
 \begin{equation}
 a_n\frac{d^ny(t)}{dt^n} + a_{n-1}\frac{d^{n-1}y(t)}{dt^{n-1}} + ... + a_1\frac{dy(t)}{dt} +a_0y(t) = b_0F(t) + b_1\frac{dF(t)}{dt} +...+ b_{m-1}\frac{d^{m-1}F(t)}{dt^{m-1}} + b_m\frac{d^mF(t)}{dt^m}
 \end{equation}
 
-\todo[inline]{Aqui se explican la particularidades de los sistemas LTI}
+\todo[inline]{Aqui se explican la particularidades de los sistemas LTI  \textbf{esta hecho}}
+
+donde $y$ es la salida del sistema y $F$ es la entrada. 
+La relación de entrada-salida para los sistemas LTI se describe en términos de una operación de convolución. La importancia de la operación de convolución en sistemas LTI proviene del hecho de que el conocimiento de la respuesta de un sistema LTI a la entrada de impulsos unitarios nos permite encontrar su salida a cualquier señal de entrada. La linealidad y la invarianza en el tiempo juegan un papel fundamental por varias razones:
+
+\begin{itemize}
+\item Muchos procesos Físicos son LTI $\Rightarrow$ pueden modelarse como sistemas LTI.
+\item Poseen la propiedad de superposición (linealidad) $\Rightarrow$ si la entrada a un sistema LTI se puede representar como combinación lineal de un conjunto de señales
+básicas (concepto de base de señales), la salida será la misma combinacián lineal
+de las respuestas del sistema a esas señales básicas.
+\item Cualquier señal se puede representar como combinación lineal de impulsos unitarios retardados. Esto nos permitirá caracterizar cualquier sistema LTI mediante su respuesta al impulso unitario. Esta representación se conoce como suma de convolución (sistemas LTI discretos) o integral de convolución (sistemas continuos) y proporciona una gran
+comodidad al tratar los sistemas \textbf{LTI}.
+\end{itemize}
+
+  
 \subsection{Diferentes representanciones}
 \todo[inline]{Aqui se explican las diferentes formas de representar
-un sistema, ecuacion diferencial, funcion de transferencia y variables de estado}
+un sistema, ecuacion diferencial, funcion de transferencia y variables de estado   \textbf{hecho}}
+
+
 \subsection{Respuestas de los sistemas LTI de segundo orden}
 \todo[inline]{Se describne las diferencias en la respuesta de un sistema segun el lugar de las raices, amortiguado, subamortiguado, criticamente amorgituado}
 \subsection{Estabilidad}
