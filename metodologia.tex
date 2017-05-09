@@ -578,16 +578,48 @@ En parte se pueden clasificar como:
 
 
 \subsection{Sistema LTI}
-Los sistemas lineales invariates en el tiempo (LTI por sus siglas en ingles) son sistemas que tienen una ecuacion diferencial de la forma
+
+Los sistemas lineales e invariantes en el tiempo (o sistemas \textbf{LTI} por sus siglas en inglé   \textbf{\textit{Linear and Time Invariant}}) corresponden a una importante clase de sistemas en el análisis de fenómenos reales, al permitir modelar comportamientos complejos con herramientas matemáticas tan poderosas como las transformadas de Fourier y Laplace.
+Los sistemas LTI son sistemas que tienen una ecuacion diferencial de la forma
 
 \begin{equation}
 a_n\frac{d^ny(t)}{dt^n} + a_{n-1}\frac{d^{n-1}y(t)}{dt^{n-1}} + ... + a_1\frac{dy(t)}{dt} +a_0y(t) = b_0F(t) + b_1\frac{dF(t)}{dt} +...+ b_{m-1}\frac{d^{m-1}F(t)}{dt^{m-1}} + b_m\frac{d^mF(t)}{dt^m}
 \end{equation}
 
-\todo[inline]{Aqui se explican la particularidades de los sistemas LTI}
+\todo[inline]{Aqui se explican la particularidades de los sistemas LTI  \textbf{esta hecho}}
+
+donde $y$ es la salida del sistema y $F$ es la entrada. 
+La relación de entrada-salida para los sistemas LTI se describe en términos de una operación de convolución. La importancia de la operación de convolución en sistemas LTI proviene del hecho de que el conocimiento de la respuesta de un sistema LTI a la entrada de impulsos unitarios nos permite encontrar su salida a cualquier señal de entrada. La linealidad y la invarianza en el tiempo juegan un papel fundamental por varias razones:
+
+\begin{itemize}
+\item Muchos procesos Físicos son LTI $\Rightarrow$ pueden modelarse como sistemas LTI.
+\item Poseen la propiedad de superposición (linealidad) $\Rightarrow$ si la entrada a un sistema LTI se puede representar como combinación lineal de un conjunto de señales
+básicas (concepto de base de señales), la salida será la misma combinacián lineal
+de las respuestas del sistema a esas señales básicas.
+\item Cualquier señal se puede representar como combinación lineal de impulsos unitarios retardados. Esto nos permitirá caracterizar cualquier sistema LTI mediante su respuesta al impulso unitario. Esta representación se conoce como suma de convolución (sistemas LTI discretos) o integral de convolución (sistemas continuos) y proporciona una gran
+comodidad al tratar los sistemas LTI.
+\end{itemize}
+
+  
 \subsection{Diferentes representanciones}
 \todo[inline]{Aqui se explican las diferentes formas de representar
-un sistema, ecuacion diferencial, funcion de transferencia y variables de estado}
+un sistema, ecuacion diferencial, funcion de transferencia y variables de estado   \textbf{hecho}}
+
+Las representaciones de un sistema LTI son las siguientes: 
+\begin{itemize}
+\item Sistemas de ecuaciones diferenciales (anteriormente mensionado ecuacion 1.39)
+\item Funcion de tranferencia: La función de transferencia de un sistema descrito mediante
+una ecuación diferencial lineal e invariante en el tiempo se define como el cociente entre la transformada de Laplace de la salida (función de respuesta) y la transformada de Laplace de la entrada (función de excitación) bajo la suposición de que todas las condiciones iniciales son cero.
+\begin{equation}
+	G_{(s)} = \frac{\mathcal{L}[entrada]}{\mathcal{L}[salida]}
+\end{equation}
+A partir del concepto de función de transferencia, es posible representar la dinámica de un sistema mediante ecuaciones algebraicas en s.
+\item Variables de estado: Las variables de un sistema dinámico son las variables que constituyen el menor conjunto de variables que determinan el estado del sistema dinámico. Si al menos se nesecitan $n$ variables $X_1, X_2,...,X_n$ para describir completamente el comportamiento de un sistema dinámico (de forma que una vez que la entrada para $ t\geq t_0 $ está dada y el estado inicial  en $t = t_0$ esta espesificado, el estado futuro del sistema está determinado  completamente,) entonces tales $n$ variables son un cojunto de variables de estado.
+\end{itemize}
+
+El estado de un sistema dinámico es el conjunto de variables más pequeño (llamadas
+variables de estado), de forma que el conocimiento de estas variables en $t = t_0$, junto con el conocimiento de la entrada para $ t\geq t_0 $, determinan completamente el comportamiento del sistema en cualquier $ t\geq t_0 $.
+
 \subsection{Respuestas de los sistemas LTI de segundo orden}
 \todo[inline]{Se describne las diferencias en la respuesta de un sistema segun el lugar de las raices, amortiguado, subamortiguado, criticamente amorgituado}
 \subsection{Estabilidad}
@@ -607,10 +639,17 @@ Donde $F$ es el conjunto de fuerzas que actuan sobre la particula, si estas fuer
 \subsection{Dinamica del cuerpo rigido}
 \subsubsection{Torque}
 \todo[inline]{Se introduce la definicion de torque}
+Cuando se aplica una fuerza en algún punto de un cuerpo rígido, dicho cuerpo tiende a realizar un movimiento de rotación en torno a algún eje,  la propiedad de la fuerza aplicada para hacer girar al cuerpo se mide con una magnitud física que llamamos torque o momento de la fuerza. Por lo que el  torque o momento de una fuerza es la capacidad de dicha fuerza para producir un giro o rotación alrededor de un punto.
 \subsubsection{Momento de inercia}
 \todo[inline]{Se define el momento de inercia}
+El momento de inercia es una medida de la inercia rotacional de un cuerpo. Cuando un cuerpo gira en torno a uno de los ejes principales de inercia, la inercia rotacional puede ser representada como una magnitud escalar llamada momento de inercia. Sin embargo, en el caso más general posible la inercia rotacional debe representarse por medio de un conjunto de momentos de inercia y componentes que forman el llamado tensor de inercia. La descripción tensorial es necesaria para el análisis de sistemas complejos, por ejemplo en movimientos giroscópicos.
+
+El momento de inercia refleja la distribución de masa de un cuerpo o de un sistema de partículas en rotación, respecto a un eje de giro. El momento de inercia solo depende de la geometría del cuerpo y de la posición del eje de giro; pero no depende de las fuerzas que intervienen en el movimiento.
+
+El momento de inercia desempeña un papel análogo al de la masa inercial en el caso del movimiento rectilíneo y uniforme. (WIKI)
 \subsubsection{Momento angular}
 \todo[inline]{Se define el momento angular, la Ley de Newton para cuerpo regido, y los problemas para relizar los calculos}
+
 \subsubsection{Angulos de Euler}
 \todo[inline]{Se introducen los angulos de auler, y porque estos solucion el problema de calcular el momento angular}
 \subsubsection{Las ecuaciones de Euler}
