@@ -1,10 +1,10 @@
 \chapter{Metodología / Preliminares}
 
-Aunque algunas empresas han logrado desarrollar e incluso comercializar rodamientos magnéticos, estos continúan en desarrollo, por lo que no siguen una norma de diseño establecida. Esto implica diseñar una metodología con base en la investigación y desarrollo que han tendido tanto a nivel industrial como académico. Para nuestro caso fueron considerados los siguientes procedimientos: 
+Aunque algunas empresas han logrado desarrollar e incluso comercializar rodamientos magnéticos, estos continúan en desarrollo, por lo que no siguen una norma de diseño establecida. Esto implica aplicar una metodología con base en la investigación y desarrollo que han tendido tanto a nivel industrial como académico. Para nuestro caso fueron considerados los siguientes procedimientos: 
 \begin{enumerate}
-\item Definir a detalle el principio de funcionamiento de los diferentes tipos de rodamientos magnéticos realizando una investigación documental sobre los trabajos e investigaciones que se han hecho al respecto y con esto establecer los requerimientos de diseño.
-\item Recopilar información sobre los requerimientos de diseño de los electroimanes y la caracterización de los materiales ferromagnéticos comercializados localmente.
-\item Investigación de los tipos de sensores adecuados para las condiciones de operación, seguido por su adquisición o construcción.
+\item Definir a detalle el principio de funcionamiento de los diferentes tipos de rodamientos magnéticos realizando una investigación documental sobre los trabajos e investigaciones que se han hecho al respecto, y con esto establecer los requerimientos de diseño.
+\item Recopilar información sobre los requerimientos de diseño de los electroimánes y la caracterización de los materiales ferromagnéticos comercializados localmente.
+\item Investigación de los tipos de sensores adecuados para las condiciones de operación.
 \item Plantear un dispositivo de seguridad que sea capaz de sujetar el eje en caso de producirse alguna falla como un corte en el suministro de energía.  
 \item Realizar la división por áreas funcionales del proyecto en módulos; definir los diseños conceptuales de cada uno de ellos pensados para la fabricación y validación individual, considerando la futura integración de todos los módulos en una sola estructura. 
 \item Realizar los cálculos de la geometría y dimensiones del electroimán, los cuales restringen el tamaño del resto de los componentes. 
@@ -13,12 +13,10 @@ Aunque algunas empresas han logrado desarrollar e incluso comercializar rodamien
 \item Diseñar el modulo central para la adquisición de datos y cálculo de fuerzas de corrección. 
 \end{enumerate} 
 
-
 \section{Conceptos Fundamentales}
 \subsection{Origen del Campo Magnético}
-%\label{sec:related:sec2}
 
-Un campo magnético es producido cuando existen cargas eléctricas en movimiento. Estas pueden ser corriente eléctrica (Oersted). También pueden ser producidas por un imán permanente, en este caso no existen corrientes convencionales si no el spin y movimientos orbitales de los electrones sobre los átomos del material (corrientes amperianas). Este campo magnético ejerce fuerza sobre conductores con corriente y materiales magnetizados.
+Un campo magnético es producido cuando existen cargas eléctricas en movimiento. Este campo magnético ejerce fuerza sobre conductores con corriente y materiales magnetizados.
 \begin{equation}
 	 d \overrightarrow{H}=  \frac{Id \overrightarrow{l}\times\hat{r} }{4\pi r^{2}}
 \end{equation}
@@ -38,27 +36,28 @@ La ley de Biot-Savart nos permite calcular la intensidad del campo magnético H g
 
 \newpage
 
-En el mismo año y de manera independiente Ampere dedujo que las cargas en movimiento eran las causas del campo magnético después de enterarse de los experimentos de Oersted. De acuerdo con la ley de ampere el campo magnético generado por un circuito eléctrico depende de la forma del circuito (trayectoria de conducción) y la corriente conllevada. Asumiendo que cada circuito esta echo de un número finito de elementos de corriente, cada uno contribuyendo al campo, integrando estas contribuciones en un punto para determinar el campo ampere concluyo que\\
+En el mismo año y de manera independiente Ampere dedujo que las cargas en movimiento eran las causas del campo magnético después de enterarse de los experimentos de Oersted. De acuerdo con la ley de Ampere, el campo magnético generado por un circuito eléctrico depende de la forma del circuito (trayectoria de conducción) y de la corriente. Asumiendo que cada circuito esta hecho de un número finito de elementos de corriente, cada uno contribuyendo al campo, e integrando estas contribuciones en un punto para determinar el campo, Ampere concluyo que: 
+
 \begin{equation}
 	 \oint {\overrightarrow{H} \cdot d \overrightarrow{l}} =  I_{enc}
 \end{equation}
 
 \subsection{Inducción Magnética}
-Cuando un campo magnético  H es generado por una corriente, de acuerdo a la ley de ampere,  la respuesta del medio es la inducción magnética B, también llamada densidad de flujo. Todos los medios responden con alguna inducción, en el vacío la relación entre el campo magnetizante y la inducción es \\ 	
+Cuando un campo magnético  H es generado por una corriente, de acuerdo a la ley de Ampere, la respuesta del medio es la inducción magnética B, también llamada densidad de flujo. Todos los medios responden con alguna inducción, en el vacío la relación entre el campo magnetizante y la inducción es \\ 	
 						%inserte 3 formula%
 Donde  $\mu$0 es la permeabilidad magnética del vacío, un constante universal cuyo valor es de $4\pi\times10^{-7}$
-
-\newpage
 
 \subsection{Flujo Magnético}
 
 ¿Cómo podemos demostrar la presencia de un campo magnético?
 Siempre que un campo magnético está presente, existirá un flujo magnético $ \phi$, este flujo y su razón de cambio pueden ser medidos ya que genera una fuerza electromotriz (f.e.m.) en un circuito conductor a través del cual pasa este flujo. Pequeñas partículas como el hierro se alinean con la dirección del flujo. La cantidad de flujo producido depende de las propiedades del medio y varía de un medio a otro.
+
 \begin{equation}
 	\phi = \int_{s}^{} \overrightarrow{H} \cdot d \overrightarrow{s}
 \end{equation}
 
-El weber es la cantidad de flujo que al ser reducido uniformemente a cero en un segundo produce una f.e.m. de un volt a través de una vuelta de conductor en la que atraviesa tal flujo.
+El Weber es la cantidad de flujo que al ser reducido uniformemente a cero en un segundo produce una f.e.m. de un volt a través de una vuelta de conductor en la que atraviesa tal flujo.
+
 \begin{figure}[htb]
 \begin{center}
 \centering
@@ -69,12 +68,13 @@ El weber es la cantidad de flujo que al ser reducido uniformemente a cero en un 
 \end{figure}
 
 \section{Materiales Magnéticos}
-\label{sec:related:sec3}
 \subsection{Magnetización}
 
-En muchos medios $B$ es una función lineal de $H$, en particular se puede decir que $B=\mu_0 H$, Si el valor de $B$ en el vacío es conocido entonces H puede ser inmediatamente calculado.
+En muchos medios, $B$ es una función lineal de $H$, en particular se puede decir que $B=\mu_0 H$. Si el valor de $B$ en el vacío es conocido entonces H puede ser inmediatamente calculado.
+
 Sin embargo en otros medio, particularmente materiales ferromagnéticos, $B$ no es una fusión lineal d $H$, ni posee un mismo valor de $H$ para uno de $B$.
-Ahora consideramos los efectos que un material tiene sobre la inducción magnética $B$ cuando un campo magnetizaste pasa a través de él. Esto está representado por la magnetización, ente pude ser incrementado en los ferromagnético, o ser reducido como en caso de los diamagnéticos. La permeabilidad relativa del material indica cómo cambia la inducción en el material comparada con la inducción en el vacío.\\\\\\
+
+Ahora consideramos los efectos que un material tiene sobre la inducción magnética $B$ cuando un campo magnetizaste pasa a través de él. Esto está representado por la magnetización, ente pude ser incrementado en los ferromagnético, o ser reducido como en caso de los diamagnéticos. La permeabilidad relativa del material indica cómo cambia la inducción en el material comparada con la inducción en el vacío.
 
 \begin{figure}[htb]
 \begin{center}
@@ -86,17 +86,20 @@ Ahora consideramos los efectos que un material tiene sobre la inducción magnétic
 \end{figure}
 
 Para el análisis de materiales magnético es necesario definir cantidades que representen la respuesta de estos materiales ante un campo magnético, estas cantidades son el momento magnético y la magnetización. Una vez que se ha hecho es posible considerar otra propiedad, la susceptibilidad, que está relacionada con la permeabilidad.
-Se define una nueva cantidad $M$ (magnetización) como el momento magnético por unidad de volumen
+
+Se define una nueva cantidad $M$ (magnetización) como el momento magnético por unidad de volumen: 
+
 \begin{equation}
 	M = \frac{dm}{dV}
 \end{equation}
 
-A partir de la relación entre el momento magnético $m$ y el flujo se puede relación $M$ y $B$. Una barra magnética con una densidad $\phi$ en el centro, una longitud de dipolo de l y una área transversal A tiene un momento magnético de $m =\phi \mu_0$  , la magnetización  entonces está dada por $M = \frac{m}{Al}$. Entonces
+A partir de la relación entre el momento magnético $m$ y el flujo se puede relacionar $M$ y $B$. Una barra magnética con una densidad $\phi$ en el centro, una longitud de dipolo de l y una área transversal A tiene un momento magnético de $m =\phi \mu_0$  , la magnetización  entonces está dada por $M = \frac{m}{Al}$. Entonces:
+
 \begin{equation}
 	M = \frac{\phi}{\mu_0A} = \frac{B}{\mu 0}
 \end{equation}
 
-En este caso ninguna corriente externa está presente para un campo magnetizante por $B = \mu_0 M$. Podemos ver que la magnetización $M$ y el campo magnetizante $H$ contribuyen a la densidad de flujo en maneras similares.  Ambos magnetización y campo magnético están presentes  entonces sus contribuciones pueden ser sumandos.
+En este caso ninguna corriente externa está presente para un campo magnetizante por $B = \mu_0 M$. Podemos ver que la magnetización $M$ y el campo magnetizante $H$ contribuyen a la densidad de flujo en maneras similares.  Ambos, magnetización y campo magnético, están presentes por lo que sus contribuciones pueden ser sumadas.
 
 \begin{figure}[htb]
 \begin{center}
@@ -123,8 +126,10 @@ La susceptibilidad como:
 	X=\frac{M}{H}
 \end{equation}
 
-Dado que $B$ y $M$ pueden o no ser una función lineal de $H$, dependiendo del tipo de material o medio debe de recalcarse que la permeabilidad y susceptibilidad podrían no ser constantes.\\
+Dado que $B$ y $M$ pueden o no ser una función lineal de $H$, dependiendo del tipo de material o medio debe de recalcarse que la permeabilidad y susceptibilidad podrían no ser constantes.
+
 Es común usar el término permeabilidad relativa $\ mu_r$ definido como:
+
 \begin{equation}
 	\mu_r = \frac{\mu }{\mu_0}
 \end{equation}
@@ -155,7 +160,7 @@ A temperatura constante y valores de campo $H$ relativamente bajas la susceptibi
 \end{center}
 \end{figure}
 
-Los materiales magnéticos más prominentes son los ferromagnetismo, cuya susceptibilidad es positiva y mucho mayor a 1, con valores típicos de $X$ entre los 50 a 10000. Ejemplos de estos materiales son el hierro, cobalto níquel, metales de tierras raras y sus aleaciones.
+Los materiales magnéticos más prominentes son los ferromagnéticos, cuya susceptibilidad es positiva y mucho mayor a 1, con valores típicos de $X$ entre los 50 a 10000. Ejemplos de estos materiales son el hierro, cobalto níquel, metales raros y sus aleaciones.
 
 \subsection{Saturación}
 ¿Existe un límite para magnetización de un material?
@@ -169,6 +174,8 @@ Si un material tiene n dipolos atómicos por unidad de volumen una vez que todos 
 	\label{fig:system:example1}	
 \end{center}
 \end{figure}
+
+\newpage
 
 \subsection{Histéresis}
 
@@ -188,12 +195,13 @@ Los efectos de histéresis añaden más complicaciones debido a que la magnetizació
 \subsection{Remanecía}
 
 ¿Qué le sucede a la inducción magnética de un material ferromagnético una vez que fuerza magnetizante es retirada?\\
-Una vez que campo magnetizante es reducido a cero después de magnetizar un material ferromagnético permanece un porción residual de magnetización y por consiguiente una inducción residual donde
+Una vez que el campo magnetizante es reducido a cero después de magnetizar un material ferromagnético, permanece un porción residual de magnetización y por consiguiente una inducción residual donde:
+
 \begin{equation}
 	B_R=\mu_0 M_R
 \end{equation}
 
-En una convención emergente se hace una distinción entre remante y remanencia, donde la remanencia es usada para describir el valor residual de la magnetización después haber llevado el material a saturación, mientras que la magnetización remanente  se refiere al valor residual después de magnetizar el material en un nivel arbitrario.
+En una convención emergente se hace una distinción entre remante y remanencia, donde la remanencia es usada para describir el valor residual de la magnetización después haber llevado el material a saturación, mientras que la magnetización remanente se refiere al valor residual después de magnetizar el material en un nivel arbitrario.
 
 \subsection{Coercitividad}
 
@@ -204,15 +212,15 @@ La coercitividad intrínseca está definida como la intensidad de campo para la cu
 \subsection{Temperatura de Curie}
 
 ¿Qué sucede cuando un material ferromagnético es calentado?
-Cuando los materiales ferromagnéticos son calentados a temperaturas lo suficientemente altas se convierten en materiales paramagnéticos. La temperatura de transición entre ferromagnetismo y paramagnetismo es ferromagnetismo es conocida como temperatura de Curie. A esta temperatura la permeabilidad de material baja súbitamente y ambas coercitividad y remanencia se vuelven cero.
+Cuando los materiales ferromagnéticos son calentados a temperaturas lo suficientemente altas se convierten en materiales paramagnéticos. La temperatura de transición entre ferromagnetismo y paramagnetismo es conocida como temperatura de Curie. A esta temperatura la permeabilidad de material baja súbitamente y ambas, coercitividad y remanencia, se vuelven cero.
 
 \subsection{Materiales Ferromagnéticos}
 
-Podemos clasificar los materiales ferromagnéticos en base a su coercitividad. La coercitividad es un propiedad magnética dependiente de la estructura,  esto significa que se puede altera sometiendo al espécimen a diferentes tratamientos térmicos y mecánicos.
+Podemos clasificar los materiales ferromagnéticos con base en su coercitividad. La coercitividad es un propiedad magnética dependiente de la estructura,  esto significa que se puede altera sometiendo al espécimen a diferentes tratamientos térmicos y mecánicos.
 
 Fue descubierto que los materiales con base de hierro con alta dureza mecánica también presentaban una alta coercitividad, mientras que aquellos materiales más maleables tenían una coercitividad menor. Por lo tanto los términos suaves y duros fueron usados para distinguir los materiales ferromagnéticos de acuerdo a esta propiedad. Los materiales duros poseen  una coercitividad sobre los $10K \frac{A}{M}$ mientras aquellos con una coercitividad menor a  $1k \frac{A}{m}$ son considerados suaves.
 
-La selección de un material ferromagnético será determinada por las características mostradas en sus lazos de histéresis. Materiales para transformadores necesitan una alta permeabilidad y baja histéresis debido a la necesidad de una alta eficiencia en la conversión de energía eléctrica. Los electroimanes requieren una baja coercitividad y remanencia para reducir fácilmente la magnetización a cero durante el apagado. Finalmente los imanes permanentes requieren de una alta remanencia y coercitividad para retener la mayor magnetización posible. 
+La selección de un material ferromagnético será determinada por las características mostradas en sus lazos de histéresis. Materiales para transformadores necesitan una alta permeabilidad y baja histéresis debido a la necesidad de una alta eficiencia en la conversión de energía eléctrica. Los electroimánes requieren una baja coercitividad y remanencia para reducir fácilmente la magnetización a cero durante el apagado. Finalmente los imanes permanentes requieren de una alta remanencia y coercitividad para retener la mayor magnetización posible. 
 
 \subsection{Aplicaciones de los Materiales Ferromagnéticos}
 
@@ -227,6 +235,8 @@ Los imanes permanentes son una de las clases más importantes de materiales magné
 Para estas aplicaciones el material se  determina a partir de sus histéresis, como la coercitividad y remanencia, es importante resaltar que estas propiedades magnéticas dependen fuertemente de los tratamientos a los que fue sometido el material. En años recientes materiales para imanes permanentes basados en neodimio-hierro-boro han sido descubiertos,  por ejemplo su coercitividad puede ser tan alta como $1.12x106 A/$, comparada con $0.72\times 106$ para samario-cobalto.
 
 Además de la coercitividad otro parámetro de vital importancia es el producto energético $BH_{max}$, este es obtenido mediante el producto máximo $BH$ en el segundo cuadrante  de la curva de histéresis,  Este representa la energía magnética almacenada en el material y es usualmente especificado por los fabricantes de imanes permanentes.
+
+\newpage
 
 \section{Análisis de Circuitos Magnéticos}
 %\label{sec:related:sec3}
@@ -265,7 +275,7 @@ Y finalmente la relación entre estas, también conocida como ley de Hopkinso
 
 \newpage
 
-A partir de estas ecuaciones es posible el sencillo cálculo del flujo a través de  elementos con diferentes longitudes medias, materiales y secciones transversales mediante las técnicas de análisis de circuitos eléctricos mediante las analogías:\\\\
+A partir de estas ecuaciones es posible el sencillo cálculo del flujo a través de elementos con diferentes longitudes medias, materiales y secciones transversales, mediante las técnicas de análisis de circuitos eléctricos y las analogías:
 
 \begin{tabular}{|c|c|c|c|}
 \hline 
@@ -282,11 +292,12 @@ $\phi$ & Flujo magnético & $I$ & Corriente eléctrica \\
 \section{Caracterización de Materiales}
 %\label{sec:related:sec3}
 
-Para el diseño de electroimánes se requiere conocer las características magnéticas del material, como la permeabilidad relativa y el punto de saturación, sin embargo lo materiales ferromagnéticos comercializados localmente carecen de hojas de especificaciones de donde obtener esta información por lo es necesario disponer de un método para caracterizar sus propiedades más relevantes.
+Para el diseño de electroimánes se requiere conocer las características magnéticas del material, como la permeabilidad relativa y el punto de saturación, sin embargo lo materiales ferromagnéticos comercializados localmente carecen de hojas de especificaciones de donde obtener esta información, por lo que es necesario disponer de un método para caracterizar sus propiedades más relevantes.
 
 \subsection{Análisis}
 
-A partir de la ley de Faraday que relaciona la variación temporal del flujo eléctrico y la fuerza electromotriz inducida
+A partir de la ley de Faraday que relaciona la variación temporal del flujo eléctrico y la fuerza electromotriz inducida:
+
 \begin{equation}
 	\varepsilon =\frac{d \lambda}{dt} = \frac{N d \phi}{dt}
 \end{equation}
@@ -320,15 +331,16 @@ Es posible obtener una relación entre variables eléctricas medibles (corriente y
 \end{equation}
 
 Mediante las mediciones de corriente y voltaje en la bobina se calcula la permeabilidad diferencial para cada punto de I y lo tanto para cada punto de $H$, después de la  integrar la función obtenida $\mu_d (H)$  se puede obtener un aproximado de $B$:
+
 \begin{equation}
 	B = \int dB = \int \mu_d dH
 \end{equation}
 
 \section{Electroimánes}
-%\label{sec:related:sec3}
 \subsection{Análisis del Electroimán}	
 
 Mediante el análisis de circuitos magnéticos se puede calcular la energía almacenada en el circuito formado por el electroimán.
+
 \begin{figure}[htb]
 \begin{center}
 \centering
@@ -342,42 +354,46 @@ Mediante el análisis de circuitos magnéticos se puede calcular la energía almace
 	W_m = \frac{1}{2} Li^2 = \frac{\mu_0 N^2 I^2 A}{2 (\frac{l_e}{\mu_{re}}+ \frac{l_a}{k \mu_{ra}}+ 2y)^2}
 \end{equation}
 
-Aplicando el principio de trabajo virtual podemos calcular la fuerza como le variación de la energía con respecto al despeamiento.
+Aplicando el principio de trabajo virtual podemos calcular la fuerza como le variación de la energía con respecto al despeamiento:
+
 \begin{equation}
 	F_m = \frac{dW_m}{dy} = - \frac{\mu_0 N^2 I^2 A}{(\frac{l_e}{\mu_{re}}+ \frac{l_a}{k \mu_{ra}}+ 2y)^2}
 \end{equation}
 
-Suponiendo que flujo es uniforme sobre la sección transversal núcleo es posible calcular la inducción magnética del material
+Suponiendo que flujo es uniforme sobre la sección transversal núcleo es posible calcular la inducción magnética del material:
 
 \begin{equation}
 	B = \frac{\phi}{A} = \frac{\mu_0 NI}{\frac{l_e}{\mu_{re}}+\frac{l_a}{k \mu_{ra}+2y}}
 \end{equation}
 
-Estas ecuaciones resultan difíciles de trabajar para el diseño del electroimán, sin embargo en el caso de que la condición
+Estas ecuaciones resultan difíciles de trabajar para el diseño del electroimán, sin embargo en el caso de que la condición: 
+
 \begin{equation}
 	u_{r,}y \bracevert 2y >>\frac{l_e}{\mu_{re}} + \frac{l_a}{k \mu_{ra}}
 \end{equation}
 
-Sea válida, Los términos que dependen de las longitudes del conductor magnético se vuelven despreciables y las ecuaciones se simplifican a
+sea válida, los términos que dependen de las longitudes del conductor magnético se vuelven despreciables y las ecuaciones se simplifican a: 
+
 \begin{equation}
 	F_m = - \frac{\mu_0 N^2 I^2 A}{4y^2}
 \end{equation}
+
 \begin{equation}
 	B = \frac{\mu_0 N I}{2y}
 \end{equation}
-Gracias a la alta permeabilidad de la ferrita y las condiciones de operación $y_min$   y  $y_max$ estas ecuaciones pueden ser usadas para el cálculo del electroimán.
+
+Gracias a la alta permeabilidad de la ferrita y las condiciones de operación $y_min$ y $y_max$ estas ecuaciones pueden ser usadas para el cálculo del electroimán.
 
 \newpage
 
 \section{Imán Permanente}
-%\label{sec:related:sec3}
 \subsection{Análisis del Imán Permanente}
 
 Proponiendo un imán permanente y guía de flujo magnético con la siguiente geometría:
+
 \begin{figure}[htb]
 \begin{center}
-\centering
-	
+\centering	
 	\includegraphics[width=5cm, height=5cm]{images/Capitulo_1/Circuito_magnetico_de_iman_permanente}
 	\caption{\textit{Circuito Magnético de imán permanente.}}
 	\label{fig:system:example1}	
@@ -394,6 +410,7 @@ Proponiendo un imán permanente y guía de flujo magnético con la siguiente geomet
 \end{figure}
 
 Asumiendo que el plato tiene una permeabilidad relativa infinita y que el imán posee una curva de demagnetización lineal de la forma:
+
 \begin{equation}
 	B_m = B_r + \mu_rH_m
 \end{equation}
@@ -405,6 +422,7 @@ Teniendo en cuenta la falta de fuerza magnetomotriz:
 \end{equation}
 
 Y finalmente la conservación de flujo magnético:
+
 \begin{equation}
 	B_m A_m = 2B_g A_g
 \end{equation}
@@ -415,18 +433,22 @@ Podemos calcular la inducción magnética en el entrehierro:
 	  B_g(g) = (\frac{A_m}{A_g}) \frac{B_r}{2(1+(\frac{\mu_m}{\mu_0})(\frac{A_m}{A_g})(\frac{g}{l_m}))} 
 \end{equation}
 
-Y por consiguiente la fuerza aplicada por el imán permanente debido a una variación en la energía aplicada en el entrehierro.
+Y por consiguiente la fuerza aplicada por el imán permanente debido a una variación en la energía aplicada en el entrehierro:
+
 \begin{equation}
 	F_g(g)= \frac{1}{2} \mu_0  \oint \oint B_g^2 ds \hat{n}
 \end{equation}
+
 \begin{equation}
 	F_g(g)= \frac{1}{2 \mu_0} (2B-^2(g)A_g +B_m^2A_m)  \hat(n)
 \end{equation}
+
 \begin{equation}
 	F_g(g) = \frac{B_r^2}{2 \mu_0 (1 + (\frac{\mu_m}{\mu_0})(\frac{A_m}{A_g})(\frac{g}{l_m}))^2}[\frac{A_m + 2A_g}{2Ag}] \hat{n}
 \end{equation}
 
-Donde
+Donde: 
+
 \begin{enumerate}
 	\item $A_m$: Es la sección transversal del imán permanente
 	\item $A_g$: La sección transversal del entrehierro
@@ -439,26 +461,26 @@ Donde
 \end{enumerate}
 
 \section{Sensores de Desplazamiento}
-%\label{sec:related:sec3}
 \subsection{Requerimientos del Sensor}
 
 Las condiciones de operación del sensor presentan dificultades incluyendo:
+
 \begin{enumerate}
 	\item Un rango de operación reducido (1mm a 3mm)
 	\item Medición sin contacto 
 	\item Inmunidad al ruido de acoplamiento magnético causado por los electroimanes
 	\item Rápida respuesta
 	\item Resolución mínima  100$um$
-
 \end{enumerate}
 
 \subsection{Tipos de Sensores}
 La mayoría de los sensores de desplazamiento de alta precisión requieren de contacto directo como los encoders de cuadratura, potenciómetros y sensores LVDT (Linear Variable Differential Transformer).
 Los sensores que no requieren de directo con el objeto se basan en la transformación de energía (transductores) o en la medición de alguna propiedad fundamental (resistencia, capacitancia, inductancia) para la detección de esa distancia. Entre los sensores de tipo transductor encontramos los sensores ultrasónicos que:
+
 \begin{enumerate}
-	\item Emiten ondas sónicas de alta frecuencia
-	\item Las ondas viajan hasta el objeto a detectar y son reflejadas sobre su superficie (siempre y cuando las características del material lo permitan en mayor o menor medida) 
-	\item Las ondas reflejadas son detectadas y tiempo entre la transmisión de onda y la recepción es medido. Este tiempo es función directa de la distancia del objeto y la velocidad de propagación en el medio por que la distancia es calculada
+	\item Emiten ondas sónicas de alta frecuencia.
+	\item Las ondas viajan hasta el objeto a detectar y son reflejadas sobre su superficie (siempre y cuando las características del material lo permitan en mayor o menor medida).
+	\item Las ondas reflejadas son detectadas y tiempo entre la transmisión de onda y la recepción es medido. Este tiempo es función directa de la distancia del objeto y la velocidad de propagación en el medio por que la distancia es calculada.
 \end{enumerate}
 
 Estos sensores tienen la desventaja de poseer un rango mínimo de 10-20$cm$ y un rango máximo determinado por la potencia de la señal transmitida. Estas características. Además del tamaño del transductor no parecen ser una solución al problema de medición.
@@ -488,8 +510,7 @@ Los sensores de proximidad capacitivos consisten en un oscilador cuya frecuencia
 
 \begin{figure}[htb]
 \begin{center}
-\centering
-	
+\centering	
 	\includegraphics[width=5cm, height=5cm]{images/Capitulo_1/Interaccion_del_campo_electrico_en_un_capacitor_aire}
 	\caption{\textit{Interacción del campo eléctrico en un capacitor de placas coplanarias con espacio frontal relleno de aire .}}
 	\label{fig:system:example1}	
@@ -522,7 +543,6 @@ La capacitancia depende del entrehierro o distancia entre los electrodos conduct
 \subsection{Sistemas}
 \todo[inline]{La definicion de sistema, su clasificacsion, la definicion de sistema dinamico (OK falta tu imagen)}
 Un sistema es un conjunto de partes o elementos organizadas y relacionadas que interactúan entre sí para lograr un objetivo. Los sistemas reciben \textbf{(entrada)} datos, energía o materia del ambiente y proveen \textbf{(salida)} información, energía o materia.  Los sistemas pueden  ser  de \textbf{fisicos} (compuestos por equipos, maquinaria, objetos y cosas reales) o \textbf{abstractos} (compuestos por conceptos, planes, hipótesis e ideas). De la misma forma pueden ser \textbf{cerrados} (no presentan intercambio con el medio ambiente que los rodea, son herméticos a cualquier influencia ambiental. No reciben ningún recurso externo y nada producen que sea enviado hacia fuera. En rigor, no existen sistemas cerrados. Se da el nombre de sistema cerrado a aquellos sistemas cuyo comportamiento es determinista y programado y que opera con muy pequeño intercambio de energía y materia con el ambiente. Se aplica el término a los sistemas completamente estructurados, donde los elementos y relaciones se combinan de una manera peculiar y rígida produciendo una salida invariable, como las máquinas) o \textbf{abiertos} (presentan intercambio con el ambiente, a través de entradas y salidas. Intercambian energía y materia con el ambiente. Son adaptativos para sobrevivir. Su estructura es óptima cuando el conjunto de elementos del sistema se organiza, aproximándose a una operación adaptativa).
-
 
 El cual se tiene al menos una entrada y una salida bien definidas. Estos suelen representarse mediante un bloque mostrando sus respectivas entradas y salidas.
 
