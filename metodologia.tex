@@ -577,7 +577,7 @@ La relación de entrada-salida para los sistemas LTI se describe en términos de u
 básicas (concepto de base de señales), la salida será la misma combinacián lineal
 de las respuestas del sistema a esas señales básicas.
 \item Cualquier señal se puede representar como combinación lineal de impulsos unitarios retardados. Esto nos permitirá caracterizar cualquier sistema LTI mediante su respuesta al impulso unitario. Esta representación se conoce como suma de convolución (sistemas LTI discretos) o integral de convolución (sistemas continuos) y proporciona una gran
-comodidad al tratar los sistemas \textbf{LTI}.
+comodidad al tratar los sistemas LTI.
 \end{itemize}
 
   
@@ -585,6 +585,20 @@ comodidad al tratar los sistemas \textbf{LTI}.
 \todo[inline]{Aqui se explican las diferentes formas de representar
 un sistema, ecuacion diferencial, funcion de transferencia y variables de estado   \textbf{hecho}}
 
+Las representaciones de un sistema LTI son las siguientes: 
+\begin{itemize}
+\item Sistemas de ecuaciones diferenciales (anteriormente mensionado ecuacion 1.39)
+\item Funcion de tranferencia: La función de transferencia de un sistema descrito mediante
+una ecuación diferencial lineal e invariante en el tiempo se define como el cociente entre la transformada de Laplace de la salida (función de respuesta) y la transformada de Laplace de la entrada (función de excitación) bajo la suposición de que todas las condiciones iniciales son cero.
+\begin{equation}
+	G_{(s)} = \frac{\mathcal{L}[entrada]}{\mathcal{L}[salida]}
+\end{equation}
+A partir del concepto de función de transferencia, es posible representar la dinámica de un sistema mediante ecuaciones algebraicas en s.
+\item Variables de estado: Las variables de un sistema dinámico son las variables que constituyen el menor conjunto de variables que determinan el estado del sistema dinámico. Si al menos se nesecitan $n$ variables $X_1, X_2,...,X_n$ para describir completamente el comportamiento de un sistema dinámico (de forma que una vez que la entrada para $ t\geq t_0 $ está dada y el estado inicial  en $t = t_0$ esta espesificado, el estado futuro del sistema está determinado  completamente,) entonces tales $n$ variables son un cojunto de variables de estado.
+\end{itemize}
+
+El estado de un sistema dinámico es el conjunto de variables más pequeño (llamadas
+variables de estado), de forma que el conocimiento de estas variables en $t = t_0$, junto con el conocimiento de la entrada para $ t\geq t_0 $, determinan completamente el comportamiento del sistema en cualquier $ t\geq t_0 $.
 
 \subsection{Respuestas de los sistemas LTI de segundo orden}
 \todo[inline]{Se describne las diferencias en la respuesta de un sistema segun el lugar de las raices, amortiguado, subamortiguado, criticamente amorgituado}
