@@ -1,6 +1,8 @@
 \chapter{Metodología / Preliminares}
 
-Aunque algunas empresas han logrado desarrollar e incluso comercializar rodamientos magnéticos, estos continúan en desarrollo, por lo que no siguen una norma de diseño establecida. Esto implica aplicar una metodología con base en la investigación y desarrollo que han tendido tanto a nivel industrial como académico. Para nuestro caso fueron considerados los siguientes procedimientos: 
+Aunque algunas empresas han logrado fabricar e incluso comercializar rodamientos magnéticos, estos continúan bajo diversas investigaciones buscando mejorar los materiales y los componentes con los que se fabrican para mejorar su funcionamiento y optimizar el diseño. Sin embargo la mayoría de las veces los desarrolladores los diseñan para una aplicación o máquina en especifico, por lo que no siguen una norma de diseño establecida. 
+
+Es por esto que para desarrollar este proyecto fue necesario aplicar una metodología con base en las investigaciones y el desarrollo que han tendido tanto a nivel industrial como académico. Se consultaron diversos artículos y sitios web de fabricantes y desarrolladores que han logrado comercializar estos productos para la industria, y se realizó una investigación documental en trabajos de varios grados e instituciones que sirvieran como referencia para desarrollar este proyecto. Con base en la información adquirida, fueron considerados los siguientes procedimientos: 
 
 \begin{enumerate}
 \item Definir a detalle el principio de funcionamiento de los diferentes tipos de rodamientos magnéticos realizando una investigación documental sobre los trabajos e investigaciones que se han hecho al respecto, y con esto establecer los requerimientos de diseño.
@@ -12,6 +14,10 @@ Aunque algunas empresas han logrado desarrollar e incluso comercializar rodamien
 \item Realizar el diseño a detalle de los módulos que componen los rodamientos magnéticos activos (radial y axial), módulo de sensores y el módulo de compensación de cargas estáticas.
 \item Diseñar la circuitería para la aplicación y control de corrientes en los electroimánes.
 \end{enumerate} 
+
+Sin embargo, para poder desarrollar los procedimientos más avanzados es necesario analizar los conceptos fundamentales y principios básicos en cuanto a la teoría propia del proyecto y los procedimientos utilizados, los cuales se analizaran en este capitulo. 
+
+\newpage
 
 \section{Conceptos Fundamentales}
 \subsection{Origen del Campo Magnético}
@@ -33,8 +39,6 @@ La ley de Biot-Savart nos permite calcular la intensidad del campo magnético H g
 \end{center}
 \end{figure}
 %\vspace*{3cm}
-
-\newpage
 
 En el mismo año y de manera independiente Ampere dedujo que las cargas en movimiento eran las causas del campo magnético después de enterarse de los experimentos de Oersted. De acuerdo con la ley de Ampere, el campo magnético generado por un circuito eléctrico depende de la forma del circuito (trayectoria de conducción) y de la corriente. Asumiendo que cada circuito esta hecho de un número finito de elementos de corriente, cada uno contribuyendo al campo, e integrando estas contribuciones en un punto para determinar el campo, Ampere concluyo que: 
 
@@ -110,8 +114,6 @@ En este caso ninguna corriente externa está presente para un campo magnetizante 
 \end{center}
 \end{figure}
 
-\newpage
-
 \subsection{Permeabilidad y Susceptibilidad Magnética}
 
 Los diferentes tipos de materiales magnéticos son clasificados de acuerdo a su susceptibilidad y permeabilidad. Entonces debemos de definir estos propiedades antes de describir diferencias entre materiales ferromagnéticos, paramagnéticos y diamagnéticos.
@@ -154,13 +156,15 @@ A temperatura constante y valores de campo $H$ relativamente bajas la susceptibi
 \begin{figure}[htb]
 \begin{center}
 \centering
-	\includegraphics[width=11cm, height=7cm]{images/Capitulo_1/Curva_de_magnetizacion}
+	\includegraphics[width=11cm, height=6cm]{images/Capitulo_1/Curva_de_magnetizacion}
 	\caption{\textit{Curva de magnetización para materiales paramagnéticos y diamagnéticos con respecto al vacío}}
 	\label{fig:system:example1}	
 \end{center}
 \end{figure}
 
 Los materiales magnéticos más prominentes son los ferromagnéticos, cuya susceptibilidad es positiva y mucho mayor a 1, con valores típicos de $X$ entre los 50 a 10000. Ejemplos de estos materiales son el hierro, cobalto níquel, metales raros y sus aleaciones.
+
+\newpage
 
 \subsection{Saturación}
 ¿Existe un límite para magnetización de un material?
@@ -169,7 +173,7 @@ Si un material tiene n dipolos atómicos por unidad de volumen una vez que todos 
 \begin{figure}[htb]
 \begin{center}
 \centering
-	\includegraphics[width=11cm, height=7cm]{images/Capitulo_1/Curva_de_magnetizacion_de_un_material_ferromagnetico}
+	\includegraphics[width=11cm, height=6cm]{images/Capitulo_1/Curva_de_magnetizacion_de_un_material_ferromagnetico}
 	\caption{\textit{Curva de magnetización de un material ferromagnético.}}
 	\label{fig:system:example1}	
 \end{center}
@@ -179,6 +183,8 @@ Si un material tiene n dipolos atómicos por unidad de volumen una vez que todos 
 
 \subsection{Histéresis}
 
+Los efectos de histéresis añaden más complicaciones debido a que la magnetización M  del material depende no solo del campo magnético H como del historial de magnetización del material. Incluso en los casos donde la histéresis ocurre métodos han sido creados para los cálculos de los campos magnéticos en estos dispositivos, en donde la histéresis se tiene en cuenta.
+
 \begin{figure}[htb]
 \begin{center}
 \centering
@@ -187,10 +193,6 @@ Si un material tiene n dipolos atómicos por unidad de volumen una vez que todos 
 	\label{fig:system:example1}	
 \end{center}
 \end{figure}
-
-Los efectos de histéresis añaden más complicaciones debido a que la magnetización M  del material depende no solo del campo magnético H como del historial de magnetización del material. Incluso en los casos donde la histéresis ocurre métodos han sido creados para los cálculos de los campos magnéticos en estos dispositivos, en donde la histéresis se tiene en cuenta.
-
-\newpage
 
 \subsection{Remanecía}
 
@@ -288,6 +290,8 @@ $\phi$ & Flujo magnético & $I$ & Corriente eléctrica \\
  $R$ & Reluctancia & $r$& Resistencia eléctrica\\
 \hline
 \end{tabular} 
+
+\newpage
 
 \section{Caracterización de Materiales}
 %\label{sec:related:sec3}
@@ -691,6 +695,7 @@ El momento de inercia desempeña un papel análogo al de la masa inercial en el ca
 \todo[inline]{se explica porque medir y predecir un sistema puede ser modelado como un proceso estocastico}
 \subsubsection{El filtro de Kalman}
 \todo[inline]{Se muestran las formulas del filtro de kalman}
+
 \newpage
 
 \section{Diseño de Ingeniería }
