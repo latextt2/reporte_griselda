@@ -591,7 +591,7 @@ En parte se pueden clasificar como:
 Los sistemas lineales e invariantes en el tiempo (o sistemas \textbf{LTI} por sus siglas en inglé   \textbf{\textit{Linear and Time Invariant}}) corresponden a una importante clase de sistemas en el análisis de fenómenos reales, al permitir modelar comportamientos complejos con herramientas matemáticas tan poderosas como las transformadas de Fourier y Laplace.
 Los sistemas LTI son sistemas que tienen una ecuacion diferencial de la forma
 
-\begin{equation}
+\begin{equation} \label{eq:def_lti}
 a_n\frac{d^ny(t)}{dt^n} + a_{n-1}\frac{d^{n-1}y(t)}{dt^{n-1}} + ... + a_1\frac{dy(t)}{dt} +a_0y(t) = b_0F(t) + b_1\frac{dF(t)}{dt} +...+ b_{m-1}\frac{d^{m-1}F(t)}{dt^{m-1}} + b_m\frac{d^mF(t)}{dt^m}
 \end{equation}
 
@@ -615,7 +615,7 @@ un sistema, ecuacion diferencial, funcion de transferencia y variables de estado
 
 Las representaciones de un sistema LTI son las siguientes: 
 \begin{itemize}
-\item Sistemas de ecuaciones diferenciales (anteriormente mensionado ecuacion 1.39)
+  \item Sistemas de ecuaciones diferenciales (anteriormente mensionado ecuacion \ref{eq:def_lti})
 \item Funcion de tranferencia: La función de transferencia de un sistema descrito mediante
 una ecuación diferencial lineal e invariante en el tiempo se define como el cociente entre la transformada de Laplace de la salida (función de respuesta) y la transformada de Laplace de la entrada (función de excitación) bajo la suposición de que todas las condiciones iniciales son cero.
 \begin{equation}
