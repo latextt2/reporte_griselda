@@ -647,6 +647,112 @@ El momento de inercia desempeña un papel análogo al de la masa inercial en el ca
 
 \subsubsection{Angulos de Euler}
 \todo[inline]{Se introducen los angulos de auler, y porque estos solucion el problema de calcular el momento angular}
+% primera parte
+\begin{equation}
+	\mathcal{W_B} = \begin{pmatrix}
+	W_x\\
+	W_y\\
+	W_z
+	\end{pmatrix}_B = \begin{pmatrix}
+	p\\
+	q\\
+	r
+	\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+	\Theta = \begin{pmatrix}
+	\phi\\
+	\theta\\
+	\psi
+	\end{pmatrix}
+\end{equation}
+
+\begin{equation}
+	\dot{\Theta} = \begin{pmatrix}
+	\dot{\phi}\\
+	\dot{\theta}\\
+	\dot{\psi}
+	\end{pmatrix} \neq \begin{pmatrix}
+	W_x\\
+	W_y\\
+	W_z
+	\end{pmatrix}
+\end{equation}
+%%segunda parte 
+
+\begin{equation}
+	{H^B}_1 (\phi,\theta,\psi)= {H_2}^B (\phi) {H_1}^2 (\theta) {H_l}^1 (\psi) 	
+\end{equation}
+
+\begin{equation}
+	{H^B}_1 (\phi,\theta,\psi)= \begin{pmatrix}
+	1 & 0 & 0\\
+	0 & cos(\phi) & sin(\phi)\\
+	0 & -sin(\phi) & cos(\phi)
+	\end{pmatrix} \begin{pmatrix}
+	cos(\theta) & o & -sin(\theta)\\
+	0 & 1 & 0\\
+	sin(\theta) & 0 & cos(\theta)
+	\end{pmatrix} \begin{pmatrix}
+	cos(\psi) & sin(\psi) & 0\\
+	-sin(\psi) & cos(\psi) & 0\\
+	0 & 0 & 1
+	\end{pmatrix}			
+\end{equation}
+%%tercera parte
+\begin{equation}
+	\begin{pmatrix}
+	p\\
+	q\\
+	r
+	\end{pmatrix} = I_3 \begin{pmatrix}
+	\dot{\phi}\\
+	0\\
+	0
+	\end{pmatrix} + {H^B}_2 \begin{pmatrix}
+	0\\
+	\dot{\theta}\\
+	0
+	\end{pmatrix} + {H^B}_2{H^2}_1 \begin{pmatrix}
+	0\\
+	0\\
+	\dot{\psi}
+	\end{pmatrix}
+\end{equation}
+\begin{equation}
+	\begin{pmatrix}
+	p\\
+	q\\
+	r
+	\end{pmatrix} = \begin{pmatrix}
+	1 & 0 & -sin(\theta)\\ 
+	0 & cos(\phi) & sin(\phi)cos(\theta)\\
+	0 & - sin(\phi) & cos(\phi)cos(\theta)
+	\end{pmatrix} \begin{pmatrix}
+	\dot{\phi}\\
+	\dot{\theta}\\
+	\dot{\psi}
+	\end{pmatrix} = {L^B}_l \Theta
+\end{equation}
+$trasformada inversa [(.)^{-1} \neq (.)^T]$
+\begin{equation}
+	\begin{pmatrix}
+	\dot{\phi}\\
+	\dot{theta}\\
+	\dot{psi}
+	\end{pmatrix} = \begin{pmatrix}
+	1 & sin(phi)tan(\theta) & cos(\theta)tan(\theta)\\ 
+	0 & cos(\phi) & -sin(\phi)\\
+	0 & - sin(\phi)sec(\theta) & cos(\phi)sec(\theta)
+	\end{pmatrix} \begin{pmatrix}
+	p\\
+	q\\
+	r
+	\end{pmatrix} = {L^l}_B W_B
+\end{equation}
+
+
 \subsubsection{Las ecuaciones de Euler}
 \todo[inline]{Se presenta la version a usar de las ecucaciones de Euler}
 \subsubsection{Precesion}
