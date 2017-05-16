@@ -639,26 +639,85 @@ Cuando se aplica una fuerza en algún punto de un cuerpo rígido, dicho cuerpo tie
 \todo[inline]{Se define el momento angular, la Ley de Newton para cuerpo regido, y los problemas para relizar los calculos}
 El momento angular de un sistema de particulas respecto a un punto $o$ se define como:
 \begin{equation}
-	H_o = \sum{}{ r_i \times L_i}
+	H_o = \sum_i{ r_i \times L_i}
 \end{equation}
 para un solido rigido tenemos
 \begin{equation}
 \label{eq:fisica:momento_angular_integral}
- H_o = \int{r_o \times vdm} = \int{r_o \times \omega \times r_o dm} 
+ H_o = \int_m{r_o \times vdm} = \int_m{r_o \times \omega \times r_o dm} 
 \end{equation}
 desarrollando la ecuacion \ref{eq:fisica:momento_angular_integral} para un sistema cartesiano tenemos que:
+\begin{equation}
+	H_G = (I_{xx}\omega_x - I_{xy}\omega_y - I_{xz}\omega_z)i + (- I_{yx}\omega_x + I_{yy}\omega_y - I_{yz}\omega_z)j + (- I_{zx}\omega_x + I_{zy}\omega_y + I_{zz}\omega_z)k
+\end{equation}
+donde los terminos $I_xx, I_yy, I_zz$ comunmente conocidos como momentos principipales se definen como: 
+\begin{equation}
+	I_{xx} = \int_m (y^{'2} + z^{'2})dm, I_{yy} = \int_m (x^{'2} + z^{'2})dm, I_{zz} = \int_m (x^{'2} + y^{'2})dm,  
+\end{equation}
+y los terminos $I_xy, I_xz y I_yz$ conocidos como productos de inercia se definen como:
+\begin{equation}
+	I_{xy} = I_{yx} = \int_m x^{'}y^{'}dm, I_{xz}=I_{zx}= \int_m x^{'} z^{'} dm, I_{yz}=I_{zy}= \int_m y^{'} z^{'} dm,     
+\end{equation}
 
 La ecuacion del momento angular puede ser expresada de forma matricial como
-\todo[inline]{ecuacion :v}
+\begin{equation}
+	\begin{pmatrix}
+	H_{Gx}\\
+	H_{Gy}\\
+	H_{Gz}
+	\end{pmatrix} = \begin{pmatrix}
+	I_{xx} & -I_{xy} & -I_{xz}\\
+	-I_{yx} & I_{yy} & -I_{yz}\\
+	-I_{zx} & -I_{yx} & I_{zz}
+	\end{pmatrix} \begin{pmatrix}
+	W_x\\
+	W_y\\
+	W_z
+	\end{pmatrix}
+\end{equation}
 o
-\todo[inline]{ecuacion :v}
-donde a $I_G$ se le cononce como tensor de inercia, el tensor de inercia refleja la distribución de masa de un cuerpo en rotación respecto a un eje de giro y es una medida de su inercia rotacional. El momento de inercia solo depende de la geometría del cuerpo y de la posición del eje de giro.
+\begin{equation}
+	H_G = [I_G]\omega
+\end{equation}
+donde a $I_G$ se le cononce como tensor de inercia, este refleja la distribución de masa de un cuerpo en rotación respecto a un eje de giro y es una medida de su inercia rotacional. El momento de inercia solo depende de la geometría del cuerpo y de la posición del eje de giro.
 
 La ecuacion que a menos que la velocidad anguar $\omega$ sea un un eigen vector de la matriz de inercia, el momento augular y la velocidad angular no estaran en la misma direccion. Ademas debido a que los momentos de inercia dependen de la distribucion de la masa con respecto a los ejes coordenados si el objeto rota.
 
 El momento angular de un sistema de particulas se conseva si ningun torque externo es aplicado, o dicho de otra forma la razon de cambio del momento angular de un cuerpo es la suma de los momentos de torsion aplicados a este.
-\todo[inline]{formula :v}
 
+\begin{equation}
+	\sum_i{M_i} = \dot{H} = [I] \dot{\omega} + \omega \times H
+\end{equation}
+
+Como ya se ha dicho el problema reside en tener que recalcular los momentos de la matriz de inercia, por lo que comunmente se opta por cambiar aun sistema de referencia que se mueva pegado al objeto, ahora podemos calcular la derivada usando el teorema de coreolis
+donde se tiene que
+\todo[inline]{formula ;v}
+aplicandolo a la formula ?? tenemos que
+\todo[inline]{formula ;v}
+como los ejes ahora se mueven con el objecto la matriz de inercia se mantiene constante, y por tanto sus derivada son cero, si consideramos que la velocidad angular del cuerpo y la velocidad angular del marco mobil $\Omega$ es la misma entonces podemos expandir la ecuacion ?? en la forma
+
+las ecuaciones ?? se conocen como las ecuaciones de euler, y nos proveen de un medio para calcular el movimiento de un cuerpo rigido en tres dimensions, sin embargo estas ecuciones presentan problemas para encotrar sus soluciones ya que estas poseen productos de $\omega$ y esto representa no linealidades. El otro problema consiste en definir la forma en la que se represetaran la rotacion del marco mobil.
+
+\todo[inline]{formula :v}
+\begin{equation}
+	M_x = \dot{H_x} - H_y\omega_z + H_z\omega_y
+\end{equation}
+\begin{equation}
+	M_y = \dot{H_y} - H_z\omega_x + H_x\omega_z
+\end{equation}
+\begin{equation}
+	M_z = \dot{H_z} - H_x\omega_y + H_y\omega_x
+\end{equation}
+ 
+\begin{equation}
+	M_x = I_{xx}\dot{\omega}_x - (I_{yy} - I_{zz}) \omega_y\omega_z
+\end{equation} 
+\begin{equation}
+	M_y = I_{yy}\dot{\omega}_y - (I_{zz} - I_{xx}) \omega_z\omega_x
+\end{equation} 
+\begin{equation}
+	M_z = I_{zz}\dot{\omega}_z - (I_{xx} - I_{yy}) \omega_x\omega_y
+\end{equation} 
 \subsubsection{Angulos de Euler}
 \todo[inline]{Se introducen los angulos de euler, y porque estos solucion el problema de calcular el momento angular}
 % primera parte
