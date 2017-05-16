@@ -686,38 +686,31 @@ La ecuacion que a menos que la velocidad anguar $\omega$ sea un un eigen vector 
 El momento angular de un sistema de particulas se conseva si ningun torque externo es aplicado, o dicho de otra forma la razon de cambio del momento angular de un cuerpo es la suma de los momentos de torsion aplicados a este.
 
 \begin{equation}
-	\sum_i{M_i} = \dot{H} = [I] \dot{\omega} + \omega \times H
+	\sum_i{M_i} = \dot{H} = \frac{d[I]}{dt}\omega + [I]\frac{d\omega}{dt}
 \end{equation}
 
 Como ya se ha dicho el problema reside en tener que recalcular los momentos de la matriz de inercia, por lo que comunmente se opta por cambiar aun sistema de referencia que se mueva pegado al objeto, ahora podemos calcular la derivada usando el teorema de coreolis
 donde se tiene que
-\todo[inline]{formula ;v}
+\begin{equation}
+	\dot{(\ \ )}_{XYZ} = \frac{d}{dt}(\ \ )_{xyz}  + \Omega \times (\ \ )
+\end{equation}
 aplicandolo a la formula ?? tenemos que
-\todo[inline]{formula ;v}
-como los ejes ahora se mueven con el objecto la matriz de inercia se mantiene constante, y por tanto sus derivada son cero, si consideramos que la velocidad angular del cuerpo y la velocidad angular del marco mobil $\Omega$ es la misma entonces podemos expandir la ecuacion ?? en la forma
-
-las ecuaciones ?? se conocen como las ecuaciones de euler, y nos proveen de un medio para calcular el movimiento de un cuerpo rigido en tres dimensions, sin embargo estas ecuciones presentan problemas para encotrar sus soluciones ya que estas poseen productos de $\omega$ y esto representa no linealidades. El otro problema consiste en definir la forma en la que se represetaran la rotacion del marco mobil.
-
-\todo[inline]{formula :v}
 \begin{equation}
-	M_x = \dot{H_x} - H_y\omega_z + H_z\omega_y
+	\sum_i{M_i} = [I] \dot{\omega} + \Omega \times H
 \end{equation}
-\begin{equation}
-	M_y = \dot{H_y} - H_z\omega_x + H_x\omega_z
-\end{equation}
-\begin{equation}
-	M_z = \dot{H_z} - H_x\omega_y + H_y\omega_x
-\end{equation}
+como los ejes ahora se mueven con el objecto la matriz de inercia se mantiene constante, y por tanto sus derivada son cero, si consideramos que la velocidad angular del cuerpo $\omega$ y la velocidad angular del marco movil $\Omega$ es la misma entonces podemos expandir la ecuacion ?? en la forma
  
-\begin{equation}
+\begin{equation} \label{eq:fisica:eq_euler_1}
 	M_x = I_{xx}\dot{\omega}_x - (I_{yy} - I_{zz}) \omega_y\omega_z
 \end{equation} 
-\begin{equation}
+\begin{equation} \label{eq:fisica:eq_euler_2}
 	M_y = I_{yy}\dot{\omega}_y - (I_{zz} - I_{xx}) \omega_z\omega_x
 \end{equation} 
-\begin{equation}
+\begin{equation} \label{eq:fisica:eq_euler_3}
 	M_z = I_{zz}\dot{\omega}_z - (I_{xx} - I_{yy}) \omega_x\omega_y
 \end{equation} 
+
+las ecuaciones \ref{eq:fisica:eq_euler_1}, \ref{eq:fisica:eq_euler_2} y \ref{eq:fisica:eq_euler_3} se conocen como las ecuaciones de euler, y nos proveen de un medio para calcular el movimiento de un cuerpo rigido en tres dimensions, sin embargo estas ecuciones presentan problemas para encotrar sus soluciones ya que estas poseen productos de $\omega$ y esto representa no linealidades. El otro problema consiste en definir la forma en la que se represetaran la rotacion del marco movil.
 \subsubsection{Angulos de Euler}
 \todo[inline]{Se introducen los angulos de euler, y porque estos solucion el problema de calcular el momento angular}
 % primera parte
