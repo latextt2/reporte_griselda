@@ -659,6 +659,15 @@ La ecuacion que a menos que la velocidad anguar $\omega$ sea un un eigen vector 
 El momento angular de un sistema de particulas se conseva si ningun torque externo es aplicado, o dicho de otra forma la razon de cambio del momento angular de un cuerpo es la suma de los momentos de torsion aplicados a este.
 \todo[inline]{formula :v}
 
+Como ya se ha dicho el problema reside en tener que recalcular los momentos de la matriz de inercia, por lo que comunmente se opta por cambiar aun sistema de referencia que se mueva pegado al objeto, ahora podemos calcular la derivada usando el teorema de coreolis
+donde se tiene que
+\todo[inline]{formula ;v}
+aplicandolo a la formula ?? tenemos que
+\todo[inline]{formula ;v}
+como los ejes ahora se mueven con el objecto la matriz de inercia se mantiene constante, y por tanto sus derivada son cero, si consideramos que la velocidad angular del cuerpo y la velocidad angular del marco mobil $\Omega$ es la misma entonces podemos expandir la ecuacion ?? en la forma
+
+las ecuaciones ?? se conocen como las ecuaciones de euler, y nos proveen de un medio para calcular el movimiento de un cuerpo rigido en tres dimensions, sin embargo estas ecuciones presentan problemas para encotrar sus soluciones ya que estas poseen productos de $\omega$ y esto representa no linealidades. El otro problema consiste en definir la forma en la que se represetaran la rotacion del marco mobil.
+
 \subsubsection{Angulos de Euler}
 \todo[inline]{Se introducen los angulos de euler, y porque estos solucion el problema de calcular el momento angular}
 % primera parte
