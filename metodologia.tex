@@ -647,7 +647,36 @@ para un solido rigido tenemos
  H_o = \int{r_o \times vdm} = \int{r_o \times \omega \times r_o dm} 
 \end{equation}
 desarrollando la ecuacion \ref{eq:fisica:momento_angular_integral} para un sistema cartesiano tenemos que:
+\todo[inline]{ecuaciones HG}
+\begin{equation}
+	H_g = (I_{xx}W_x - I_{xy}W_y - I_{xz}W_z)i + (- I_{yx}W_x + I_{yy}W_y - I_{yz}W_z)j + (- I_{zx}W_x + I_{zy}W_y + I_{zz}W_z)k
+\end{equation}
+\begin{equation}
+	I_{xx} = \int_m (y^{'2} + z^{'2})dm, I_{yy} = \int_m (x^{'2} + z^{'2})dm, I_{zz} = \int_m (x^{'2} + y^{'2})dm,  
+\end{equation}
 
+\begin{equation}
+	I_{xy} = I_{yx} = \int_m x^{'}y^{'}dm, I_{xz}=I_{zx}= \int_m x^{'} z^{'} dm, I_{yz}=I_{zy}= \int_m y^{'} z^{'} dm,     
+\end{equation}
+
+\begin{equation}
+	\begin{pmatrix}
+	H_{Gx}\\
+	H_{Gy}\\
+	H_{Gz}
+	\end{pmatrix} = \begin{pmatrix}
+	I_{xx} & -I_{xy} & -I_{xz}\\
+	-I_{yx} & I_{yy} & -I_{yz}\\
+	-I_{zx} & -I_{yx} & I_{zz}
+	\end{pmatrix} \begin{pmatrix}
+	W_x\\
+	W_y\\
+	W_z
+	\end{pmatrix}
+\end{equation}
+\begin{equation}
+	H_G = [I_G]W
+\end{equation}
 La ecuacion del momento angular puede ser expresada de forma matricial como
 \todo[inline]{ecuacion :v}
 o
