@@ -833,15 +833,147 @@ $trasformada inversa [(.)^{-1} \neq (.)^T]$
 \subsubsection{Controlador de estados}
 \todo[inline]{esquema de control retrolimentado}
 \todo[inline]{formulas}
+\todo[inline]{ecuaciones  controlabilidad}
+
+\begin{equation}
+	[B | AB |\cdots| A^{n-1}B]
+\end{equation}
+\begin{equation}
+	[B i| AB |\cdots| A^{n-1}B]
+\end{equation}
+\begin{equation}
+	\dot{x} =  Ax + Bu
+\end{equation}
+\begin{equation}
+	[B | AB |\cdots| A^{n-1}B]
+\end{equation}
+\begin{equation}
+	[B i| AB |\cdots| A^{n-1}B]
+\end{equation}
+
+\todo[inline]{ecuaciones  observalidad}
+
+\begin{equation}
+	\dot{x}=Ax
+\end{equation}
+\begin{equation}
+	y=Cx
+\end{equation}
+\begin{equation}
+	\begin{pmatrix}
+	C\\
+	CA\\
+	\vdots\\
+	CA^{n-1}
+	\end{pmatrix}
+\end{equation}
+\begin{equation}
+	[ C*| A*C*|\cdots|(A*)^{n-1}C*]
+\end{equation}
+\todo[inline]{control retroalimentado}
+
+\begin{equation}
+	\dot{x} = (A- BK)x(t)
+\end{equation}
+
+
 \subsubsection{Observador de estados}
 \todo[inline]{porque es necesario un observador}
 \todo[inline]{esquema del observador}
 \todo[inline]{formulas}
+\begin{equation}
+	\dot{x}=Ax + Bu
+\end{equation}
+\begin{equation}
+	y=Cx
+\end{equation}
+\begin{equation}
+	\dot{\tilde{x}} = A\tilde{x} + Bu + K_e(y - C\tilde{x}) = (A-K_eC)\tilde{x}+Bu+K_ey
+\end{equation}
+\begin{equation}
+	\dot{x} - \dot{\tilde{x}} = Ax - A\tilde{x} - K_e(Cx-C\tilde{x}) = (A - K_eC)(x - \dot{\tilde{x}})
+\end{equation}
+\begin{equation}
+	e = x -\tilde{x}
+\end{equation}
+\begin{equation}
+	\dot{e} = (A - K_eC)e
+\end{equation}
 \subsection{Control integral}
 \todo[inline]{Se explican las limitacion del control retroalimentado}
 \todo[inline]{Se se explica la idea del servocontrol}
 \todo[inline]{esquema}
 \todo[inline]{formulas}
+
+\begin{equation}
+	\dot{x} + Ax + Bu
+\end{equation}
+\begin{equation}
+	y = Cx
+\end{equation}
+\begin{equation}
+	u =  -Kx +k_i\xi
+\end{equation}
+\begin{equation}
+	\dot{\xi} = \gamma - y = \gamma - Cx
+\end{equation}
+\begin{equation}
+	G_p(s) = C(sI-A)^{-1}B
+\end{equation}
+\begin{equation}
+	\begin{pmatrix}
+	\dot{x}(t)\\
+	\dot{\xi(t)}
+	\end{pmatrix} = \begin{pmatrix}
+	A & 0\\
+	-C &0
+	\end{pmatrix} \begin{pmatrix}
+	x(t)\\
+	\xi(t)
+	\end{pmatrix} + \begin{pmatrix}
+	B\\
+	0
+	\end{pmatrix}u(t) + \begin{pmatrix}
+	0\\
+	1
+	\end{pmatrix} \gamma(t)
+\end{equation} 
+\begin{equation}
+	\begin{pmatrix}
+	\dot{x}(t)\\
+	\dot{\xi(t)}
+	\end{pmatrix} = \begin{pmatrix}
+	A & 0\\
+	-C &0
+	\end{pmatrix} \begin{pmatrix}
+	x(t)\\
+	\xi(t)
+	\end{pmatrix} + \begin{pmatrix}
+	B\\
+	0
+	\end{pmatrix}u_e(t)
+\end{equation}
+\begin{equation}
+	u_e(t) = - Kx_e(t) + K_i\xi_e(t)
+\end{equation}
+\begin{equation}
+	e(t) = \begin{pmatrix}
+	x_e(t)\\
+	\xi_e(t)
+	\end{pmatrix} = (n + 1) - vector
+\end{equation}
+\begin{equation}
+	\dot{e} = [K|-K_i]
+\end{equation}
+\begin{equation}
+	\dot{e} = (\hat{A}- \hat{B}\hat{K}e)
+\end{equation}
+\begin{equation}
+	\begin{pmatrix}
+	A & B\\
+	-C & 0
+	\end{pmatrix}
+\end{equation}
 \subsection{Control calendarizado}
 \todo[inline]{se explican las limtaciones del control lineal de un sistema no lineal}
 \todo[inline]{formulas}
