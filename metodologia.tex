@@ -636,7 +636,6 @@ Donde $F$ es el conjunto de fuerzas que actuan sobre la particula, si estas fuer
 \todo[inline]{Se introduce la definicion de torque}
 Cuando se aplica una fuerza en algún punto de un cuerpo rígido, dicho cuerpo tiende a realizar un movimiento de rotación en torno a algún eje,  la propiedad de la fuerza aplicada para hacer girar al cuerpo se mide con una magnitud física que llamamos torque o momento de la fuerza. Por lo que el  torque o momento de una fuerza es la capacidad de dicha fuerza para producir un giro o rotación alrededor de un punto.
 \subsubsection{Momento angular}
-\todo[inline]{Se define el momento angular, la Ley de Newton para cuerpo regido, y los problemas para relizar los calculos}
 El momento angular de un sistema de particulas respecto a un punto $o$ se define como:
 \begin{equation}
 	H_o = \sum_i{ r_i \times L_i}
@@ -698,7 +697,7 @@ aplicandolo a la formula ?? tenemos que
 \begin{equation}
 	\sum_i{M_i} = [I] \dot{\omega} + \Omega \times H
 \end{equation}
-como los ejes ahora se mueven con el objecto la matriz de inercia se mantiene constante, y por tanto sus derivada son cero, si consideramos que la velocidad angular del cuerpo $\omega$ y la velocidad angular del marco movil $\Omega$ es la misma entonces podemos expandir la ecuacion ?? en la forma
+como los ejes ahora se mueven con el objecto la matriz de inercia se mantiene constante, y por tanto sus derivada son cero, si consideramos que la velocidad angular del cuerpo $\omega$ y la velocidad angular del marco movil $\Omega$ es la misma, y si los ejes marco movil coinciden con los ejes principales, entonces podemos expandir la ecuacion ?? en la forma
  
 \begin{equation} \label{eq:fisica:eq_euler_1}
 	M_x = I_{xx}\dot{\omega}_x - (I_{yy} - I_{zz}) \omega_y\omega_z
@@ -712,47 +711,21 @@ como los ejes ahora se mueven con el objecto la matriz de inercia se mantiene co
 
 las ecuaciones \ref{eq:fisica:eq_euler_1}, \ref{eq:fisica:eq_euler_2} y \ref{eq:fisica:eq_euler_3} se conocen como las ecuaciones de euler, y nos proveen de un medio para calcular el movimiento de un cuerpo rigido en tres dimensions, sin embargo estas ecuciones presentan problemas para encotrar sus soluciones ya que estas poseen productos de $\omega$ y esto representa no linealidades. El otro problema consiste en definir la forma en la que se represetaran la rotacion del marco movil.
 \subsubsection{Angulos de Euler}
-\todo[inline]{Se introducen los angulos de euler, y porque estos solucion el problema de calcular el momento angular}
-% primera parte
-\begin{equation}
-	\omega_B = \begin{pmatrix}
-	\omega_x\\
-	\omega_y\\
-	\omega_z
-	\end{pmatrix}_B = \begin{pmatrix}
-	p\\
-	q\\
-	r
-	\end{pmatrix}
-\end{equation}
+Para determinar la posicion del marco movil se utilizan un conjunto de rotaciones consecutivas, al conjunto de angulos que definen estas rotaciones se les conoce como angulos de euler.
 
-\begin{equation}
-	\Theta = \begin{pmatrix}
-	\phi\\
-	\theta\\
-	\psi
-	\end{pmatrix}
-\end{equation}
+Exiten 12 secuencias distintas de rotaciones entre los que mas destacan las rotacion ZXZ conocidos como angulos de euler clasicos, y la rotacion ZXY conocidos como angulos de Tyat-Bryan, estos ultimos son usualmente usados para la navegacion.
 
-\begin{equation}
-	\dot{\Theta} = \begin{pmatrix}
-	\dot{\phi}\\
-	\dot{\theta}\\
-	\dot{\psi}
-	\end{pmatrix} \neq \begin{pmatrix}
-	\omega_x\\
-	\omega_y\\
-	\omega_z
-	\end{pmatrix}
-\end{equation}
-%%segunda parte 
+\begin{figure}[htb]
+\begin{center}
+\centering
+	\includegraphics[width=10cm, height=4cm]{images/Capitulo_1/secuencia_angulos_euler}
+	\caption{\textit{Secuencia de rotaciones ZYX}}
+\end{center}
+\end{figure}
 
+Usando matrices de rotaciones de magnitud $\psi$,$\theta$ y $\phi$  para representar la rotaciones Z,Y,X respectivamente, terminanos con la transformacion $T$.
 \begin{equation}
-	{H^B}_1 (\phi,\theta,\psi)= {H_2}^B (\phi) {H_1}^2 (\theta) {H_l}^1 (\psi) 	
-\end{equation}
-
-\begin{equation}
-	{H^B}_1 (\phi,\theta,\psi)= \begin{pmatrix}
+	T_1^B (\phi,\theta,\psi)= \begin{pmatrix}
 	1 & 0 & 0\\
 	0 & cos(\phi) & sin(\phi)\\
 	0 & -sin(\phi) & cos(\phi)
@@ -766,21 +739,42 @@ las ecuaciones \ref{eq:fisica:eq_euler_1}, \ref{eq:fisica:eq_euler_2} y \ref{eq:
 	0 & 0 & 1
 	\end{pmatrix}			
 \end{equation}
+o en su forma compacta
+\begin{equation}
+	T_1^B (\phi,\theta,\psi)= {T^B_2} (\phi) {T_1}^2 (\theta) {T_l}^1 (\psi) 	
+\end{equation}
+lo que se busca es encontrar una relacion entre la velocidad angular del marco movil
+\begin{equation}
+	\Omega_B = \begin{pmatrix}
+	\Omega_x\\
+	\Omega_y\\
+	\Omega_z
+	\end{pmatrix}_B
+\end{equation}
+y el conjunto de angulos de euler
+\begin{equation}
+	\Theta = \begin{pmatrix}
+	\phi\\
+	\theta\\
+	\psi
+	\end{pmatrix}
+\end{equation}
+Debido a que cada rotacion ocurre sobre su propio eje es necesario representar las velocidades angulares como
 %%tercera parte
 \begin{equation}
 	\begin{pmatrix}
-	p\\
-	q\\
-	r
+	\Omega_x\\
+	\Omega_y\\
+	\Omega_z
 	\end{pmatrix} = I_3 \begin{pmatrix}
 	\dot{\phi}\\
 	0\\
 	0
-	\end{pmatrix} + {H^B}_2 \begin{pmatrix}
+	\end{pmatrix} + {T^B}_2 \begin{pmatrix}
 	0\\
 	\dot{\theta}\\
 	0
-	\end{pmatrix} + {H^B}_2{H^2}_1 \begin{pmatrix}
+	\end{pmatrix} + {T^B}_2{T^2}_1 \begin{pmatrix}
 	0\\
 	0\\
 	\dot{\psi}
@@ -788,9 +782,9 @@ las ecuaciones \ref{eq:fisica:eq_euler_1}, \ref{eq:fisica:eq_euler_2} y \ref{eq:
 \end{equation}
 \begin{equation}
 	\begin{pmatrix}
-	p\\
-	q\\
-	r
+	\Omega_x\\
+	\Omega_y\\
+	\Omega_z
 	\end{pmatrix} = \begin{pmatrix}
 	1 & 0 & -sin(\theta)\\ 
 	0 & cos(\phi) & sin(\phi)cos(\theta)\\
@@ -799,30 +793,25 @@ las ecuaciones \ref{eq:fisica:eq_euler_1}, \ref{eq:fisica:eq_euler_2} y \ref{eq:
 	\dot{\phi}\\
 	\dot{\theta}\\
 	\dot{\psi}
-	\end{pmatrix} = {L^B}_l \Theta
+	\end{pmatrix} = {Q_l^B} \Theta
 \end{equation}
-$trasformada inversa [(.)^{-1} \neq (.)^T]$
+finalmente se calcula la transformada inversa, teganse en cuenta que $[(Q)^{-1} \neq (Q)^T]$
 \begin{equation}
 	\begin{pmatrix}
 	\dot{\phi}\\
-	\dot{theta}\\
-	\dot{psi}
+	\dot{\theta}\\
+	\dot{\psi}
 	\end{pmatrix} = \begin{pmatrix}
-	1 & sin(phi)tan(\theta) & cos(\theta)tan(\theta)\\ 
+	1 & sin(\phi)tan(\theta) & cos(\theta)tan(\theta)\\ 
 	0 & cos(\phi) & -sin(\phi)\\
 	0 & - sin(\phi)sec(\theta) & cos(\phi)sec(\theta)
 	\end{pmatrix} \begin{pmatrix}
-	p\\
-	q\\
-	r
-	\end{pmatrix} = {L^l}_B W_B
+	\Omega_x\\
+	\Omega_y\\
+	\Omega_z
+	\end{pmatrix} = {Q_B^l} \Omega_B
 \end{equation}
-
-
-\subsubsection{Las ecuaciones de Euler}
-\todo[inline]{Se presenta la version a usar de las ecucaciones de Euler}
-\subsubsection{Precesion}
-\todo[inline]{Se explican los efectos de nutacion y precesion como resultado de la ecuaciones de euler}
+Notese que matriz ${Q_B^l}$ se indetermina para valores de $\theta = \pm\pi/2$, para todos los juegos de angulos de euler existen puntos donde la matriz inversa se indetermina, por eso es importante la correcta seleccion del juego de angulos.
 
 \pagebreak
 \section{Control}
