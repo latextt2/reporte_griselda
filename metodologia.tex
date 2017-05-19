@@ -858,17 +858,36 @@ Si se tiene un sistema no lineal de la forma
 	\dot{x} =  f(x,u)
 \end{equation}
 
-Se define un punto de equilibrio como un conjunto de valores $x$, $u$ para los que
+Se define un punto de equilibrio como un conjunto de valores $\bar{x}$, $\bar{u}$ donde se cumple que
 \begin{equation}
-	f(x,u) = 0_n
+	f(\bar{x},\bar{u}) = 0_n
 \end{equation}
 
+se definen las variables de desviacion
+\begin{equation}
+\begin{aligned}
+	\delta_x(t) := x(t) - \bar{x}\\
+	\delta_u(t) := u(t) - \bar{u}
+\end{aligned}
+\end{equation}
+
+aproximando usando los dos priemeros terminos de la serie de taylor
+
+\begin{equation}
+	\dot{\delta_x} = A \delta_x  + B \delta_u
+\end{equation}
+
+donde
+
+\begin{equation}
+	A := \frac{\partial f}{\partial x}\biggr\rvert_{\substack{x =\bar{x} \\ u = \bar{u}}}\ \ \ \ \ \ \ \ B := \frac{\partial f}{\partial u}\biggr\rvert_{\substack{x =\bar{x} \\ u = \bar{u}}}
+\end{equation}
 
 \subsection{Controlabilidad y Observabilidad}
 \todo[inline]{ecuaciones  controlabilidad}
 Para un sistema de la forma
 \begin{equation}
-	\dot{x} =  Ax + Bu
+	\dot{x(t)} =  Ax(t) + Bu(t)
 \end{equation}
 se define la matriz de controlabilidad
 \begin{equation}
