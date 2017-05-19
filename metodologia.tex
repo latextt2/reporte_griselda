@@ -851,28 +851,29 @@ Notese que matriz ${Q_B^l}$ se indetermina para valores de $\theta = \pm\pi/2$, 
 \todo[inline]{Se explica el objectivo del contro}
 \subsection{Linearizacion}
 \todo[inline]{Se presentan las formulas y el proceso para linearizar un sistema no lineal, en variables de estado}
-\subsection{Control retroalimentado} 
-\subsubsection{Controlador de estados}
-\todo[inline]{esquema de control retrolimentado}
-\todo[inline]{formulas}
-\todo[inline]{ecuaciones  controlabilidad}
+Debido a que todas todos los metodos presentados a continuacion operan sobre sistemas lineales es necesario presentar un metodo para linealizar un sistema no lineal.
 
+Si se tiene un sistema no lineal de la forma
 \begin{equation}
-	[B | AB |\cdots| A^{n-1}B]
+	\dot{x} =  f(x,u)
 \end{equation}
+
+Se define un punto de equilibrio como un conjunto de valores $x$, $u$ para los que
 \begin{equation}
-	[B i| AB |\cdots| A^{n-1}B]
+	f(x,u) = 0_n
 \end{equation}
+
+
+\subsection{Controlabilidad y Observabilidad}
+\todo[inline]{ecuaciones  controlabilidad}
+Para un sistema de la forma
 \begin{equation}
 	\dot{x} =  Ax + Bu
 \end{equation}
+se define la matriz de controlabilidad
 \begin{equation}
-	[B | AB |\cdots| A^{n-1}B]
+	M_c[\ B\  AB\ \cdots\  A^{n-1}B\ ]
 \end{equation}
-\begin{equation}
-	[B i| AB |\cdots| A^{n-1}B]
-\end{equation}
-
 \todo[inline]{ecuaciones  observalidad}
 
 \begin{equation}
@@ -892,6 +893,11 @@ Notese que matriz ${Q_B^l}$ se indetermina para valores de $\theta = \pm\pi/2$, 
 \begin{equation}
 	[ C*| A*C*|\cdots|(A*)^{n-1}C*]
 \end{equation}
+\subsection{Control retroalimentado} 
+\subsubsection{Controlador de estados}
+\todo[inline]{esquema de control retrolimentado}
+\todo[inline]{formulas}
+
 \todo[inline]{control retroalimentado}
 
 \begin{equation}
