@@ -851,18 +851,25 @@ Notese que matriz ${Q_B^l}$ se indetermina para valores de $\theta = \pm\pi/2$, 
 \todo[inline]{Se explica el objectivo del contro}
 \subsection{Linearizacion}
 \todo[inline]{Se presentan las formulas y el proceso para linearizar un sistema no lineal, en variables de estado}
-Debido a que todas todos los metodos presentados a continuacion operan sobre sistemas lineales es necesario presentar un metodo para linealizar un sistema no lineal.
+Cuando modelelamos sistemas es comun la aparicion de sistemas no lineales, y encotramos el problema de que toda la teoria presentada sobre control esta centrada en sistemas lineales, en lugar de desarrollar una teoria separada para su manejo, se presenta un metodo para aproximar un sistema no lineal en uno lineal.
 
-Si se tiene un sistema no lineal de la forma
+Consideremos la expansion en series de taylor \ref{eq:control:seriesdetaylor}, entre mas terminos usemos en la expansion mas se aproximara a la funcion original, sin embargo, los primeros dos terminos son suficientes con la condicion de que no nos alejemos demasiado del punto $x_0$, tambien tiene que tenerse en cuenta que el termino $f(x_0)$ rompe con el principio de homogeneidad por que a \ref{eq:control:seriesdetaylor-approx} tampoco se le puede considerar un funcion lineal.
 \begin{equation}
+	\label{eq:control:seriesdetaylor}
+	f(x) = f(x_0) + f'(x_0)x +\frac{ f''(x_0)}{2!}x^2 ... 
+\end{equation}
+\begin{equation}
+	\label{eq:control:seriesdetaylor-approx}
+	f(x) \approx f(x_0) + f'(x_0)x 
+\end{equation}
+\begin{equation}
+	\label{eq:control:nolineal}
 	\dot{x} =  f(x,u)
 \end{equation}
-
-Se define un punto de equilibrio como un conjunto de valores $\bar{x}$, $\bar{u}$ donde se cumple que
+Consideremos el sistema no lineal \ref{eq:control:nolineal} donde $f$ es un mapeo de $R^{n} \times R^{m} \to R^{n}$. En caso que la funcion $f$ evaluara cero el sistema  permaneceria constante o en equilibro. Se define un punto de equilibrio como un conjunto de valores $\bar{x}$, $\bar{u}$ donde se cumple que
 \begin{equation}
 	f(\bar{x},\bar{u}) = 0_n
 \end{equation}
-
 se definen las variables de desviacion
 \begin{equation}
 \begin{aligned}
