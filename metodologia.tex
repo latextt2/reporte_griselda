@@ -918,7 +918,12 @@ Se define la matriz de observabilidad $M_o$ como
 \end{equation}
 El sistema descrito por las ecuaiones es completamente obsevable si y solo si la matriz ${M_o}^T$ es de rango n o $M_o$ tiene n vectores fila linealmente independientes.
 
-\subsection{Control retroalimentado} 
+\subsection{Control retroalimentado}
+En esta seccion se presenta un metodo de diseño conocido comunmente como tecnicas de ubicacion o de asignacion de polos. Se supondra que todas las variables de estado son medibles y que estan disponibles para su realimentacion. Se demostara que, si el sistema considerado es de estado completamente controlabe, los polos del sistema en lazo cerrado se pueden colocar en cualquier posicion deseada mediante una realimentacion del estado a traves de una matriz de ganancia adecuada.
+
+La tecnica de diseño empieza con la determinacion de los polos en lazo cerrado deseados a partir de las respuesta transistoria y/o las especificaionnes de la repuesta en frecuencia, tales como velocidad, razon de amotiguamiento, o ancho de banda, al igual que los requisitos en estado estacionario.
+
+En lugar deespecificar solo los polos domonantes en lazo cerrado (enfoque del diseño convencion), el enfoque actual de aisgnacion de poslos especificia toos los polos en lazo cerrado. (sin embargo, ahy un costo asocial con color todolos los en lazo cerrado porque hacerlo requiere tener buenas medidas de todas las variables de esto, o bien incluir un obsevador de estado en el sistema.) Tambien existe un requisito por parte del sistema para que los polos en lazo cerrado se pueda situar en posiciones elegidas de forma arbitraria. La exigencia es que el sistema sea de estado completamente controlable.
 \subsubsection{Controlador de estados}
 \todo[inline]{esquema de control retrolimentado}
 \todo[inline]{formulas}
@@ -926,7 +931,7 @@ El sistema descrito por las ecuaiones es completamente obsevable si y solo si la
 \todo[inline]{control retroalimentado}
 
 \begin{equation}
-	\dot{x} = (A- BK)x(t)
+	\dot{x} = (A- BK)x
 \end{equation}
 
 
