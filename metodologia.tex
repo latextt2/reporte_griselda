@@ -890,24 +890,25 @@ Se dice que un sistema es controlabe, si se puede trasferir desde cualquier esta
 Para un sistema de la forma
 \begin{equation}
 	\label{eq:control:sistema-lti}
-	\dot{x} = Ax + bu
+	\dot{x} = Ax + Bu
+\end{equation}
+\begin{equation}
+	\label{eq:control:salida}
+	y=Cx + Du
 \end{equation}
 Se define la matriz de controlabilidad asociada $M_c$
 \begin{equation}
 	\label{eq:control:matriz-de-controlabilidad}
 	 M_c= [\ B\  AB\ \cdots\  A^{n-1}B\ ]
 \end{equation}
-El sistema es de estado completamente controlable si y solo si la matriz $M_c$ de $n \times nr$ tiene rango $n$, o sea que contenga n vecorres columna linealmente independientes.
+El sistema es de estado completamente controlable si y solo si la matriz $M_c$ de $n \times nr$ tiene rango $n$, o sea que contenga n vectores columna linealmente independientes.
 
-\subsection{Controlabilidad}
-
+\subsection{Observabilidad}
+Para un sistema descrito  por las ecuaciones \ref{eq:control:sistema-lti} y  \ref{eq:control:salida}, se dice que es completamente observable si el estado $x(t_0)$ se puede determinar a partir de las observaciones de $y(t)$ durante un intervalo de tiempo finito $t_0 < t < t_1$ por tanto, el sitema es completamente obsevable si todas la transiciones del estado afectan eventualmente a todos los elementos del vector de salida. El concepto de observabilidad es util al resolver el problema de reconstruir variables de estado no medibles a partir de variables que si lo son en el tiempo minimo posible.\\
+Se define la matriz de observabilidad $M_o$ como
 \begin{equation}
-	\dot{x}=Ax
-\end{equation}
-\begin{equation}
-	y=Cx
-\end{equation}
-\begin{equation}
+	\label{eq:control:observabilidad}
+	M_o = 
 	\begin{pmatrix}
 	C\\
 	CA\\
@@ -915,9 +916,8 @@ El sistema es de estado completamente controlable si y solo si la matriz $M_c$ d
 	CA^{n-1}
 	\end{pmatrix}
 \end{equation}
-\begin{equation}
-	[ C*| A*C*|\cdots|(A*)^{n-1}C*]
-\end{equation}
+El sistema descrito por las ecuaiones es completamente obsevable si y solo si la matriz ${M_o}^T$ es de rango n o $M_o$ tiene n vectores fila linealmente independientes.
+
 \subsection{Control retroalimentado} 
 \subsubsection{Controlador de estados}
 \todo[inline]{esquema de control retrolimentado}
