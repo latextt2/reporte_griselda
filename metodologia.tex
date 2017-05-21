@@ -479,19 +479,15 @@ Y por consiguiente la fuerza aplicada por el imán permanente debido a una variac
 \begin{equation}
 	F_g(g) = \frac{B_r^2}{2 \mu_0 (1 + (\frac{\mu_m}{\mu_0})(\frac{A_m}{A_g})(\frac{g}{l_m}))^2}[\frac{A_m + 2A_g}{2Ag}] \hat{n}
 \end{equation}
+Donde:\\
+	 $A_m$: Es la sección transversal del imán permanente\\
+	$A_g$: La sección transversal del entrehierro\\
+	$l_m$: La longitud media del imán permanente\\
+	$B_r$: La inducción remanente\\
+	$H_c$: La coercitividad\\
+	$\mu_m$: La permeabilidad magnética del imán permanente definida como  $\frac{B_r}{H_c}$\\
+	$g$: La distancia de entrehierro\\
 
-Donde: 
-
-\begin{enumerate}
-	\item $A_m$: Es la sección transversal del imán permanente
-	\item $A_g$: La sección transversal del entrehierro
-	\item $l_m$: La longitud media del imán permanente
-	\item $B_r$: La inducción remanente
-	\item $H_c$: La coercitividad
-	\item $\mu_m$: La permeabilidad magnética del imán permanente definida como  $\frac{B_r}{H_c}$
-	\item:$g$ La distancia de entrehierro
-
-\end{enumerate}
 
 \section{Sensores de Desplazamiento}
 \subsection{Requerimientos del Sensor}
@@ -925,8 +921,16 @@ La tecnica de diseño empieza con la determinacion de los polos en lazo cerrado d
 
 En lugar deespecificar solo los polos domonantes en lazo cerrado (enfoque del diseño convencion), el enfoque actual de aisgnacion de poslos especificia toos los polos en lazo cerrado. (sin embargo, ahy un costo asocial con color todolos los en lazo cerrado porque hacerlo requiere tener buenas medidas de todas las variables de esto, o bien incluir un obsevador de estado en el sistema.) Tambien existe un requisito por parte del sistema para que los polos en lazo cerrado se pueda situar en posiciones elegidas de forma arbitraria. La exigencia es que el sistema sea de estado completamente controlable.
 \subsubsection{Controlador de estados}
-\todo[inline]{esquema de control retrolimentado}
-\todo[inline]{formulas}
+
+\begin{figure}[htb]
+\begin{center}
+\centering
+	\includegraphics[height=4cm]{images/Capitulo_1/control_retroalimentado}
+	\caption{\textit{Esquema de control retroalimentado}}
+\end{center}
+\end{figure}
+
+todo[inline]{formulas}
 
 \todo[inline]{control retroalimentado}
 
@@ -936,70 +940,85 @@ En lugar deespecificar solo los polos domonantes en lazo cerrado (enfoque del di
 
 
 \subsubsection{Observador de estados}
-\todo[inline]{porque es necesario un observador}
-\todo[inline]{esquema del observador}
-\todo[inline]{formulas}
-\begin{equation}
-	\dot{x}=Ax + Bu
-\end{equation}
-\begin{equation}
-	y=Cx
-\end{equation}
+Un observador de estado estima las variables de estado basandose en las mediciones de las variables de salida y de control. El concepto de obsevabilidad juega un papel importante.
+
+\begin{figure}[htb]
+\begin{center}
+\centering
+	\includegraphics[height=4cm]{images/Capitulo_1/observador_estados}
+	\caption{\textit{Observador de estados}}
+\end{center}
+\end{figure}
+
+
+En el analsis que sisgue de los observadores de estado, se ultizara la notacion $\tilde{x}$ para desigar el vector de estado observado. En muchos casos practicos, el vector de estado obsevado $\tilde{x}$ se usa en la realimentacion del estado para generar el vector de control deseado.
+
+servador de estado. Un observador de estado estima las varables de estado basandose en las mediciones de las variables de salida y de controll Por lo tando, el concepto de obvabilidad analiza en ref?? juega un papel importante. como se veras mas adelas obesvadores de estado diseñarse si solo si se satisface la condicion de observabilidad.
+
+En el analsis que sisgue de los observadores de estado, se tulizara la notacion $\tilde{x}$ para desigar el vector de estado obseravdo. En muchos casos practicos, el vector de estado obsevado $\tilde{x}$ se usa en la realimentacion del estado para generar el vector de control desseado.
+El observadoro es un subsistema para reconstruir el vector de estado de la planada. El modelo matematico del observador es basicamente el mismo que el de la planta, salvo que se inluye un termino adicional que contiene el error de estimacion para compsensar las imprecisiones en las matrices Ay B y la falta del erroe icinial. El error de estimacion o erroe deobsevacion la diferencia en tres la salida mediad y la salida estimada el error inicial es la diferencial entre el estado inicial y el estado esmitado iniial. De esta forma, se define el modelo matmatico el observador como
+
 \begin{equation}
 	\dot{\tilde{x}} = A\tilde{x} + Bu + K_e(y - C\tilde{x}) = (A-K_eC)\tilde{x}+Bu+K_ey
 \end{equation}
+
+donde $\tilde{x}$ es el estado estimado , $C \tilde{x}$ es la salida estimada. Las entradas al bosevador son la salida y y la entrada de control  u. La amtriz Ko, que se llama matriz de gananacia del observador, es una matriz de ponderacion al termino de correcion que involucra la diferencia tnre la salida mediada y yla salida estimada  $C \tilde{x}$. Este termino correige de forma continua la salida del modello y mejora el omportamiento del observador. La figuar muetra el diagrama de bloques del observador de estaod de orden completo del sistema.
+
+Para obetener la ecuacion de error del observador, resta la ecuacion ?? de la ecuacion y se obtiene,
+
 \begin{equation}
 	\dot{x} - \dot{\tilde{x}} = Ax - A\tilde{x} - K_e(Cx-C\tilde{x}) = (A - K_eC)(x - \dot{\tilde{x}})
 \end{equation}
+se define la diferencia entre $x$ y $\tilde{x}$ como el vector de error $e$, o bien
 \begin{equation}
 	e = x -\tilde{x}
 \end{equation}
+haciendo el cambio e variable la ecuacion se convierte en 
 \begin{equation}
 	\dot{e} = (A - K_eC)e
 \end{equation}
+
 \subsection{Control integral}
 \todo[inline]{Se explican las limitacion del control retroalimentado}
 \todo[inline]{Se se explica la idea del servocontrol}
-\todo[inline]{esquema}
 \todo[inline]{formulas}
 
+\begin{figure}[htb]
+\begin{center}
+\centering
+	\includegraphics[height=4cm]{images/Capitulo_1/control_integral}
+	\caption{\textit{Esquema de control integral}}
+	\label{fig:control:esquema-de-control-integral}
+\end{center}
+\end{figure}
+
+El principio basico de un servosistema es insertar un integrador en el camino directo entre el comparador de error y la planta tal y como se muestra en la figura \ref{fig:control:esquema-de-control-integral}. A paritr del diagrama se obtiene
+
 \begin{equation}
-	\dot{x} + Ax + Bu
+	\dot{x} = Ax + Bu
 \end{equation}
 \begin{equation}
 	y = Cx
 \end{equation}
 \begin{equation}
-	u =  -Kx +k_i\xi
+	u =  -Kx +K_i\xi
 \end{equation}
 \begin{equation}
-	\dot{\xi} = \gamma - y = \gamma - Cx
+	\dot{\xi} =  r - y = r - Cx
 \end{equation}
-\begin{equation}
-	G_p(s) = C(sI-A)^{-1}B
-\end{equation}
+
+se suponde que la planta obtenida es de estado completamente controlabe. La funcion de transferencia se obtiene mediante
+
+
+se diseñara un sistemas asintoticamente estables tal que tiendan respectivamente a valores contantes. Asi en estado estacionaro $\xi (t) = 0$  se obtiene $y( \infty )  = r$
+
+Su kis vakries oriouies deseadis d eka natruz $A-BK$ es decir os poslos en lazo cerrado deseados sepe eficican $\mu$  ... entonces la matriz de ganancias de realimentacion del estado $K$ y la constante de ganancia integra1 puede determinase mediantes el metodo de asigancion de polos, a condicion de que el sistema definido por la ecuacion sea completamente controlable
+
+
 \begin{equation}
 	\begin{pmatrix}
-	\dot{x}(t)\\
-	\dot{\xi(t)}
-	\end{pmatrix} = \begin{pmatrix}
-	A & 0\\
-	-C &0
-	\end{pmatrix} \begin{pmatrix}
-	x(t)\\
-	\xi(t)
-	\end{pmatrix} + \begin{pmatrix}
-	B\\
-	0
-	\end{pmatrix}u(t) + \begin{pmatrix}
-	0\\
-	1
-	\end{pmatrix} \gamma(t)
-\end{equation} 
-\begin{equation}
-	\begin{pmatrix}
-	\dot{x}(t)\\
-	\dot{\xi(t)}
+	\dot{x}\\
+	\dot{\xi}
 	\end{pmatrix} = \begin{pmatrix}
 	A & 0\\
 	-C &0
@@ -1024,9 +1043,10 @@ En lugar deespecificar solo los polos domonantes en lazo cerrado (enfoque del di
 	\dot{e} = [K|-K_i]
 \end{equation}
 \begin{equation}
-	\dot{e} = (\hat{A}- \hat{B}\hat{K}e)
+	\dot{e} = (\hat{A}- \hat{B}\hat{K})e
 \end{equation}
 \begin{equation}
+	\hat{A} = 
 	\begin{pmatrix}
 	A & B\\
 	-C & 0
