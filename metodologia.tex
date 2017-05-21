@@ -885,17 +885,21 @@ Notece que debido al orden multivariable del sistema, lo que en la ecuacion \ref
 	A := \frac{\partial f}{\partial x}\biggr\rvert_{\substack{x =\bar{x} \\ u = \bar{u}}}\ \ \ \ \ \ \ \ B := \frac{\partial f}{\partial u}\biggr\rvert_{\substack{x =\bar{x} \\ u = \bar{u}}}
 \end{equation}
 
-\subsection{Controlabilidad y Observabilidad}
-\todo[inline]{ecuaciones  controlabilidad}
+\subsection{Controlabilidad}
+Se dice que un sistema es controlabe, si se puede trasferir desde cualquier estado inicial $x(t_0)$ cualquier otro estado mediante un vector de control sin restricciones, en un intevalo de tiempo finito.\\
 Para un sistema de la forma
 \begin{equation}
-	\dot{x(t)} =  Ax(t) + Bu(t)
+	\label{eq:control:sistema-lti}
+	\dot{x} = Ax + bu
 \end{equation}
-se define la matriz de controlabilidad
+Se define la matriz de controlabilidad asociada $M_c$
 \begin{equation}
-	M_c[\ B\  AB\ \cdots\  A^{n-1}B\ ]
+	\label{eq:control:matriz-de-controlabilidad}
+	 M_c= [\ B\  AB\ \cdots\  A^{n-1}B\ ]
 \end{equation}
-\todo[inline]{ecuaciones  observalidad}
+El sistema es de estado completamente controlable si y solo si la matriz $M_c$ de $n \times nr$ tiene rango $n$, o sea que contenga n vecorres columna linealmente independientes.
+
+\subsection{Controlabilidad}
 
 \begin{equation}
 	\dot{x}=Ax
