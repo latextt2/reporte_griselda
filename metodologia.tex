@@ -1053,8 +1053,12 @@ Su kis vakries oriouies deseadis d eka natruz $A-BK$ es decir os poslos en lazo 
 	\end{pmatrix}
 \end{equation}
 \subsection{Control calendarizado}
-\todo[inline]{se explican las limtaciones del control lineal de un sistema no lineal}
-\todo[inline]{formulas}
+Uno de los problemas que surgen a partir de tratar de controlar un sistema no lineal a partir de una aproximacion linearizada, es que cuando nos alejamos del punto de equilibro la diferencia entre el sistema no lineal y el linearizado puede volverse significativa, hasta el punto de que el sistema de control/observador se vuelva inefectivo.
+
+Para resolver este problema existen diferentes soluciones, entre las que encotramos el  control calendarizado interpolante, este esquema consiste linearizar en diferentes puntos de equilibro dentro del espacio de operacion del sistema, esto incluye el calculo de las matrices $A,B,C$ y las matrices de ganancia de controlador y observador $K,Ki,Ko$. Ahora dependiendo del estado del sistema(punto de operacion), recalculamos para ese punto.
+
+En lugar de cambiar el conjunto de matrices mas cercano se interpola para tener una transicion mas cercano.
+Para asegurar la estabildad del sistema, este debe de ser controlable y observable en toda la region de operacion.
 \subsection{Discretizacion de controladores}
 \todo[inline]{Se explican la necesidad de discretizar un controlador}
 \todo[inline]{diagrama}
