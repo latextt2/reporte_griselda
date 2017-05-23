@@ -1064,12 +1064,36 @@ Para asegurar la estabildad del sistema, este debe de ser controlable y observab
 \todo[inline]{diagrama}
 \todo[inline]{formulas}
 \subsection{El observador de Kalman}
-\subsubsection{Distribuciones probabilisticas}
-\todo[inline]{Se define funcion probabilistica y sis propiedades}
+\subsubsection{Variables aleatorias}
+Una variable aleatoria es una funcion que  asigna eventos posibles, cuyos valores se miden como resultado de un eperimento aleatorio. Los experimentos aleatorios son aquellos que, desarrollados bajo las mismas condiciones, puden ofrecer resultados diferentes, por ejemplo arrojar un moneda al aire o medir una temperatura. No se sabe que valor adoptara la variable hasta que sea determinada o medida, pero si se puede conocer como se distribuyen las probabilidad vinculadas a los valores posibles. Si la variable pude tomar cualquier valor en el intervalo de observacion se dice que la misma es una variable aleatoria continua, de lo contrario, si posee un conjunto numerable de valores se considera discreta.
+\subsubsection{Distribuciones de probabildad}
+Comenzamos discutiendo el caso discreto por ser al que estamos mas acostumbrados, despues extenderemos la nocion a el caso continuo que sera el que usaremos. 
+Se conoce como distribucion de probabilidad a una funcion $f(x)$ que asigna una probabilidad a cada valor/evento $X$ perteneciente a la variable aleatoria $x$. Una distribucion de probabildad debe cumplir que:\\
+
+Ejemplo: lanzar una dado
+$$
+	f(x) =\{ 1/6,\ x = 1,2,3,4,5,6 \}
+$$
+
+Para el caso continuo, debido a la infinidad de valores que puede tomar la variable aleatoria, se usa el concepto de densidad de probabilidad. La funcion f(x) es una funcion de densidad de probabildad para la variable aleatoria comtinua X, si y solo si
+\begin{enumerate}
+\item $f(x) \geq 0 \ \forall\ x \epsilon R$
+\item $\int_{-\infty}^{\infty} f(x)dx  = 1$
+\item $P(a \leq x \leq b) = \int_{a}^{b} f(x)dx$ 
+\end{enumerate}
+
 \subsubsection{Procesos estocasticos}
-\todo[inline]{Se define proceso estocatico y sus propiedades}
-\subsubsection{La medicion como un proceso estocastico}
-\todo[inline]{se explica porque medir y predecir un sistema puede ser modelado como un proceso estocastico}
+Un modelo es estocastico cuando contiene al menos una variable aleatorea. En un proceso estocastico no se puede saber con certeza el estado pasado pasado o futuro  del sistema, sin embargo podemos cuantificar la incertidumbre mediante variables aleatoreas y distribuciones de probabilidad, el modelo de un sistema estocastico nos permite calcular la probabildad de cierta salida del sistema pero no valores en concreto.
+
+En el caso del filtro de kalman nos interesan los sistemas lineales discretos, que podrian verse como la version estocastica del sistema LTI discreto, estos sistemas son de la forma
+
+Donde w es la variable estocastica que modela ruido del proceso, y v es la variable aleatoria que modela el ruido en la medicion.
+
+Para aclarar concepto podemos usar como ejemplo un robot que trata de determinar su posicion representada mediantes la variable x
+
+para sabemos con cierta certeza que estamos en una posicion representado mediante la distribucion x(t) y sabemos que las llantas giran a un velocidad u entonces podemos predecir que ahora estamos otra posicion x_k+1. sin embargo debido a que imperfecciones en el camino, las llantas, del robot, arrastre del aire,  y demas es posible que no tengas un movimiento exacto de tu, esta incertidumbre queda cuantificada en el ruido de proceso w. si suponemos que ambas distribucion son gausianas entonces tenemos que la nueva distrubion x_t tiene la forma fig??, como se puede ver esta distribucion tiene una mayor varianza, o sea tenemos menos certeza sobre los posicion del robot antes de realizar el movimiento.
+
+x = x * tu + w
 \subsubsection{El filtro de Kalman}
 \todo[inline]{Se muestran las formulas del filtro de kalman}
 
