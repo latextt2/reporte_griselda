@@ -950,24 +950,28 @@ La tecnica de diseño empieza con la determinacion de los polos en lazo cerrado d
 
 En lugar deespecificar solo los polos domonantes en lazo cerrado (enfoque del diseño convencion), el enfoque actual de aisgnacion de poslos especificia toos los polos en lazo cerrado. (sin embargo, ahy un costo asocial con color todolos los en lazo cerrado porque hacerlo requiere tener buenas medidas de todas las variables de esto, o bien incluir un obsevador de estado en el sistema.) Tambien existe un requisito por parte del sistema para que los polos en lazo cerrado se pueda situar en posiciones elegidas de forma arbitraria. La exigencia es que el sistema sea de estado completamente controlable.
 \subsubsection{Controlador de estados}
-
+Consideremos el esquema de control de la figura \ref{fig:control:control-retroalimentado}, en este esque de control conocida como retrolimentacion de estado completo se usa como entrada el producto de vector de estados $x$ y la matriz de ganancias $K$ de manera que
 \begin{figure}[htb]
 \begin{center}
 \centering
 	\includegraphics[height=4cm]{images/Capitulo_1/control_retroalimentado}
 	\caption{\textit{Esquema de control retroalimentado}}
+	\label{fig:control:control-retroalimentado}
 \end{center}
 \end{figure}
-
-todo[inline]{formulas}
-
-\todo[inline]{control retroalimentado}
-
 \begin{equation}
-	\dot{x} = (A- BK)x
+	u = -Kx
 \end{equation}
+sustiyendo esta nueva entrada en la ecuacion ?? obtenemos la ecuacion
+\begin{equation}
+	\dot{x} = (A- BK)x = \tilde{A}x
+\end{equation}
+Esta nueva ecuacion tiene una dinamica establecida por los polos de la matriz $\tilde{A}$, entonces con la correcta seleccion de la matriz $K$ podemos cambiar de manera arbitraria la dinamica del sistema, simpre y cuando el sistema sea copletamente controlable.
 
+Exiten varios metodos para calcular la matriz $K$ entre los que destacan el metodo de kalman, el metodo de ackerman. en al caso de sistema con una sola entrada esta matriz existen soluciones unicas, para sistemas con multriple entradas existen infinitas solciones, en estos ultimos el metodo de kalman y ackerman no funcionan.
 
+Debido a las infinitas soluciones se necesitan restricciones adicionales para obtener soluciones concretas, un metodo que reslta robusto es de [] en donde se mimiminza la sensitivdad del sistema a las perturbaciones.
+Este metodo es el que implemeta el comand 'place' de matlab
 \subsubsection{Observador de estados}
 Un observador de estado estima las variables de estado basandose en las mediciones de las variables de salida y de control. El concepto de obsevabilidad juega un papel importante.
 
