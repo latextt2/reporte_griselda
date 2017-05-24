@@ -651,42 +651,68 @@ variables de estado), de forma que el conocimiento de estas variables en $t = t_
 
 
 \section{Dinamica}
-\subsection{Ley de Newton}
-\todo[inline]{Se describle la ley de newton y el tipo de ecuaciones diferenciales que resultan de esta}
-La ley de newton establece que 
-$$ \sum{\vec{F}} = \frac{d\vec{P}}{dt} = m\vec{a} $$
-para una masa puntual con grado de libertad esta ecuacion puede escribirse como
-$$ \frac{d^2x}{dt^2}=\frac{F(t,x)}{m}$$
-la cual es una ecuacion diferencial de segundo grado donde la fuerza puede ser una
-funcion dependiente de la posicion $x$ y del tiempo $t$.
-Donde $F$ es el conjunto de fuerzas que actuan sobre la particula, si estas fuerzas pueden ser representadas como una combinacion lineal de derivadas de la posicion $x$ de la forma.
+Para modelar el comportamiento de los cuerpos en movimientos es decesario aplicar las ecuaciones de la mecanica clasica.
+Un cuerpo rigido ubicado en el espacio posee 6 grados de libertad (parametros necesarios para describir su configuracion), la posicion espacial de su centro de masa, y su orientacion. La segunda ley de newton nos permite calcular la traslacion del objeto, mientras que las ecuaciones de euler nos permiten calcular su orientacion.
+
+En el sistema coordenado cartesiano se define el vector de posicion r como
+
+\begin{equation}
+\vec{r }= [r_x,r_y,r_z]
+\end{equation}
+el vector de velocidad como
+\begin{equation}
+\vec{v} = \frac{d}{dt}\vec{r}
+\end{equation}
+y el vector de aceleracion a como 
+\begin{equation}
+\vec{a} = \frac{d}{dt}\vec{v}
+\end{equation}
+En la mecaninca newtoniana se define la cantidad de movimiento como el producto de la masa por la velocidad, \begin{equation}
+\vec{P} = m\vec{v}
+\end{equation}
+el momento lineal obede la ley de consevacion, lo cual significa que el momento lineal de todo sistema cerrado permance constantes en el tiempo.\\
+La segunda ley de newton establece que la razon de cambio del momento lineal de un cuerpo es igual a la suma de las fuerzas  fuerzas aplicadas a este. para un objecto de masa constante esto resulta den la ecuacion
+\begin{equation}
+\sum{\vec{F}} = \frac{d}{dt}\vec{P} = m\vec{a}
+\end{equation}
 \subsection{Dinamica del cuerpo rigido}
-\subsubsection{Torque}
+Describir la orientacion del objecto similar, sin embargo la rotacion del objecto introduce una serie de inconveniencias a la hora de calcular las derivadas.
+Momento lineal - Momento angular
+Fuerza -  Momento de torsion
+masa - Matriz de inercia
+
+
+Describir la orientacion es mas complejo, para eso necesitamos tener el claro los conceptos analogos
+\subsubsection{Momento de torsion}
 \todo[inline]{Se introduce la definicion de torque}
-Cuando se aplica una fuerza en algún punto de un cuerpo rígido, dicho cuerpo tiende a realizar un movimiento de rotación en torno a algún eje,  la propiedad de la fuerza aplicada para hacer girar al cuerpo se mide con una magnitud física que llamamos torque o momento de la fuerza. Por lo que el  torque o momento de una fuerza es la capacidad de dicha fuerza para producir un giro o rotación alrededor de un punto.
+Cuando se aplica una fuerza en algún punto de un cuerpo rígido, dicho cuerpo tiende a realizar un movimiento de rotación en torno a algún eje,  la propiedad de la fuerza aplicada para hacer girar al cuerpo se mide con una magnitud física que llamamos torque o momento de torsion. El momento de torsion es la capacidad de dicha fuerza para producir una rotacion al rededor de un punto.
+
+\begin{equation}
+\vec{M}_o = \vec{r}_o \times \vec{F} 
+\end{equation}
+
 \subsubsection{Momento angular}
 El momento angular de un sistema de particulas respecto a un punto $o$ se define como:
 \begin{equation}
-	H_o = \sum_i{ r_i \times L_i}
+	\vec{H}_o = \sum{ \vec{r}_o \times \vec{P}}
 \end{equation}
 para un solido rigido tenemos
 \begin{equation}
 \label{eq:fisica:momento_angular_integral}
- H_o = \int_m{r_o \times vdm} = \int_m{r_o \times \omega \times r_o dm} 
+ \vec{H_o} = \int_m{\vec{r_o} \times \vec{v}dm} = \int_m{\vec{r_o} \times \vec{\omega} \times \vec{r_o} dm} 
 \end{equation}
 desarrollando la ecuacion \ref{eq:fisica:momento_angular_integral} para un sistema cartesiano tenemos que:
 \begin{equation}
 	H_G = (I_{xx}\omega_x - I_{xy}\omega_y - I_{xz}\omega_z)i + (- I_{yx}\omega_x + I_{yy}\omega_y - I_{yz}\omega_z)j + (- I_{zx}\omega_x + I_{zy}\omega_y + I_{zz}\omega_z)k
 \end{equation}
-donde los terminos $I_xx, I_yy, I_zz$ comunmente conocidos como momentos principipales se definen como: 
+donde los terminos $I_{xx}, I_{yy}, I_{zz}$ comunmente conocidos como momentos principales se definen como: 
 \begin{equation}
 	I_{xx} = \int_m (y^{'2} + z^{'2})dm, I_{yy} = \int_m (x^{'2} + z^{'2})dm, I_{zz} = \int_m (x^{'2} + y^{'2})dm,  
 \end{equation}
-y los terminos $I_xy, I_xz y I_yz$ conocidos como productos de inercia se definen como:
+y los terminos $I_{xy}, I_{xz} y I_{yz}$ conocidos como productos de inercia se definen como:
 \begin{equation}
 	I_{xy} = I_{yx} = \int_m x^{'}y^{'}dm, I_{xz}=I_{zx}= \int_m x^{'} z^{'} dm, I_{yz}=I_{zy}= \int_m y^{'} z^{'} dm,     
 \end{equation}
-
 La ecuacion del momento angular puede ser expresada de forma matricial como
 \begin{equation}
 	\begin{pmatrix}
@@ -698,16 +724,16 @@ La ecuacion del momento angular puede ser expresada de forma matricial como
 	-I_{yx} & I_{yy} & -I_{yz}\\
 	-I_{zx} & -I_{yx} & I_{zz}
 	\end{pmatrix} \begin{pmatrix}
-	W_x\\
-	W_y\\
-	W_z
+	\omega_x\\
+	\omega_y\\
+	\omega_z
 	\end{pmatrix}
 \end{equation}
-o
+o en su forma compacta como
 \begin{equation}
-	H_G = [I_G]\omega
+	\vec{H}_G = [I_G] \vec{\omega}
 \end{equation}
-donde a $I_G$ se le cononce como tensor de inercia, este refleja la distribución de masa de un cuerpo en rotación respecto a un eje de giro y es una medida de su inercia rotacional. El momento de inercia solo depende de la geometría del cuerpo y de la posición del eje de giro.
+donde a $[I_G]$ se le cononce como tensor de inercia, este refleja la distribución de masa de un cuerpo en rotación respecto a un eje de giro y es una medida de su inercia rotacional. El momento de inercia solo depende de la geometría del cuerpo y de la posición del eje de giro.
 
 La ecuacion que a menos que la velocidad anguar $\omega$ sea un un eigen vector de la matriz de inercia, el momento augular y la velocidad angular no estaran en la misma direccion. Ademas debido a que los momentos de inercia dependen de la distribucion de la masa con respecto a los ejes coordenados si el objeto rota.
 
@@ -1089,11 +1115,11 @@ En el caso del filtro de kalman nos interesan los sistemas lineales discretos, q
 
 Donde w es la variable estocastica que modela ruido del proceso, y v es la variable aleatoria que modela el ruido en la medicion.
 
-Para aclarar concepto podemos usar como ejemplo un robot que trata de determinar su posicion representada mediantes la variable x
+Para aclarar concepto podemos usar como ejemplo un robot que trata de determinar su posicion representada mediantes la variable $x$, si sabemos con cierta certeza que estamos en una posicion representado mediante la distribucion $x$ y sabemos que las llantas giran a un velocidad u entonces podemos predecir que ahora estamos otra posicion $x_{k+1}$. sin embargo debido a que imperfecciones en el camino, las llantas, del robot, arrastre del aire,  y demas es posible que no tengas un movimiento exacto de tu, esta incertidumbre queda cuantificada en el ruido de proceso w. si suponemos que ambas distribucion son gausianas entonces tenemos que la nueva distrubion $x_t$ tiene la forma fig??, como se puede ver esta distribucion tiene una mayor varianza, o sea tenemos menos certeza sobre los posicion del robot antes de realizar el movimiento.
 
-para sabemos con cierta certeza que estamos en una posicion representado mediante la distribucion x(t) y sabemos que las llantas giran a un velocidad u entonces podemos predecir que ahora estamos otra posicion x_k+1. sin embargo debido a que imperfecciones en el camino, las llantas, del robot, arrastre del aire,  y demas es posible que no tengas un movimiento exacto de tu, esta incertidumbre queda cuantificada en el ruido de proceso w. si suponemos que ambas distribucion son gausianas entonces tenemos que la nueva distrubion x_t tiene la forma fig??, como se puede ver esta distribucion tiene una mayor varianza, o sea tenemos menos certeza sobre los posicion del robot antes de realizar el movimiento.
-
+\begin{equation}
 x = x * tu + w
+\end{equation}
 \subsubsection{El filtro de Kalman}
 \todo[inline]{Se muestran las formulas del filtro de kalman}
 
