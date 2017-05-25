@@ -943,7 +943,7 @@ haciendo el cambio e variable la ecuacion se convierte en
 	\dot{e} = (A - K_eC)e
 \end{equation}
 
-\subsection{Control integral}
+\subsection{Control integral continuo}
 \todo[inline]{Se explican las limitacion del control retroalimentado}
 \todo[inline]{Se se explica la idea del servocontrol}
 \todo[inline]{formulas}
@@ -1017,6 +1017,12 @@ Su kis vakries oriouies deseadis d eka natruz $A-BK$ es decir os poslos en lazo 
 	-C & 0
 	\end{pmatrix}
 \end{equation}
+
+\subsection{Servocontrol discreto}
+\todo[inline]{se explica la diferencia principal entre el servocontrol discreto y la diferncia y la relacion integrador acumulador}.
+
+\todo[inline]{se derivan las formulas para el servocontrolador discreto}.
+
 \subsection{Control calendarizado}
 Uno de los problemas que surgen a partir de tratar de controlar un sistema no lineal a partir de una aproximacion linearizada, es que cuando nos alejamos del punto de equilibro la diferencia entre el sistema no lineal y el linearizado puede volverse significativa, hasta el punto de que el sistema de control/observador se vuelva inefectivo.
 
@@ -1024,8 +1030,12 @@ Para resolver este problema existen diferentes soluciones, entre las que encotra
 
 En lugar de cambiar el conjunto de matrices mas cercano se interpola para tener una transicion mas cercano.
 Para asegurar la estabildad del sistema, este debe de ser controlable y observable en toda la region de operacion.
+\todo[inline]{parametrizacion el contrlador}
+
+
 \subsection{Discretizacion de controladores}
 \todo[inline]{Se explican la necesidad de discretizar un controlador}
+\todo[inline]{Se explica el procedimiento para generar un sistema de control discreto}
 \todo[inline]{diagrama}
 \todo[inline]{formulas}
 \subsection{El observador de Kalman}
@@ -1059,8 +1069,18 @@ Para aclarar concepto podemos usar como ejemplo un robot que trata de determinar
 \begin{equation}
 x = x * tu + w
 \end{equation}
+
+\todo[inline]{Se hablad sobre conceptos de probabildiad, como el valor esperado, la correlacion, la varianza}
+
+
+\todo[inline]{Se describe la ley de bayes}
+\todo[inline]{la ley de probabilidad total}
+
+
 \subsubsection{El filtro de Kalman}
 \todo[inline]{Se muestran las formulas del filtro de kalman}
+\todo[inline]{explica el filtro de kalman desde la perspectica de un observador de estados}
+\todo[inline]{se explica la perspectiva del filtro de kalman desde la perspectiva de un estimador bayesiano}
 
 \begin{equation}
 	K_R = P^-_R H^T (H_R P^-_R H^T_R +R_R)^{-1}
