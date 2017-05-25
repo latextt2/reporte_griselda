@@ -566,96 +566,28 @@ Un peligro para los circuitos osciladores  es que la frecuencia variaría de mane
 La capacitancia depende del entrehierro o distancia entre los electrodos conductivos. Esta distancia pude incrementar o decrementar dependiendo de las condiciones ambientales, y del material que podrían generar un mediciones poco exactas, por ejemplo suciedad en la superficie del sensor.
 
 \newpage
-
 \section{Sistemas dinamicos}
-\subsection{Sistemas}
-\todo[inline]{La definicion de sistema, su clasificacsion, la definicion de sistema dinamico (OK falta tu imagen)}
-Un sistema es un conjunto de partes o elementos organizadas y relacionadas que interactúan entre sí para lograr un objetivo. Los sistemas reciben \textbf{(entrada)} datos, energía o materia del ambiente y proveen \textbf{(salida)} información, energía o materia.  Los sistemas pueden  ser  de \textbf{fisicos} (compuestos por equipos, maquinaria, objetos y cosas reales) o \textbf{abstractos} (compuestos por conceptos, planes, hipótesis e ideas). De la misma forma pueden ser \textbf{cerrados} (no presentan intercambio con el medio ambiente que los rodea, son herméticos a cualquier influencia ambiental. No reciben ningún recurso externo y nada producen que sea enviado hacia fuera. En rigor, no existen sistemas cerrados. Se da el nombre de sistema cerrado a aquellos sistemas cuyo comportamiento es determinista y programado y que opera con muy pequeño intercambio de energía y materia con el ambiente. Se aplica el término a los sistemas completamente estructurados, donde los elementos y relaciones se combinan de una manera peculiar y rígida produciendo una salida invariable, como las máquinas) o \textbf{abiertos} (presentan intercambio con el ambiente, a través de entradas y salidas. Intercambian energía y materia con el ambiente. Son adaptativos para sobrevivir. Su estructura es óptima cuando el conjunto de elementos del sistema se organiza, aproximándose a una operación adaptativa).
-
-El cual se tiene al menos una entrada y una salida bien definidas. Estos suelen representarse mediante un bloque mostrando sus respectivas entradas y salidas.
-
-\begin{figure}[htb]
-\begin{center}
-\centering
-\missingfigure[figwidth=8cm]{Diagrama de bloque de un sistema}
-\caption{Representacion de bloque de un sistema}
-\end{center}
-\end{figure}
-
-\newpage
-
-Los sistemas \textbf{dinámicos} son sistemas cuyos parámetros internos (variables de estado) siguen una serie de reglas temporales. Se llaman sistemas porque están descritos por un conjunto de ecuaciones \textbf{(sistemas)} y dinámicos porque sus parámetros varían con respeto a alguna variable que generalmente es el tiempo. 
-Los sistemas dinámicos pueden dividirse en dos grandes clases: aquellos en los que le tiempo varia \textbf{continuamente} y en los que el tiempo varia \textbf{discretamente}. Los sistemas de tiempo dinámico de tiempo continuo se expresan en ecuaciones diferenciales ordinarias. Por otro lado, si el tiempo es discreto los sistemas se describen por medio de ecuaciones de diferencias también conocidos como mapas iterados.\\
-
-
-Un sistema que responde a un entrada con una salida, unicamente despues de que esta fue aplicada es conocido como causal.
-Lo que se busca en el modelado es, a partir de un conjunto de un 
-conjunto de leyes fisicas llegar a un sistema de ecuaciones diferenciales que despues 
-seran de ayuda para diseñar un control adecuado. Debido a la naturaleza mixta del 
-sistema, las ecuaciones resultantes incluiran terminos tanto del dominio mecanico como 
-del dominio electromagnetico. Posteriormente este conjnto de ecuaciones no lineales seran linearizadas con fin de aprovechar las tecnicas de control moderno.
-
-En parte se pueden clasificar como:
-\begin{itemize}
-\item lineales o no lineales
-\item Deterministicos o Estocasticos
-\item Variantes o invariantes en el tiempo
-\end{itemize}
-
-\subsection{Sistema LTI}
-
-Los sistemas lineales e invariantes en el tiempo (o sistemas \textbf{LTI} por sus siglas en inglé   \textbf{\textit{Linear and Time Invariant}}) corresponden a una importante clase de sistemas en el análisis de fenómenos reales, al permitir modelar comportamientos complejos con herramientas matemáticas tan poderosas como las transformadas de Fourier y Laplace.
-Los sistemas LTI son sistemas que tienen una ecuacion diferencial de la forma
-
-\begin{equation} \label{eq:def_lti}
-a_n\frac{d^ny(t)}{dt^n} + a_{n-1}\frac{d^{n-1}y(t)}{dt^{n-1}} + ... + a_1\frac{dy(t)}{dt} +a_0y(t) = b_0F(t) + b_1\frac{dF(t)}{dt} +...+ b_{m-1}\frac{d^{m-1}F(t)}{dt^{m-1}} + b_m\frac{d^mF(t)}{dt^m}
-\end{equation}
-
-\todo[inline]{Aqui se explican la particularidades de los sistemas LTI  \textbf{esta hecho}}
-
-donde $y$ es la salida del sistema y $F$ es la entrada. 
-La relación de entrada-salida para los sistemas LTI se describe en términos de una operación de convolución. La importancia de la operación de convolución en sistemas LTI proviene del hecho de que el conocimiento de la respuesta de un sistema LTI a la entrada de impulsos unitarios nos permite encontrar su salida a cualquier señal de entrada. La linealidad y la invarianza en el tiempo juegan un papel fundamental por varias razones:
-
-\begin{itemize}
-\item Muchos procesos Físicos son LTI $\Rightarrow$ pueden modelarse como sistemas LTI.
-\item Poseen la propiedad de superposición (linealidad) $\Rightarrow$ si la entrada a un sistema LTI se puede representar como combinación lineal de un conjunto de señales
-básicas (concepto de base de señales), la salida será la misma combinacián lineal
-de las respuestas del sistema a esas señales básicas.
-\item Cualquier señal se puede representar como combinación lineal de impulsos unitarios retardados. Esto nos permitirá caracterizar cualquier sistema LTI mediante su respuesta al impulso unitario. Esta representación se conoce como suma de convolución (sistemas LTI discretos) o integral de convolución (sistemas continuos) y proporciona una gran
-comodidad al tratar los sistemas LTI.
-\end{itemize}
-
-\subsection{Diferentes representanciones}
-\todo[inline]{Aqui se explican las diferentes formas de representar
-un sistema, ecuacion diferencial, funcion de transferencia y variables de estado   \textbf{hecho}}
-
-Las representaciones de un sistema LTI son las siguientes: 
-\begin{itemize}
-  \item Sistemas de ecuaciones diferenciales (anteriormente mensionado ecuacion \ref{eq:def_lti})
-\item Funcion de tranferencia: La función de transferencia de un sistema descrito mediante
-una ecuación diferencial lineal e invariante en el tiempo se define como el cociente entre la transformada de Laplace de la salida (función de respuesta) y la transformada de Laplace de la entrada (función de excitación) bajo la suposición de que todas las condiciones iniciales son cero.
-\begin{equation}
-	G_{(s)} = \frac{\mathcal{L}[entrada]}{\mathcal{L}[salida]}
-\end{equation}
-A partir del concepto de función de transferencia, es posible representar la dinámica de un sistema mediante ecuaciones algebraicas en s.
-\item Variables de estado: Las variables de un sistema dinámico son las variables que constituyen el menor conjunto de variables que determinan el estado del sistema dinámico. Si al menos se nesecitan $n$ variables $X_1, X_2,...,X_n$ para describir completamente el comportamiento de un sistema dinámico (de forma que una vez que la entrada para $ t\geq t_0 $ está dada y el estado inicial  en $t = t_0$ esta espesificado, el estado futuro del sistema está determinado  completamente,) entonces tales $n$ variables son un cojunto de variables de estado.
-\end{itemize}
-
-El estado de un sistema dinámico es el conjunto de variables más pequeño (llamadas
-variables de estado), de forma que el conocimiento de estas variables en $t = t_0$, junto con el conocimiento de la entrada para $ t\geq t_0 $, determinan completamente el comportamiento del sistema en cualquier $ t\geq t_0 $.
-
-\subsection{Respuestas de los sistemas LTI de segundo orden}
-\todo[inline]{Se describne las diferencias en la respuesta de un sistema segun el lugar de las raices, amortiguado, subamortiguado, criticamente amorgituado}
-\subsection{Estabilidad}
-\todo[inline]{Se introduce el concepto del estabilidad leapunov y como el lugar de las raices afecta esto, inluyendo los eigenvalores de la matriz de espcio de estados}
-
-
+\subsection{Sistemas y clasificacion}
+\subsection{Sistemas LTI}
+\subsubsection{LTI continuos}
+\todo[inline]{Ecuacion diferencial}
+\todo[inline]{Variables de estado}
+\todo[inline]{Polinomio caracteristico}
+\todo[inline]{Funcion de transferencia ya la transformada de laplace}
+\todo[inline]{Respuestas, amortiguada, subamortiguada, criticamente amortiguada}
+\todo[inline]{Estabilidad}
+\subsection{LTI discretos}
+\todo[inline]{Ecuacion en diferencias}
+\todo[inline]{Variables de estado}
+\todo[inline]{Polinomio caracteristico}
+\todo[inline]{Funcion de transferencia y la transformada z}
+\todo[inline]{Estabilidad}
 \section{Dinamica}
 Para modelar el comportamiento de los cuerpos en movimientos es decesario aplicar las ecuaciones de la mecanica clasica.
 Un cuerpo rigido ubicado en el espacio posee 6 grados de libertad (parametros necesarios para describir su configuracion), la posicion espacial de su centro de masa, y su orientacion. La segunda ley de newton nos permite calcular la traslacion del objeto, mientras que las ecuaciones de euler nos permiten calcular su orientacion.
 
 En el sistema coordenado cartesiano se define el vector de posicion r como
-
+\subsection{Movimiento translacional}
 \begin{equation}
 \vec{r }= [r_x,r_y,r_z]
 \end{equation}
@@ -675,7 +607,7 @@ La segunda ley de newton establece que la razon de cambio del momento lineal de 
 \begin{equation}
 \sum{\vec{F}} = \frac{d}{dt}\vec{P} = m\vec{a}
 \end{equation}
-\subsection{Dinamica del cuerpo rigido}
+\subsection{Movimiento rotacional}
 Describir la orientacion del objecto similar, sin embargo la rotacion del objecto introduce una serie de inconveniencias a la hora de calcular las derivadas.
 Momento lineal - Momento angular
 Fuerza -  Momento de torsion
