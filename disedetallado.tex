@@ -210,6 +210,68 @@ Para su implemtacion, usamos un script capaz de generar una configuracion del si
 \subsection{Circuito de acondicionamiento}
 \todo[inline]{Conversion de capacitancia a frecuencia}
 \section{Integracion}
+Para la correcta simulacion y control de se requiere de las ecuaciones que describan la dinamica del rotor.
+
+\begin{figure}[htb]
+\begin{center}
+\centering
+\missingfigure[figwidth=8cm]{Inercia del RMH}
+\caption{Inercia del RMH}
+\label{fig:control:inercia-rmh}
+\end{center}
+\end{figure}
+Los electroimanes radiales Fr1 y Fr2 ejercen fuezas en el plano z,y, mientras que los electroimanes axiales ejercen fuerzas en el ejex, y el iman permanente ejerce fuerzas en el eje z.
+\begin{equation}
+	\vec{F}_{r} = \begin{pmatrix}
+	0\\
+	F_{ry}\\
+	F_{rz}\\
+	\end{pmatrix}
+	\vec{F}_a = \begin{pmatrix}
+	F_{ax}\\
+	0\\
+	0\\
+	\end{pmatrix}
+	\vec{F}_p = \begin{pmatrix}
+	0\\
+	0\\
+	F_{pz}\\
+	\end{pmatrix}
+\end{equation}
+Los respectivos momentos son
+\begin{equation}
+	\vec{M}_r = \vec{r}_r \times \vec{F}_r 
+\end{equation}
+Existe un problema con simpflicar la accion conjunta de los electroimanes axiales en xx, es posible ver que el momento generado cuando la fuerza es xx es xx, y el torque generado cuando la fuerza es xx va en el mismo sentido, entonces tenemos que el momento que ejerce los electrimanes raidales es
+\begin{equation}
+	\vec{M}_A = \vec{r}_a \times abs(\vec{F}_a)
+\end{equation}
+Para la matriz de inercial podemos diferencia la barra de los collarines de levitación como se muestra en la figura \ref{fig:control:inercia-rmh} y aplicando el teorema de ejes paralelos podemos reescribir su matriz de inercia como
+\begin{equation}
+	[I] = \begin{pmatrix}
+	I_{xxa} + 2I_{xxb}  & 0 & 0\\
+	0 & I_{yya} + 2I_{yyb} + 2m_b r_b^2 & 0\\
+	0 & 0 & I_{zza}+2I_{zzb}+ 2 m_b r_b^2
+	\end{pmatrix}
+\end{equation}
+gracias a la simetría radial del cuerpo eje-collarín los momentos principales $Iyy$ e $Izz$ son iguales, pudiendo reducir la ecuación xx a la forma 
+\begin{equation}
+	[I] = \begin{pmatrix}
+	I_{xx}  & 0 & 0\\
+	0 & I_{\rho}  & 0\\
+	0 & 0 & I_{\rho}
+	\end{pmatrix}
+\end{equation}
+
+permitimos la libre rotacion dentro del eje x del marco de referencia movil
+la velocidad angular es xx, entonces se tiene que
+\begin{equation}
+  \omega = \omega_\phi +
+   \Omega
+\end{equation}
+
+calcular el producto cruz requiere que ambos vectores esten en el mismo marco de referencia asi que transformamos los vectores de fuerza al marco movil usando la transforamcion $T^{M}_O$
+\subsection{Modelo dinamico del rotor}
 \todo[inline]{Modelo del eje}
 \todo[inline]{Modelo completo del sistema}
 \subsection{Controladores}
