@@ -1,10 +1,44 @@
 \chapter{Dise\~no Detallado}
 \section{Electroimanes}
-Para diseñar un electriman requerimos de modelo que relacione la geometria del nucleo con la fuerza que este puede ejercer. Sabemos por la ecuacion ?? que la fuerza esta determida por
+Para diseñar un electroimán se requiere de un modelo que relacione la geometría del núcleo con la fuerza máxima que este puede ejercer. Sabemos por la ecuación ?? que la fuerza esta determinada por
 \begin{equation}
-	F =  \frac{(NI)^2}{2}) \frac{d}{dg}(R^{-1})
+	F =  \frac{(NI)^2}{2} \frac{d}{dy}(\mathcal{R}^{-1})
 \end{equation}
-por lo que el problema de calcular la fuerza se reduce a calcular la reluctancia del circuto magnetico de los electroimanes.
+por lo que el problema de calcular la fuerza se reduce a calcular la reluctancia del circuito magnético que conforma el electroimán. Procederemos a analizar los núcleos de geometría \ref{fig:geometria-radial} y \ref{fig:geometria-axial} correspondientes a los electroimanes radial y axial respectivamente.
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/geometria_nucleo_axial}
+        \caption{radial}
+        \label{fig:geometria-radial}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/geometria_nucleo_radial}
+        \caption{axial}
+        \label{fig:geometria-axial}
+    \end{subfigure}
+    \caption{Geometrias de electroiman}\label{fig:geometria-electroimanes}
+\end{figure}
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/geometria_nucleo_axial}
+        \caption{radial}
+        \label{fig:geometria-radial}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/geometria_nucleo_radial}
+        \caption{axial}
+        \label{fig:geometria-axial}
+    \end{subfigure}
+    \caption{Geometrias de electroiman}\label{fig:geometria-electroimanes}
+\end{figure}
 
 El electroiman posee una geometria como la de la figura ??, aplicando el analisis de circuitos magneticos el sistema se pude modelar como el circuito de reluctancias de la figura ??. Entonces la reluctancia total del circuito puede escribirse como
 \begin{equation}
@@ -262,14 +296,12 @@ gracias a la simetría radial del cuerpo eje-collarín los momentos principales $I
 	0 & 0 & I_{\rho}
 	\end{pmatrix}
 \end{equation}
-
 permitimos la libre rotacion dentro del eje x del marco de referencia movil
 la velocidad angular es xx, entonces se tiene que
 \begin{equation}
   \omega = \omega_\phi +
    \Omega
 \end{equation}
-
 calcular el producto cruz requiere que ambos vectores esten en el mismo marco de referencia asi que transformamos los vectores de fuerza al marco movil usando la transforamcion $T^{M}_O$
 \subsection{Modelo dinamico del rotor}
 \todo[inline]{Modelo del eje}
