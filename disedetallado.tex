@@ -26,18 +26,18 @@ por lo que el problema de calcular la fuerza se reduce a calcular la reluctancia
 \begin{figure}[htb]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{images/Capitulo_2/geometria_nucleo_axial}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/modelo_reluctancias_eir}
         \caption{radial}
         \label{fig:geometria-radial}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
       %(or a blank line to force the subfigure onto a new line)
     \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{images/Capitulo_2/geometria_nucleo_radial}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/modelo_reluctancias_eia}
         \caption{axial}
         \label{fig:geometria-axial}
     \end{subfigure}
-    \caption{Geometrias de electroiman}\label{fig:geometria-electroimanes}
+    \caption{Modelo de reluctancias}\label{fig:geometria-electroimanes}
 \end{figure}
 
 El electroiman posee una geometria como la de la figura ??, aplicando el analisis de circuitos magneticos el sistema se pude modelar como el circuito de reluctancias de la figura ??. Entonces la reluctancia total del circuito puede escribirse como
@@ -157,6 +157,23 @@ f_{max} = \frac{L}{2 \pi V A}
 \end{equation} 
 Donde podemos ver la frecuencia maxima de la señal de salida depende de la amplitud de la misma, esta condicion  conocida como "slew rate limiting" es un fenomeno comun en los amplificadores y basta con conocer los limites de operacion del dispositivo para evitar tal operacion.
 
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/fb_linearization}
+        \caption{Esquema de retroalimentacion}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/ferzas_radial}
+        \caption{Equivalencia de fuerzas}
+    \end{subfigure}
+    \caption{Linearizacion de electroimanes}
+\end{figure}
+
+
+
 En caso de operar mas alla del limite se presenta una atenuacion de magnitud
 \begin{equation}
 A = \frac{L}{2 \pi V f} 
@@ -249,8 +266,8 @@ Para la correcta simulacion y control de se requiere de las ecuaciones que descr
 \begin{figure}[htb]
 \begin{center}
 \centering
-\missingfigure[figwidth=8cm]{Inercia del RMH}
-\caption{Inercia del RMH}
+\includegraphics[width=12cm]{images/Capitulo_2/diagrama_cuerpo_libre_rotor}
+\caption{Diagrama de cuerpo libre del rotor}
 \label{fig:control:inercia-rmh}
 \end{center}
 \end{figure}
@@ -276,10 +293,21 @@ Los respectivos momentos son
 \begin{equation}
 	\vec{M}_r = \vec{r}_r \times \vec{F}_r 
 \end{equation}
-Existe un problema con simpflicar la accion conjunta de los electroimanes axiales en xx, es posible ver que el momento generado cuando la fuerza es xx es xx, y el torque generado cuando la fuerza es xx va en el mismo sentido, entonces tenemos que el momento que ejerce los electrimanes raidales es
+Existe un problema con simplificar la acción conjunta de los electroimanes axiales en xx, es posible ver que el momento generado cuando la fuerza es xx es xx, y el torque generado cuando la fuerza es xx va en el mismo sentido, entonces tenemos que el momento que ejerce los electrimanes raidales es
 \begin{equation}
 	\vec{M}_A = \vec{r}_a \times abs(\vec{F}_a)
 \end{equation}
+
+\begin{figure}[htb]
+\begin{center}
+\centering
+\includegraphics[width=12cm]{images/Capitulo_2/diagrama_momentos}
+\caption{Momentos de inercia}
+\label{fig:control:inercia-rmh}
+\end{center}
+\end{figure}
+
+
 Para la matriz de inercial podemos diferencia la barra de los collarines de levitación como se muestra en la figura \ref{fig:control:inercia-rmh} y aplicando el teorema de ejes paralelos podemos reescribir su matriz de inercia como
 \begin{equation}
 	[I] = \begin{pmatrix}
