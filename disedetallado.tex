@@ -1,6 +1,6 @@
 \chapter{Dise\~no Detallado}
 \section{Electroimanes}
-Para diseñar un electroimán se requiere de un modelo que relacione la geometría del núcleo con la fuerza máxima que este puede ejercer. Sabemos por la ecuación ?? que la fuerza esta determinada por
+Para diseñar un electroimán se requiere de un modelo que relacione la geometría del núcleo con la fuerza máxima que este puede ejercer. Sabemos que la fuerza esta determinada por
 \begin{equation}
 	F =  \frac{(NI)^2}{2} \frac{d}{dy}(\mathcal{R}^{-1})
 \end{equation}
@@ -181,6 +181,21 @@ A = \frac{L}{2 \pi V f}
 esta atenuacion concide con la de un filtro de pasabajas de primer orden, con frecuencia de corte $f_max$ y una caida de $20dB$ por decada, para los electrimanes presentados en ?? esta respuesta corresponde a las graficas de la figura ??. 
 
 \section{Módulo de Compensación para Cargas Estáticas}
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/iman_permanente}
+        \caption{Iman permanente}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/mecanismo_retraccion}
+        \caption{Mecanismo de retracción}
+    \end{subfigure}
+    \caption{Modulo de compensación}
+\end{figure}
+
 Para la fuerza y por tanto la corriente que debe de suministrar los electroimanes se introduce el modulo de de compensacion para cargas estaticas, este modulo consisten en 3 partes, un iman permanente, un nucleo ferromagnetico para guiar el campo, un mecanismo para cambiar la posicion y por tanto la fuerza, un motor electrico, y un circuito para controlar la posicion del motor.
 
 A partir de la ecuacion ?? sabemos que la fuerza que ejerce un electroiman pasivo esta dada por su valor Hc, Br, y las dimensiones del iman, done los valores Hc,Br dependen del material del que esta compuesto, y el punto hasta donde fue magnetizad.
