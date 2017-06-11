@@ -181,6 +181,18 @@ A = \frac{L}{2 \pi V f}
 esta atenuacion concide con la de un filtro de pasabajas de primer orden, con frecuencia de corte $f_max$ y una caida de $20dB$ por decada, para los electrimanes presentados en ?? esta respuesta corresponde a las graficas de la figura ??. 
 
 \section{Módulo de Compensación para Cargas Estáticas}
+
+Sabemos que la fuerza de los electroimanes es $F = kI^2$, y  las perdidas son $W = RI^2$, eso significa que tenemos perdidas aproximadas a $W = (R/k)F$, si descomponemos esta fuerza en sus componentes de fourier tenemos termino constante y la suma de los componentes a diversas frecuencias.
+El termino constate/estatico que usualmente correspoden al peso del objeto cuenta como la mayor parte la fuerza, y por lo tanto, de las perdidas.
+
+Eliminar esa componente  de fuerza de los electroimanes terminaria por reducir la corriente y el consumo energetico total del rodamiento.
+
+Un imán permanente calculado para ejercer una fuerza $F_{ip}$ puede disminuir el consumo, terminando con perdidas de magnitud $(R/K)|F_L - F_{ip}|$.
+
+
+Es posible variar la fuerza que ejerce un imán pasivo cambiando la distancia entre este y el objetivo, asi pues, el MCCE consiste en un  tenemos un iman capaz de ejercer un fuerza $F_ip$ mas grande de la requerida montado sobre un plataforma movil (mecanismo de retraccion), asi acercando o aljendo el motor y un sistema de servocontrol sobre la corriente del electroiman de la parte superior, el modulo puede adaptarse y reducir la corriente promedio de los electroimanes  a.
+
+
 \begin{figure}[htb]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
@@ -196,15 +208,20 @@ esta atenuacion concide con la de un filtro de pasabajas de primer orden, con fr
     \caption{Modulo de compensación}
 \end{figure}
 
-Para la fuerza y por tanto la corriente que debe de suministrar los electroimanes se introduce el modulo de de compensacion para cargas estaticas, este modulo consisten en 3 partes, un iman permanente, un nucleo ferromagnetico para guiar el campo, un mecanismo para cambiar la posicion y por tanto la fuerza, un motor electrico, y un circuito para controlar la posicion del motor.
 
-A partir de la ecuacion ?? sabemos que la fuerza que ejerce un electroiman pasivo esta dada por su valor Hc, Br, y las dimensiones del iman, done los valores Hc,Br dependen del material del que esta compuesto, y el punto hasta donde fue magnetizad.
+El MCCE consisten en las siguientes partes: imán permanente, núcleo ferromagnético, funda, tornillo de potencia, moto-reductor. El imán permanente magnetiza todo el circuito, el núcleo ferromagnético guía el flujo magnético (provee de una trayectoria  de baja reluctancia) y maximiza la fuerza que el imán permanente puede ejercer, la funda provee el soporte para el arreglo imán-núcleo y actúa como guía dentro de la cavidad del modulo; el tornillo convierte el movimiento rotación del motor en movimiento lineal para el imán permanente.
 
-Respecto a las dimension, un iman con una gran seccion transversal producira mas fuerza de una manera proporcional, mientras que incremetar su logitud solo incrementara la fuerza de manera logaritmica.
+\begin{equation}
+	F = \frac{B_r^2}{2 \mu_0 (1 + (\frac{\mu_m}{\mu_0})(\frac{A_m}{A_g})(\frac{g}{l_m}))^2}[\frac{A_m + 2A_g}{2A_g}]
+	\label{eq:fuerza-iman-permanente}
+\end{equation}
 
-Es nuestro objetivo en este caso diseñar electroiman-nucleo mas pequeño posible, debido a que las dimensiones de electroimanes y composicion de los imanes permantes estan dadas por el fabricante nos limitamos a seleccionar el iman mas pequeño disponible que generara al menos una cantidad $F_min$ de fuerza estando en la configuracion xx.
+Gracias a la ecuación \ref{eq:fuerza-iman-permanente} sabemos que la fuerza que ejerce un permanente esta dada por $H_c$ y $B_r$ las cuales dependen del material del que esta compuesto, también depende del las dimensiones $l_m$ y $A_m$, donde esta ultima es el parámetro dominante dominante. Incrementar la sección transversal producirá mas fuerza de una manera mas o menos lineal, mientras que incrementar su longitud solo incrementara la fuerza de manera logarítmica.
+
+Es nuestro objetivo en este caso diseñar un par imán-núcleo lo mas pequeño posible, debido a que las dimensiones de electroimanes y composicion de los imanes permantes estan dadas por el fabricante nos limitamos a seleccionar el iman mas pequeño disponible que generara al menos una cantidad $F_{min}$ de fuerza estando en la configuracion xx.
 
 Las dimensiones del nucleo se seleccionan de tal manera que el iman pasivo pueda se acomodado dentro de este.
+
 
 Para el diseño del mecanismo tenemos el siguiente proceso
 \begin{enumerate}
@@ -218,6 +235,7 @@ Para el diseño del mecanismo tenemos el siguiente proceso
 
 Asi como se hizo en la seccion ??, podemos validar nuestro modelo mediante una simulacion FEM, los que resulta en la siguiente grafica.
 
+Entre las diferentes composiciones de imanes permanentes destaca el Neodimio-Hierro-Boro comúnmente conocidos como imanes de neodimio. Estos materiales se encuentran graduados bajo la norma ??, los valores mas altos $H_c$ y  $B_r$ son alcanzados por el tipo $N52$, con valores de $B_r = 1400mT$ y $H_c=796kA/m$.
 \begin{figure}[htb]
 \begin{center}
 \centering
@@ -225,6 +243,9 @@ Asi como se hizo en la seccion ??, podemos validar nuestro modelo mediante una s
 \caption{Fuerza del iman pasivo}
 \end{center}
 \end{figure}
+
+
+El modelado electromecánico
 
 
 \todo[inline]{Software para el calculo del iman passivo}
