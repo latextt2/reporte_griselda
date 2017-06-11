@@ -21,3 +21,4 @@
 *.ind
 !logos/*
 *.dvi
+!images/**
