@@ -185,6 +185,48 @@ esta atenuacion concide con la de un filtro de pasabajas de primer orden, con fr
 Sabemos que la fuerza de los electroimanes es $F = kI^2$, y  las perdidas son $W = RI^2$, eso significa que tenemos perdidas aproximadas a $W = (R/k)F$, si descomponemos esta fuerza en sus componentes de fourier tenemos termino constante y la suma de los componentes a diversas frecuencias.
 El termino constate/estatico que usualmente correspoden al peso del objeto cuenta como la mayor parte la fuerza, y por lo tanto, de las perdidas.
 
+\subsection*{Te\'orico}
+
+Dentro de los rodamientos magnéticos existe una clasificación basada en la fuente generadora del campo magnético, y en ella se encuentran los rodamientos magnéticos pasivos. Estos logran la levitación del objeto gracias a las fuerzas de atracción o repulsión magnéticas producidas por imanes permanentes. 
+Un diseño muy simple de un rodamiento magnético pasivo consiste en anillos magnéticos permanentes en el eje giratorio y el estator, encargados de generar dichas fuerzas.
+
+\begin{figure}[htb]
+\centering
+	\includegraphics[scale=1]{images/Capitulo_3/Rod_pas}
+	\caption{\textit{Configuración básica de un rodamiento magnético pasivo.}}
+\end{figure}
+
+Los rodamientos magnéticos pasivos presentan algunas ventajas frente a los rodamientos electromagnéticos (activos), debido a que no requieren de una fuente de energía externa y el uso de circuitos de control. Esto implica una disminución significativa de los costos de mantenimiento y de operación [16]. 
+Sin embargo,  también poseen ciertas desventajas por las que para ciertas aplicaciones no resultan viables. Por ejemplo, poseen una menor rigidez y menor amortiguación, por lo que deben contar con la suficiente rigidez y amortiguación integrada para que puedan trabajar dentro de todo su rango de operación [15].
+Para aplicaciones que operen bajo un rango de temperatura limitado, una alternativa es utilizar un estator soportado viscoelásticamente con el fin de amortiguar las vibraciones del rotor, o el uso de amortiguadores especiales para restringir las vibraciones. Sin embargo estas medidas de amortiguación vuelven más complejo el modelado del sistema. 
+
+Ante los problemas del alto consumo de corriente en los rodamientos magnéticos se hicieron varias investigaciones entre las cuales se encuentra el uso de un campo magnético base para la levitación.
+Con base en los principios de funcionamiento de los rodamientos magnéticos pasivos se optó por utilizar un imán permanente que deberá proveer un campo magnético base y así disminuir el consumo de corriente de los rodamientos activos, los cuales a su vez ayudan a compensar la baja rigidez y amortiguamiento de los rodamientos pasivos. 
+Este hará uso de un servomecanismo que tendrá la función de variar la distancia entre el imán permanente y el collarín de levitación, y con esto también el campo magnético base que se necesita para estabilizar el objeto. 
+
+\subsection{Propuesta de Soluci\'on}
+
+El servomecanismo que utilizará el imán permanente para su desplazamiento consiste en un par de rieles que se montarán sobre la base del motorreductor y la base del imán permanente; esta última será la que se desplazará a lo largo de los rieles. 
+Para generar dicho desplazamiento se utiliza un mecanismo tornillo-tuerca, conocido también como husillo-tuerca. Es un mecanismo de transformación circular a lineal compuesto por una tuerca alojada en un eje roscado (tornillo).
+
+\begin{figure}[htb]
+\centering
+	\includegraphics[scale=1]{images/Capitulo_3/Tornillo}
+	\caption{\textit{Mecanismo Tornillo Tuerca.}}
+\end{figure}
+
+Este mecanismo se puede plantear de dos formas: un tornillo de posición fija que al girar provoca el desplazamiento de la tuerca, o una tuerca fija que produce el desplazamiento del tornillo cuando este gira. En este caso utilizaremos el tornillo de posición fija, y la tuerca consistirá en la base del imán permanente. 
+Este tipo de mecanismos son utilizados en diferentes aplicaciones y son ideales como mecanismos de desplazamiento, debido en parte a su gran precisión y al reducido espacio que requieren. 
+El avance depende de dos factores [18]:
+
+\begin{itemize}
+\item La velocidad de giro del elemento motriz.
+\item El paso de la rosca del tornillo. Cuanto mayor sea el paso, mayor será la velocidad de avance.
+\end{itemize}
+
+
+
+
 Eliminar esa componente  de fuerza de los electroimanes terminaria por reducir la corriente y el consumo energetico total del rodamiento.
 
 Un imán permanente calculado para ejercer una fuerza $F_{ip}$ puede disminuir el consumo, terminando con perdidas de magnitud $(R/K)|F_L - F_{ip}|$.
@@ -233,10 +275,49 @@ Para el diseño del mecanismo tenemos el siguiente proceso
 \item Si la fuerza $F_{req} > F_{im}$ incrementar las dimension y repetir los pasos.
 \end{enumerate}
 
+
+\begin{figure}[htb]
+\begin{center}
+\centering
+\missingfigure[figwidth=8cm]{Fuerza del iman pasivo}
+\caption{Software calculo de iman permanente}
+\end{center}
+\end{figure}
+
 Asi como se hizo en la seccion ??, podemos validar nuestro modelo mediante una simulacion FEM, los que resulta en la siguiente grafica.
 
 Entre las diferentes composiciones de imanes permanentes destaca el Neodimio-Hierro-Boro comúnmente conocidos como imanes de neodimio. Estos materiales se encuentran graduados bajo la norma ??, los valores mas altos $H_c$ y  $B_r$ son alcanzados por el tipo $N52$, con valores de $B_r = 1400mT$ y $H_c=796kA/m$.
 
+\begin{figure}[htb]
+\begin{center}
+\centering
+\missingfigure[figwidth=8cm]{Fuerza del iman pasivo}
+\caption{Resultados simulacion magnetica}
+\end{center}
+\end{figure}
+
+
+
+
+
+\subsection{Selecci\'on de la Rosca}
+\begin{figure}[htb]
+\centering
+	\includegraphics[scale=1]{images/Capitulo_3/Rosca}
+	\caption{\textit{Especificaciones para rosca M 2 x 0.4.}}
+\end{figure}
+
+El mecanismo tornillo-tuerca presenta una ventaja muy importante respecto a otros sistemas de conversión de movimiento circular en longitudinal: por cada vuelta del tornillo la tuerca solamente avanza la distancia correspondiente al paso de la rosca. 
+En general el avance del tornillo viene dado por:
+
+%ecuacion A = p * e
+
+Donde p es el paso de la rosca y e corresponde al número de entradas del tornillo. 
+
+Con el fin de reducir la fuerza producida por el imán permanente hasta un valor mínimo, se necesita un recorrido de 4 mm respecto a la distancia mínima entre éste y el collarín de levitación. Con estas consideraciones se determinó el uso de una rosca métrica M 2 x 0,4, que corresponde a un diámetro nominal de 2 mm, paso de rosca de 0.4 mm y una entrada, con lo que únicamente requeriríamos generar 10 vueltas del motorreductor para el desplazamiento máximo de 4 mm. 
+
+
+\subsection{El modelado electromecánico}
 \begin{figure}[htb]
 \begin{center}
 \centering
@@ -246,16 +327,59 @@ Entre las diferentes composiciones de imanes permanentes destaca el Neodimio-Hie
 \end{figure}
 
 
+Para el modelado del comenzamos por estabecler la eucacion ?? correspodientes al motor de dc, la entrada del sistema es el voltaje de alimetancion de motor $V{in}$ y como salidas tenemos el par de accionamiento $T_1$
+
+La ecuacion de la malla del motor, que describe la razon de cambio en la corriente del motor
+\begin{equation}
+ V_{in} = Ri + L \frac{d}{dt}i + V_{E}  	
+\end{equation}
+
+El par torsor de salida que es proporcional a la corriente del motor
+\begin{equation}
+ T = K_t i 
+\end{equation}
+
+El voltaje contra electromotriz, que es proporcional a la velocidad del motor 
+\begin{equation}
+ V_{E} = K_v \omega 
+\end{equation}
+
+En los engranajes del motor tenemos una relacion de salida de $N_1/N_2$, entonces las velocidades angulares son 
+\begin{equation}
+ T_2 = N_1/N_2 T_1
+\end{equation}
+\begin{equation}
+ \omega_2 = N_2/N_1 \omega_1 
+\end{equation}
+
+y finalmente relacionamos el par torsor, con la fuerza de elevacion de descensor del tornillo, debido a la accion de la friccion se tiene una ecuacion para descenso y otra para el ascenso.
+
+\begin{equation}
+    T = \frac{F \cdot d_m}{2} \cdot \frac{\rho + (\pi \cdot \mu \cdot d_m \cdot \sec \theta)}{(\pi \cdot d_m) - (\mu \cdot \rho \cdot  \sec \theta)} 
+\end{equation}
+
+donde: \\
+    F = Valor de la carga\\
+    $\rho$ = paso del tornillo \\
+    $d_m$ = diametro medio del tornillo\\
+    $\mu$ = Coeficiente de rozamientre la rosca y le tornillo \\
+    $\theta$ = $\frac{Angulo;de;la;rosca}{2}$\\
+
+
+\begin{equation}
+    T= \frac{F \cdot d_m}{2} \cdot \frac{\pi \cdot \mu \cdot d_m \cdot \sec \theta - \rho}{\pi \cdot d_m + \mu \cdot \rho \cdot \sec \theta}
+\end{equation}
+
+como resultado tenemos el siguiente modelo de simulink
+
 \begin{figure}[htb]
 \begin{center}
 \centering
-\missingfigure[figwidth=8cm]{Fuerza del iman pasivo}
-\caption{Fuerza del iman pasivo}
+\includegraphics[width=\textwidth]{images/Capitulo_2/simulink_mcce}
+\caption{Modelo en simulink del MCCE}
 \end{center}
 \end{figure}
 
-
-El modelado electromecánico
 
 
 \todo[inline]{Software para el calculo del iman passivo}
@@ -277,12 +401,21 @@ Las soluciones de esta ecuacion estan fuerza del alcanze de este trabajo, asi co
 
 El electrodo del SCD posee una geometria de forma
 \begin{figure}[htb]
-\begin{center}
-\centering
-\missingfigure[figwidth=8cm]{Geometria del SCD}
-\caption{Geometria del SCD}
-\end{center}
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/cdc_geometria_top}
+        \caption{Vista frontal}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+    	\centering
+        \includegraphics[height=4cm]{images/Capitulo_2/cdc_geometria_side}
+        \caption{Vista lateral}
+    \end{subfigure}
+    \caption{Geometria del SDC}
 \end{figure}
+
 donde $d_i$ es el diametro externo del electrodo positivo, $d_o$ es el diametro interno del electrodo positivo, la relacion entre las area de ambos electrodos es $\alpha$
 
 Si relizamos una simlacion en barrido, variando los parametros podemos observar que, entres mas grande sea el area del electrodo mas grande es capacitancia, esto se podia esperar observando la ecuacion del capacitor ??. 
