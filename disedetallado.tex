@@ -224,22 +224,7 @@ El avance depende de dos factores [18]:
 \item El paso de la rosca del tornillo. Cuanto mayor sea el paso, mayor será la velocidad de avance.
 \end{itemize}
 
-\subsection{Selecci\'on de la Rosca}
 
-El mecanismo tornillo-tuerca presenta una ventaja muy importante respecto a otros sistemas de conversión de movimiento circular en longitudinal: por cada vuelta del tornillo la tuerca solamente avanza la distancia correspondiente al paso de la rosca. 
-En general el avance del tornillo viene dado por:
-
-%ecuacion A = p * e
-
-Donde p es el paso de la rosca y e corresponde al número de entradas del tornillo. 
-
-Con el fin de reducir la fuerza producida por el imán permanente hasta un valor mínimo, se necesita un recorrido de 4 mm respecto a la distancia mínima entre éste y el collarín de levitación. Con estas consideraciones se determinó el uso de una rosca métrica M 2 x 0,4, que corresponde a un diámetro nominal de 2 mm, paso de rosca de 0.4 mm y una entrada, con lo que únicamente requeriríamos generar 10 vueltas del motorreductor para el desplazamiento máximo de 4 mm. 
-
-\begin{figure}[htb]
-\centering
-	\includegraphics[scale=1]{images/Capitulo_3/Rosca}
-	\caption{\textit{Especificaciones para rosca M 2 x 0.4.}}
-\end{figure}
 
 
 Eliminar esa componente  de fuerza de los electroimanes terminaria por reducir la corriente y el consumo energetico total del rodamiento.
@@ -290,10 +275,49 @@ Para el diseño del mecanismo tenemos el siguiente proceso
 \item Si la fuerza $F_{req} > F_{im}$ incrementar las dimension y repetir los pasos.
 \end{enumerate}
 
+
+\begin{figure}[htb]
+\begin{center}
+\centering
+\missingfigure[figwidth=8cm]{Fuerza del iman pasivo}
+\caption{Software calculo de iman permanente}
+\end{center}
+\end{figure}
+
 Asi como se hizo en la seccion ??, podemos validar nuestro modelo mediante una simulacion FEM, los que resulta en la siguiente grafica.
 
 Entre las diferentes composiciones de imanes permanentes destaca el Neodimio-Hierro-Boro comúnmente conocidos como imanes de neodimio. Estos materiales se encuentran graduados bajo la norma ??, los valores mas altos $H_c$ y  $B_r$ son alcanzados por el tipo $N52$, con valores de $B_r = 1400mT$ y $H_c=796kA/m$.
 
+\begin{figure}[htb]
+\begin{center}
+\centering
+\missingfigure[figwidth=8cm]{Fuerza del iman pasivo}
+\caption{Resultados simulacion magnetica}
+\end{center}
+\end{figure}
+
+
+
+
+
+\subsection{Selecci\'on de la Rosca}
+\begin{figure}[htb]
+\centering
+	\includegraphics[scale=1]{images/Capitulo_3/Rosca}
+	\caption{\textit{Especificaciones para rosca M 2 x 0.4.}}
+\end{figure}
+
+El mecanismo tornillo-tuerca presenta una ventaja muy importante respecto a otros sistemas de conversión de movimiento circular en longitudinal: por cada vuelta del tornillo la tuerca solamente avanza la distancia correspondiente al paso de la rosca. 
+En general el avance del tornillo viene dado por:
+
+%ecuacion A = p * e
+
+Donde p es el paso de la rosca y e corresponde al número de entradas del tornillo. 
+
+Con el fin de reducir la fuerza producida por el imán permanente hasta un valor mínimo, se necesita un recorrido de 4 mm respecto a la distancia mínima entre éste y el collarín de levitación. Con estas consideraciones se determinó el uso de una rosca métrica M 2 x 0,4, que corresponde a un diámetro nominal de 2 mm, paso de rosca de 0.4 mm y una entrada, con lo que únicamente requeriríamos generar 10 vueltas del motorreductor para el desplazamiento máximo de 4 mm. 
+
+
+\subsection{El modelado electromecánico}
 \begin{figure}[htb]
 \begin{center}
 \centering
@@ -303,16 +327,6 @@ Entre las diferentes composiciones de imanes permanentes destaca el Neodimio-Hie
 \end{figure}
 
 
-\begin{figure}[htb]
-\begin{center}
-\centering
-\missingfigure[figwidth=8cm]{Fuerza del iman pasivo}
-\caption{Fuerza del iman pasivo}
-\end{center}
-\end{figure}
-
-
-\subsection{El modelado electromecánico}
 Para el modelado del comenzamos por estabecler la eucacion ?? correspodientes al motor de dc, la entrada del sistema es el voltaje de alimetancion de motor $V{in}$ y como salidas tenemos el par de accionamiento $T_1$
 
 La ecuacion de la malla del motor, que describe la razon de cambio en la corriente del motor
@@ -387,12 +401,21 @@ Las soluciones de esta ecuacion estan fuerza del alcanze de este trabajo, asi co
 
 El electrodo del SCD posee una geometria de forma
 \begin{figure}[htb]
-\begin{center}
-\centering
-\missingfigure[figwidth=8cm]{Geometria del SCD}
-\caption{Geometria del SCD}
-\end{center}
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/cdc_geometria_top}
+        \caption{Vista frontal}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+    	\centering
+        \includegraphics[height=4cm]{images/Capitulo_2/cdc_geometria_side}
+        \caption{Vista lateral}
+    \end{subfigure}
+    \caption{Geometria del SDC}
 \end{figure}
+
 donde $d_i$ es el diametro externo del electrodo positivo, $d_o$ es el diametro interno del electrodo positivo, la relacion entre las area de ambos electrodos es $\alpha$
 
 Si relizamos una simlacion en barrido, variando los parametros podemos observar que, entres mas grande sea el area del electrodo mas grande es capacitancia, esto se podia esperar observando la ecuacion del capacitor ??. 
