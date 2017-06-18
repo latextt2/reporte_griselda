@@ -1,11 +1,68 @@
 \chapter{Dise\~no Detallado}
-\section{Electroimanes}
+\section{Rodamiento magnéticos radial}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{images/Capitulo_3/diagrama_funcional_rmr}
+    \caption{Rodamiento magnético radial}
+\end{figure}
+\subsection{Electroiman}
+\subsubsection{Núcleo ferromagnético}
+\subsubsection{Bobina}
+\subsection{Accionamiento}
+\section{Rodamiento magnéticos axial}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{images/Capitulo_3/diagrama_funcional_rma}
+    \caption{Rodamiento magnético axial}
+\end{figure}
+\subsection{Electroiman}
+\subsubsection{Núcleo ferromagnético}
+\subsubsection{Bobina}
+\subsection{Accionamiento}
+\section{Modulo de compensación de carga estática}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{images/Capitulo_3/diagrama_funcional_mcce}
+    \caption{Modulo de compensación para cargas estáticas}
+\end{figure}
+\subsection{Imán permanente}
+\subsection{Núcleo ferromagnético}
+\subsection{Mecanismo de retracción}
+\subsection{Moto-reductor}
+\subsection{Accionamiento}
+\section{Sensor de distancia}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{images/Capitulo_3/diagrama_funcional_sdc}
+    \caption{Sensor de distancia capacitivo}
+\end{figure}
+\subsection{Electrodo}
+\subsection{Acondicionamiento}
+\section{Collarín de levitación}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{images/Capitulo_3/diagrama_funcional_cl}
+    \caption{Collarín de levitación}
+\end{figure}
+\section{Controlador}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=\textwidth]{images/Capitulo_3/diagrama_funcional_controlador}
+    \caption{Controlador}
+\end{figure}
+\subsection{Modelo dinámico de rotor}
+\subsection{Linearización}
+\subsection{Controlador retroalimentado}
+\subsection{Controlador integral}
+\subsection{Observador simple}
+\subsection{Observador kalman}
 Para diseñar un electroimán se requiere de un modelo que relacione la geometría del núcleo con la fuerza máxima que este puede ejercer. Sabemos que la fuerza esta determinada por
 \begin{equation}
 	F =  \frac{(NI)^2}{2} \frac{d}{dy}(\mathcal{R}^{-1})
 \end{equation}
 por lo que el problema de calcular la fuerza se reduce a calcular la reluctancia del circuito magnético que conforma el electroimán. Procederemos a analizar los núcleos de geometría \ref{fig:geometria-radial} y \ref{fig:geometria-axial} correspondientes a los electroimanes radial y axial respectivamente.
 
+\section{Rodamientos magnéticos axiales}
 \begin{figure}[htb]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
