@@ -1,68 +1,49 @@
 \chapter{Dise\~no Detallado}
 \section{Rodamiento magnético radial}
+
+El Rodamiento Magnético Radial (RMAR) consiste en un conjunto de electroimanes colocados en una circunferencia, de manera que sus campos magnéticos puedan ejercer una fuerza arbitraria en su plano de acción. Para controlar la fuerza que cada electroiman ejerce se tiene un circuito de accionamiento, que alimenta las bobinas del electroiman con la corriente necesaria.
+
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_rmr}
     \caption{Rodamiento magnético radial}
 \end{figure}
+
+\subsection{Numero de polos}
+Antes de diseñar los electroimanes necesitamos determinar el numero de polos (electroimanes) que conformaran el RMR.
+
+Estudiemos entonces los casos críticos (1) F esta alineado con F y (2) donde F esta orientado en medio de F1 y F2
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_3/diagrama_polos}
+        \caption{radial}
+        \label{fig:geometria-radial}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_3/diagrama_fuerza_polos}
+        \caption{axial}
+        \label{fig:geometria-axial}
+    \end{subfigure}
+    \caption{Geometrias de electroiman}\label{fig:geometria-electroimanes}
+\end{figure}
+
+Para el caso 1 toda la fuerza es ejercida por F1, y como lo indica la ecuación ??, tendremos un consumo de magnitud ??, en cambio en el caso 2 la fuerza tiene que ser proporcionada por F1 y F2 en partes iguales, y con una magnitud de F??, lo cual corresponde a una perdida de 2*.
+
+Para que el rodamiento axial pueda ejercer fuerzas en cualquier dirección del plano YZ es necesario un mínimo de 3 polos. Sin embargo incrementar el numero de polos reduce el consumo las regiones intermedias, esto se debe a que no estamos utilizando corriente para generar componentes de fuerza que terminaran por cancelarse mutuamente.
+
+En [paper numero de polos]  se estudia de manera mas detallada los efectos de variar el numero de polos en un RMR, se concluye utilizar 6 polos minimiza el diámetro exterior para una capacidad dada.
+
 \subsection{Electroiman}
-\subsubsection{Núcleo ferromagnético}
-\subsubsection{Bobina}
-\subsection{Accionamiento}
-\section{Rodamiento magnético axial}
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_rma}
-    \caption{Rodamiento magnético axial}
-\end{figure}
-\subsection{Electroiman}
-\subsubsection{Núcleo ferromagnético}
-\subsubsection{Bobina}
-\subsection{Accionamiento}
-\section{Modulo de compensación de carga estática}
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_mcce}
-    \caption{Modulo de compensación para cargas estáticas}
-\end{figure}
-\subsection{Imán permanente}
-\subsection{Núcleo ferromagnético}
-\subsection{Mecanismo de retracción}
-\subsection{Moto-reductor}
-\subsection{Accionamiento}
-\section{Sensor de distancia}
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_sdc}
-    \caption{Sensor de distancia capacitivo}
-\end{figure}
-\subsection{Electrodo}
-\subsection{Acondicionamiento}
-\section{Collarín de levitación}
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_cl}
-    \caption{Collarín de levitación}
-\end{figure}
-\section{Controlador}
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_controlador}
-    \caption{Controlador}
-\end{figure}
-\subsection{Modelo dinámico de rotor}
-\subsection{Linearización}
-\subsection{Controlador retroalimentado}
-\subsection{Controlador integral}
-\subsection{Observador simple}
-\subsection{Observador kalman}
 Para diseñar un electroimán se requiere de un modelo que relacione la geometría del núcleo con la fuerza máxima que este puede ejercer. Sabemos que la fuerza esta determinada por
 \begin{equation}
 	F =  \frac{(NI)^2}{2} \frac{d}{dy}(\mathcal{R}^{-1})
 \end{equation}
 por lo que el problema de calcular la fuerza se reduce a calcular la reluctancia del circuito magnético que conforma el electroimán. Procederemos a analizar los núcleos de geometría \ref{fig:geometria-radial} y \ref{fig:geometria-axial} correspondientes a los electroimanes radial y axial respectivamente.
 
-\section{Rodamientos magnéticos axiales}
 \begin{figure}[htb]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
@@ -73,28 +54,11 @@ por lo que el problema de calcular la fuerza se reduce a calcular la reluctancia
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
       %(or a blank line to force the subfigure onto a new line)
     \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{images/Capitulo_2/geometria_nucleo_axial}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/modelo_reluctancias_eir}
         \caption{axial}
         \label{fig:geometria-axial}
     \end{subfigure}
     \caption{Geometrias de electroiman}\label{fig:geometria-electroimanes}
-\end{figure}
-
-\begin{figure}[htb]
-    \centering
-    \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{images/Capitulo_2/modelo_reluctancias_eir}
-        \caption{radial}
-        \label{fig:geometria-radial}
-    \end{subfigure}
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-      %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{images/Capitulo_2/modelo_reluctancias_eia}
-        \caption{axial}
-        \label{fig:geometria-axial}
-    \end{subfigure}
-    \caption{Modelo de reluctancias}\label{fig:geometria-electroimanes}
 \end{figure}
 
 El electroiman posee una geometria como la de la figura ??, aplicando el analisis de circuitos magneticos el sistema se pude modelar como el circuito de reluctancias de la figura ??. Entonces la reluctancia total del circuito puede escribirse como
@@ -152,6 +116,8 @@ $W = I^2R$
 
 Teniedo en consideracion todo lo anterior podemos resumir le proceso de diseño de un electriman en los siguientes pasos
 
+
+
 \begin{enumerate}
 \item Determinar condiciones de operacion y, v, $f_{max}$, $F_{max}$, $W_{loss_max}$ 
 \item Seleccion de material
@@ -160,20 +126,19 @@ Teniedo en consideracion todo lo anterior podemos resumir le proceso de diseño d
 \item Calcular $L_max$
 \item Determinar Determinar I y N
 \end{enumerate}
-
-\subsection{Electroiman Radial}
-\todo[inline]{Teniendo las condiciones de operacion, las cuales se sacan a partir de las condiciones de los papers}
-\todo[inline]{Usando la herramienta arrojan los resultados siguientes}
-\todo[inline]{Simulando en femm obtenemos los resultados}
-\todo[inline]{Las dimensiones finales del subsistema son ?? son}
-\todo[inline]{Los resultados estan dentro de los parametors aceptables, y las simulacion y los calculos del software conduerdan}
-\subsection{Electroiman Axial}
-\todo[inline]{Teniendo las condiciones de operacion, las cuales se sacan a partir de las condiciones de los papers}
-\todo[inline]{Usando la herramienta arrojan los resultados siguientes}
-\todo[inline]{Simulando en femm obtenemos los resultados}
-\todo[inline]{Las dimensiones finales del subsistema son ?? son}
-\todo[inline]{Los resultados estan dentro de los parametors aceptables, y las simulacion y los calculos del software conduerdan}
-\subsection{Accionamiento de los electroimanes}
+\subsubsection{Núcleo ferromagnético}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/electroiman_radial_final}
+    \caption{Electroimán radial}
+\end{figure}
+\subsubsection{Bobina}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/EIR_assembly}
+    \caption{Rodamiento magnético radial}
+\end{figure}
+\subsection{Accionamiento}
 Ahora sabemos las caracteristicas de los electroimanes, necesitamos de un circuito para controlar la corriente que circula por la bobinas, en la seccion ?? hablamos  sobre las caracteristicas del circuito, y para el diseño de los electroimas tuvimos que comprometernos los valores de alimentacion y respuesta en frecuencia, 
 
 Un amplificador que opera un modo lineal como el de la figura?? opera de la siguientemanear, supongamos que tenmos que hacer pasar una corriente de ?? amperes a traves de una carga de ?? ohms,  para que existan ?? amperes  se necesitan ?? volts, si nuestra fuente es de ?? volts esto implica que el transistor debe de absober los ?? restantes. Esto implica disipar ?? W de potencia en forma de calor. Entonces es evidente la baja eficiencia de operar en este modo.
@@ -237,8 +202,44 @@ A = \frac{L}{2 \pi V f}
 \end{equation} 
 esta atenuacion concide con la de un filtro de pasabajas de primer orden, con frecuencia de corte $f_max$ y una caida de $20dB$ por decada, para los electrimanes presentados en ?? esta respuesta corresponde a las graficas de la figura ??. 
 
-\section{Módulo de Compensación para Cargas Estáticas}
 
+\section{Rodamiento magnético axial}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_rma}
+    \caption{Rodamiento magnético axial}
+\end{figure}
+\subsection{Electroiman}
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/geometria_nucleo_axial}
+        \caption{radial}
+        \label{fig:geometria-radial}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/modelo_reluctancias_eia}
+        \caption{axial}
+        \label{fig:geometria-axial}
+    \end{subfigure}
+    \caption{Modelo de reluctancias}\label{fig:geometria-electroimanes}
+\end{figure}
+\subsubsection{Núcleo ferromagnético}
+\subsubsection{Bobina}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/EIR_assembly}
+    \caption{Rodamiento magnético radial}
+\end{figure}
+\subsection{Accionamiento}
+\section{Modulo de compensación de carga estática}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_mcce}
+    \caption{Modulo de compensación para cargas estáticas}
+\end{figure}
 Sabemos que la fuerza de los electroimanes es $F = kI^2$, y  las perdidas son $W = RI^2$, eso significa que tenemos perdidas aproximadas a $W = (R/k)F$, si descomponemos esta fuerza en sus componentes de fourier tenemos termino constante y la suma de los componentes a diversas frecuencias.
 El termino constate/estatico que usualmente correspoden al peso del objeto cuenta como la mayor parte la fuerza, y por lo tanto, de las perdidas.
 
@@ -345,7 +346,7 @@ Asi como se hizo en la seccion ??, podemos validar nuestro modelo mediante una s
 
 Entre las diferentes composiciones de imanes permanentes destaca el Neodimio-Hierro-Boro comúnmente conocidos como imanes de neodimio. Estos materiales se encuentran graduados bajo la norma ??, los valores mas altos $H_c$ y  $B_r$ son alcanzados por el tipo $N52$, con valores de $B_r = 1400mT$ y $H_c=796kA/m$.
 
-\begin{figure}[htb]
+\begin{figure}[h]
 \begin{center}
 \centering
 \missingfigure[figwidth=8cm]{Fuerza del iman pasivo}
@@ -353,15 +354,30 @@ Entre las diferentes composiciones de imanes permanentes destaca el Neodimio-Hie
 \end{center}
 \end{figure}
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/IP_ensamble}
+    \caption{Arreglo de Imán permanente}
+\end{figure}
 
 
 
 
 \subsection{Selecci\'on de la Rosca}
-\begin{figure}[htb]
-\centering
-	\includegraphics[scale=1]{images/Capitulo_3/Rosca}
-	\caption{\textit{Especificaciones para rosca M 2 x 0.4.}}
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+		\includegraphics[width=\textwidth]{images/Capitulo_3/Rosca}
+		\caption{\textit{Especificaciones para rosca M 2 x 0.4.}}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_3/motoreductor}
+        \caption{Motoreductor}
+    \end{subfigure}
+    \caption{}
 \end{figure}
 
 El mecanismo tornillo-tuerca presenta una ventaja muy importante respecto a otros sistemas de conversión de movimiento circular en longitudinal: por cada vuelta del tornillo la tuerca solamente avanza la distancia correspondiente al paso de la rosca. 
@@ -373,6 +389,12 @@ Donde p es el paso de la rosca y e corresponde al número de entradas del tornill
 
 Con el fin de reducir la fuerza producida por el imán permanente hasta un valor mínimo, se necesita un recorrido de 4 mm respecto a la distancia mínima entre éste y el collarín de levitación. Con estas consideraciones se determinó el uso de una rosca métrica M 2 x 0,4, que corresponde a un diámetro nominal de 2 mm, paso de rosca de 0.4 mm y una entrada, con lo que únicamente requeriríamos generar 10 vueltas del motorreductor para el desplazamiento máximo de 4 mm. 
 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.625\textwidth]{images/Capitulo_3/Mecanismo_ensamble}
+    \caption{Configuracion final MCCE}
+\end{figure}
 
 \subsection{El modelado electromecánico}
 \begin{figure}[htb]
@@ -437,15 +459,17 @@ como resultado tenemos el siguiente modelo de simulink
 \end{center}
 \end{figure}
 
-
-
-\todo[inline]{Software para el calculo del iman passivo}
-\todo[inline]{Simulacion verificacion del iman passivo}
-\todo[inline]{Caraterizacion dela fuerza del iman passivo}
-\todo[inline]{Modelo del mecanismo}
-\todo[inline]{Acionamiento de sistema}
-\todo[inline]{Caracteristicas dinamicas}
-\section{Sensores Capacitivos de Desplazamiento}
+\subsection{Imán permanente}
+\subsection{Núcleo ferromagnético}
+\subsection{Mecanismo de retracción}
+\subsection{Moto-reductor}
+\subsection{Accionamiento}
+\section{Sensor de distancia capacitivo}
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_sdc}
+    \caption{Sensor de distancia capacitivo}
+\end{figure}
 \subsection{Electrodos}
 El elctrodo es la parte fundamental del SCD, y su geometria afecta de manera directa a la sensitivadad del dispositivo.
 
@@ -496,9 +520,43 @@ Para su implemtacion, usamos un script capaz de generar una configuracion del si
 \todo[inline]{Caracteristicas finales del sensores}
 \subsection{Circuito de acondicionamiento}
 \todo[inline]{Conversion de capacitancia a frecuencia}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/sdc_ensamble}
+    \caption{Explosionado SDC}
+\end{figure}
+
+
+\section{Collarín de levitación}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_cl}
+    \caption{Collarín de levitación}
+\end{figure}
+\
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/funda_asm}
+    \caption{Collarín de levitación}
+\end{figure}
+
+
+
+\section{Controlador}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_controlador}
+    \caption{Controlador}
+\end{figure}
+\subsection{Modelo dinámico de rotor}
+\subsection{Linearización}
+\subsection{Controlador retroalimentado}
+\subsection{Controlador integral}
+\subsection{Observador simple}
+\subsection{Observador kalman}
+
 \section{Integracion}
 Para la correcta simulacion y control de se requiere de las ecuaciones que describan la dinamica del rotor.
-
 \begin{figure}[htb]
 \begin{center}
 \centering
