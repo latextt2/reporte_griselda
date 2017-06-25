@@ -289,59 +289,6 @@ $\phi$ & Flujo magnético & $I$ & Corriente eléctrica \\
 
 \newpage
 
-\section{Caracterización de Materiales}
-%\label{sec:related:sec3}
-
-Para el diseño de electroimánes se requiere conocer las características magnéticas del material, como la permeabilidad relativa y el punto de saturación, sin embargo lo materiales ferromagnéticos comercializados localmente carecen de hojas de especificaciones de donde obtener esta información, por lo que es necesario disponer de un método para caracterizar sus propiedades más relevantes.
-
-\subsection{Análisis}
-
-A partir de la ley de Faraday que relaciona la variación temporal del flujo eléctrico y la fuerza electromotriz inducida:
-
-\begin{equation}
-	\varepsilon =\frac{d \lambda}{dt} = \frac{N d \phi}{dt}
-\end{equation}
-
-La ley de ampere:
-
-\begin{equation}
-	\oint {\overrightarrow{H} d \overrightarrow{l}} = HL = NI \Rightarrow H = \frac{NI}{L}
-\end{equation}
-
-Y el concepto de permeabilidad diferencial [cita a la definición de permeabilidad diferencial:
-
-\begin{equation}
-	\mu_d = \frac{dH}{dt}
-\end{equation}
-
-Es posible obtener una relación entre variables eléctricas medibles (corriente y voltaje) y la permeabilidad relativa de un núcleo cerrado de longitud promedio L, sección transversal A y N espiras en su embobinado:
-
-\begin{equation}
-	\frac{d \phi}{dt} = \frac{d \phi dB}{dB dt} = A \frac{dB}{dt}
-\end{equation}
-
-\begin{equation}
-	\frac{dB}{dt} = \frac{dB dH}{dH dt} = \mu_d \frac{dH}{dt}
-\end{equation}
-
-\begin{equation}
-	\frac{dH}{dt} = \frac{dH dI}{dH dt} = \frac{N dI}{L dt}
-\end{equation}
-
-\begin{equation}
-	\varepsilon = \mu_d (\frac{N^2 A}{l} \frac{dI}{dt})
-\end{equation}
-
-\begin{equation}
-	\mu_d= \frac{\frac{\varepsilon}{dI}}{dt} (\frac{L}{N^2 A})
-\end{equation}
-
-Mediante las mediciones de corriente y voltaje en la bobina se calcula la permeabilidad diferencial para cada punto de I y para cada punto de $H$, después de integrar la función obtenida $\mu_d (H)$  se puede obtener un aproximado de $B$:
-
-\begin{equation}
-	B = \int dB = \int \mu_d dH
-\end{equation}
-
 \section{Electroimánes}
 \subsection{Análisis del Electroimán}	
 
