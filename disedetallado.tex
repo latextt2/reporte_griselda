@@ -31,6 +31,34 @@ Estudiemos entonces los casos críticos (1) F esta alineado con F y (2) donde F e
     \caption{Geometrias de electroiman}\label{fig:geometria-electroimanes}
 \end{figure}
 
+\begin{equation}
+    F{rx} = F cos \theta
+\end{equation}
+\begin{equation}
+    F{ry} = F sin \theta
+\end{equation}
+\begin{equation}
+    F_{2x} = F2 cos \alpha
+\end{equation}
+\begin{equation}
+    F{2y} = F2 sin \alpha
+\end{equation}
+\begin{equation}
+    F{rx} = F_r  cos \theta = F_1 + F2 cos \alpha
+\end{equation}
+\begin{equation}
+    F{r}  \theta = F_2 sin \alpha
+\end{equation}
+\begin{equation}
+    F_2 = F_r (\frac{sin \theta}{sin \alpha} )
+\end{equation}
+\begin{equation}
+    F_r cos \theta = F_1 + F_2 (\frac{sin \theta}{tan \alpha})
+\end{equation}
+\begin{equation}
+    F_1 = F_r (\frac{cos \theta - sin \theta}{tan \alpha})
+\end{equation}
+
 Para el caso 1 toda la fuerza es ejercida por F1, y como lo indica la ecuación ??, tendremos un consumo de magnitud ??, en cambio en el caso 2 la fuerza tiene que ser proporcionada por F1 y F2 en partes iguales, y con una magnitud de F??, lo cual corresponde a una perdida de 2*.
 
 Para que el rodamiento axial pueda ejercer fuerzas en cualquier dirección del plano YZ es necesario un mínimo de 3 polos. Sin embargo incrementar el numero de polos reduce el consumo las regiones intermedias, esto se debe a que no estamos utilizando corriente para generar componentes de fuerza que terminaran por cancelarse mutuamente.
@@ -140,9 +168,58 @@ $$A = 288[mm^2]$$
 $$I = 2[A]$$
 $$N = 278[vueltas]$$
 $$A_b = 254[mm^2]$$
+\subsection{Calculo de conductores}
+La sección de los conductores que se usaran depende directamente de la intensidad de corriente eléctrica  que circula por ella. Los alambres usados pueden ser: aluminio o cobre recocido. Se usa más el cobre que el aluminio por ser este mucho más dúctil, maleable y flexible. Dadas estas propiedades del cobre, el área del embobinado del electroimán depende directamente del número de vueltas requeridas y  el área de sección transversal del conductor magnético.\\  
+
+También se debe considera un factor de empaquetamiento de la bobina, este factor toma en consideración la forma en que se distribuye el alambre  en el embobinado.\\
+
+INSERTE CODIGO DE IMAGENES
+
+Como se puede observar la configuración hexagonal aprovecha al máximo el área del embobinado, dejando menos cavidades entre los conductores, además la construcción en  esta configuración es más sencilla de realizar. La sección transversal del conductor  depende de la intensidad de corriente máxima que soporte. Teniendo en cuenta que se hará pasar al menos 2 ampere, la elección del calibre se hace a través de las tablas cables AWG [1], obteniendo como resultado:\\
+\begin{tabular}{|c|l|c|c|c|c|}
+\hline 
+AWG & Di\'ametro & Area\;($mm^2$) & Resistencia (ohms/km) & Maximo Ampere & Maxima Frecuencia \\ 
+\hline 
+18 & 1.023 & 0.823 & 20.94 & 2.3 & 17 $Khz$ \\ 
+\hline 
+\end{tabular} 
+
+\subsection{Calculo de conductor del electroim\'an radial}
+
+Con los datos del calibre 18 de la tabla AWG se procede a calcular al \'area m\'inima del embobinado; tomando en cuenta que las vueltas m\'inimas para el embobinado son de 314 vueltas:
+\begin{equation}
+	Ab = \frac{Ac \; \cdot \; V}{K}
+\end{equation}
+\begin{itemize}
+	\item $Ab$ = \'Area m\'inima de la bobina
+	\item $Ac$ = \'Area de secci\'on transversal del conductor
+	\item $V$ = Vueltas m\'inimas  requeridas de la bobina
+	\item $K$ = Factor de empaquetamiento  de la bobina  dada por 0.90 b[2]
+\end{itemize}
+Por lo que  el \'area m\'inima necesaria del embobinado es de: $287.13 \; mm^2 \; \approx \; 288 \; mm^2$
+
+\subsection{Calculo de conductor del electroim\'an Axial}
+Para el c\'alculo del conductor del electroim\'an axial se repite el procedimiento con se hizo en el radial, las vueltas m\'inimas para el embobinado son de 162 vueltas: 
+\begin{equation}
+	Ab = \frac{Ac \; \cdot \; V}{K}
+\end{equation}
+\begin{itemize}
+	\item $Ab$ = \'Area m\'inima de la bobina
+	\item $Ac$ = \'Area de secci\'on transversal del conductor
+	\item $V$ = Vueltas m\'inimas  requeridas de la bobina
+	\item $K$ = Factor de empaquetamiento  de la bobina  dada por 0.90 b[2]
+\end{itemize}
+ 
+Por lo que  el \'area m\'inima necesaria del embobinado es de: $148.14 \; mm^2 \; \approx \; 148 \; mm^2$
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/EIR_assembly}
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/simulacion_radial}
+    \caption{Rodamiento magnético radial}
+\end{figure}
+\subsection{Modelado y simulación}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/simulacion_vs_modelo_radial}
     \caption{Rodamiento magnético radial}
 \end{figure}
 \subsection{Accionamiento}
