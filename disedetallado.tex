@@ -618,10 +618,109 @@ Para su implemtacion, usamos un script capaz de generar una configuracion del si
     \caption{Collarín de levitación}
 \end{figure}
 \
-\begin{figure}[h]
+Como se mencionó anteriormente, con el propósito de lograr la levitación del eje sin importar el material del que esté fabricado, se propuso el uso de un collarín que sostenga el eje dentro del rodamiento y que cuente con una sección de material ferromagnético, de manera que sea esta la que interactúe con los electroimanes de los rodamientos activos y con el imán permanente. 
+
+Este collarín se compone principalmente de cuatro partes: el cuerpo principal, el anillo ferromagnético para el EIR, el disco posterior y el disco ferromagnético para el EIA. 
+
+El cuerpo principal se usa como medio de acople entre el collarín y el eje, además de servir para sostener el resto de las partes. Sin embargo, el cuerpo del collarín cuenta con algunas restricciones en cuanto al material del que esté fabricado:
+
+\begin{itemize}
+\item El material no puede ser metálico para evitar las corrientes parásitas (Corrientes de Foucault).
+\item Debe ser lo suficientemente rígido para evitar deformarse por las fuerzas que actúen sobre él. 
+\item Debe ser lo suficientemente liviano para no superar el peso máximo que debe tener para lograr la levitación, no excediendo la fuerza máxima que puede generar los electroimanes y el imán permanente.
+\item Preferir materiales asequibles.   
+\end{itemize}
+
+Una de las mejores alternativas que tenemos y que pueden cumplir con estas características son los polímeros. Los plásticos en ingeniería han tenido una gran aceptación debido a sus características específicas. Poseen buenas propiedades mecánicas como una gran resistencia al impacto y a la fatiga, bajo coeficiente de fricción, resistencia al desgaste y al ataque por sustancias químicas, su bajo costo en comparación con la mayoría de los metales además de ser más livianos y más fáciles de maquinar. 
+
+Uno de los plásticos de ingeniería más utilizados es el Nylamid, de la familia de las Poliamidas (PA). Debido a sus propiedades mecánicas y eléctricas, a su amplia variedad de presentaciones y medidas y a su relativamente bajo costo se ha utilizado mucho para la fabricación de piezas en el ramo industrial sustituyendo materiales como el acero, bronce, aluminio, madera y cerámica. 
+
+Sin embargo, para tener una mayor certeza en cuanto al material seleccionado se dispuso a utilizar el método gráfico para la selección de materiales apoyándonos en el software CES EduPack. Este método utiliza mapas de materiales, también denominados diagramas de Ashby. En estos diagramas se puede hacer una aproximación del material más adecuado con base en las propiedades más importantes que debe poseer el componente. Agrupan los materiales en diferentes familias, formando grupos cerrados y relacionando en pares ciertas propiedades de los materiales. 
+
+Para nuestro caso compararemos dos propiedades relacionadas a las restricciones que se establecieron para el material:
+
+\begin{itemize}
+\item Módulo de Young.
+\item Densidad. 
+\end{itemize}
+
+Como sabemos, el Módulo de Elasticidad, también llamado Módulo de Young, es un parámetro característico de un material que indica la relación que existe entre la fatiga unitaria y la correspondiente deformación unitaria en un material sometido a un esfuerzo y que está por debajo del límite de elasticidad del material. El módulo de Young indica la rigidez del material, es decir, la oposición de éste a ser deformado. Cuanto más rígido sea el material, mayor es su módulo de elasticidad. 
+
+Para el análisis del material con el software CES EduPack compararemos únicamente polímeros relacionando el Módulo de Young y la Densidad, obteniendo un total de 738 materiales disponibles:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{images/Capitulo_3/Material1}
+    \caption{Diagrama total de materiales (Modulo de Young vs. Densidad)}
+\end{figure}
+
+Para poder reducir el número de materiales desplegados y facilitar la selección podemos definir algunos limites dentro de los parámetros que se establecieron. En este caso nos basaremos en los valores de densidad y módulo de Young de las poliamidas que, como ya vimos, son uno de los plásticos de ingeniería más utilizados, principalmente para la fabricación de componentes mecánicos como rodamientos y engranes. 
+
+Esto nos ayuda a establecer un parámetro de selección a falta de contar con datos más específicos en cuanto a las condiciones de operación más allá de las restricciones que se establecieron anteriormente. Estos datos pueden ser obtenidos dentro de la biblioteca de materiales que contiene el software. Sin embargo, debido a la gran cantidad de compuestos y variantes que presenta este material no puede establecerse un valor exacto, por lo que se proponen unos valores promedio de:
+
+\begin{itemize}
+\item 2 GPa para el Módulo de Young.
+\item 1.4 $g/cm^3$ para la densidad. 
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{images/Capitulo_3/Material2}
+    \caption{Límite máximo para el modulo de Young.}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{images/Capitulo_3/Material3}
+    \caption{Límite máximo para la densidad.}
+\end{figure}
+
+Como podemos notar, las restricciones en cuanto a la familia de materiales y los valores de densidad y módulo de Young redujeron de manera significativa la cantidad de materiales de selección, tratándose en su mayoría de ABS, PET y Polipropilenos. 
+El siguiente parámetro que se consideró fue el costo promedio del material, que como se estableció en las especificaciones se prefiere optar por materiales más asequibles. Analizando el precio estimado de las poliamidas dentro de la biblioteca de materiales del software, se estableció un costo promedio de \$50.00 MXN/Kg, considerando este como el límite máximo. 
+Con este último parámetro se obtuvo el siguiente diagrama, con un total de 97 materiales de selección posibles de los 738 que se tenían originalmente: 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{images/Capitulo_3/Material4}
+    \caption{Límite máximo para el costo del material.}
+\end{figure}
+
+Al consultar individualmente las propiedades de los materiales restantes dentro de la biblioteca se consiguió encontrar un material que puede utilizarse para la fabricación del collarín de levitación debido a sus propiedades y a las aplicaciones para las que normalmente se utiliza. Este material es el Polioximetileno (POM), también conocido como Acetal:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{images/Capitulo_3/Material5}
+    \caption{Identificación del material Acetal (POM).}
+\end{figure}
+
+\newpage
+
+El Acetal se caracteriza por su bajo coeficiente de fricción, su resistencia al desgaste y buena resistencia a la abrasión, así como facilidad de maquinado. Tiene alta resistencia a impactos repetidos y a la humedad, provee alta resistencia y rigidez en combinación con su excelente estabilidad dimensional y elevado módulo de elasticidad.
+Se utiliza principalmente para la fabricación de engranes, cojinetes, dispositivos de sujeción, ruedas, rodillos, soportes estructurales, etc.
+
+De manera ilustrativa, en la siguiente tabla se muestran algunas características del Acetal en comparación con el Nylamid:
+
+\begin{table}[h!]
+\centering
+\caption{Propiedades Acetal vs. Nylimid}
+\label{my-label}
+\begin{tabular}{|l|c|c|ll}
+\cline{1-3}
+\textbf{Propiedad} & \multicolumn{1}{l|}{\textbf{Acetal (POM)}} & \multicolumn{1}{l|}{\textbf{Nylamid (PA Nylon Tipo 6)}} &  &  \\ \cline{1-3}
+Densidad           & 1.39 - 1.41 $e^-3 Kg/m^3$                  & 1.14 - 1.16 $e^-3 Kg/m^3$                               &  &  \\ \cline{1-3}
+Modulo de Young    & 2.6 - 3.2 GPa                              & 1.58 - 1.97 GPa                                         &  &  \\ \cline{1-3}
+Costo              & 32.3 - 35.4 MXN/Kg                         & 59.8 - 65.7 MXN/Kg                                      &  &  \\ \cline{1-3}
+\end{tabular}
+\end{table}
+
+Debido a sus características y aplicaciones se consideró el Acetal (POM) como el material del que se constituiría el collarín de levitación ya que cumple con las propiedades necesarias para cubrir las especificaciones que se plantearon inicialmente. 
+
+La segunda pieza que se debe considerar es el disco posterior. Este disco debe su forma a que se utiliza como superficie para medir la posición del rotor en la dirección axial con ayuda del sensor acoplado al EIA. A modo de simplificación se optó porque dicho disco se componga del mismo material que el cuerpo principal del collarín [Acetal (POM)]. Este a su vez contiene en su centro un disco de material ferromagnético para actuar con el EIA.  
+
+\begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/funda_asm}
-    \caption{Collarín de levitación}
+    \caption{Collarín de levitación.}
 \end{figure}
 
 
