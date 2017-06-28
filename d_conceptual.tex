@@ -9,26 +9,26 @@ Uno de estos dispositivos son los cojinetes, los cuales son sumamente importante
 Normalmente para este tipo de máquinas se utilizan cojinetes de rodadura, conocidos simplemente como rodamientos, ya que están diseñados para permitir velocidades mayores y admitir cargas tanto axiales como radiales, además de que usualmente el calentamiento y el desgaste es menor. Sin embargo, estos dispositivos también tienen límites, y lo que sucede normalmente cuando se utilizan en máquinas de alta velocidad es que requieren ser reemplazados con cierta regularidad, disminuyendo su practicidad y elevando los costos de mantenimiento.\par
 Partiendo de este problema, una alternativa que se puede utilizar son un nuevo tipo de rodamiento conocido como rodamiento magnético. Este genera un campo magnético que ayuda al eje o árbol de transmisión a permanecer en un estado de levitación, suprimiendo el contacto directo que tendría con un cojinete o rodamiento convencional y facilitando el giro del eje. Esto implica una disminución de la temperatura de operación, las vibraciones y el ruido, así como la posibilidad de reducir la potencia de los motores y los costos de mantenimiento relacionados al remplazo de piezas por desgaste y a la utilización de lubricantes.\par
 Sin embargo, ya que se trata de una tecnología que no ha sido ampliamente difundida debido a su complejidad y con una aplicación limitada dado el nivel de desarrollo actual, la disponibilidad en el mercado de los rodamientos magnéticos es muy reducida, y orientada a aplicaciones muy específicas. Es por ello que se planteó la necesidad de desarrollar desde cero un rodamiento magnético que cumpliera con ciertos requerimientos de operación, y que además pudiera servir como base para el desarrollo posterior de máquinas de alta velocidad.\par
-No obstante, la mayoría de los rodamientos magnéticos desarrollados han sido de tipo activo, por lo que utilizan electroimánes para generar el campo magnético. El problema con esto es que requieren un suministro constante de energía eléctrica, lo que implica un incremento en el consumo de energía de la máquina en comparación con utilizar cojinetes convencionales. Es por ello que es necesario buscar una alternativa que pueda dar solución a este problema.\par
-El rodamiento magnético híbrido utiliza un imán permanente para generar un campo magnético base de levitación que mantendrá al eje en su posición una vez que los electroimánes lo hayan estabilizado, por lo que no requieren estar operando de forma permanente. Esto se traduce en un mejor aprovechamiento de la energía, y una mejora considerable en cuanto al diseño de estos dispositivos.
+No obstante, la mayoría de los rodamientos magnéticos desarrollados han sido de tipo activo, por lo que utilizan electroimanes para generar el campo magnético. El problema con esto es que requieren un suministro constante de energía eléctrica, lo que implica un incremento en el consumo de energía de la máquina en comparación con utilizar cojinetes convencionales. Es por ello que es necesario buscar una alternativa que pueda dar solución a este problema.\par
+El rodamiento magnético híbrido utiliza un imán permanente para generar un campo magnético base de levitación que mantendrá al eje en su posición una vez que los electroimanes lo hayan estabilizado, por lo que no requieren estar operando de forma permanente. Esto se traduce en un mejor aprovechamiento de la energía, y una mejora considerable en cuanto al diseño de estos dispositivos.
  
 \newpage 
  
-\section{Especificaciones de Diseño del Producto (PDS)}
+\section{Especificaciones de diseño del producto (PDS)}
   
 A continuación, se enlistan las especificaciones de diseño de los Rodamientos Magnéticos Híbridos:
 
 \begin{itemize}
-\addtolength{\itemsep}{-1mm}
+%\addtolength{\itemsep}{-1mm}
 \item Desarrollarse bajo una estructura lo más compacta posible sin sacrificar la funcionalidad.
 \item Considerar el uso de materiales y componentes asequibles y con disponibilidad en el mercado. 
-\item Considerar una carga estática de 1kg para la levitación. 
+\item Considerar una carga estática máxima de 5 kg para la levitación. 
 \item Considerar un diseño por módulos funcionales. 
-\item Simplificación de las operaciones de ensamble. 
+\item Considerar la simplificación de las operaciones de ensamble. 
 \item La levitación del rotor debe ser posible independientemente del material de fabricación de este. 
 \end{itemize}
 
-\section{Análisis Funcional}
+\section{Análisis funcional}
 
 Una de las primeras consideraciones realizadas para el desarrollo del rodamiento magnético híbrido fue consolidar el diseño con base en módulos más sencillos que posteriormente pudieran integrarse para formar el sistema. Esta metodología es conocida como diseño modular.
  
@@ -44,12 +44,12 @@ Entre otras de sus ventajas podemos destacar:
 \item Reduce los tiempos y costes de mantenimiento.
 \end{itemize}
 
-Con base en estos principios, se realizó la descomposición del rodamiento magnético híbrido en los siguientes módulos:
+Con base en estos principios, se realizó la descomposición del rodamiento magnético híbrido en los siguientes módulos principales:
 
 \begin{itemize}
 %\begin{enumerate}[(a)]
-\item Rodamiento magnético activo radial: genera el campo magnético para las cargas radiales por medio de electroimánes. 
-\item Rodamiento magnético activo axial: genera el campo magnético para las cargas axiales por medio de electroimánes.
+\item Rodamiento magnético activo radial: genera el campo magnético para las cargas radiales por medio de electroimanes. 
+\item Rodamiento magnético activo axial: genera el campo magnético para las cargas axiales por medio de electroimanes.
 \item Arreglo de sensores de desplazamiento: miden la posición del rotor para realizar las correcciones necesarias para estabilizarlo. 
 \item Módulo de compensación de cargas estáticas: provee un campo magnético base de levitación por medio de un imán permanente. 
 \end{itemize}
@@ -58,11 +58,11 @@ Cada uno de estos módulos cumple con una función específica, por lo que cuentan 
 
 Una vez que se ha determinado la división por módulos del sistema, se identifican las funciones o prestaciones que debe cumplir para cubrir la necesidad, y convertirlas en especificaciones de diseño.
 
-A continuación se muestra el diagrama por áreas funcionales del rodamiento magnético híbrido, donde se aprecia cómo interactúan los módulos con el resto de los subsistemas:
+A continuación se muestra el diagrama por áreas funcionales del rodamiento magnético híbrido, donde se aprecia cómo interactúan los subsistemas entre si:
 
 \begin{figure}[htb]
 \centering
-	\includegraphics[width=\textwidth]{images/Capitulo_2/DiagramaFuncional}
+	\includegraphics[width=\textwidth]{images/Capitulo_2/diagrama_funcional_completo}
 	\caption{\textit{Diagrama Funcional.}}
 \end{figure}
 
@@ -74,7 +74,7 @@ La tercera sección incluye el convertidor de energía que alimenta todos los sist
 
 \newpage
 
-\section{Análisis Morfológico}
+\section{Análisis morfológico}
 
 La arquitectura del proyecto fue planteada con base en la investigación teórica sobre las características generales de los rodamientos magnéticos y en la división por módulos funcionales que se hizo anteriormente, de manera que pudieran diseñarse de manera individual. 
 
@@ -144,16 +144,6 @@ Con el propósito de lograr la levitación del rotor sin importar el material del 
 \centering
 	\includegraphics[scale=.80]{images/Capitulo_2/CL}
 	\caption{\textit{Diseño conceptual del collarín de levitación.}}
-\end{figure}
-
-%\subsection{Módulo de Seguridad}
-
-Uno de los elementos más importantes con los que cuentan algunos de los rodamientos magnéticos, sobretodo aquellos que trabajan con cargas muy grandes, es un mecanismo auxiliar que tenga como finalidad soportar el eje en caso de un corte en la energía o una falla en el controlador que pueda generar daños a la máquina. El rotor no debe de hacer contacto con el mecanismo auxiliar durante el funcionamiento normal de la máquina.
-
-\begin{figure}[h!]
-\centering
-	\includegraphics[scale=.80]{images/Capitulo_2/MSG}
-	\caption{\textit{Diseño conceptual del dispositivo auxiliar para el módulo de seguridad.}}
 \end{figure}
 
 %\subsection{Rodamiento Magnético Híbrido: Integración de los Módulos}

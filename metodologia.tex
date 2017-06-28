@@ -1,33 +1,33 @@
-\chapter{Metodología / Preliminares}
+\chapter{Marco teórico}
 
-Aunque algunas empresas han logrado fabricar e incluso comercializar rodamientos magnéticos, estos continúan bajo diversas investigaciones buscando mejorar los materiales y los componentes con los que se fabrican para mejorar su funcionamiento y optimizar el diseño. Sin embargo la mayoría de las veces los desarrolladores los diseñan para una aplicación o máquina en especifico, por lo que no siguen una norma de diseño establecida. 
+Aunque algunas empresas han logrado fabricar e incluso comercializar rodamientos magnéticos, estos continúan bajo diversas investigaciones buscando mejorar los materiales y los componentes con los que se fabrican para mejorar su funcionamiento y optimizar el diseño. Sin embargo la mayoría de las veces los desarrolladores los diseñan para una aplicación o máquina en específico, por lo que no siguen una norma de diseño establecida. 
 
-Es por esto que para desarrollar este proyecto fue necesario aplicar una metodología con base en las investigaciones y el desarrollo que han tendido tanto a nivel industrial como académico. Se consultaron diversos artículos y sitios web de fabricantes y desarrolladores que han logrado comercializar estos productos para la industria, y se realizó una investigación documental en trabajos de varios grados e instituciones que sirvieran como referencia para desarrollar este proyecto. Con base en la información adquirida, fueron considerados los siguientes procedimientos: 
+Es por esto que para desarrollar este proyecto fue necesario aplicar una serie de procesos con base en las investigaciones y el desarrollo que han tendido tanto a nivel industrial como académico. Se consultaron diversos artículos y sitios web de fabricantes y desarrolladores que han logrado comercializar estos productos para la industria, y se realizó una investigación documental en trabajos de varios grados e instituciones que sirvieran como referencia para desarrollar este proyecto. Con base en la información adquirida, fueron considerados los siguientes procedimientos: 
 
 \begin{enumerate}
 \item Definir a detalle el principio de funcionamiento de los diferentes tipos de rodamientos magnéticos realizando una investigación documental sobre los trabajos e investigaciones que se han hecho al respecto, y con esto establecer los requerimientos de diseño.
-\item Recopilar información sobre los requerimientos de diseño de los electroimánes y la caracterización de algunos de los materiales ferromagnéticos comercializados.
+\item Recopilar información sobre los requerimientos de diseño de los electroimanes y la caracterización de algunos de los materiales ferromagnéticos comercializados.
 \item Realizar una investigación de los tipos de sensores adecuados para las condiciones de operación requeridas. 
-\item Plantear un dispositivo de seguridad que sea capaz de sujetar el eje en caso de producirse alguna falla como un corte en el suministro de energía.  
-\item Realizar la división por áreas funcionales del proyecto en módulos; definir los diseños conceptuales de cada uno de ellos pensados para su análisis individual, considerando una posible fabricación futura y la integración de todos los módulos en una sola estructura. 
-\item Realizar los cálculos de la geometría y dimensiones del electroimán, los cuales sirven como parámetro para determinar el tamaño del resto de los componentes y elementos.  
+\item Realizar la división por áreas funcionales del proyecto basadas en diseños modulares; definir los diseños conceptuales de cada uno de ellos pensados para su análisis individual, considerando una posible fabricación futura y la integración de todos los módulos en una sola estructura. 
+\item Realizar los cálculos de la geometría y dimensiones del electroimán, los cuales sirven como parámetro para delimitar el tamaño del resto de los componentes y elementos.  
 \item Realizar el diseño a detalle de los módulos que componen los rodamientos magnéticos activos (radial y axial), módulo de sensores y el módulo de compensación de cargas estáticas.
-\item Diseñar la circuitería para la aplicación y control de corrientes en los electroimánes.
+\item Diseñar la circuitería para la aplicación y control de corrientes en los electroimanes.
 \end{enumerate} 
 
 Sin embargo, para poder desarrollar los procedimientos más avanzados es necesario analizar los conceptos fundamentales y principios básicos en cuanto a la teoría propia del proyecto y los procedimientos utilizados, los cuales se analizaran en este capitulo. 
 
 \newpage
 
-\section{Conceptos Fundamentales}
-\subsection{Origen del Campo Magnético}
+\section{Conceptos fundamentales}
+\subsection{Origen del campo magnético}
 
 Un campo magnético se produce cuando existen cargas eléctricas en movimiento. Este campo magnético ejerce una fuerza sobre conductores con corriente y materiales magnetizados.
+
 \begin{equation}
 	 d \overrightarrow{H}=  \frac{Id \overrightarrow{l}\times\hat{r} }{4\pi r^{2}}
 \end{equation}
 
-La ley de Biot-Savart nos permite calcular la intensidad del campo magnético H generado por un segmento diferencial del corriente eléctrico. Nótese que su magnitud decrece con el cuadrado de la distancia.
+La ley de Biot-Savart nos permite calcular la intensidad del campo magnético H generado por un segmento diferencial de la corriente eléctrica. Nótese que su magnitud decrece con el cuadrado de la distancia.
 
 El campo circula alrededor de un conductor simple en la dirección dada por la regla de la mano derecha:
 
@@ -40,21 +40,21 @@ El campo circula alrededor de un conductor simple en la dirección dada por la re
 \end{figure}
 %\vspace*{3cm}
 
-En el mismo año y de manera independiente, Ampere dedujo que las cargas en movimiento eran las causas del campo magnético, después de enterarse de los experimentos de Oersted. De acuerdo con la ley de Ampere, el campo magnético generado por un circuito eléctrico depende de la forma del circuito (trayectoria de conducción) y de la corriente. Asumiendo que cada circuito esta hecho de un número finito de elementos de corriente, cada uno contribuyendo al campo, e integrando estas contribuciones en un punto para determinar el campo, Ampere concluyó que: 
+En el mismo año y de manera independiente, Ampere dedujo que las cargas en movimiento eran las causas del campo magnético. De acuerdo con la ley de Ampere, el campo magnético generado por un circuito eléctrico depende de la forma del circuito (trayectoria de conducción) y de la corriente. Asumiendo que cada circuito esta hecho de un número finito de elementos de corriente, cada uno contribuyendo al campo, e integrando estas contribuciones en un punto para determinar el campo, Ampere concluyó que: 
 
 \begin{equation}
 	 \oint {\overrightarrow{H} \cdot d \overrightarrow{l}} =  I_{enc}
 \end{equation}
 
-\subsection{Inducción Magnética}
-Cuando un campo magnético  H es generado por una corriente, de acuerdo a la ley de Ampere, la respuesta del medio es la inducción magnética B, también llamada densidad de flujo. Todos los medios responden con alguna inducción. En el vacío la relación entre el campo magnetizante y la inducción es \\ 	
+\subsection{Inducción magnética}
+Cuando un campo magnético  H es generado por una corriente, de acuerdo a la ley de Ampere, la respuesta del medio es la inducción magnética B, también llamada densidad de flujo. Todos los medios responden con alguna inducción. En el vacío la relación entre el campo magnetizante y la inducción es: \\ 	
 \begin{equation}
 	\overrightarrow{B} = \mu_0 \overrightarrow{H}
 \end{equation}
 						
 Donde  $\mu_0$ es la permeabilidad magnética del vacío, un constante universal cuyo valor es de $4\pi\times10^{-7}$
 
-\subsection{Flujo Magnético}
+\subsection{Flujo magnético}
 
 Siempre que un campo magnético está presente, existirá un flujo magnético $ \phi$. Este flujo y su razón de cambio pueden ser medidos ya que genera una fuerza electromotriz (f.e.m.) en un circuito conductor a través del cual pasa este flujo. Pequeñas partículas como el hierro se alinean con la dirección del flujo. La cantidad de flujo producido depende de las propiedades del medio y varía de un medio a otro.
 
@@ -72,14 +72,14 @@ El Weber es la unidad para medir la cantidad de flujo que, al ser reducido unifo
 \end{center}
 \end{figure}
 
-\section{Materiales Magnéticos}
+\section{Materiales magnéticos}
 \subsection{Magnetización}
 
 En muchos medios, $B$ es una función lineal de $H$, en particular se puede decir que $B=\mu_0 H$. Si el valor de $B$ en el vacío es conocido entonces H puede ser inmediatamente calculado.
 
 Sin embargo en otros medios, particularmente materiales ferromagnéticos, $B$ no es una fusión lineal d $H$, ni posee un mismo valor de $H$ para uno de $B$.
 
-Ahora consideramos los efectos que un material tiene sobre la inducción magnética $B$ cuando un campo magnetizante pasa a través de él. Esto está representado por la magnetización, este puede ser incrementado en los materiales ferromagnéticos, o ser reducido como en caso de los diamagnéticos. La permeabilidad relativa del material indica cómo cambia la inducción en el material comparada con la inducción en el vacío.
+Ahora consideramos los efectos que un material tiene sobre la inducción magnética $B$ cuando un campo magnetizante pasa a través de él. Esto está representado por la magnetización, esta puede ser incrementada en los materiales ferromagnéticos, o reducida como en caso de los diamagnéticos. La permeabilidad relativa del material indica cómo cambia la inducción en el material comparada con la inducción en el vacío.
 
 \begin{figure}[htb]
 \begin{center}
@@ -113,10 +113,11 @@ En este caso ninguna corriente externa está presente para un campo magnetizante 
 \end{center}
 \end{figure}
 
-\subsection{Permeabilidad y Susceptibilidad Magnética}
+\subsection{Permeabilidad y susceptibilidad magnética}
 
 Los diferentes tipos de materiales magnéticos son clasificados de acuerdo a su susceptibilidad y permeabilidad. Entonces debemos de definir estos propiedades antes de describir diferencias entre materiales ferromagnéticos, paramagnéticos y diamagnéticos.
 Para materiales isótropos y homogéneos la permeabilidad está definida como:
+
 \begin{equation}
 	\mu = \frac{B}{H}
 \end{equation}
@@ -136,6 +137,7 @@ Es común usar el término permeabilidad relativa $\ mu_r$ definido como:
 \end{equation}
 
 La permeabilidad relativa está relacionada con la susceptibilidad y la siguiente relación siempre es válida:
+
 \begin{equation}
 	\mu_r= X+1
 \end{equation}
@@ -146,9 +148,9 @@ Y su relación con la inducción magnética de la forma:
 	B=\mu_0 (H + M)
 \end{equation}
 
-Los diferentes materiales magnéticos son clasificados de acuerdo a su susceptibilidad. El primer grupo son los materiales  en los que $X$ es pequeña y negativa. Estos materiales son llamados diamagnéticos, su respuesta magnética se opone al campo magnético aplicado. Ejemplos de estos materiales son el cobre, plata, oro. Los superconductores forma otros grupo de diamagnéticos para los cuales $X=-1$.
+Los diferentes materiales magnéticos son clasificados de acuerdo a su susceptibilidad. El primer grupo son los materiales  en los que $X$ es pequeña y negativa. Estos materiales son llamados diamagnéticos, donde su respuesta magnética se opone al campo magnético aplicado. Ejemplos de estos materiales son el cobre, plata y oro. Los superconductores forma otros grupo de diamagnéticos para los cuales $X=-1$.
 
-Un segundo grupo de materiales en los que $X$ es pequeña y positiva son los materiales paramagnéticos. La magnetización de los materiales paramagnéticos es débil y alineada con la dirección del campo magnetizante, ejemplos de materiales paramagnéticos son el aluminio, platino y manganeso.
+Un segundo grupo de materiales en los que $X$ es pequeña y positiva son los materiales paramagnéticos. La magnetización de los materiales paramagnéticos es débil y alineada con la dirección del campo magnetizante. Ejemplos de materiales paramagnéticos son el aluminio, platino y manganeso.
 
 A temperatura constante y valores de campo $H$ relativamente bajas la susceptibilidad de los materiales diamagnéticos y paramagnéticos son contantes.
 
@@ -160,13 +162,13 @@ A temperatura constante y valores de campo $H$ relativamente bajas la susceptibi
 \end{center}
 \end{figure}
 
-Los materiales magnéticos más prominentes son los ferromagnéticos, cuya susceptibilidad es positiva y mucho mayor a 1, con valores típicos de $X$ entre los 50 a 10000. Ejemplos de estos materiales son el hierro, cobalto níquel, metales raros y sus aleaciones.
+Los materiales magnéticos más prominentes son los ferromagnéticos, cuya susceptibilidad es positiva y mucho mayor a 1, con valores típicos de $X$ entre los 50 a 10000. Ejemplos de estos materiales son el hierro, cobalto, níquel, metales raros y sus aleaciones.
 
 \newpage
 
 \subsection{Saturación}
-¿Existe un límite para magnetización de un material?
-Si un material tiene n dipolos atómicos por unidad de volumen una vez que todos estos dipolos quedan alineados en paralelo se alcanza la magnetización de saturación $M_0$. Se puede realizar una distinción entre la saturación técnica $M_s$  y la saturación completa $M_0$. 
+
+Si un material tiene \textit{n} dipolos atómicos por unidad de volumen una vez que todos estos dipolos quedan alineados en paralelo se alcanza la magnetización de saturación $M_0$. Se puede realizar una distinción entre la saturación técnica $M_s$  y la saturación completa $M_0$. 
 
 \begin{figure}[htb]
 \begin{center}
@@ -210,7 +212,7 @@ La coercitividad intrínseca está definida como la intensidad de campo para la cu
 
 Cuando los materiales ferromagnéticos son calentados a temperaturas lo suficientemente altas se convierten en materiales paramagnéticos. La temperatura de transición entre ferromagnetismo y paramagnetismo es conocida como temperatura de Curie. A esta temperatura la permeabilidad de material baja súbitamente y ambas, coercitividad y remanencia, se vuelven cero.
 
-\subsection{Materiales Ferromagnéticos}
+\subsection{Materiales ferromagnéticos}
 
 Podemos clasificar los materiales ferromagnéticos con base en su coercitividad. La coercitividad es un propiedad magnética dependiente de la estructura,  esto significa que se puede alterar sometiendo al espécimen a diferentes tratamientos térmicos y mecánicos.
 
@@ -218,27 +220,27 @@ Fue descubierto que los materiales con base de hierro con alta dureza mecánica t
 
 La selección de un material ferromagnético será determinada por las características mostradas en sus lazos de histéresis. Materiales para transformadores necesitan una alta permeabilidad y baja histéresis debido a la necesidad de una alta eficiencia en la conversión de energía eléctrica. Los electroimánes requieren una baja coercitividad y remanencia para reducir fácilmente la magnetización a cero durante el apagado. Finalmente los imanes permanentes requieren de una alta remanencia y coercitividad para retener la mayor magnetización posible. 
 
-\subsection{Aplicaciones de los Materiales Ferromagnéticos}
+\subsection{Aplicaciones de los materiales ferromagnéticos}
 
-\subsubsection{Electroimánes}
+\subsubsection{Electroimanes}
 
-Los materiales ferromagnéticos suaves son usados en electroimánes, motores, transformadores, y relés. Materiales usados en el núcleo de los electroimánes deben de tener una alta permeabilidad, permitiendo alcanzar una lata inducción magnética. Al mismo tiempo debe poseer una baja coercitividad de manera que la inducción magnética pueda ser fácilmente revertida.
+Los materiales ferromagnéticos suaves son usados en electroimanes, motores, transformadores, y relés. Los materiales usados en el núcleo de los electroimanes deben de tener una alta permeabilidad, permitiendo alcanzar una lata inducción magnética. Al mismo tiempo debe poseer una baja coercitividad de manera que la inducción magnética pueda ser fácilmente revertida.
 
-\subsubsection{Imanes Permanentes}
+\subsubsection{Imanes permanentes}
 
 Los imanes permanentes son una de las clases más importantes de materiales magnéticos, junto con los aceros eléctricos y los imanes de grabación. Los imanes permanentes tienen aplicación en motores eléctricos y generadores, parlantes, televisiones, galvanómetros y dispositivos de suspensión magnética.
 
-Para estas aplicaciones el material se  determina a partir de su histéresis, la coercitividad y remanencia. Es importante resaltar que estas propiedades magnéticas dependen fuertemente de los tratamientos a los que fue sometido el material. En años recientes materiales para imanes permanentes basados en neodimio-hierro-boro han sido descubiertos,  donde su coercitividad puede ser tan alta como $1.12x106 A/$, comparada con $0.72\times 106$ para el samario-cobalto.
+Para estas aplicaciones el material se  determina a partir de su histéresis, la coercitividad y remanencia. Es importante resaltar que estas propiedades magnéticas dependen fuertemente de los tratamientos a los que fue sometido el material. En años recientes se han descubierto algunos materiales para imanes permanentes basados en neodimio-hierro-boro, donde su coercitividad puede ser tan alta como $1.12x106 A/$, comparada con $0.72\times 106$ para el samario-cobalto.
 
 Además de la coercitividad, otro parámetro de vital importancia es el producto energético $BH_{max}$. Este es obtenido mediante el producto máximo $BH$ en el segundo cuadrante  de la curva de histéresis.  Este representa la energía magnética almacenada en el material y es usualmente especificado por los fabricantes de imanes permanentes.
 
 \newpage
 
-\section{Análisis de Circuitos Magnéticos}
+\section{Análisis de circuitos magnéticos}
 %\label{sec:related:sec3}
 
-Situaciones en las que la trayectoria del flujo magnético esta interrumpida por un espacio libre (entrehierro) son de gran importancia para las aplicaciones ingenieriles de imanes permanentes, motores, generadores y demás maquinarias eléctricas. \\
-Los problemas encontrados aquí son más complicados que calcular el flujo en un solo material, sin embargo algunas simplificaciones a las ecuaciones de flujo magnético y campo magnetizante pueden usarse para encontrar soluciones a estos problemas.\\
+Existen algunas situaciones en las que la trayectoria del flujo magnético se encuentra interrumpida por un espacio libre denominado entrehierro. Este es de gran importancia para algunas aplicaciones ingenieriles con imanes permanentes, motores, generadores y otras maquinas eléctricas. \\
+Sin embargo el análisis en este tipo de circuitos magnéticos puede llegar a ser más complicados que calcular el flujo en un solo material, por lo que suelen usarse algunas simplificaciones a las ecuaciones de flujo magnético y campo magnetizante para realizar dicho análisis.\\ 
 Realizando simplificaciones a partir de las ecuaciones de maxwell, comenzando por la ley de Gauss magnética, donde se establece la conservación del flujo magnético alrededor de un nodo.
 
 \begin{equation}
@@ -273,7 +275,7 @@ Y finalmente la relación entre estas, también conocida como ley de Hopkins:
 
 \newpage
 
-A partir de estas ecuaciones es posible el sencillo cálculo del flujo a través de elementos con diferentes longitudes medias, materiales y secciones transversales, mediante las técnicas de análisis de circuitos eléctricos y las analogías:
+A partir de estas ecuaciones es posible el sencillo cálculo del flujo a través de elementos con diferentes longitudes medias, materiales y secciones transversales, mediante las técnicas de análisis de circuitos eléctricos y la relación entre los circuitos magnéticos y los circuitos eléctricos:
 
 \begin{tabular}{|c|c|c|c|}
 \hline 
@@ -289,8 +291,8 @@ $\phi$ & Flujo magnético & $I$ & Corriente eléctrica \\
 
 \newpage
 
-\section{Electroimánes}
-\subsection{Análisis del Electroimán}	
+\section{Electroimanes}
+\subsection{Análisis del electroimán}	
 
 Mediante el análisis de circuitos magnéticos se puede calcular la energía almacenada en el circuito formado por el electroimán.
 
@@ -306,13 +308,13 @@ Mediante el análisis de circuitos magnéticos se puede calcular la energía almace
 	W_m = \frac{1}{2} Li^2 = \frac{\mu_0 N^2 I^2 A}{2 (\frac{l_e}{\mu_{re}}+ \frac{l_a}{k \mu_{ra}}+ 2y)^2}
 \end{equation}
 
-Aplicando el principio de trabajo virtual podemos calcular la fuerza como le variación de la energía con respecto al despeamiento:
+Aplicando el principio de trabajo virtual podemos calcular la fuerza como la variación de la energía con respecto al despeamiento:
 
 \begin{equation}
 	F_m = \frac{dW_m}{dy} = - \frac{\mu_0 N^2 I^2 A}{(\frac{l_e}{\mu_{re}}+ \frac{l_a}{k \mu_{ra}}+ 2y)^2}
 \end{equation}
 
-Suponiendo que flujo es uniforme sobre la sección transversal núcleo es posible calcular la inducción magnética del material:
+Suponiendo que flujo es uniforme sobre la sección transversal del núcleo es posible calcular la inducción magnética del material:
 
 \begin{equation}
 	B = \frac{\phi}{A} = \frac{\mu_0 NI}{\frac{l_e}{\mu_{re}}+\frac{l_a}{k \mu_{ra}+2y}}
@@ -334,12 +336,11 @@ sea válida, los términos que dependen de las longitudes del conductor magnético 
 	B = \frac{\mu_0 N I}{2y}
 \end{equation}
 
-Gracias a la alta permeabilidad de la ferrita y las condiciones de operación $y_min$ y $y_max$ estas ecuaciones pueden ser usadas para el cálculo del electroimán.
+Gracias a la alta permeabilidad de la ferrita y las condiciones de operación $y_min$ y $y_max$ se pueden utilizar estas ecuaciones para el cálculo del electroimán. 
 
 \newpage
-\subsection{EL MARGINAL}
+\subsection{El marginal}
 \todo[inline]{formulas del marginal}
-
 
 \begin{equation}
 	R_g = \frac{l_g}{\mu_0A_g}
@@ -368,8 +369,9 @@ Gracias a la alta permeabilidad de la ferrita y las condiciones de operación $y_
 \begin{equation}
 	R_g = \sigma^2_r \frac{a}{\mu_0 r^2 \pi}
 \end{equation}
-\section{Imanes Permanentes}
-\subsection{Análisis del Imán Permanente}
+
+\section{Imanes permanentes}
+\subsection{Análisis del imán permanente}
 
 Proponiendo un imán permanente y guía de flujo magnético con la siguiente geometría:
 
@@ -389,7 +391,7 @@ Proponiendo un imán permanente y guía de flujo magnético con la siguiente geomet
 \end{center}
 \end{figure}
 
-Asumiendo que el plato tiene una permeabilidad relativa infinita y que el imán posee una curva de demagnetización lineal de la forma:
+Asumiendo que el plato tiene una permeabilidad relativa infinita y que el imán posee una curva de desmagnetización lineal de la forma:
 
 \begin{equation}
 	B_m = B_r + \mu_rH_m
@@ -426,8 +428,9 @@ Y por consiguiente la fuerza aplicada por el imán permanente debido a una variac
 \begin{equation}
 	F_g(g) = \frac{B_r^2}{2 \mu_0 (1 + (\frac{\mu_m}{\mu_0})(\frac{A_m}{A_g})(\frac{g}{l_m}))^2}[\frac{A_m + 2A_g}{2Ag}] \hat{n}
 \end{equation}
+
 Donde:\\
-	 $A_m$: Es la sección transversal del imán permanente\\
+	$A_m$: Es la sección transversal del imán permanente\\
 	$A_g$: La sección transversal del entrehierro\\
 	$l_m$: La longitud media del imán permanente\\
 	$B_r$: La inducción remanente\\
@@ -436,20 +439,9 @@ Donde:\\
 	$g$: La distancia de entrehierro\\
 
 
-\section{Sensores de Desplazamiento}
-\subsection{Requerimientos del Sensor}
+\section{Sensores de desplazamiento}
 
-Las condiciones de operación del sensor presentan dificultades incluyendo:
-
-\begin{enumerate}
-	\item Un rango de operación reducido (1mm a 3mm)
-	\item Medición sin contacto 
-	\item Inmunidad al ruido de acoplamiento magnético causado por los electroimanes
-	\item Rápida respuesta
-	\item Resolución mínima  100$um$
-\end{enumerate}
-
-\subsection{Tipos de Sensores}
+\subsection{Tipos de sensores}
 
 La mayoría de los sensores de desplazamiento de alta precisión requieren de contacto directo como los encoders de cuadratura, potenciómetros y sensores LVDT (Linear Variable Differential Transformer).
 Los sensores que no requieren de directo con el objeto se basan en la transformación de energía (transductores) o en la medición de alguna propiedad fundamental (resistencia, capacitancia, inductancia) para la detección de esa distancia. Entre los sensores de tipo transductor encontramos los sensores ultrasónicos que:
@@ -460,30 +452,28 @@ Los sensores que no requieren de directo con el objeto se basan en la transforma
 	\item Las ondas reflejadas son detectadas y tiempo entre la transmisión de onda y la recepción es medido. Este tiempo es función directa de la distancia del objeto y la velocidad de propagación en el medio por que la distancia es calculada.
 \end{enumerate}
 
-Estos sensores tienen la desventaja de poseer un rango mínimo de 10-20$cm$ y un rango máximo determinado por la potencia de la señal transmitida. Estas características. Además del tamaño del transductor no parecen ser una solución al problema de medición.
+Estos sensores tienen la desventaja de poseer un rango mínimo de 10-20$cm$ y un rango máximo determinado por la potencia de la señal transmitida. Estas características, además del tamaño del transductor, no parecen ser una solución al problema de medición.
 
-Otros sensores de operación similar son los sensores de tipo "time of fligth" (tiempo de vuelo), estos operan emitiendo un haz de luz no visible en lugar de ondas ultrasónica, poseen un rango reducido, su resolución es baja y su tiempo de respuesta es lento.
+Otros sensores de operación similar son los sensores de tipo "time of fligth" (tiempo de vuelo). Estos operan emitiendo un haz de luz no visible en lugar de ondas ultrasónica, poseen un rango reducido, su resolución es baja y su tiempo de respuesta es lento.
 
-Los inductivos son especialmente útiles para la detección de materiales metálicos y ferromagnéticos pero debido a la presencia de un campo variable generado los electroimanes adyacentes sus mediciones podrían presentar errores debido a la interferencia.
+Los inductivos son especialmente útiles para la detección de materiales metálicos y ferromagnéticos pero debido a la presencia de un campo variable generado por los electroimanes adyacentes, sus mediciones podrían presentar errores debido a la interferencia.
 
 Por otro lado los sensores capacitivos presentan una alta resolución, rango reducido y una detección de objetos no aterrizados y sin contacto siempre y cuando el objeto posea una permitividad mayor a la del vacío, además de poseer una respuesta ultrarrápida.
 
-\subsection{Sensores de Desplazamiento Capacitivo}
-
-Los capacitores son el bloque de construcción en el mundo electrónico. Para entender cómo operan estos sensores es importante entender las propiedades y principios fundamentales de los capacitores. Esta sección describe los aspectos físicos, geométricos, y eléctricos de los capacitores.
+\subsection{Sensores de desplazamiento capacitivo}
 
 Los capacitores son dispositivos que consisten en dos electrodos separados por un aislante, los capacitores generalmente se componen de dos placas conductivas separadas por un material no conductivo llamado dieléctrico. La energía eléctrica o carga es almacenada en estas placas.
 
 Una vez que un voltaje es aplicado a través de las terminales del capacitor los platos conductivos comenzaran a almacenar energía eléctrica hasta que la diferencial de potencial entre estas iguale al voltaje aplicado por la fuente de voltaje. La carga eléctrica permanece en las placas incluso después de desconectar la fuente de voltaje a menos que otro componente consuma esta carga o el capacitor se descargue a cusa de las fugas de corriente debido la imperfecciones del aislante dieléctrico.
 
-Un sensor capacitivo convierte el cambio eléctrico entre dos conductores en una señal eléctrica. Los sensores se construyen variando algunos de los parámetros que influyen en la capacitancia que según  la ecuación  de capacitancia entre placas paralelas serian el área, la distancia entre placas o la permitividad del dieléctrico.
+Un sensor capacitivo convierte el cambio eléctrico entre dos conductores en una señal eléctrica. Los sensores se construyen variando algunos de los parámetros que influyen en la capacitancia, que de acuerdo a la ecuación  de capacitancia entre placas paralelas, serían el área, la distancia entre placas o la permitividad del dieléctrico.
 
 \begin{equation}
 C=F(d,A,\varepsilon_r)
 \end{equation}
 
-Un sensor de proximidad es un transductor que es capaz de detectar la presencia de un objeto sin contacto físico, normalmente un sensor de proximidad emite alguna campo electromagnético o electrostático, o un haz de radiación electromagnética (radiación infrarroja) y detecta cualquier cambio en el campo o señal de retorno.\\ 
-Los sensores de proximidad capacitivos consisten en un oscilador cuya frecuencia está determinada por la capacitancia del circuito al cual los electrodos están conectados, cuando un conductor aterrizado o un material con una alta permeabilidad electica se acercan al electrodo la capacitancia cambia la frecuencia del oscilador. Este cambio es detectado y enviado a la unidad de control. El objeto detectado se le refiere comúnmente como objetivo. El campo eléctrico distribuido alrededor del capacitor experimenta un cambio el cual es detectado por la unidad de control.
+Un sensor de proximidad es un transductor que es capaz de detectar la presencia de un objeto sin contacto físico. Normalmente un sensor de proximidad emite algún campo electromagnético o electrostático, o un haz de radiación electromagnética (radiación infrarroja) y detecta cualquier cambio en el campo o señal de retorno.\\ 
+Los sensores de proximidad capacitivos consisten en un oscilador cuya frecuencia está determinada por la capacitancia del circuito al cual los electrodos están conectados, cuando un conductor aterrizado o un material con una alta permeabilidad eléctrica se acercan al electrodo, la capacitancia cambia la frecuencia del oscilador. Este cambio es detectado y enviado a la unidad de control. El objeto detectado se le refiere comúnmente como objetivo. El campo eléctrico distribuido alrededor del capacitor experimenta un cambio el cual es detectado por la unidad de control.
 
 \begin{figure}[htb]
 \begin{center}
@@ -503,10 +493,10 @@ Los sensores de proximidad capacitivos consisten en un oscilador cuya frecuencia
 
 La distancia máxima que el sensor de proximidad es capaz de detectar es conocido como rango nominal. Algunos sensores tienen ajustes del rango nominal o maneras de reportar una detección graduada de la distancia, un sensor de proximidad ajustado a un rango muy limitada es comúnmente referido como un sensor táctil. Los sensores capacitivos usualmente tienen el doble de rango los sensores inductivos.
 
-\subsubsection{Suceptibilidad a Capacitancias Parásitas}
+\subsubsection{Suceptibilidad a capacitancias parásitas}
 Los electrodos del sensor poseen capacitancias en el rango de fracción de picofaradios y conectar esas señales a un cable coaxial de 60pF por metro podría obscurecer totalmente la señal. Sin embargo con el blindaje correcto al igual que cualquier otra capacitancia parasita es posible eliminar en mayor medida los efectos  del ruido.
 
-\subsubsection{Susceptibilidad al Ruido}
+\subsubsection{Susceptibilidad al ruido}
 Un peligro para los circuitos osciladores  es que la frecuencia variaría de manera intermitente en el caso de existiría interferencia cruzada causada por circuitos adyacentes, estos problemas pueden ser resueltos mediante un blindaje, una correcta disposición de pistas e integrados en el circuito y el  uso de capacitores de "bypass" en las fuentes de alimentación.
 
 \subsubsection{Distancia entre los electrodos}
@@ -1127,7 +1117,7 @@ x = x * tu + w
 \end{equation}
 \newpage
 
-\section{Diseño de Ingeniería }
+\section{Diseño de ingeniería }
 
 Comúnmente se asocia el diseño a una actividad relacionada con la estética de los objetos o una mejora en la apariencia de algún producto. Sin embargo, en ingeniería implica una serie de conocimientos, métodos y herramientas más complejos para llevar a cabo esta actividad, entre los que podemos destacar \cite{cite_1_2017}:
 
@@ -1160,14 +1150,14 @@ El diseño de ingeniería es un proceso secuencial e iterativo, donde en cada una 
 \item Producción: comienzo de la producción del producto una vez validado el diseño. 
 \end{enumerate}
 
-\subsection{Diseño Mecatrónico}
-La metodología de diseño mecatrónico trabaja sobre un enfoque concurrente, lo que implica la participación de todas las áreas de la mecatrónica (mecánica, eléctrica, informática, etc.) a lo largo del proceso de diseño. Comenzando con el diseño básico, y avanzando a través de la fase de producción, el diseño mecatrónico optimiza los parámetros en cada fase para obtener un producto de calidad en menor tiempo.
+\subsection{Diseño mecatrónico}
+El diseño mecatrónico trabaja sobre un enfoque concurrente, lo que implica la participación de todas las áreas de la mecatrónica (mecánica, eléctrica, informática, etc.) a lo largo del proceso de diseño. Comenzando con el diseño básico, y avanzando a través de la fase de producción, el diseño mecatrónico optimiza los parámetros en cada fase para obtener un producto de calidad en menor tiempo.
 
 En el diseño de un producto mecatrónico, es necesario que el conocimiento y la información requerida se coordinen entre los diferentes grupos de trabajo, lo que se conoce como ingeniería concurrente; la ingeniería concurrente es un enfoque de diseño en el que el diseño y la fabricación de un producto se fusionan. Esto fue influenciado en parte por el reconocimiento de que muchos de los altos costos en la fabricación se deciden en la etapa de diseño. 
 
 \newpage
 
-Sin embargo, la metodología de diseño mecatrónico se refiere no sólo a la manufactura de productos en sí, sino también al mantenimiento de los mismos dentro de un área denominada diseño del ciclo de vida del producto. 
+Sin embargo, el diseño mecatrónico se refiere no sólo a la manufactura de productos en sí, sino también al mantenimiento de los mismos dentro de un área denominada diseño del ciclo de vida del producto. 
 
 El Ciclo de Vida reúne toda una serie de actividades que van desde la integración del diseño, ingeniería y fabricación, logística, almacenamiento y distribución, clientes y proveedores, ventas, actividades de marketing y la administración financiera y de control.
 
@@ -1199,7 +1189,7 @@ A continuación, se presenta un diagrama más detallado del proceso de diseño meca
 	\caption{\textit{Diagrama extendido del proceso de diseño mecatrónico \cite{cite_1_2017}.}}
 \end{figure}
 
-\subsection{Especificaciones del Diseño de Producto (PDS)}
+\subsection{Especificaciones de diseño del producto (PDS)}
 Dado que el proceso de diseño debe partir de las restricciones del producto, debe utilizarse una herramienta que documente estas características. A este documento se le conoce como PDS, Product Design Specifications por sus siglas en inglés. 
 
 Es considerada una herramienta técnico-administrativa que permite al equipo de diseño describir a detalle los requerimientos y necesidades con las que debe cumplir el producto. Tiene como objetivo reducir las posibles dificultades del proyecto y reducir considerablemente el tiempo de cada una de las etapas de desarrollo, debido en gran parte al reconocimiento e interpretación de las necesidades del cliente. 
@@ -1229,8 +1219,8 @@ El diseño conceptual se caracteriza por un alto nivel de abstracción, se ocupa d
 Emplea información adquirida de diversas herramientas y métodos a lo largo de todo el proceso, el cual evoluciona de manera constante, más que en cualquier otra etapa del desarrollo de producto, desde la investigación previa, estudio de mercado, el análisis del ciclo de vida, planteamiento del problema, la generación de ideas por medio de bocetos o esquemas, hasta obtener el concepto de diseño del producto, como modelos en 3D o prototipos rápidos. 
 Una de las herramientas de las que se vale el diseño conceptual para obtener más información es el Análisis Funcional.
 
-\subsubsection{Análisis Funcional}
-El análisis funcional tiene como objetivo identificar las funciones o prestaciones con las que el producto debe cumplir para cumplir con las necesidades y especificaciones del cliente y traducirlas en requerimientos de diseño. Esto presenta múltiples ventajas \cite{cite_5_2017}:
+\subsubsection{Análisis funcional en ingeniería}
+El análisis funcional en ingeniería tiene como objetivo identificar las funciones o prestaciones con las que el producto debe cumplir para cumplir con las necesidades y especificaciones del cliente y traducirlas en requerimientos de diseño. Esto presenta múltiples ventajas \cite{cite_5_2017}:
 
 \begin{itemize}
 \item Permite apreciar una visión global del producto que se va a desarrollar.
