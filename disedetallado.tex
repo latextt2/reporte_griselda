@@ -6,60 +6,39 @@ El Rodamiento Magnético Radial (RMAR) consiste en un conjunto de electroimanes c
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_rmr}
-    \caption{Rodamiento magnético radial}
+    \caption{Diagrama funcional del rodamiento magnético radial}
 \end{figure}
 
 \subsection{Numero de polos}
-Antes de diseñar los electroimanes necesitamos determinar el numero de polos (electroimanes) que conformaran el RMR.
-
-Estudiemos entonces los casos críticos (1) F esta alineado con F y (2) donde F esta orientado en medio de F1 y F2
-
+Antes de diseñar los electroimanes es necesario determinar en numero de polos que conformaran el EIA.
+Suponiendo que tenemos $N$ polos, la distancia angular $\alpha$ entre ellos sera de $360/N$ (fig. \ref{fig:rmr:diagrama-de-polos}). El EIA debe ser capaz de generar una fuerza arbitraria $F_r$ dentro del plano $YZ$. Teniendo en cuenta que los electroimanes sólo son capaces de ejercer fuerzas de atracción sobre los materiales ferromagnéticos. La fuerza $F_r$ deberá ser proporcionada únicamente por las fuerzas de los electroimanes adyacentes $F_1$ y $F_2$ (fig. \ref{fig:rmr:diagrama-de-fuerzas}).  
 \begin{figure}[htb]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_3/diagrama_polos}
-        \caption{radial}
-        \label{fig:geometria-radial}
+        \caption{Posicion de los polos}
+        \label{fig:rmr:diagrama-de-polos}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
       %(or a blank line to force the subfigure onto a new line)
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_3/diagrama_fuerza_polos}
-        \caption{axial}
-        \label{fig:geometria-axial}
+        \caption{Diagrama de Fuerzas}
+        \label{fig:rmr:diagrama-de-fuerzas}
     \end{subfigure}
-    \caption{Geometrias de electroiman}\label{fig:geometria-electroimanes}
+    \caption{Polos del electroimán radial}
 \end{figure}
-
+\\
+Se define a $\theta$ como el angulo entre la fuerzas $F_r$ y $F_1$, entonces para una fuerza de magnitud $F_r$ las magnitudes de las fuerzas $F_1$ y $F_2$ serán: 
 \begin{equation}
-    F{rx} = F cos \theta
-\end{equation}
-\begin{equation}
-    F{ry} = F sin \theta
-\end{equation}
-\begin{equation}
-    F_{2x} = F2 cos \alpha
-\end{equation}
-\begin{equation}
-    F{2y} = F2 sin \alpha
-\end{equation}
-\begin{equation}
-    F{rx} = F_r  cos \theta = F_1 + F2 cos \alpha
-\end{equation}
-\begin{equation}
-    F{r}  \theta = F_2 sin \alpha
+    F_1 = F_r (\frac{cos \theta - sin \theta}{tan \alpha})
 \end{equation}
 \begin{equation}
     F_2 = F_r (\frac{sin \theta}{sin \alpha} )
 \end{equation}
-\begin{equation}
-    F_r cos \theta = F_1 + F_2 (\frac{sin \theta}{tan \alpha})
-\end{equation}
-\begin{equation}
-    F_1 = F_r (\frac{cos \theta - sin \theta}{tan \alpha})
-\end{equation}
+Analizando los casos críticos (1) donde $F_r$ esta alineado con $F_1$ ($\theta = 0$), (2) donde $F_r$ esta orientado en medio de $F_1$ y $F_2$ ($\theta = \alpha/2)$ y (3) donde $F_r$ esta alineado con $F_2$ ($\theta = \alpha$) se vuelve clara la forma en la que el numero de polos afecta tanto la fuerza máxima como la eficiencia del sistema.
 
-Para el caso 1 toda la fuerza es ejercida por F1, y como lo indica la ecuación ??, tendremos un consumo de magnitud ??, en cambio en el caso 2 la fuerza tiene que ser proporcionada por F1 y F2 en partes iguales, y con una magnitud de F??, lo cual corresponde a una perdida de 2*.
+Para los casos 1 y 3 toda la fuerza es ejercida por los electroimanes $E1$ y $E2$ respectivamente, con fuerzas de $F_1 = F_r, F_2 = 0$ para el caso 1, y $F_1 = F_r, F_2 = 0$ para el caso 3. Como lo indica la ecuación ??, tendremos un consumo de magnitud ??,lo mismo sucede en el caso 3, en cambio en el caso 2 la fuerza tiene que ser proporcionada por F1 y F2 en partes iguales, y con una magnitud de F??, lo cual corresponde a una perdida de 2*.
 
 Para que el rodamiento axial pueda ejercer fuerzas en cualquier dirección del plano YZ es necesario un mínimo de 3 polos. Sin embargo incrementar el numero de polos reduce el consumo las regiones intermedias, esto se debe a que no estamos utilizando corriente para generar componentes de fuerza que terminaran por cancelarse mutuamente.
 
