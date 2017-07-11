@@ -168,7 +168,14 @@ Los materiales magnéticos más prominentes son los ferromagnéticos, cuya suscepti
 
 \subsection{Saturación}
 
-Si un material tiene \textit{n} dipolos atómicos por unidad de volumen una vez que todos estos dipolos quedan alineados en paralelo se alcanza la magnetización de saturación $M_0$. Se puede realizar una distinción entre la saturación técnica $M_s$  y la saturación completa $M_0$. 
+%Si un material tiene \textit{n} dipolos atómicos por unidad de volumen una vez que todos estos dipolos quedan alineados en paralelo se alcanza la magnetización de saturación $M_0$. Se puede realizar una distinción entre la saturación técnica $M_s$  y la saturación completa $M_0$. 
+
+Cuando se introduce en una bobina un núcleo de material ferromagnético y se le hace circular una corriente eléctrica, se genera un campo magnético en su interior de intensidad H, el cual orienta en cierto grado los dipolos de dicho núcleo ferromagnético. Esto refuerza el campo magnético con una inducción magnética B.\par 
+Cuando se incrementa la intensidad de la corriente eléctrica los dipolos se alinean más, lo que trae como consecuencia un aumento del campo magnético H. Esto se ve reflejado en un nuevo aumento de la inducción B.\par 
+Si la corriente eléctrica continua en aumento, llegará el momento en que los dipolos se encontraran alineados completamente, por lo que aún incrementando más la corriente ya no aumentará la intensidad de campo H. Entonces se dice que se ha alcanzado la saturación magnética.\par  
+Por lo general, esta relación B-H no es constante, por lo que es de gran utilidad conocer la curva de magnetización, que representa el valor de la inducción en función de la intensidad de campo en cada material [...].
+
+% Electrónica general: equipos electrónicos de consumo, Pablo Alcalde San Miguel, Editorial Paraninfo, 2° Edicion. 
 
 \begin{figure}[htb]
 \begin{center}
@@ -182,15 +189,29 @@ Si un material tiene \textit{n} dipolos atómicos por unidad de volumen una vez q
 
 \subsection{Histéresis}
 
-Los efectos de histéresis añaden más complicaciones debido a que la magnetización M del material depende no solo del campo magnético, sino también del historial de magnetización del material. Incluso en los casos donde la histéresis ocurre, se han creado métodos para calcular los campos magnéticos en estos dispositivos, en donde la histéresis se tiene en cuenta.
+%Los efectos de histéresis añaden más complicaciones debido a que la magnetización M del material depende no solo del campo magnético, sino también del historial de magnetización del material. Incluso en los casos donde la histéresis ocurre, se han creado métodos para calcular los campos magnéticos en estos dispositivos, en donde la histéresis se tiene en cuenta.
 
-\begin{figure}[htb]
+Después de someter a un material ferromagnético a la acción de un campo magnético, y una vez que éste desaparece, el material permanece con un cierto nivel de inducción magnética, que recibe el nombre de magnetismo remanente. A éste fenómeno se le conoce como histéresis.\par
+La histéresis es de gran importancia en el análisis de los materiales magnéticos, ya que ésta produce pérdidas en los núcleos de los electroimanes cuando son sometidos a la acción de campos magnéticos alternos. Las pérdidas por histéresis se dan por la pérdida de energía en forma de calor debido a la fricción que se produce cuando los dominios magnéticos se ven forzados a girar en diferentes sentidos cuando se ven sometidos a la acción de un campo magnético alterno.\par
+El área de la curva de histéresis corresponde a la pérdida de energía por unidad de volumen en un ciclo [...]. 
+ 
+%Fundamentos de electromagnetismo para ingeniería. David K. Cheng. Editorial Pearson Educación.   
+
+\begin{figure}[h!]
 \begin{center}
 \centering
 	\includegraphics[width=11cm, height=7cm]{images/Capitulo_1/Curva_de_histeresis}
 	\caption{\textit{Curva de histéresis.}}
 \end{center}
 \end{figure}
+
+En el punto 0 el material no ha sido magnetizado nunca. por lo que la inducción magnética es nula.\par
+En el tramo 0-a se va aumentando la intensidad del campo H, con lo que se consiguen valores crecientes de inducción hasta llegar a la saturación.\par 
+En el tramo a-b se va reduciendo la intensidad de campo. La inducción también se reduce, pero no en la
+misma proporción que antes. En el punto b se ha anulado la intensidad de campo, sin embargo, el material manifiesta todavía un cierto magnetismo remanente.\par 
+En el tramo b-c se invierte el sentido del campo magnético. En el punto c la inducción es cero, por lo que se ha conseguido eliminar por completo el magnetismo remanente.\par  
+En el tramo c-d se sigue aplicando una intensidad de campo negativo, con lo que se consiguen niveles de inducción negativos hasta alcanzar la saturación.\par 
+En los tramos d-e, e-f y f-a se completa el ciclo de histéresis. La curva no pasa otra vez por el punto 0 debido a la histéresis. 
 
 \subsection{Remanecía}
 
