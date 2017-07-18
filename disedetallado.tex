@@ -45,7 +45,7 @@ Para que el rodamiento axial pueda ejercer fuerzas en cualquier dirección del pl
 En [paper numero de polos]  se estudia de manera mas detallada los efectos de variar el numero de polos en un RMR, se concluye utilizar 6 polos minimiza el diámetro exterior para una capacidad dada.
 
 \subsection{Electroiman}
-Para diseñar un electroimán se requiere de un modelo que relacione la geometría del núcleo con la fuerza máxima que este puede ejercer. Sabemos que la fuerza esta determinada por
+Para diseñar un electroimán se requiere de un modelo que relacione la geometría del núcleo con la fuerza máxima que este puede ejercer. La fuerza esta determinada por
 \begin{equation}
 	F =  \frac{(NI)^2}{2} \frac{d}{dy}(\mathcal{R}^{-1})
 \end{equation}
@@ -70,25 +70,34 @@ por lo que el problema de calcular la fuerza se reduce a calcular la reluctancia
 
 El electroiman posee una geometria como la de la figura ??, aplicando el analisis de circuitos magneticos el sistema se pude modelar como el circuito de reluctancias de la figura ??. Entonces la reluctancia total del circuito puede escribirse como
 \begin{equation}
-	R = ???
+	\mathcal{R} = \mathcal{R}_e + \mathcal{R}_a + \mathcal{R}_g = (\frac{l_e}{\mu_{re}}+ \frac{l_a}{ \mu_{ra}}+ 2y)\frac{1}{\mu_0A}
 \end{equation}
 Si consideramos los terminos ?? y ?? como insfinificantes entonces la fuerza se puede expresarse como:
-\begin{equation}
-	F = ???
-\end{equation}
 Esta ecuacion puede encontrarse en la literatura ??,?? y ??, para llegar a esta ecuacion fue necesario hacer varias suposiciones como despreciar flujo de fluga, el efecto marginal, y que la reluctancia del nucleo es mucho menor a la reluctancia del gap, estas condiciones podrian cuplirse en otros sistemas pero caso de un rodamiento magnetico no.
+\begin{equation}
+\mathcal{R} = \frac{2y}{\mu_0A}
+\end{equation}
 
+\begin{equation}
+	F_m = - \frac{\mu_0 A N^2 I^2 }{ 4 y^2}
+\end{equation}
 Si ponemos a prueba  la ecuciones con valores de A,B,y D  resulta en una fuerza de ?? newtons, en cambio si realizamos simulacion en FEM, para el mismo sistema, la simulacion arroja un valor de N.
 
 Si reescribimos la ecuaion ?? pero esta vez sin ignorar los terminos ?? correspondientes a nucleo del electroiman, obtenemos la ecuacion ??
 \begin{equation}
-	F = ???
+	F_m = - \frac{\mu_0 A N^2 I^2}{(\frac{l_e}{\mu_{re}}+ \frac{l_a}{k \mu_{ra}}+ 2y)^2}
 \end{equation}
 Sustituyendo los valores usados anteriormente, la ecuacion nos arroja una fuerza de ?? newtons. La fuerzas coincide entre la simulacion FEM y las ecuacion que habria sido usada para calcular los electroimanes.
 
 Para un electroiman axisimetrico donde la goemtria cumple condiciones de xx, xx. calculamos una fuerza xx N, sin embargo la simulacion FEM nos arroja un valor de xx.
 
 Al observar el flujo magnetico podemos ver como el campo magnetico se curva en los extremos del iman, a esta distorsion en las lineas de campo magnetico debido a las discontinudades del medio se le conoce como flujo marginal.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_flujo_maginal}
+    \caption{Diagrama de flujo marginal}
+\end{figure}
 
 Entonces para el correcto modelado del electroiman necesitamos incluir los efectos del flujo marginal en nuestro modelo.
 
