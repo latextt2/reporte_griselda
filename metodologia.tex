@@ -360,8 +360,10 @@ sea válida, los términos que dependen de las longitudes del conductor magnético 
 Gracias a la alta permeabilidad de la ferrita y las condiciones de operación $y_min$ y $y_max$ se pueden utilizar estas ecuaciones para el cálculo del electroimán. 
 
 \newpage
-\subsection{El marginal}
+\subsection{Efecto marginal (Fringing)}
 \todo[inline]{formulas del marginal}
+
+Calcular un modelo de reluctancia de un componenete inductivo  permite  un calculo rapido y directo en la inductancia, esto nos ayuda a calcular la densidad  de flujo  en cada seccion del nucleo, haciendo posible evitar la saturaci\'on del nucleo  al dise\~nar un sitema de electroimanes. Cuando se calcular las perdidas de los devanados, el efecto de flujo marginal (effect of the air gap fringing) del entre hierro se puede calcular las perdidas del los devanados y  modelar  con presici\'on en funci\'on de la Muerza Magneto Motriz o MMF(Magneto Motive Force), por lo que debe de conocerse la reluctacion del entrehierro  para le calculo preciso del MMF  
 
 \begin{equation}
 	R_g = \frac{l_g}{\mu_0A_g}
@@ -370,7 +372,7 @@ Gracias a la alta permeabilidad de la ferrita y las condiciones de operación $y_
 	R_g = \frac{l_g}{\mu_0(a + l_g)(d + l_g)}
 \end{equation}
 \begin{equation}
-	\lgroup 0.241 + \frac{1}{\pi} \ln\frac{b_a}{l_g}\rgroup lg
+	(0.241 + \frac{1}{\pi} \ln\frac{b_a}{l_g}) lg
 \end{equation}
 \begin{equation}
 	R^\prime_{basic} = \frac{1}{\mu_0[\frac{\omega}{2l} + \frac{2}{\pi}(1 +ln\frac{\pi h}{4l})]} 
