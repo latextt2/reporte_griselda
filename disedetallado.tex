@@ -1,7 +1,7 @@
 \chapter{Dise\~no Detallado}
 \section{Rodamiento magnético radial}
 
-El Rodamiento Magnético Radial (RMAR) consiste en un conjunto de electroimanes colocados en una circunferencia, de manera que sus campos magnéticos puedan ejercer una fuerza arbitraria en su plano de acción. Para controlar la fuerza que cada electroiman ejerce se tiene un circuito de accionamiento, que alimenta las bobinas del electroiman con la corriente necesaria.
+El Rodamiento Magnético Radial (RMR) consiste en un conjunto de electroimanes colocados en una circunferencia, de manera que sus campos magnéticos puedan ejercer una fuerza arbitraria en su plano de acción. Para controlar la fuerza que cada electroiman ejerce se tiene un circuito de accionamiento, que alimenta las bobinas del electroiman con la corriente necesaria.
 
 \begin{figure}[htb]
     \centering
@@ -10,8 +10,8 @@ El Rodamiento Magnético Radial (RMAR) consiste en un conjunto de electroimanes c
 \end{figure}
 
 \subsection{Numero de polos}
-Antes de diseñar los electroimanes es necesario determinar en numero de polos que conformaran el EIA.
-Suponiendo que tenemos $N$ polos, la distancia angular $\alpha$ entre ellos sera de $360/N$ (fig. \ref{fig:rmr:diagrama-de-polos}). El EIA debe ser capaz de generar una fuerza arbitraria $F_r$ dentro del plano $YZ$. Teniendo en cuenta que los electroimanes sólo son capaces de ejercer fuerzas de atracción sobre los materiales ferromagnéticos. La fuerza $F_r$ deberá ser proporcionada únicamente por las fuerzas de los electroimanes adyacentes $F_1$ y $F_2$ (fig. \ref{fig:rmr:diagrama-de-fuerzas}).  
+Antes de diseñar los electroimanes es necesario determinar en numero de polos que conformaran el EIR.
+Suponiendo que tenemos $N$ polos, la distancia angular $\alpha$ entre ellos sera de $360/N$ (fig. \ref{fig:rmr:diagrama-de-polos}). El EIR debe ser capaz de generar una fuerza arbitraria $F_r$ dentro del plano $YZ$. Teniendo en cuenta que los electroimanes sólo son capaces de ejercer fuerzas de atracción sobre los materiales ferromagnéticos. La fuerza $F_r$ deberá ser proporcionada únicamente por las fuerzas de los electroimanes adyacentes $F_1$ y $F_2$ (fig. \ref{fig:rmr:diagrama-de-fuerzas}).  
 \begin{figure}[htb]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
@@ -36,18 +36,38 @@ Se define a $\theta$ como el angulo entre la fuerzas $F_r$ y $F_1$, entonces par
 \begin{equation}
     F_2 = F_r (\frac{sin \theta}{sin \alpha} )
 \end{equation}
+
 Analizando los casos críticos (1) donde $F_r$ esta alineado con $F_1$ ($\theta = 0$), (2) donde $F_r$ esta orientado en medio de $F_1$ y $F_2$ ($\theta = \alpha/2)$ y (3) donde $F_r$ esta alineado con $F_2$ ($\theta = \alpha$) se vuelve clara la forma en la que el numero de polos afecta tanto la fuerza máxima como la eficiencia del sistema.
 
-Para los casos 1 y 3 toda la fuerza es ejercida por los electroimanes $E1$ y $E2$ respectivamente, con fuerzas de $F_1 = F_r, F_2 = 0$ para el caso 1, y $F_1 = F_r, F_2 = 0$ para el caso 3. Como lo indica la ecuación ??, tendremos un consumo de magnitud ??,lo mismo sucede en el caso 3, en cambio en el caso 2 la fuerza tiene que ser proporcionada por F1 y F2 en partes iguales, y con una magnitud de F??, lo cual corresponde a una perdida de 2*.
+Para los casos (1) y (3) toda la fuerza es ejercida por los electroimanes $E1$ y $E2$ respectivamente, con fuerzas de $F_1 = F_r, F_2 = 0$ para el caso 1, y $F_1 = 0, F_2 = F_r$ para el caso 3. Como lo indica la ecuación:
 
-Para que el rodamiento axial pueda ejercer fuerzas en cualquier dirección del plano YZ es necesario un mínimo de 3 polos. Sin embargo incrementar el numero de polos reduce el consumo las regiones intermedias, esto se debe a que no estamos utilizando corriente para generar componentes de fuerza que terminaran por cancelarse mutuamente.
+\begin{equation}
+P = (\frac{R F}{K_e} ) 
+\end{equation}
 
-En [paper numero de polos]  se estudia de manera mas detallada los efectos de variar el numero de polos en un RMR, se concluye utilizar 6 polos minimiza el diámetro exterior para una capacidad dada.
+tendremos un consumo de magnitud $(\frac{R F_r}{K_e} )$. %, lo mismo sucede en el caso 3, 
+
+En cambio en el caso 2 la fuerza tiene que ser proporcionada por F1 y F2 en partes iguales, y con una magnitud de:
+
+\begin{equation}
+F = F_1 = F_2 = (\frac{F_r sin (\frac{\alpha}{2}) }{sin \alpha} ) 
+\end{equation}
+
+lo cual corresponde a una perdida de:
+
+\begin{equation}
+P = 2 (\frac{R F_r}{K_e} ) \label{prueba_ecuacion}
+\end{equation}
+
+Para que el rodamiento axial pueda ejercer fuerzas en cualquier dirección del plano YZ es necesario un mínimo de 3 polos. Sin embargo incrementar el numero de polos reduce el consumo en las regiones intermedias (ecuación \ref{prueba_ecuacion}), esto se debe a que no estamos utilizando corriente para generar componentes de fuerza que terminaran por cancelarse mutuamente.
+
+En [paper numero de polos]  se estudia de manera mas detallada los efectos de variar el numero de polos en un RMR, se concluye que utilizar 6 polos minimiza el diámetro exterior para una capacidad dada.
 
 \subsection{Electroiman}
-Para diseñar un electroimán se requiere de un modelo que relacione la geometría del núcleo con la fuerza máxima que este puede ejercer. Sabemos que la fuerza esta determinada por
+Para diseñar un electroimán se requiere de un modelo que relacione la geometría del núcleo con la fuerza máxima que este puede ejercer. La fuerza esta determinada por
 \begin{equation}
 	F =  \frac{(NI)^2}{2} \frac{d}{dy}(\mathcal{R}^{-1})
+	\label{eq:electroiman:formula-general-fuerza}
 \end{equation}
 por lo que el problema de calcular la fuerza se reduce a calcular la reluctancia del circuito magnético que conforma el electroimán. Procederemos a analizar los núcleos de geometría \ref{fig:geometria-radial} y \ref{fig:geometria-axial} correspondientes a los electroimanes radial y axial respectivamente.
 
@@ -55,40 +75,51 @@ por lo que el problema de calcular la fuerza se reduce a calcular la reluctancia
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_2/geometria_nucleo_radial}
-        \caption{radial}
+        \caption{Geometría}
         \label{fig:geometria-radial}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
       %(or a blank line to force the subfigure onto a new line)
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_2/modelo_reluctancias_eir}
-        \caption{axial}
-        \label{fig:geometria-axial}
+        \caption{Modelo de reluctancias}
+        \label{fig:modelo-reluctancias-radial}
     \end{subfigure}
-    \caption{Geometrias de electroiman}\label{fig:geometria-electroimanes}
+    \caption{Electroiman radial}
 \end{figure}
+El electroiman posee una geometría como la de la figura \ref{fig:geometria-radial}, aplicando el análisis de circuitos magnéticos el sistema se pude modelar como el circuito de reluctancias de la figura \ref{fig:modelo-reluctancias-radial}. Entonces la reluctancia total del circuito puede escribirse como
+\begin{equation}
+	\mathcal{R} = \mathcal{R}_e + \mathcal{R}_a + \mathcal{R}_g = (\frac{l_e}{\mu_{re}}+ \frac{l_a}{ \mu_{ra}}+ 2y)\frac{1}{\mu_0A}
+\end{equation}
+En los materiales ferromagneticos los valores de $\mu_r$ suelen ser grandes, entonces es posible considerar los términos $\frac{l_e}{\mu_{re}}$ y $\frac{l_a}{ \mu_{ra}}$ como insignificantes, asi la reluctancia puede expresarse como:
+\begin{equation}
+\mathcal{R} = \frac{2y}{\mu_0A}
+\end{equation}
+Aplicando la ecuacion \ref{eq:electroiman:formula-general-fuerza}, la fuerza se determina con:
+\begin{equation}
+	F_m = - \frac{\mu_0 A N^2 I^2 }{ 4 y^2}
+	\label{eq:electroiman:fuerza-ideal}
+\end{equation}
+La ecuacion \ref{eq:electroiman:fuerza-ideal} puede encontrarse en la literatura ??,?? y ??, para llegar a esta ecuacion fue necesario hacer varias suposiciones como despreciar flujo de fluga, el efecto marginal, y que la reluctancia del nucleo es mucho menor a la reluctancia del gap, estas condiciones podrian cuplirse en otros sistemas pero caso de un rodamiento magnetico no.
 
-El electroiman posee una geometria como la de la figura ??, aplicando el analisis de circuitos magneticos el sistema se pude modelar como el circuito de reluctancias de la figura ??. Entonces la reluctancia total del circuito puede escribirse como
-\begin{equation}
-	R = ???
-\end{equation}
-Si consideramos los terminos ?? y ?? como insfinificantes entonces la fuerza se puede expresarse como:
-\begin{equation}
-	F = ???
-\end{equation}
-Esta ecuacion puede encontrarse en la literatura ??,?? y ??, para llegar a esta ecuacion fue necesario hacer varias suposiciones como despreciar flujo de fluga, el efecto marginal, y que la reluctancia del nucleo es mucho menor a la reluctancia del gap, estas condiciones podrian cuplirse en otros sistemas pero caso de un rodamiento magnetico no.
 
 Si ponemos a prueba  la ecuciones con valores de A,B,y D  resulta en una fuerza de ?? newtons, en cambio si realizamos simulacion en FEM, para el mismo sistema, la simulacion arroja un valor de N.
 
 Si reescribimos la ecuaion ?? pero esta vez sin ignorar los terminos ?? correspondientes a nucleo del electroiman, obtenemos la ecuacion ??
 \begin{equation}
-	F = ???
+	F_m = - \frac{\mu_0 A N^2 I^2}{(\frac{l_e}{\mu_{re}}+ \frac{l_a}{k \mu_{ra}}+ 2y)^2}
 \end{equation}
 Sustituyendo los valores usados anteriormente, la ecuacion nos arroja una fuerza de ?? newtons. La fuerzas coincide entre la simulacion FEM y las ecuacion que habria sido usada para calcular los electroimanes.
 
 Para un electroiman axisimetrico donde la goemtria cumple condiciones de xx, xx. calculamos una fuerza xx N, sin embargo la simulacion FEM nos arroja un valor de xx.
 
 Al observar el flujo magnetico podemos ver como el campo magnetico se curva en los extremos del iman, a esta distorsion en las lineas de campo magnetico debido a las discontinudades del medio se le conoce como flujo marginal.
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_flujo_maginal}
+    \caption{Diagrama de flujo marginal}
+\end{figure}
 
 Entonces para el correcto modelado del electroiman necesitamos incluir los efectos del flujo marginal en nuestro modelo.
 
