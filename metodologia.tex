@@ -363,26 +363,30 @@ Gracias a la alta permeabilidad de la ferrita y las condiciones de operación $y_
 \subsection{Efecto marginal (Fringing)}
 
 
-Calcular un modelo de reluctancia de un componenete inductivo  permite  un calculo rapido y directo en la inductancia, esto nos ayuda a calcular la densidad  de flujo  en cada seccion del nucleo, haciendo posible evitar la saturaci\'on del nucleo  al dise\~nar un sitema de electroimanes. Cuando se calcular las perdidas de los devanados, el efecto de flujo marginal (effect of the air gap fringing) del entre hierro se puede calcular las perdidas del los devanados y  modelar  con presici\'on en funci\'on de la Muerza Magneto Motriz o MMF(Magneto Motive Force), por lo que debe de conocerse la reluctacion del entrehierro  para le calculo preciso del MMF.
+Calcular un modelo de reluctancia de un componenete inductivo  permite  un calculo rapido y directo en la inductancia, esto nos ayuda a calcular la densidad  de flujo  en cada seccion del nucleo, haciendo posible evitar la saturaci\'on del nucleo  al dise\~nar un sitema de electroimanes. Cuando se calcular las perdidas de los devanados, el efecto de flujo marginal (effect of the air gap fringing) del entre hierro, se puede calcular las perdidas del los devanados y  modelar  con presici\'on en funci\'on de la Fuerza Magneto Motriz o MMF(Magneto Motive Force), por lo que debe de conocerse la reluctacion del entrehierro  para le calculo preciso del MMF.
 
 Existen diferentes medios para calcular la reluctancia del hueco de aire. Bajo la asunción de una distribución de densidad de flujo homogénea en el entrehierro y sin flujo marginal, la reluctancia del entrehierro se puede calcular como:  
 
 \begin{equation}
 	R_g = \frac{l_g}{\mu_0A_g}
 \end{equation}
-El flujo marginal puede ser tomado en consideración aumentando el área de la sección transversal del hueco de aire real (aumentando el área de la sección transversal del entrehierro, la reluctancia se reduce al valor real) Sin embargo, se admite que el área de la sección transversal debe aumentarse en función de la longitud del entrehierro lg y que es difícil determinar el valor exacto por el cual se ha de aumentar el área de la sección transversal. por lo que la reluctancia de un entrehierro con longitud lg, ancho a, y profundidad d se calcula como:
+Donde lg y Ag son respectivamente la sección transversal del espacio de aire y el entrehierro, y $\mu_0$ es la permeabilidad del espacio libre. S\'olo es precisa cuando el flujo marginal es pequeño comparado con el flujo total, como es cuando la longitud del hueco de aire es muy pequeña comparada con la dimensión de la sección transversal del entrehierro.Se conocen dos enfoques para la consideración en el flujo marginal para calcular la reluctancia del entrehierro. \\
 
-\begin{equation}
-	R_g = \frac{l_g}{\mu_0(a + l_g)(d + l_g)}
-\end{equation}
+A -$>$ El enfoque del Método de la Transformación Conformal Schwarz-Christoffel:	se basa en la analogía capacitancia-reluctancia para calcular la reluctancia de los huecos de aire\\
 
-No se da ninguna explicación o derivación de la ecuación. Los resultados se desvían de la comparación con las simulaciones FEM. el semi-ancho efectivo del hueco, p. El radio en caso de una sección transversal redonda, se incrementa en la cantidad de
-\begin{equation}
-	(0.241 + \frac{1}{\pi} \ln\frac{b_a}{l_g}) lg
-\end{equation}
+B -$>$ Aumento del area transversal del entre hierro:	El flujo marginal puede ser tomado en consideración aumentando el área de la sección transversal del hueco de aire real (aumentando el área de la sección transversal del entrehierro, la reluctancia se reduce al valor real).
+
+
+Bajo la necesidad de manejar diferentes formas de entrehierro y que sea razonable de manejar facilemte, el nuevo enfoque para los cálculos de la reluctancia del entrehierro 3D se deriva de estos dos ultimo. 
+
+Inserte imagen (figura 3 del paper)
+
+La figura anterior se toma como base para calcular estructuras de entre hierro más complejas. Esta geometría básica se utiliza como un bloque de construcción para describir diferentes formas tridimensionales de entrehierro.
+
 \begin{equation}
 	R^\prime_{basic} = \frac{1}{\mu_0[\frac{\omega}{2l} + \frac{2}{\pi}(1 +ln\frac{\pi h}{4l})]} 
 \end{equation}
+
 \begin{equation}
 	\sigma_x = \frac{R^\prime}{\frac{a}{\mu_0t}}
 \end{equation}
