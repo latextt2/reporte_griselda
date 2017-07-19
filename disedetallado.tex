@@ -93,7 +93,7 @@ por lo que el problema de calcular la fuerza se reduce a calcular la reluctancia
 El electroiman posee una geometría como la de la figura \ref{fig:geometria-radial}, aplicando el análisis de circuitos magnéticos el sistema se pude modelar como el circuito de reluctancias de la figura \ref{fig:modelo-reluctancias-radial}. Entonces la reluctancia total puede escribirse como:
 
 \begin{equation}
-	\mathcal{R} = \mathcal{R}_e + \mathcal{R}_a + \mathcal{R}_g = (\frac{l_e}{\mu_{re}}+ \frac{l_a}{ \mu_{ra}}+ 2y)\frac{1}{\mu_0A}
+	\mathcal{R} = \mathcal{R}_e + \mathcal{R}_a + \mathcal{R}_g = (\frac{l_e}{\mu_{re}}+ \frac{l_a}{ \mu_{ra}}+ 2y)\frac{1}{\mu_0A} \label{eq:electroiman:reluctancia-total}
 \end{equation}
 
 En los materiales ferromagneticos los valores de $\mu_r$ suelen ser grandes, entonces es posible considerar los términos $\frac{l_e}{\mu_{re}}$ y $\frac{l_a}{ \mu_{ra}}$ como insignificantes, asi la reluctancia total puede expresarse como:
@@ -140,9 +140,13 @@ Rehaciendo los cálculos bajo las condiciones anteriores obtenemos una diferencia
     \caption{Electroimán axial}
 \end{figure}
 
-Para un electroimán axisimetrico donde la geometría cumple condiciones de xx, xx. calculamos una fuerza xx N, sin embargo la simulacion FEM nos arroja un valor de xx.
+Repitiendo el análisis para el electroimán axial con geometría \ref{fig:geometria-axial} obtenemos el modelo de reluctancias de la figura \ref{fig:modelo-axial}, al igual que en el electroimán radial la fuerza y la reluctancia quedan determinadas por las ecuaciones \ref{eq:electroiman:reluctancia-total}, con la diferencia de que el área corresponde a una sección transversal circular. 
 
-Al observar el flujo magnetico podemos ver como el campo magnetico se curva en los extremos del iman, a esta distorsion en las lineas de campo magnetico debido a las discontinudades del medio se le conoce como flujo marginal.
+Si comparamos los resultados de estas ecuaciones con la simulación de elemento finito podemos observar un error de n\% en la fuerza ejercida. Esta es una gran desviación comparada con los resultados del electroimán radial. 
+
+%Para un electroimán axisimetrico donde la geometría cumple condiciones de xx, xx. calculamos una fuerza xx N, sin embargo la simulacion FEM nos arroja un valor de xx.
+
+Si analizamos los resultados de la simulación podemos observar que las lineas del flujo magnético se curvan de manera significativa en los extremos del imán. A esta distorsión en el campo magnético debido a las discontinuidades del medio se le conoce como flujo marginal.
 
 \begin{figure}[htb]
     \centering
@@ -150,7 +154,7 @@ Al observar el flujo magnetico podemos ver como el campo magnetico se curva en l
     \caption{Diagrama de flujo marginal}
 \end{figure}
 
-Entonces para el correcto modelado del electroiman necesitamos incluir los efectos del flujo marginal en nuestro modelo.
+Entonces para el correcto modelado del electroiman necesitamos incluir los efectos del flujo marginal.
 
 En [??] se presenta un nuevo metodo para modelar la reluctancia de un entrehierro, para la geometria del electriman a) el entrehierro se puede modelar como b??) y para la geometria del electroiman axisimetrico el entrehierro se puede modelar como??, incluyendo estos nuevos valores en el modelo del reluctancia que conciden con la simulacion fem.
 
@@ -376,23 +380,10 @@ esta atenuacion concide con la de un filtro de pasabajas de primer orden, con fr
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_rma}
     \caption{Rodamiento magnético axial}
 \end{figure}
+
 \subsection{Electroiman}
-\begin{figure}[h]
-    \centering
-    \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{images/Capitulo_2/geometria_nucleo_axial}
-        \caption{radial}
-        \label{fig:geometria-radial}
-    \end{subfigure}
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-      %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{images/Capitulo_2/modelo_reluctancias_eia}
-        \caption{axial}
-        \label{fig:geometria-axial}
-    \end{subfigure}
-    \caption{Modelo de reluctancias}\label{fig:geometria-electroimanes}
-\end{figure}
+
+
 \subsubsection{Núcleo ferromagnético}
 $$F_{max} = 10[N]$$
 $$y_{max} = 2[mm]$$
