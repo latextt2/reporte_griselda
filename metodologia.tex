@@ -365,12 +365,12 @@ Gracias a la alta permeabilidad de la ferrita y las condiciones de operación $y_
 
 Calcular un modelo de reluctancia de un componenete inductivo  permite  un calculo rapido y directo en la inductancia, esto nos ayuda a calcular la densidad  de flujo  en cada seccion del nucleo, haciendo posible evitar la saturaci\'on del nucleo  al dise\~nar un sitema de electroimanes. Cuando se calcular las perdidas de los devanados, el efecto de flujo marginal (effect of the air gap fringing) del entre hierro, se puede calcular las perdidas del los devanados y  modelar  con presici\'on en funci\'on de la Fuerza Magneto Motriz o MMF(Magneto Motive Force), por lo que debe de conocerse la reluctacion del entrehierro  para le calculo preciso del MMF.
 
-Existen diferentes medios para calcular la reluctancia del hueco de aire. Bajo la asunción de una distribución de densidad de flujo homogénea en el entrehierro y sin flujo marginal, la reluctancia del entrehierro se puede calcular como:  
+Existen diferentes medios para calcular la reluctancia del entre hierro. Bajo la asunción de una distribución de densidad de flujo homogénea en el entrehierro y sin flujo marginal, la reluctancia del entrehierro se puede calcular como:  
 
 \begin{equation}
 	R_g = \frac{l_g}{\mu_0A_g}
 \end{equation}
-Donde lg y Ag son respectivamente la sección transversal del espacio de aire y el entrehierro, y $\mu_0$ es la permeabilidad del espacio libre. S\'olo es precisa cuando el flujo marginal es pequeño comparado con el flujo total, como es cuando la longitud del hueco de aire es muy pequeña comparada con la dimensión de la sección transversal del entrehierro.Se conocen dos enfoques para la consideración en el flujo marginal para calcular la reluctancia del entrehierro. \\
+Donde lg y Ag son respectivamente la sección transversal del espacio del entrehierro, y $\mu_0$ es la permeabilidad del espacio libre. S\'olo es precisa cuando el flujo marginal es pequeño comparado con el flujo total, como es cuando la longitud del hueco de aire es muy pequeña comparada con la dimensión de la sección transversal del entrehierro. Se conocen dos enfoques para la consideración en el flujo marginal para calcular la reluctancia del entrehierro. \\
 
 A -$>$ El enfoque del Método de la Transformación Conformal Schwarz-Christoffel:	se basa en la analogía capacitancia-reluctancia para calcular la reluctancia de los huecos de aire\\
 
@@ -381,24 +381,51 @@ Bajo la necesidad de manejar diferentes formas de entrehierro y que sea razonabl
 
 Inserte imagen (figura 3 del paper)
 
-La figura anterior se toma como base para calcular estructuras de entre hierro más complejas. Esta geometría básica se utiliza como un bloque de construcción para describir diferentes formas tridimensionales de entrehierro.
+La figura anterior se toma como base para calcular estructuras de entre hierro más complejas. Esta geometría básica se utiliza como un bloque de construcción para describir diferentes formas tridimensionales de entrehierro dando como resultado:
 
 \begin{equation}
 	R^\prime_{basic} = \frac{1}{\mu_0[\frac{\omega}{2l} + \frac{2}{\pi}(1 +ln\frac{\pi h}{4l})]} 
 \end{equation}
 
+
+Inserte imagen (figura 4 del paper)
+
+Todos los tipos de entrehierro se pueden ver como un conjunto de varias geometr\'ias b\'asicas de la Figura (anterior)  La figura (anterior) muestra c\'omo juntar geometr?as básicas para conseguir el tipo de entrehierro designado. Además, muestra c\'omo establecer los valores de $w$ y $l$ en la ecuacion (anteiror). El valor $h$ representa la distancia desde el borde del entrehierro a la siguiente esquina del n\'ucleo. Con el fin de considerar la tridimensionalidad del entrehierro, se introduce un factor marginal que describe por qu\'e factor disminuye la reluctancia del entrehierro debido al flujo marginal comparado con la reluctancia idealizada (primera ecuacionde este tema). 
+
+Inserte imagen (figura 5 del paper)
+
+Este enfoque se introduce utilizando el ejemplo del entrehierro ilustrado en la Fig (anterior).
+ Suponiendo que el entrehierro es infinitamente largo en la dirección $x (t \rightarrow \infty)$, los efectos marginales en los límites del entrehierro en la dirección $x$ pueden ser despreciados. El factor marginal que considera los efectos en la dirección $x$ se obtiene calculando la reluctancia de intervalo de aire correspondiente por unidad de longitud R:
+ 
+ \begin{equation}
+	\sigma_y = \frac{R^\prime}{\frac{a}{\mu_0b}}
+\end{equation}
+
+De manera similar, también se puede deducir el factor marginal en la dirección x. Suponiendo un espacio de aire que es infinitamente largo en la dirección  $(b \rightarrow \infty)$, los efectos marginales en los límites del entrehierro en la dirección $y$ pueden ser despreciados. Este entrehierro tiene una sección transversal como se ilustra en la Fig. 4 (a) (entrehierro tipo 1). El factor marginal que considera los efectos marginales en la dirección x se obtiene calculando la reluctancia de intervalo de aire correspondiente por unidad de longitud R:
+
+
 \begin{equation}
 	\sigma_x = \frac{R^\prime}{\frac{a}{\mu_0t}}
 \end{equation}
+El factor marginal 3D se obtiene multiplicando los dos factores de franja $\sigma_x$  y $\sigma_y$:
+
 \begin{equation}
 	\sigma = \sigma_x	\sigma_y
 \end{equation}
+
+La reluctancia del entrehierro se puede entonces calcular fácilmente:
+
 \begin{equation}
 	R_{m,airgap} = \sigma \frac{a}{\mu_0 t b}
 \end{equation}
+
+Por lo que el factor marginal que considera los efectos marginales en la dirección de sistema de coordenadas polares es:
+
 \begin{equation}
 	\sigma_r = \frac{R^\prime}{\frac{a}{\mu_0 r}}
 \end{equation}
+Donde $a$ es la longitud del entrehierro, $r$ el radio del entrehierro, y $R^\prime$ representa la reluctancia del entrehierro por unidad de longitud de la mitad de la seccion transversal del núcleo (incluyendo los efectos marginales). Este factor marginal tiene que ser cuadrado ya que $r$ aparece al cuadrado en el cálculo de la sección transversal del entrehierro. Como consecuencia, la reluctancia precisa se puede calcular como:
+
 \begin{equation}
 	R_g = \sigma^2_r \frac{a}{\mu_0 r^2 \pi}
 \end{equation}
