@@ -109,7 +109,7 @@ Aplicando la ecuacion \ref{eq:electroiman:formula-general-fuerza}, la fuerza se 
 	\label{eq:electroiman:fuerza-ideal}
 \end{equation}
 
-La ecuacion \ref{eq:electroiman:fuerza-ideal} puede encontrarse en la literatura \ref{cite_s4_2017},\ref{cite_s6_2017} y \ref{cite_s7_2017}. Esta ecuación se considera un caso ideal ya que se desprecia los efectos del flujo de fluga, flujo marginal y la reluctancia del núcleo.
+La ecuacion \ref{eq:electroiman:fuerza-ideal} puede encontrarse en la literatura \cite{cite_s4_2017},\cite{cite_s6_2017} y \cite{cite_s7_2017}. Esta ecuación se considera un caso ideal ya que se desprecia los efectos del flujo de fluga, flujo marginal y la reluctancia del núcleo.
 
 Si ponemos a prueba  la ecuaciones bajo las condiciones de operación del Rodamiento Magnético (considerando un entrehierro pequeño), resulta en un error en la fuerza de n\% comparado con la simulación de elemento finito, esto se debe a que la reluctancia del entrehierro y la del núcleo se encuentran en el mismo orden de magnitud. 
 
@@ -128,7 +128,7 @@ Rehaciendo los cálculos bajo las condiciones anteriores obtenemos una diferencia
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_2/geometria_nucleo_axial}
         \caption{Geometría}
-        \label{fig:geometria-axial}
+        \label{fig:geom-axial}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
       %(or a blank line to force the subfigure onto a new line)
@@ -140,19 +140,13 @@ Rehaciendo los cálculos bajo las condiciones anteriores obtenemos una diferencia
     \caption{Electroimán axial}
 \end{figure}
 
-Repitiendo el análisis para el electroimán axial con geometría \ref{fig:geometria-axial} obtenemos el modelo de reluctancias de la figura \ref{fig:modelo-axial}, al igual que en el electroimán radial la fuerza y la reluctancia quedan determinadas por las ecuaciones \ref{eq:electroiman:reluctancia-total}, con la diferencia de que el área corresponde a una sección transversal circular. 
+Repitiendo el análisis para el electroimán axial con geometría \ref{fig:geom-axial} obtenemos el modelo de reluctancias de la figura \ref{fig:modelo-axial}, al igual que en el electroimán radial la fuerza y la reluctancia quedan determinadas por las ecuaciones \ref{eq:electroiman:reluctancia-total}, con la diferencia de que el área corresponde a una sección transversal circular. 
 
 Si comparamos los resultados de estas ecuaciones con la simulación de elemento finito podemos observar un error de n\% en la fuerza ejercida. Esta es una gran desviación comparada con los resultados del electroimán radial. 
 
 %Para un electroimán axisimetrico donde la geometría cumple condiciones de xx, xx. calculamos una fuerza xx N, sin embargo la simulacion FEM nos arroja un valor de xx.
 
 Si analizamos los resultados de la simulación podemos observar que las lineas del flujo magnético se curvan de manera significativa en los extremos del imán. A esta distorsión en el campo magnético debido a las discontinuidades del medio se le conoce como flujo marginal.
-
-\begin{figure}[htb]
-    \centering
-    \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_flujo_maginal}
-    \caption{Diagrama de flujo marginal}
-\end{figure}
 
 Entonces para el correcto modelado del electroiman necesitamos incluir los efectos del flujo marginal.
 

@@ -362,72 +362,86 @@ Gracias a la alta permeabilidad de la ferrita y las condiciones de operación $y_
 \newpage
 \subsection{Efecto marginal (Fringing)}
 
-
-Calcular un modelo de reluctancia de un componenete inductivo  permite  un calculo rapido y directo en la inductancia, esto nos ayuda a calcular la densidad  de flujo  en cada seccion del nucleo, haciendo posible evitar la saturaci\'on del nucleo  al dise\~nar un sitema de electroimanes. Cuando se calcular las perdidas de los devanados, el efecto de flujo marginal (effect of the air gap fringing) del entre hierro, se puede calcular las perdidas del los devanados y  modelar  con presici\'on en funci\'on de la Fuerza Magneto Motriz o MMF(Magneto Motive Force), por lo que debe de conocerse la reluctacion del entrehierro  para le calculo preciso del MMF.
-
-Existen diferentes medios para calcular la reluctancia del entre hierro. Bajo la asunción de una distribución de densidad de flujo homogénea en el entrehierro y sin flujo marginal, la reluctancia del entrehierro se puede calcular como:  
+Calcular la reluctancia de un componente inductivo permite determinar de manera rápida y directa la inductancia y flujo magnético, haciendo posible evitar la saturaci\'on del núcleo al dise\~nar un sistema de electroimanes.
+Existen diferentes métodos para calcular la reluctancia del entrehierro. En un modelo ideal con una distribución de densidad de flujo homogénea y sin flujo marginal, la reluctancia del entrehierro se puede calcular como:  
 
 \begin{equation}
-	R_g = \frac{l_g}{\mu_0A_g}
-\end{equation}
-Donde lg y Ag son respectivamente la sección transversal del espacio del entrehierro, y $\mu_0$ es la permeabilidad del espacio libre. S\'olo es precisa cuando el flujo marginal es pequeño comparado con el flujo total, como es cuando la longitud del hueco de aire es muy pequeña comparada con la dimensión de la sección transversal del entrehierro. Se conocen dos enfoques para la consideración en el flujo marginal para calcular la reluctancia del entrehierro. \\
+	\mathcal{R}_g = \frac{l_g}{\mu_0A_g}
+	\label{eq:marginal:reluctancia-ideal}  
+\end{equation} 
 
-A -$>$ El enfoque del Método de la Transformación Conformal Schwarz-Christoffel:	se basa en la analogía capacitancia-reluctancia para calcular la reluctancia de los huecos de aire\\
+Donde $l_g$ y $A_g$ son la longitud y sección transversal del entrehierro respectivamente, y $\mu_0$ es la permeabilidad del espacio libre. La ecuación \ref{eq:marginal:reluctancia-ideal} s\'olo aplica cuando el flujo marginal es pequeño comparado con el flujo total, como cuando la longitud del entrehierro es muy pequeña comparada con su sección transversal. 
 
-B -$>$ Aumento del area transversal del entre hierro:	El flujo marginal puede ser tomado en consideración aumentando el área de la sección transversal del hueco de aire real (aumentando el área de la sección transversal del entrehierro, la reluctancia se reduce al valor real).
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_flujo_maginal}
+    \caption{Diagrama de flujo marginal}
+\end{figure}
 
+Se conocen dos enfoques para la consideración en el flujo marginal para calcular la reluctancia del entrehierro: \\
 
-Bajo la necesidad de manejar diferentes formas de entrehierro y que sea razonable de manejar facilemte, el nuevo enfoque para los cálculos de la reluctancia del entrehierro 3D se deriva de estos dos ultimo. 
+\begin{enumerate}
+\item El enfoque del Método de la Transformación Conformal Schwarz-Christoffel:	se basa en la analogía capacitancia-reluctancia para calcular la reluctancia del entehierro. Sin embargo, este enfoque nos conduce a una solución relativamente compleja y difícil de manejar. 
+\item Aumento del área transversal del entre hierro: el flujo marginal puede ser tomado en consideración aumentando la sección transversal del entrehierro, y con esto reduciendo la reluctancia a su valor real. Este incremento de la sección transversal debe estar en función de la longitud del entrehierro $l_g$. La aproximación más común presentada en [...] consiste en extender la sección transversal en una magnitud de $l_g$ como se muestra en la ecuación:
 
-Inserte imagen (figura 3 del paper)
+\begin{equation}
+	\mathcal{R}_g = \frac{l_g}{\mu_0(a+l_g)(d+l_g)}
+	\label{eq:marginal:reluctancia-aproximacion}  
+\end{equation}  
+ 
+Esta aproximación carece de una derivación y explicación formal y sus resultados difieren de la simulación FEM. 
+\end{enumerate}
 
-La figura anterior se toma como base para calcular estructuras de entre hierro más complejas. Esta geometría básica se utiliza como un bloque de construcción para describir diferentes formas tridimensionales de entrehierro dando como resultado:
+En [...] se presenta un método para modelar la reluctancia tomando en cuenta el flujo marginal, el cual considera el flujo en tres dimensiones, es fácil de manejar y cuenta con un alto grado de exactitud. 
+Este método surge a partir de aplicar la transformación Schwarz-Christoffel al sistema de la figura [1...] con el fin de calcular su reluctancia por unidad de longitud (reluctancia planar). Esta reluctancia queda determinada por: 
 
 \begin{equation}
 	R^\prime_{basic} = \frac{1}{\mu_0[\frac{\omega}{2l} + \frac{2}{\pi}(1 +ln\frac{\pi h}{4l})]} 
 \end{equation}
 
+%Inserte imagen (figura 3 del paper)
 
-Inserte imagen (figura 4 del paper)
+La figura [1...] se toma como base para calcular estructuras de entrehierro más complejas. La figura [4 paper] muestra como se pueden alcanzar diferentes geometrías a partir del modelo básico, además de establecer los valores de $\omega$ y $l$. El valor $h$ representa la distancia desde el borde del entrehierro a la siguiente esquina del n\'ucleo.
 
-Todos los tipos de entrehierro se pueden ver como un conjunto de varias geometr\'ias b\'asicas de la Figura (anterior)  La figura (anterior) muestra c\'omo juntar geometr?as básicas para conseguir el tipo de entrehierro designado. Además, muestra c\'omo establecer los valores de $w$ y $l$ en la ecuacion (anteiror). El valor $h$ representa la distancia desde el borde del entrehierro a la siguiente esquina del n\'ucleo. Con el fin de considerar la tridimensionalidad del entrehierro, se introduce un factor marginal que describe por qu\'e factor disminuye la reluctancia del entrehierro debido al flujo marginal comparado con la reluctancia idealizada (primera ecuacionde este tema). 
+%Inserte imagen (figura 4 del paper)
 
-Inserte imagen (figura 5 del paper)
-
-Este enfoque se introduce utilizando el ejemplo del entrehierro ilustrado en la Fig (anterior).
- Suponiendo que el entrehierro es infinitamente largo en la dirección $x (t \rightarrow \infty)$, los efectos marginales en los límites del entrehierro en la dirección $x$ pueden ser despreciados. El factor marginal que considera los efectos en la dirección $x$ se obtiene calculando la reluctancia de intervalo de aire correspondiente por unidad de longitud R:
- 
- \begin{equation}
-	\sigma_y = \frac{R^\prime}{\frac{a}{\mu_0b}}
-\end{equation}
-
-De manera similar, también se puede deducir el factor marginal en la dirección x. Suponiendo un espacio de aire que es infinitamente largo en la dirección  $(b \rightarrow \infty)$, los efectos marginales en los límites del entrehierro en la dirección $y$ pueden ser despreciados. Este entrehierro tiene una sección transversal como se ilustra en la Fig. 4 (a) (entrehierro tipo 1). El factor marginal que considera los efectos marginales en la dirección x se obtiene calculando la reluctancia de intervalo de aire correspondiente por unidad de longitud R:
-
+Con el fin de considerar la tridimensionalidad del entrehierro, se introduce un factor de corrección que describe en qué medida disminuye la reluctancia del entrehierro debido al flujo marginal comparado con la reluctancia ideal. 
+El factor de corrección que considera los efectos en la dirección $x$ se obtiene calculando la reluctancia planar $R^\prime_{basic}$ y dividiéndola entre la reluctancia planar ideal (visto desde el plano $xz$):
 
 \begin{equation}
 	\sigma_x = \frac{R^\prime}{\frac{a}{\mu_0t}}
 \end{equation}
-El factor marginal 3D se obtiene multiplicando los dos factores de franja $\sigma_x$  y $\sigma_y$:
+
+De manera similar, también se puede deducir el factor de corrección en la dirección $y$:
+
+ \begin{equation}
+	\sigma_y = \frac{R^\prime}{\frac{a}{\mu_0b}}
+\end{equation}
+
+Inserte imagen (figura 5 del paper)
+
+El factor de corrección 3D se obtiene multiplicando los dos factores de franja $\sigma_x$  y $\sigma_y$:
 
 \begin{equation}
 	\sigma = \sigma_x	\sigma_y
 \end{equation}
 
-La reluctancia del entrehierro se puede entonces calcular fácilmente:
+La reluctancia del entrehierro se puede entonces calcular fácilmente como:
 
 \begin{equation}
 	R_{m,airgap} = \sigma \frac{a}{\mu_0 t b}
 \end{equation}
 
-Por lo que el factor marginal que considera los efectos marginales en la dirección de sistema de coordenadas polares es:
+Así mismo el factor de corrección que considera los efectos marginales en un sistema axisimétrico es: 
 
 \begin{equation}
-	\sigma_r = \frac{R^\prime}{\frac{a}{\mu_0 r}}
+	\sigma_r = \frac{R^\prime}{\frac{l_g}{\mu_0 r}}
 \end{equation}
-Donde $a$ es la longitud del entrehierro, $r$ el radio del entrehierro, y $R^\prime$ representa la reluctancia del entrehierro por unidad de longitud de la mitad de la seccion transversal del núcleo (incluyendo los efectos marginales). Este factor marginal tiene que ser cuadrado ya que $r$ aparece al cuadrado en el cálculo de la sección transversal del entrehierro. Como consecuencia, la reluctancia precisa se puede calcular como:
+
+Donde $l_g$ es la longitud del entrehierro, $r$ el radio del entrehierro, y $R^\prime$ representa la reluctancia planar (incluyendo los efectos marginales). Como consecuencia, la reluctancia real se puede calcular como:
 
 \begin{equation}
-	R_g = \sigma^2_r \frac{a}{\mu_0 r^2 \pi}
+	R_g = \sigma_r \frac{l_g}{\mu_0 r^2 \pi}
 \end{equation}
 
 \section{Imanes permanentes}
