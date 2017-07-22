@@ -119,6 +119,7 @@ Si reescribimos la ecuación \ref{eq:electroiman:fuerza-ideal} pero esta vez sin 
 
 \begin{equation}
 	F_m = - \frac{\mu_0 A N^2 I^2}{(\frac{l_e}{\mu_{re}}+ \frac{l_a}{\mu_{ra}}+ 2y)^2}
+	\label{eq:electroiman:fuerza-real}
 \end{equation}
 
 Rehaciendo los cálculos bajo las condiciones anteriores obtenemos una diferencia de tan solo n\% con respecto a la simulación de elemento finito. 
@@ -148,48 +149,57 @@ Si comparamos los resultados de estas ecuaciones con la simulación de elemento f
 
 Si analizamos los resultados de la simulación podemos observar que las lineas del flujo magnético se curvan de manera significativa en los extremos del imán. A esta distorsión en el campo magnético debido a las discontinuidades del medio se le conoce como flujo marginal.
 
-Entonces para el correcto modelado del electroiman necesitamos incluir los efectos del flujo marginal.
+Entonces para el correcto modelado del electroimán necesitamos incluir los efectos del flujo marginal. En [??] se presenta un nuevo método para modelar la reluctancia de un entrehierro. Usando este nuevo modelo los resultados de la simulación se acercan en un n\%.   
 
-En [??] se presenta un nuevo metodo para modelar la reluctancia de un entrehierro, para la geometria del electriman a) el entrehierro se puede modelar como b??) y para la geometria del electroiman axisimetrico el entrehierro se puede modelar como??, incluyendo estos nuevos valores en el modelo del reluctancia que conciden con la simulacion fem.
+Ahora que tenemos un modelo adecuado para la fuerza de los electroimanes, es necesario un procedimiento para diseñarlos. Desafortunadamente en la literatura no existe un método formal para el diseño de electroimanes.  A continuación presentaremos cómo los diferentes parámetros afectan el desempeño y características del electroimán, para después concluir con un procedimiento para su diseño. 
 
-Ahora que tenemos un modelo adeacuado para la fuerza de los electrimanes, es necesario un procecidimiento para diseñarlos.
+Idealmente queremos diseñar un electroimán pequeño, de bajo consumo y que pueda ejercer la fuerza $F_min$ que necesitamos a una distancia $d$.
 
-A partir de la ecuacion ??  podemos observar podemos varariar ?? parametros a la hora de diseñar un electriman, idealmente queremos el electriman mas pequeño y que consuma menos corriente, y que pueda ejercer la fuerza que necesitemos $F$ a una distancia $d$.
-
-Empezando por los terminos de fuerza magnetomotriz, para un electriman pequeño incrementarios el termino NI y una area transversal muy pequeña, sin embargo, esta condiciones causaria la saturacion del nucleo. lo cual no solo insertaria mas no-linealiadades dentro del sistema, si no que tambien generaria mayores perdidas.
-
-Para evitar saturar el nucleo entonces tenemos que limitar la induccion magnetica a la que sometemos el nucleo, reordenando la ecuacion de ??, podemo determinar la induccion maxima de la forma:
+Empezando por los requerimientos de fuerza y tamaño, en la ecuación \ref{eq:electroiman:fuerza-real} se puede apreciar que la fuerza depende de la sección transversal del núcleo y los amperes/vuelta del devanado ($NI$), por lo que para minimizar el tamaño del electroimán necesitamos incrementar el valor de $NI$. Como se puede apreciar en la siguiente ecuación la densidad de flujo solo depende de los amperes/vuelta y de la distancia de operación del electroimán: 
 
 \begin{equation}
-	(NI)_{max} =  \frac{\phi}{A}
-\end{equation}
+	B = \frac{\phi}{A} = \frac{\mu_0 NI}{2y}
+\end{equation} 
 
-El valor $NI_{max}$ solo depende de la logitud del entrehierro y del punto de saturacion del nucleo del electriman, esto implica que materiales con un punto de saturacion mas alto son mejores para aplicaiones de electrimanes. 
+Esto significa que el punto de saturación del material impone un límite en el valor máximo aplicable de $NI$ si es que queremos mantenernos en el régimen lineal del material. Esto para minimizar las pérdidas por histéresis y facilitar el modelado.Esto implica que materiales con un punto de saturación mas alto son mejores para aplicaciones con electroimanes. Entonces el número máximo de amperes/vuelta quedará determinado por:
 
-Conociendo ahora la $F_{MM}$ maxima que podemos aplicar el nucleo, solo nos queda variar el area transversal para generar la fuerza requerida $F_max$ mediantes la formula ??
-
-Falta ahora determinar los valores de $N$ e $I$, la relacion de estos dos terminos es de suma importancia, ya que ambos determinan las caracteristicas electricas del electriman definidas por los terminos de inductancia y resistencia, la inductancia como se vera mas adelante limitara la respuesta en frecuencia de los electroimanes mientras que la resistencia determinara la eficiencia.
-
-La resistencia de la bobina del electroiman esta dada por
 \begin{equation}
-R = ??
+NI_{max}= \frac{2yB_{sat}}{\mu_0}
 \end{equation}
-donde $l$ es la logitud promedio de una espira, $A$ es la seccion tranversal el conductor, $\sigma$ y N es el numero de vueltas
 
-las perdidades por efecto joule en un electroiman estan dadas por
-$W = I^2R$ 
+Conociendo ahora la $F_{MM}$ máxima que podemos aplicar al núcleo, solo nos queda variar la sección transversal del entrehierro para generar la fuerza requerida $F_min$ mediante la formula:
 
-Teniedo en consideracion todo lo anterior podemos resumir le proceso de diseño de un electriman en los siguientes pasos
+\begin{equation}
+NI = \sqrt[2]{\frac{4 F_m y^2}{\mu_0 A}}
+\end{equation}
 
+Falta ahora determinar los valores de $N$ e $I$, la relación de estos dos términos es de suma importancia, ya que ambos determinan las características eléctricas del electroimán definidas por los términos de inductancia $L$ y resistencia $R$, la inductancia como se vera mas adelante limitara la respuesta en frecuencia de los electroimanes mientras que la resistencia determinara la eficiencia.
 
+La resistencia de la bobina del electroimán esta dada por
+
+\begin{equation}
+R = \frac{N l \sigma}{A}  
+\end{equation}
+
+Donde $l$ es la longitud promedio de una espira, $A$ es la sección transversal del conductor, $\sigma$ la resistividad del conductor y N es el numero de vueltas. Las pérdidas por efecto joule provocadas por esta resistencia están dadas por:
+
+\begin{equation}
+W = I^2R 
+\end{equation}
+
+Las perdidas no dependen del balance entre N e I ya que se compensan entre sí, usar un numero reducido de vueltas requiere emplear una gran corriente y por lo tanto un conductor más grueso. En contraste utilizar un calibre menor limita la corriente máxima de la bobina lo cual requiere un mayor numero de vueltas. En este caso es recomendable atenerse a las tablas de conductores AWG.   
+
+Entonces la relación N e I deberá ser guiada por el valor deseado de inductancia que se adecua a la respuesta en frecuencia de los electroimanes y el voltaje de operación de la electrónica de accionamiento. 
+
+Teniendo en consideración todo lo anterior podemos resumir le proceso de diseño de un electroimán en los siguientes pasos:
 
 \begin{enumerate}
-\item Determinar condiciones de operacion y, v, $f_{max}$, $F_{max}$, $W_{loss_max}$ 
-\item Seleccion de material
-\item Calcular $NI_max$
-\item Calcular A
-\item Calcular $L_max$
-\item Determinar Determinar I y N
+\item Determinar condiciones de operacion y, v, $f_{max}$, $F_{max}$, $W_{loss_max}$. 
+\item Selección de material.
+\item Calcular $NI_max$.
+\item Calcular A.
+\item Determinar $L_max$.
+\item Calcular N e I.
 \end{enumerate}
 
 \subsection{Selecci\'on de Material}
