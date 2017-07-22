@@ -1160,24 +1160,37 @@ x = x * tu + w
 \todo[inline]{explica el filtro de kalman desde la perspectica de un observador de estados}
 \todo[inline]{se explica la perspectiva del filtro de kalman desde la perspectiva de un estimador bayesiano}
 
+El filtro de Kalman es un algoritmo que se basa en el modelo de espacio de estados de un sistema para estimar el estado futuro y la salida futura realizando un filtrado optimo (El filtro de Kalman es \'opitmo respecto a casi cualquier criterio  que tenga sentido) a la se\~nal de salida, y dependiendo del retraso de las muestras que se le ingresan puede cumplir la función de estimador de parámetros o únicamente de filtro. Pero en ambos casos elimina ruido, estas ecuaciones son ampliamente utilizadas ya que incluyen probabilidades estadísticas puesto que toma en cuenta la aleatoriedad tanto de la señal como del ruido. Hace uso del conocimiento del sistema y de la dinámica de los  instrumentos de medición, describe estadisticamente los errores de la medic\'ion y la incertidumbre de los modelos dinamicos. 
+A diferencia de otros tipos de filtros este no requiere de una frecuencia de corte específica debido a que se basa en la característica del ruido permitiendo de esta manera filtrar en todo el espectro de frecuencias. 
+El filtro de Kalman es esencialmente una serie de ecuaciones matemáticas que implementan un estimador tipo predictor $-$ corrector que es óptimo en el sentido que minimiza el error estimado de la covarianza(la covarianza es un valor que indica el grado de variación conjunta de dos variables aleatorias respecto a sus medias. Es el dato básico para determinar si existe una dependencia entre ambas variables y además es el dato necesario para estimar otros par\'ametros b\'asicos), cuando algunas condiciones son dadas. A continuaci\'on se muestra el algoritmo reiterativo  desarrollado por Rodolf Kalman% cabe destacar que este algoritmo re$-$iterativo eventualmente converge a un error minimo entre el valor real de la variable y el valor predicido:
 
-
-
+Se inicia con una estimaci\'on previa a la mediaci\'on con su respectiva error de covarianza, y esta es tomda en cuenta en el calculo de la ganacia de kalman: 
 \begin{equation}
 	K_k = P^-_k H^T (H_k P^-_k H^T_k +R_k)^{-1}
 \end{equation}
+
+Se act\'ualiza la estimaci\'on con la medici\'on y se optiene un resulado:
 \begin{equation}
 	\hat{X_k} = \hat{X}^-_k + K_k (Z_k - H_k \hat{X}^-_k)
 \end{equation}
+
+Se calcular la covarianza del error para la estimación actualizada:
+
 \begin{equation}
 	P_k = (l - K_k H_k) P^-_k
 \end{equation}
+
+Teniendo la estimaci\'on actualizada, se hace la nueva proyeccci\'on a futuro:
+
 \begin{equation}
 	\hat{X}^-_{k+1} = \phi_k \hat{X}_k
 \end{equation}
+
 \begin{equation}
 	P^-_{k+1} = \phi_k P_k \phi^T_k + Q_k
 \end{equation}
+
+La nueva proyecci\'on pasa  a hacer la estimacion actual repitiendo el proceso, en esencia el filtro kalman realiza la predici\'on y al final lo corrige. 
 \newpage
 
 \section{Diseño de ingeniería }
