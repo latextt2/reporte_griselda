@@ -1160,20 +1160,23 @@ x = x * tu + w
 \todo[inline]{explica el filtro de kalman desde la perspectica de un observador de estados}
 \todo[inline]{se explica la perspectiva del filtro de kalman desde la perspectiva de un estimador bayesiano}
 
+
+
+
 \begin{equation}
-	K_R = P^-_R H^T (H_R P^-_R H^T_R +R_R)^{-1}
+	K_k = P^-_k H^T (H_k P^-_k H^T_k +R_k)^{-1}
 \end{equation}
 \begin{equation}
-	\hat{X_R} = \hat{X}^-_R + K_R (Z_R - H_R \hat{X}^-_R)
+	\hat{X_k} = \hat{X}^-_k + K_k (Z_k - H_k \hat{X}^-_k)
 \end{equation}
 \begin{equation}
-	P_R = (l - K_R H_R) P^-_R
+	P_k = (l - K_k H_k) P^-_k
 \end{equation}
 \begin{equation}
-	\hat{X}^-_{R+1} = \phi_R \hat{X}_R  
+	\hat{X}^-_{k+1} = \phi_k \hat{X}_k
 \end{equation}
 \begin{equation}
-	P^-_{R+1} = \phi_R P_R \phi^T_R + Q_R
+	P^-_{k+1} = \phi_k P_k \phi^T_k + Q_k
 \end{equation}
 \newpage
 
