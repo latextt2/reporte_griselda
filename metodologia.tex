@@ -313,45 +313,150 @@ $\phi$ & Flujo magnético & $I$ & Corriente eléctrica \\
 \newpage
 
 \section{Electroimanes}
-\subsection{Análisis del electroimán}	
 
-Mediante el análisis de circuitos magnéticos se puede calcular la energía almacenada en el circuito formado por el electroimán.
+
+\subsection{Modelado}
+
+Para diseñar un electroimán se requiere de un modelo que relacione la geometría del núcleo con la fuerza máxima que este puede ejercer. La fuerza esta determinada por
+\begin{equation}
+	F =  \frac{(NI)^2}{2} \frac{d}{dy}(\mathcal{R}^{-1})
+	\label{eq:electroiman:formula-general-fuerza}
+\end{equation}
+por lo que el problema de calcular la fuerza se reduce a calcular la reluctancia del circuito magnético que conforma el electroimán. 
+
+%Procederemos a analizar los núcleos de geometría \ref{fig:geometria-radial} y \ref{fig:geometria-axial} correspondientes a los electroimanes radial y axial respectivamente.
 
 \begin{figure}[htb]
-\begin{center}
-\centering
-	\includegraphics[width=11cm, height=7cm]{images/Capitulo_1/Circuito_magnetico_del_electroiman}
-	\caption{\textit{Circuito magnético del electroimán.}}
-\end{center}
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/geometria_nucleo_radial}
+        \caption{Geometría}
+        \label{fig:geometria-radial}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/modelo_reluctancias_eir}
+        \caption{Modelo de reluctancias}
+        \label{fig:modelo-reluctancias-radial}
+    \end{subfigure}
+    \caption{Electroiman radial}
 \end{figure}
 
-\begin{equation}
-	W_m = \frac{1}{2} Li^2 = \frac{\mu_0 N^2 I^2 A}{2 (\frac{l_e}{\mu_{re}}+ \frac{l_a}{k \mu_{ra}}+ 2y)^2}
-\end{equation}
-
-Aplicando el principio de trabajo virtual podemos calcular la fuerza como la variación de la energía con respecto al despeamiento:
+El electroiman posee una geometría como la de la figura \ref{fig:geometria-radial}, aplicando el análisis de circuitos magnéticos el sistema se pude modelar como el circuito de reluctancias de la figura \ref{fig:modelo-reluctancias-radial}. Entonces la reluctancia total puede escribirse como:
 
 \begin{equation}
-	F_m = \frac{dW_m}{dy} = - \frac{\mu_0 N^2 I^2 A}{(\frac{l_e}{\mu_{re}}+ \frac{l_a}{k \mu_{ra}}+ 2y)^2}
+	\mathcal{R} = \mathcal{R}_e + \mathcal{R}_a + \mathcal{R}_g = (\frac{l_e}{\mu_{re}}+ \frac{l_a}{ \mu_{ra}}+ 2y)\frac{1}{\mu_0A} \label{eq:electroiman:reluctancia-total}
 \end{equation}
 
-Estas ecuaciones resultan difíciles de trabajar para el diseño del electroimán, sin embargo en el caso de que la condición: 
+En los materiales ferromagneticos los valores de $\mu_r$ suelen ser grandes, entonces es posible considerar los términos $\frac{l_e}{\mu_{re}}$ y $\frac{l_a}{ \mu_{ra}}$ como insignificantes, asi la reluctancia total puede expresarse como:
 
 \begin{equation}
-	u_{r,}y \bracevert 2y >>\frac{l_e}{\mu_{re}} + \frac{l_a}{k \mu_{ra}}
+\mathcal{R} = \frac{2y}{\mu_0A}
 \end{equation}
 
-sea válida, los términos que dependen de las longitudes del conductor magnético se vuelven despreciables y las ecuaciones se simplifican a: 
+Aplicando la ecuacion \ref{eq:electroiman:formula-general-fuerza}, la fuerza se determina con:
 
 \begin{equation}
-	F_m = - \frac{\mu_0 N^2 I^2 A}{4y^2}
+	F_m = - \frac{\mu_0 A N^2 I^2 }{ 4 y^2}
+	\label{eq:electroiman:fuerza-ideal}
 \end{equation}
+
+La ecuacion \ref{eq:electroiman:fuerza-ideal} puede encontrarse en la literatura \cite{cite_s4_2017},\cite{cite_s6_2017} y \cite{cite_s7_2017}. Esta ecuación se considera un caso ideal ya que se desprecia los efectos del flujo de fluga, flujo marginal y la reluctancia del núcleo.
+
+Si ponemos a prueba  la ecuaciones bajo las condiciones de operación del Rodamiento Magnético (considerando un entrehierro pequeño), resulta en un error en la fuerza de n\% comparado con la simulación de elemento finito, esto se debe a que la reluctancia del entrehierro y la del núcleo se encuentran en el mismo orden de magnitud. 
+
+%en cambio si realizamos simulacion en FEM, para el mismo sistema, la simulacion arroja un valor de N.
+
+Si reescribimos la ecuación \ref{eq:electroiman:fuerza-ideal} pero esta vez sin ignorar los terminos $\frac{l_e}{\mu_{re}}$ y $\frac{l_a}{ \mu_{ra}}$, obtenemos la ecuación:
 
 \begin{equation}
-	B = \frac{\mu_0 N I}{2y}
+	F_m = - \frac{\mu_0 A N^2 I^2}{(\frac{l_e}{\mu_{re}}+ \frac{l_a}{\mu_{ra}}+ 2y)^2}
+	\label{eq:electroiman:fuerza-real}
 \end{equation}
 
-Gracias a la alta permeabilidad de la ferrita y las condiciones de operación $y_min$ y $y_max$ se pueden utilizar estas ecuaciones para el cálculo del electroimán. 
+Rehaciendo los cálculos bajo las condiciones anteriores obtenemos una diferencia de tan solo n\% con respecto a la simulación de elemento finito. 
+
+\begin{figure}[h]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/geometria_nucleo_axial}
+        \caption{Geometría}
+        \label{fig:geom-axial}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/modelo_reluctancias_eia}
+        \caption{Modelo de reluctancias}
+        \label{fig:modelo-axial}
+    \end{subfigure}
+    \caption{Electroimán axial}
+\end{figure}
+
+Repitiendo el análisis para el electroimán axial con geometría \ref{fig:geom-axial} obtenemos el modelo de reluctancias de la figura \ref{fig:modelo-axial}, al igual que en el electroimán radial la fuerza y la reluctancia quedan determinadas por las ecuaciones \ref{eq:electroiman:reluctancia-total}, con la diferencia de que el área corresponde a una sección transversal circular. 
+
+Si comparamos los resultados de estas ecuaciones con la simulación de elemento finito podemos observar un error de n\% en la fuerza ejercida. Esta es una gran desviación comparada con los resultados del electroimán radial. 
+
+%Para un electroimán axisimetrico donde la geometría cumple condiciones de xx, xx. calculamos una fuerza xx N, sin embargo la simulacion FEM nos arroja un valor de xx.
+
+Si analizamos los resultados de la simulación podemos observar que las lineas del flujo magnético se curvan de manera significativa en los extremos del imán. A esta distorsión en el campo magnético debido a las discontinuidades del medio se le conoce como flujo marginal.
+
+Entonces para el correcto modelado del electroimán necesitamos incluir los efectos del flujo marginal. En \cite{cite_s8_2017_paper} se presenta un nuevo método para modelar la reluctancia de un entrehierro. Usando este nuevo modelo los resultados de la simulación se acercan en un n\%.   
+
+\subsection{Proceso de diseño}
+
+Ahora que tenemos un modelo adecuado para la fuerza de los electroimanes, es necesario un procedimiento para diseñarlos. Desafortunadamente en la literatura no existe un método formal para el diseño de electroimanes.  A continuación presentaremos cómo los diferentes parámetros afectan el desempeño y características del electroimán, para después concluir con un procedimiento para su diseño. 
+
+Idealmente queremos diseñar un electroimán pequeño, de bajo consumo y que pueda ejercer la fuerza $F_min$ que necesitamos a una distancia $d$.
+
+Empezando por los requerimientos de fuerza y tamaño, en la ecuación \ref{eq:electroiman:fuerza-real} se puede apreciar que la fuerza depende de la sección transversal del núcleo y los amperes/vuelta del devanado ($NI$), por lo que para minimizar el tamaño del electroimán necesitamos incrementar el valor de $NI$. Como se puede apreciar en la siguiente ecuación la densidad de flujo solo depende de los amperes/vuelta y de la distancia de operación del electroimán: 
+
+\begin{equation}
+	B = \frac{\phi}{A} = \frac{\mu_0 NI}{2y}
+\end{equation} 
+
+Esto significa que el punto de saturación del material impone un límite en el valor máximo aplicable de $NI$ si es que queremos mantenernos en el régimen lineal del material. Esto para minimizar las pérdidas por histéresis y facilitar el modelado.Esto implica que materiales con un punto de saturación mas alto son mejores para aplicaciones con electroimanes. Entonces el número máximo de amperes/vuelta quedará determinado por:
+
+\begin{equation}
+NI_{max}= \frac{2yB_{sat}}{\mu_0}
+\end{equation}
+
+Conociendo ahora la $F_{MM}$ máxima que podemos aplicar al núcleo, solo nos queda variar la sección transversal del entrehierro para generar la fuerza requerida $F_min$ mediante la formula:
+
+\begin{equation}
+NI = \sqrt[2]{\frac{4 F_m y^2}{\mu_0 A}}
+\end{equation}
+
+Falta ahora determinar los valores de $N$ e $I$, la relación de estos dos términos es de suma importancia, ya que ambos determinan las características eléctricas del electroimán definidas por los términos de inductancia $L$ y resistencia $R$, la inductancia como se vera mas adelante limitara la respuesta en frecuencia de los electroimanes mientras que la resistencia determinara la eficiencia.
+
+La resistencia de la bobina del electroimán esta dada por
+
+\begin{equation}
+R = \frac{N l \sigma}{A}  
+\end{equation}
+
+Donde $l$ es la longitud promedio de una espira, $A$ es la sección transversal del conductor, $\sigma$ la resistividad del conductor y N es el numero de vueltas. Las pérdidas por efecto joule provocadas por esta resistencia están dadas por:
+
+\begin{equation}
+W = I^2R 
+\end{equation}
+
+Las perdidas no dependen del balance entre N e I ya que se compensan entre sí, usar un numero reducido de vueltas requiere emplear una gran corriente y por lo tanto un conductor más grueso. En contraste utilizar un calibre menor limita la corriente máxima de la bobina lo cual requiere un mayor numero de vueltas. En este caso es recomendable atenerse a las tablas de conductores AWG.   
+
+Entonces la relación N e I deberá ser guiada por el valor deseado de inductancia que se adecua a la respuesta en frecuencia de los electroimanes y el voltaje de operación de la electrónica de accionamiento. 
+
+Teniendo en consideración todo lo anterior podemos resumir le proceso de diseño de un electroimán en los siguientes pasos:
+
+\begin{enumerate}
+\item Determinar condiciones de operacion y, v, $f_{max}$, $F_{max}$, $W_{loss_max}$. 
+\item Seleccionar un material con un $B_{sat}$ y $\mu_r$ elevados. 
+\item Calcular $NI_max$.
+\item Calcular A.
+\item Determinar $L_max$.
+\item Calcular N e I.
+\item Realizar una simulación FEM para validar. 
+\end{enumerate}
 
 \newpage
 \subsection{Efecto marginal (Fringing)}
