@@ -404,11 +404,11 @@ Si analizamos los resultados de la simulación podemos observar que las lineas de
 
 Entonces para el correcto modelado del electroimán necesitamos incluir los efectos del flujo marginal. En \cite{cite_s8_2017_paper} se presenta un nuevo método para modelar la reluctancia de un entrehierro. Usando este nuevo modelo los resultados de la simulación se acercan en un n\%.   
 
-\subsection{Proceso de diseño}
+\subsection{Proceso de diseño} \label{sec:diseno-elec}
 
 Ahora que tenemos un modelo adecuado para la fuerza de los electroimanes, es necesario un procedimiento para diseñarlos. Desafortunadamente en la literatura no existe un método formal para el diseño de electroimanes.  A continuación presentaremos cómo los diferentes parámetros afectan el desempeño y características del electroimán, para después concluir con un procedimiento para su diseño. 
 
-Idealmente queremos diseñar un electroimán pequeño, de bajo consumo y que pueda ejercer la fuerza $F_min$ que necesitamos a una distancia $d$.
+Idealmente queremos diseñar un electroimán pequeño, de bajo consumo y que pueda ejercer la fuerza $F_{min}$ que necesitamos a una distancia $d$.
 
 Empezando por los requerimientos de fuerza y tamaño, en la ecuación \ref{eq:electroiman:fuerza-real} se puede apreciar que la fuerza depende de la sección transversal del núcleo y los amperes/vuelta del devanado ($NI$), por lo que para minimizar el tamaño del electroimán necesitamos incrementar el valor de $NI$. Como se puede apreciar en la siguiente ecuación la densidad de flujo solo depende de los amperes/vuelta y de la distancia de operación del electroimán: 
 
