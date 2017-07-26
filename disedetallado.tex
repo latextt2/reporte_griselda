@@ -81,76 +81,38 @@ A pesar de que el Permalloy posee mejores características, la empresa fabricante
 
 \subsubsection{Núcleo ferromagnético}
 
-
+Fuerza sacada del culo 
 
 $$F_{max} = 50[N]$$
+
+La distancia es la usada comunmente para el diseño de RM (referencias)
 $$y_{max} = 0.75[mm]$$
 $$y_{min} = 0.25[mm]$$
+
+Usando el material seleccionado y estos nuevos datos y siguiendo los pasos de la seccion [electroimanes] resulta en esta area 
 $$A = 288[mm^2]$$
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/electroiman_radial_final}
     \caption{Electroimán radial}
 \end{figure}
+
 \subsubsection{Bobina}
+
+La razon de elegir 2 A fue porque es mas sencillo realizar una electronica mas eficiente a ese valor
 $$I = 2[A]$$
+
+Usando las formulas de conductores se calculan las vueltas 
 $$N = 278[vueltas]$$
+
+Usando las formulas de calculo de conductores se calcula el area 
 $$A_b = 254[mm^2]$$
-\subsection{Calculo de conductores}
-
-La sección de los conductores que se usaran depende directamente de la intensidad de corriente eléctrica  que circula por ella. Los alambres usados pueden ser: aluminio o cobre recocido. Se usa más el cobre que el aluminio por ser este mucho más dúctil, maleable y flexible. Dadas estas propiedades del cobre, el área del embobinado del electroimán depende directamente del número de vueltas requeridas y  el área de sección transversal del conductor magnético. 
-\\
-También se debe considera un factor de empaquetamiento de la bobina, este factor toma en consideración la forma en que se distribuye el alambre  en el embobinado.
-\\
-\\
-\\
-\\
-\\
-\\
-\\
-\\
-\\
-
-\begin{figure}[h!]
-    \centering
-    \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{images/Capitulo_2/empaquetamiento_cobre_1}
-        \caption{Configuraci\'on L\'ineal}
-        \label{fig:geometria-radial}
-    \end{subfigure}
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-      %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{images/Capitulo_2/empaquetamiento_cobre_2}
-        \caption{Configuraci\'on Hexagonal}
-        \label{fig:geometria-axial}
-    \end{subfigure}
-    \caption{Configuraciones de empaquetamiento\cite{cite_c2_2017}}\label{fig:geometria-electroimanes}
-\end{figure}
-
-Como se puede observar la configuración hexagonal aprovecha al máximo el área del embobinado, dejando menos cavidades entre los conductores, además la construcción en  esta configuración es más sencilla de realizar. La sección transversal del conductor  depende de la intensidad de corriente máxima que soporte. Teniendo en cuenta que se hará pasar al menos 2 ampere, la elección del calibre se hace a través de las tablas cables AWG\cite{cite_c1_2017}, obteniendo como resultado:
-\\
-\\
-\begin{tabular}{|c|l|c|c|c|c|}
-\hline 
-AWG & Di\'ametro & Area\;($mm^2$) & Resistencia (ohms/km) & Maximo Ampere & Maxima Frecuencia \\ 
-\hline 
-18 & 1.023 & 0.823 & 20.94 & 2.3 & 17 $Khz$ \\ 
-\hline 
-\end{tabular} 
 
 \subsection{Calculo de conductor del electroim\'an radial}
 
 Con los datos del calibre 18 de la tabla AWG se procede a calcular al \'area m\'inima del embobinado; tomando en cuenta que las vueltas m\'inimas para el embobinado son de 314 vueltas:
-\begin{equation}
-	Ab = \frac{Ac \; \cdot \; V}{K}
-\end{equation}
-\begin{itemize}
-	\item $Ab$ = \'Area m\'inima de la bobina
-	\item $Ac$ = \'Area de secci\'on transversal del conductor
-	\item $V$ = Vueltas m\'inimas  requeridas de la bobina
-	\item $K$ = Factor de empaquetamiento  de la bobina  dada por 0.90\cite{cite_c2_2017} 
-\end{itemize}
+
 Por lo que  el \'area m\'inima necesaria del embobinado es de: $287.13 \; mm^2 \; \approx \; 288 \; mm^2$
 
 \subsection{Calculo de conductor del electroim\'an Axial}
