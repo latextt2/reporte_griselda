@@ -757,11 +757,21 @@ variables de estado), de forma que el conocimiento de estas variables en $t = t_
 \subsection{Respuestas de los sistemas LTI de segundo orden}
 \todo[inline]{Se describne las diferencias en la respuesta de un sistema segun el lugar de las raices, amortiguado, subamortiguado, criticamente amorgituado}
 
-Las ecuaciones diferenciales lineales de coeficientes constantes de segundo orden, describen las dinámicas de sistemas, es muy importante para el diseño de controladores ya que
-habitualmente la mayor parte de los sistemas pueden ser aproximados a un sistema de orden dos:
+Las ecuaciones diferenciales lineales de coeficientes constantes de segundo orden, describen las dinámicas de sistemas y es importante para el diseño de controladores ya que habitualmente la mayor parte de los sistemas pueden ser aproximados a un sistema de orden dos:
 \begin{equation}
 	a_{2}\frac{d^{2}y(t)}{dt^{2}} + a_1\frac{dy(t)}{dt} 		+a_0y(t) = b_0x(t) + b_1\frac{dx(t)}{dt} +b_{2}\frac{d^{2}x(t)}{dt^{2}}
 \end{equation}
+y su forma estandar de la funci\'on de tranferencia es la siguiente:
+
+\begin{equation}
+	G_{(s)} =  \frac{\omega^2_n}{s^2 + 2\varsigma \omega_ns + \omega^2_n}
+\end{equation}
+
+en la que el polinomio del denominador se denomina polinomio característico, cuyas raíces (solución de la ecuación característica) son los polos de la función de transferencia. Donde $ \omega_n$ es la frecuencia natural no amortiguada y $\varsigma$ es el factor de amortiguamiento, Los 3 comportamiento d\'inamico del sistema de segundo orden se describe en terminos de los parametros $\omega$ y $\varsigma$. Comportamiento subamortiguada donde $0 < \varsigma < 1$, comportamiento amortiguadamente critico donde $\varsigma = 1$ y comportamiento sobreamortiguado $\varsigma > 1$
+
+
+
+
 
 
 \subsection{Estabilidad}
