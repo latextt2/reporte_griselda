@@ -66,15 +66,23 @@ En [paper numero de polos]  se estudia de manera mas detallada los efectos de va
 \subsection{Electroimán}
 
 \subsection{Selecci\'on de Material}
-Tras el inconveniente de la ferrita de manganeso, la saturación de este material es un impedimento para generar una mayor fuerza, aunque se le aumente la corriente eléctrica o el número de vueltas a la bobina, este material no generara más de lo deseado ya que su dominio magnético se encuentra casi por completo. Por lo que se dio a la tarea de buscar un nuevo material que tuviera las mismas propiedades de la ferrita de manganeso o parecidos y esto no fue sencillo ya que la restricción principal es no ser un material tipo metal para evitar las corrientes parasitas (corrientes de Foucault). La cual se encontró dos posible candidato, el material permalloy y el material somaloy.
-El material permalloy es ideal para la aplicación ya que en su primera información encontrada tiene una saturación de inducción de 1.6 tesla y una permeabilidad relativa de 25 000\cite{cite_s1_2017}
-\\
 
-Con respeto al Somaloy, es patentado y desarrollado por la empresa H\"ogan\"as\cite{cite_s2_2017}  el cual fabrica tres tipos de somaloy: somaloy 5P, 3P y 1P, de estos tres tipos de materiales se seleccionó el somaloy 1000 3P el cual tiene una saturación de inducción de entre 1.42 y 1.63, una permeabilidad relativa de 950 (véase en el anexo D) además de este datos, promocionan datos mecánicos y datos eléctrico del material, lo cual es de gran ayuda para las simulaciones y acercarnos a su comportamiento real.
-\\   
-Tras tener estos dos materiales y compararlos se eligió el somaloy de la empresa H\"ogan\"as, aunque el material permalloy sobresale del somaloy, este materia por sus pobres datos encontrados fueron insuficientes para ser contemplado, considerando que la b\'usqueda de este materia se dedujo que no estaba accesible o falta de información, en comparación de somaloy, ya que al pedir el catálogo del material, la empresa da accesoria referente a su materia y posibles variantes del materia de acuerdo a las aplicaciones del cliente.
+Para las aplicaciones de electroimanes lo ideal es utilizar materiales con un alto punto de saturación y permeabilidad relativa. El punto de saturación limita la fuerza máxima que puede ejercer un electroimán [vease seccion ...] y al tener una permeabilidad relativa alta podemos confiar que la mayoría del flujo magnético circula dentro del núcleo. 
+
+Entre los materiales con estas características encontramos ferritas y aleaciones de hierro laminadas. Las ferritas poseen una alta permeabilidad pero tienen un punto de saturación más bajo, mientras que las aleaciones de hierro poseen un punto de saturación más alto y permeabilidad intermedia. Estos últimos al ser conductores presentan pérdidas por corrientes parásitas (corrientes de Foucault) lo cual disminuye la eficiencia total del electroimán.  
+
+[insertar tabla de materiales]
+
+Como alternativa a los anteriores existen nuevos materiales como el Somaloy y Permalloy, estos son aleaciones de níquel-hierro que gracias a su proceso de sinterización les permite alcanzar altos puntos de saturación y permeabilidad relativa sin ser conductores. 
+
+El Permalloy posee un punto de saturación de 1.6 T y una permeabilidad relativa de 2500\cite{cite_s1_2017}, mientras que el Somaloy 3P posee un punto de saturación de entre 1.42 y 1.63 y una permeabilidad relativa de 950 [véase anexo D]. 
+
+A pesar de que el Permalloy posee mejores características, la empresa fabricante del Somaloy proporciona una documentación más extensa en cuanto a las características de éste como son: curva de saturación a diferentes temperaturas, curvas de respuesta en frecuencia y caracterización de pérdidas. Estos datos son de suma importancia al momento de realizar una simulación y por eso se seleccionó el Somaloy como el material del núcleo.      
 
 \subsubsection{Núcleo ferromagnético}
+
+
+
 $$F_{max} = 50[N]$$
 $$y_{max} = 0.75[mm]$$
 $$y_{min} = 0.25[mm]$$
