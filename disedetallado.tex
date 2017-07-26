@@ -67,7 +67,7 @@ En [paper numero de polos]  se estudia de manera mas detallada los efectos de va
 
 \subsection{Selecci\'on de Material}
 
-Para las aplicaciones de electroimanes lo ideal es utilizar materiales con un alto punto de saturación y permeabilidad relativa. El punto de saturación limita la fuerza máxima que puede ejercer un electroimán [vease sección \ref{sec:diseno-elec} y al tener una permeabilidad relativa alta podemos confiar que la mayoría del flujo magnético circula dentro del núcleo. 
+Para las aplicaciones de electroimanes lo ideal es utilizar materiales con un alto punto de saturación y permeabilidad relativa. El punto de saturación limita la fuerza máxima que puede ejercer un electroimán [vease sección \ref{sec:diseno-elec}] y al tener una permeabilidad relativa alta podemos confiar que la mayoría del flujo magnético circula dentro del núcleo. 
 
 Entre los materiales con estas características encontramos ferritas y aleaciones de hierro laminadas. Las ferritas poseen una alta permeabilidad pero tienen un punto de saturación más bajo, mientras que las aleaciones de hierro poseen un punto de saturación más alto y permeabilidad intermedia. Estos últimos al ser conductores presentan pérdidas por corrientes parásitas (corrientes de Foucault) lo cual disminuye la eficiencia total del electroimán.  
 
@@ -81,15 +81,21 @@ A pesar de que el Permalloy posee mejores características, la empresa fabricante
 
 \subsubsection{Núcleo ferromagnético}
 
-De acuerdo a las especificaciones definidas en la sección \ref{sec:PDS} se estableció ejercer una fuerza de:  
+De acuerdo a las especificaciones definidas en la sección \ref{sec:PDS} se estableció una fuerza mínima de:  
 
 $$F_{min} = 50[N]$$
 
-La distancia es la usada comunmente para el diseño de RM (referencias)
+Al tratarse de un rodamiento con fines demostrativos, se propuso esa fuerza para que el resultado final ocupe el menor espacio posible.
+
+El problema de seleccionar una distancia de operación recae en que una distancia muy grande requiere una mayor inducción magnética para generar una fuerza determinada, mientras que con una distancia pequeña es más fácil generar la misma fuerza con la desventaja de que se alcanza el punto de saturación con mayor rapidez. Además si la distancia es muy pequeña hay poco espacio para estabilizarlo. 
+
+En la literatura podemos identificar rangos de operación de entre [...] [referencia] por lo que se optó por trabajar con un rango de:
+
 $$y_{max} = 0.75[mm]$$
 $$y_{min} = 0.25[mm]$$
 
-Usando el material seleccionado y estos nuevos datos y siguiendo los pasos de la seccion [electroimanes] resulta en esta area 
+Teniendo en cuenta las características del material seleccionado y las condiciones de operación descritas anteriormente se procede a utilizar las formulas de la sección \ref{sec:diseno-elec}. 
+
 $$A = 288[mm^2]$$
 
 \begin{figure}[h]
@@ -98,47 +104,42 @@ $$A = 288[mm^2]$$
     \caption{Electroimán radial}
 \end{figure}
 
-\subsubsection{Bobina}
+\subsection{Calculo de la bobina}
 
-La razon de elegir 2 A fue porque es mas sencillo realizar una electronica mas eficiente a ese valor
+Como se explica en la sección \ref{sec:calc-conductores}, la relación entre el número de vueltas y corriente depende del balance entre eficiencia y respuesta en frecuencia. Se optó por utilizar una corriente de 2 A debido a la gran disponibilidad de componentes electrónicos que operan a este valor de corriente, además de ser un valor lo suficientemente algo como para que la inductancia no degrade la respuesta en frecuencia del electroimán. 
+
 $$I = 2[A]$$
 
-Usando las formulas de conductores se calculan las vueltas 
-$$N = 278[vueltas]$$
+De acuerdo a la tabla \ref{tabla:AWG-COBRE} para una corriente de 2 A corresponde a un calibre AWG de:
 
-Usando las formulas de calculo de conductores se calcula el area 
-$$A_b = 254[mm^2]$$
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|l|c|c|c|c|}
+\hline 
+AWG & Di\'ametro & Area\;($mm^2$) & Resistencia (ohms/km) & Corriente Máxima & Frecuencia Máxima\\ 
+\hline 
+18 & 1.023 & 0.823 & 20.94 & 2.3 & 17 $kHz$ \\
+\hline  
+\end{tabular} 
+\caption{Especificaciones técnicas para el alambre de cobre esmaltado AWG 18.}
+\end{table}
 
-\subsection{Calculo de conductor del electroim\'an radial}
+Aplicando la siguiente formula para determinar el número de vueltas, obtenemos que:
 
-Con los datos del calibre 18 de la tabla AWG se procede a calcular al \'area m\'inima del embobinado; tomando en cuenta que las vueltas m\'inimas para el embobinado son de 314 vueltas:
+$$N = \frac{NI_{max}}{I} = 314 [vueltas]$$
 
-Por lo que  el \'area m\'inima necesaria del embobinado es de: $287.13 \; mm^2 \; \approx \; 288 \; mm^2$
+A través de la formula \ref{eq:area-bobina} y con las especificaciones del alambre esmaltado seleccionado, obtenemos la sección transversal de la bobina de:
 
-\subsection{Calculo de conductor del electroim\'an Axial}
-Para el c\'alculo del conductor del electroim\'an axial se repite el procedimiento con se hizo en el radial, las vueltas m\'inimas para el embobinado son de 162 vueltas: 
-\begin{equation}
-	Ab = \frac{Ac \; \cdot \; V}{K}
-\end{equation}
-\begin{itemize}
-	\item $Ab$ = \'Area m\'inima de la bobina
-	\item $Ac$ = \'Area de secci\'on transversal del conductor
-	\item $V$ = Vueltas m\'inimas  requeridas de la bobina
-	\item $K$ = Factor de empaquetamiento  de la bobina  dada por 0.90\cite{cite_c2_2017}
-\end{itemize}
- 
-Por lo que  el \'area m\'inima necesaria del embobinado es de: $148.14 \; mm^2 \; \approx \; 148 \; mm^2$
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/simulacion_radial}
-    \caption{Rodamiento magnético radial}
-\end{figure}
+$$A_b = 287.13 \; mm^2 \; \approx \; 288 \; mm^2$$
+
 \subsection{Modelado y simulación}
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/simulacion_vs_modelo_radial}
     \caption{Rodamiento magnético radial}
 \end{figure}
+
 \subsection{Accionamiento}
 Ahora sabemos las caracteristicas de los electroimanes, necesitamos de un circuito para controlar la corriente que circula por la bobinas, en la seccion ?? hablamos  sobre las caracteristicas del circuito, y para el diseño de los electroimas tuvimos que comprometernos los valores de alimentacion y respuesta en frecuencia, 
 
@@ -220,16 +221,31 @@ esta atenuacion concide con la de un filtro de pasabajas de primer orden, con fr
 
 \subsection{Electroimán}
 
-
 \subsubsection{Núcleo ferromagnético}
 $$F_{max} = 10[N]$$
 $$y_{max} = 2[mm]$$
 $$y_{min} = 1.0[mm]$$
 $$A = ??[mm^2]$$
-\subsubsection{Bobina}
-$$I = 2[A]$$
-$$N = 142[vueltas]$$
-$$A_b = 162[mm^2]$$
+
+\subsection{Calculo de conductor del electroim\'an Axial}
+Para el c\'alculo del conductor del electroim\'an axial se repite el procedimiento con se hizo en el radial, las vueltas m\'inimas para el embobinado son de 162 vueltas: 
+\begin{equation}
+	Ab = \frac{Ac \; \cdot \; V}{K}
+\end{equation}
+\begin{itemize}
+	\item $Ab$ = \'Area m\'inima de la bobina
+	\item $Ac$ = \'Area de secci\'on transversal del conductor
+	\item $V$ = Vueltas m\'inimas  requeridas de la bobina
+	\item $K$ = Factor de empaquetamiento  de la bobina  dada por 0.90\cite{cite_c2_2017}
+\end{itemize}
+ 
+Por lo que  el \'area m\'inima necesaria del embobinado es de: $148.14 \; mm^2 \; \approx \; 148 \; mm^2$
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/simulacion_radial}
+    \caption{Rodamiento magnético radial}
+\end{figure}
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/EIR_assembly}
@@ -246,6 +262,7 @@ $$A_b = 162[mm^2]$$
     \caption{Rodamiento magnético radial}
 \end{figure}
 \subsection{Accionamiento}
+
 \section{Modulo de compensación de carga estática}
 \begin{figure}[h]
     \centering

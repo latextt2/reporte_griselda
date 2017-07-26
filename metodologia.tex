@@ -549,7 +549,7 @@ Donde $l_g$ es la longitud del entrehierro, $r$ el radio del entrehierro, y $R^\
 	R_g = \sigma_r \frac{l_g}{\mu_0 r^2 \pi}
 \end{equation}
 
-\subsection{Calculo de conductores}
+\subsection{Calculo de conductores} \label{sec:calc-conductores}
 
 El calibre de los conductores depende únicamente de la intensidad de corriente eléctrica que circula a través de ellos. La selección del calibre se hace a través de las tablas de conductores AWG\cite{cite_c1_2017}. El AWG (American Wire Gauge) es una sistema estandarizado usado predominantemente en Norteamérica para la clasificación de los diámetros de conductores eléctricos. 
 
@@ -559,9 +559,13 @@ Dependiendo del material del que esté hecho el conductor existen tablas que rela
 \centering
 \begin{tabular}{|c|l|c|c|c|c|}
 \hline 
-AWG & Di\'ametro & Area\;($mm^2$) & Resistencia (ohms/km) & Maximo Ampere & Maxima Frecuencia \\ 
+AWG & Di\'ametro & Area\;($mm^2$) & Resistencia (ohms/km) & Corriente Máxima & Frecuencia Máxima\\ 
 \hline 
-18 & 1.023 & 0.823 & 20.94 & 2.3 & 17 $Khz$ \\ 
+17 & 1.15062 & 1.04 & 16.60992 & 2.9 & 13 $kHz$ \\ 
+\hline 
+18 & 1.023 & 0.823 & 20.94 & 2.3 & 17 $kHz$ \\
+\hline 
+19 & 0.91186 & 0.653 & 26.40728 & 1.8 & 21 $kHz$ \\
 \hline 
 \end{tabular} 
 \caption{Especificaciones técnicas para el alambre de cobre esmaltado.}
@@ -592,7 +596,8 @@ Existen dos configuraciones para el embobinado, la lineal y la hexagonal, cada u
 Para calcular el área de la sección transversal de la bobina se utiliza la siguiente ecuación:
 
 \begin{equation}
-	Ab = \frac{Ac \; \cdot \; V}{K}
+	Ab = \frac{Ac \; \cdot \; V}{K} 
+	\label{eq:area-bobina}
 \end{equation}
 \begin{itemize}
 	\item $Ab$ = \'Area m\'inima de la bobina
