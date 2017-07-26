@@ -1,33 +1,33 @@
 \chapter{Marco teórico}
 
-Aunque algunas empresas han logrado fabricar e incluso comercializar rodamientos magnéticos, estos continúan bajo diversas investigaciones buscando mejorar los materiales y los componentes con los que se fabrican para mejorar su funcionamiento y optimizar el diseño. Sin embargo la mayoría de las veces los desarrolladores los diseñan para una aplicación o máquina en específico, por lo que no siguen una norma de diseño establecida. 
+Aunque algunas empresas han logrado fabricar e incluso comercializar rodamientos magnéticos, estos continúan bajo diversas investigaciones buscando mejorar los materiales y los componentes con los que se fabrican para mejorar su funcionamiento y optimizar el diseño. Sin embargo, la mayoría de las veces estos son diseñados por los desarrolladores para una aplicación o máquina en específico, por lo que no siguen una norma de diseño establecida.
 
-Es por esto que para desarrollar este proyecto fue necesario aplicar una serie de procesos con base en las investigaciones y el desarrollo que han tendido tanto a nivel industrial como académico. Se consultaron diversos artículos y sitios web de fabricantes y desarrolladores que han logrado comercializar estos productos para la industria, y se realizó una investigación documental en trabajos de varios grados e instituciones que sirvieran como referencia para desarrollar este proyecto. Con base en la información adquirida, fueron considerados los siguientes procedimientos: 
+Es por esto que, para el desarrollo de este proyecto, fue necesario aplicar una serie de procesos con base en las investigaciones y el desarrollo que han tendido tanto a nivel industrial como académico. Se realizaron consultas de diversos artículos y sitios web de fabricantes y desarrolladores que han logrado comercializar estos productos para la industria, y se efectuó una investigación documental sobre trabajos de varios grados e instituciones con el fin de marcar una referencia durante el desarrollo de este proyecto. Con base en la información adquirida, fueron considerados los siguientes procedimientos:
 
 \begin{enumerate}
 \item Definir a detalle el principio de funcionamiento de los diferentes tipos de rodamientos magnéticos realizando una investigación documental sobre los trabajos e investigaciones que se han hecho al respecto, y con esto establecer los requerimientos de diseño.
 \item Recopilar información sobre los requerimientos de diseño de los electroimanes y la caracterización de algunos de los materiales ferromagnéticos comercializados.
 \item Realizar una investigación de los tipos de sensores adecuados para las condiciones de operación requeridas. 
-\item Realizar la división por áreas funcionales del proyecto basadas en diseños modulares; definir los diseños conceptuales de cada uno de ellos pensados para su análisis individual, considerando una posible fabricación futura y la integración de todos los módulos en una sola estructura. 
-\item Realizar los cálculos de la geometría y dimensiones del electroimán, los cuales sirven como parámetro para delimitar el tamaño del resto de los componentes y elementos.  
-\item Realizar el diseño a detalle de los módulos que componen los rodamientos magnéticos activos (radial y axial), módulo de sensores y el módulo de compensación de cargas estáticas.
+\item Realizar la división por áreas funcionales del proyecto basadas en diseños modulares; definir los diseños conceptuales de cada uno de ellos pensados para su análisis individual, considerando una posible fabricación futura y la integración de todos los módulos en una sola estructura.
+\item Realizar los cálculos de la geometría y dimensiones del electroimán, los cuales sirven como parámetro en la delimitación del tamaño para el resto de los componentes y elementos.
+\item Realizar el diseño a detalle de los módulos que componen los rodamientos magnéticos activos (radial y axial), el módulo de sensores y el módulo de compensación de cargas estáticas.
 \item Diseñar la circuitería para la aplicación y control de corrientes en los electroimanes.
-\end{enumerate} 
+\end{enumerate}
 
-Sin embargo, para poder desarrollar los procedimientos más avanzados es necesario analizar los conceptos fundamentales y principios básicos en cuanto a la teoría propia del proyecto y los procedimientos utilizados, los cuales se analizaran en este capitulo. 
+Para poder realizar la etapa de diseño, es necesario realizar primeramente un análisis de los conceptos fundamentales y principios básicos en cuanto a la teoría propia del proyecto y los procedimientos a emplear. Dicho estudio se llevará a cabo a lo largo del desarrollo de este capítulo.
 
 \newpage
 
 \section{Conceptos fundamentales}
 \subsection{Origen del campo magnético}
 
-Un campo magnético se produce cuando existen cargas eléctricas en movimiento. Este campo magnético ejerce una fuerza sobre conductores con corriente y materiales magnetizados.
+Un campo magnético es producido a consecuencia de la existencia de cargas eléctricas en movimiento. Este campo magnético ejerce una fuerza sobre conductores con corriente y materiales magnetizados.
 
 \begin{equation}
 	 d \overrightarrow{H}=  \frac{Id \overrightarrow{l}\times\hat{r} }{4\pi r^{2}}
 \end{equation}
 
-La ley de Biot-Savart nos permite calcular la intensidad del campo magnético H generado por un segmento diferencial de la corriente eléctrica. Nótese que su magnitud decrece con el cuadrado de la distancia.
+La ley de Biot-Savart nos permite calcular la intensidad del campo magnético H generado por un segmento diferencial de la corriente eléctrica. Nótese que su magnitud decrece con respecto al cuadrado de la distancia.
 
 El campo circula alrededor de un conductor simple en la dirección dada por la regla de la mano derecha:
 
@@ -40,19 +40,19 @@ El campo circula alrededor de un conductor simple en la dirección dada por la re
 \end{figure}
 %\vspace*{3cm}
 
-En el mismo año y de manera independiente, Ampere dedujo que las cargas en movimiento eran las causas del campo magnético. De acuerdo con la ley de Ampere, el campo magnético generado por un circuito eléctrico depende de la forma del circuito (trayectoria de conducción) y de la corriente. Asumiendo que cada circuito esta hecho de un número finito de elementos de corriente, cada uno contribuyendo al campo, e integrando estas contribuciones en un punto para determinar el campo, Ampere concluyó que: 
+En el mismo año y de manera independiente, Ampère dedujo que las cargas en movimiento eran las causas del campo magnético. De acuerdo con la ley de Ampère, el campo magnético generado por un circuito eléctrico depende de la forma del circuito (trayectoria de conducción) y de la corriente. Asumiendo que cada circuito esta hecho de un número finito de elementos de corriente, cada uno contribuyendo al campo e integrando dichas contribuciones en un punto para determinar el campo, Ampère concluyó que: 
 
 \begin{equation}
 	 \oint {\overrightarrow{H} \cdot d \overrightarrow{l}} =  I_{enc}
 \end{equation}
 
 \subsection{Inducción magnética}
-Cuando un campo magnético  H es generado por una corriente, de acuerdo a la ley de Ampere, la respuesta del medio es la inducción magnética B, también llamada densidad de flujo. Todos los medios responden con alguna inducción. En el vacío la relación entre el campo magnetizante y la inducción es: \\ 	
+Cuando un campo magnético  H es generado por una corriente, de acuerdo a la ley de Ampère, la respuesta del medio es la inducción magnética B, también llamada densidad de flujo. Todos los medios responden con alguna inducción. En el vacío, la relación entre el campo magnetizante y la inducción es: \\ 	
 \begin{equation}
 	\overrightarrow{B} = \mu_0 \overrightarrow{H}
 \end{equation}
 						
-Donde  $\mu_0$ es la permeabilidad magnética del vacío, un constante universal cuyo valor es de $4\pi\times10^{-7}$
+Donde  $\mu_0$ es la permeabilidad magnética del vacío, una constante universal con valor $4\pi\times10^{-7}$.
 
 \subsection{Flujo magnético}
 
