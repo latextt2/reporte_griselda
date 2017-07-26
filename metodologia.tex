@@ -846,7 +846,7 @@ Un sistema discreto se caracteriza por que su variable independiente sólo puede 
 \end{equation}
 
 Esta se representan con una secuencia de numeros denominados muestras, una muestra de una se\~nal o se cuencia se denota por $x[n]$ siendo $n$ enteros en el intervalo $ - \infty < n < \infty$ y solo esta definida por numeros enteros. En muchas aplicaciones la secuencia discreta se obtiene muestreando una señal continua a intervalos de tiempo regulares. Si todos los valores de la secuencia $x[n]$ son reales se dice que la secuencia es real, en otro caso se dice que se trata de una secuencia compleja
-
+\subsubsection{Variables de estado discreto}
 \todo[inline]{Variables de estado}
 
 Los métodos de variables de estado para el análisis y diseño de sistemas de tiempo continuo pueden extenderse al análisis y diseño de sistemas de tiempo discreto. El diseño de sistemas de tiempo discreto es usando la función de transferencia en z. Se observa que mientras tratamos con sistemas de tiempo discreto, a menudo encontramos dos situaciones diferentes. Los sistemas que son completamente discretos con respecto al tiempo en el sentido de que reciben y entregan sólo señales discretas (por ejemplos sistemas basados en computadoras digitales) y los sistemas con componentes de tiempo continuo discretizados como consecuencia de operaciones de muestreo.
@@ -864,13 +864,29 @@ un conjunto de ecuaciones en diferencias de primer orden que representan la dina
 
 La ecuacion de salida es simplentente una ecuacion algebraica. 
 
-
+\subsubsection{Polinomio caracteristico}
 \todo[inline]{Polinomio caracteristico}
 
-Se parte de que cada matriz $A$ de orden $m$ se tiene que $det(A - \lambda I)$ es un polinomio de grado $m$ que se llama polinomio característico de $A$ y se denota por $pA(\lambda)$. La ecuación $det(A - \lambda I) = 0$ se llama ecuación característica de $A$, donde se denota $I$ como la matriz indentidad. Las relaciones que ligan las entradas de una matriz con los coeficientes del polinomio característico son muy complicadas. No obstante, ciertos coeficientes de dicho polinomio son bien conocidos: el coeficiente líder, el siguiente y el término independiente.
+Se parte de que cada matriz $A$ de orden $m$ se tiene que $det(A - \lambda I)$ es un polinomio de grado $m$ que se llama polinomio característico de $A$ y se denota por $pA(\lambda)$. La ecuación $det(A - \lambda I) = 0$ se llama ecuación característica de $A$, donde se denota $I$ como la matriz indentidad. Las relaciones que ligan las entradas de una matriz con los coeficientes del polinomio característico son muy complicadas. No obstante, ciertos coeficientes de dicho polinomio son conocidos.
+\subsubsection{Funcion de transferencia y la transformada z}
 \todo[inline]{Funcion de transferencia y la transformada z}
 
+El análisis de los sistemas lineales discretos se ve facilitado por el uso de una herramienta matemática denominada transformada $Z$, la cual se define a partir de una secuencia de números $x\left( k \right)$ del modo siguiente:
+
+\begin{equation}
+	Z\left[ x \left(k\right) \right] = X\left(z)\right] = \sum_{k=0}^\infty x \left(k)\right)z^{-k}
+\end{equation}
+
+La transformada $Z$ definida por la ecuación anterior se denomina unilateral, ya que se considera que $x\left( k \right)$ sólo está definido para $k > 0$, para el caso que esté definido desde $ - \infty $ se denominada bilateral. La transformada $Z$ aplicada a sistemas de tiempo discreto guarda una gran anlogía con la transformada de Laplace de aplicación a los sistemas de tiempo continuo. Por lo que la funcion de tranferencia en discretos tiene igual una gran similitud:
+\begin{equation}
+	G\left(z \right) = \frac{Z\left[y\left(k \right)\right]}{Z\left[u\left(k \right)\right]} = \frac{Y\left(z \right)}{X \left(z \right)}
+\end{equation} 
+
+\subsubsection{Estabilidad discreta}
 \todo[inline]{Estabilidad}
+Al igual que en el caso continuo, un sistema discreto es estable si se presenta un cambio pequeño en las entradas, un sistema estable presentará modificaciones pequeñas en su respuesta.
+La estabilidad se puede determinar a partir de la localizacion de los polos de lazo cerrado en el plano z. EL sistema es estable, si los polos de las raices de la ecuacion caracteristica quedan localizadas dentro del circulo unitario en el plano Z. Si un polo  esta ubicado en $z=1$
+o $z = -1$, el sistema es marginalmente estable, si un par de polos conjugados complejos esta sobre el circulo unitario o polos multiples el sistema es inestable.
 
 \section{Dinamica}
 Para modelar el comportamiento de los cuerpos en movimientos es decesario aplicar las ecuaciones de la mecanica clasica.
