@@ -428,7 +428,13 @@ NI = \sqrt[2]{\frac{4 F_m y^2}{\mu_0 A}}
 
 Falta ahora determinar los valores de $N$ e $I$, la relación de estos dos términos es de suma importancia, ya que ambos determinan las características eléctricas del electroimán definidas por los términos de inductancia $L$ y resistencia $R$, la inductancia como se vera mas adelante limitara la respuesta en frecuencia de los electroimanes mientras que la resistencia determinara la eficiencia.
 
-La resistencia de la bobina del electroimán esta dada por
+La inductancia está determinada por:
+
+\begin{equation}
+L = \frac{ \lambda }{I} = \frac{N \Phi}{I} = \frac{N^2}{\mathcal{R}}
+\end{equation}
+
+y la resistencia de la bobina del electroimán esta dada por: 
 
 \begin{equation}
 R = \frac{N l \sigma}{A}  
@@ -540,6 +546,58 @@ Donde $l_g$ es la longitud del entrehierro, $r$ el radio del entrehierro, y $R^\
 \begin{equation}
 	R_g = \sigma_r \frac{l_g}{\mu_0 r^2 \pi}
 \end{equation}
+
+\subsection{Calculo de conductores}
+
+El calibre de los conductores depende únicamente de la intensidad de corriente eléctrica que circula a través de ellos. La selección del calibre se hace a través de las tablas de conductores AWG\cite{cite_c1_2017}. El AWG (American Wire Gauge) es una sistema estandarizado usado predominantemente en Norteamérica para la clasificación de los diámetros de conductores eléctricos. 
+
+Dependiendo del material del que esté hecho el conductor existen tablas que relacionan un calibre AWG con la corriente máxima que soporta este. Los materiales más usados son el aluminio y el cobre recocido, pero debido a que posee una mejor conductividad eléctrica se selecciona el cobre. A continuación se muestra la tabla AWG para cobre esmaltado: 
+
+\begin{table}
+\centering
+\begin{tabular}{|c|l|c|c|c|c|}
+\hline 
+AWG & Di\'ametro & Area\;($mm^2$) & Resistencia (ohms/km) & Maximo Ampere & Maxima Frecuencia \\ 
+\hline 
+18 & 1.023 & 0.823 & 20.94 & 2.3 & 17 $Khz$ \\ 
+\hline 
+\end{tabular} 
+\caption{Especificaciones técnicas para el alambre de cobre esmaltado.}
+\label{tabla:AWG-COBRE}
+\end{table}
+
+El área del embobinado del electroimán depende directamente del número de vueltas requeridas y del calibre del conductor magnético. También se debe considerar el factor de empaquetamiento de la bobina, el cual toma en cuenta la forma en que se distribuye el alambre en el embobinado.
+
+Existen dos configuraciones para el embobinado, la lineal y la hexagonal, cada una con su propio factor de empaquetamiento. Como se observa en la figura \ref{fig:paq-bobina} la configuración hexagonal aprovecha al máximo el área del embobinado, dejando menos cavidades entre los conductores, además la construcción en esta configuración es más sencilla de realizar.   
+
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/empaquetamiento_cobre_1}
+        \caption{Configuraci\'on L\'ineal}
+        \label{fig:empaq-lineal}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/empaquetamiento_cobre_2}
+        \caption{Configuraci\'on Hexagonal}
+        \label{fig:empaq-hex}
+    \end{subfigure}
+    \caption{Configuraciones de empaquetamiento\cite{cite_c2_2017}}\label{fig:paq-bobina}
+\end{figure}
+
+Para calcular el área de la sección transversal de la bobina se utiliza la siguiente ecuación:
+
+\begin{equation}
+	Ab = \frac{Ac \; \cdot \; V}{K}
+\end{equation}
+\begin{itemize}
+	\item $Ab$ = \'Area m\'inima de la bobina
+	\item $Ac$ = \'Area de secci\'on transversal del conductor
+	\item $V$ = Vueltas m\'inimas  requeridas de la bobina
+	\item $K$ = Factor de empaquetamiento  de la bobina  dada por 0.90\cite{cite_c2_2017} 
+\end{itemize}
 
 \section{Imanes permanentes}
 \subsection{Análisis del imán permanente}
