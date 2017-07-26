@@ -849,9 +849,27 @@ Esta se representan con una secuencia de numeros denominados muestras, una muest
 
 \todo[inline]{Variables de estado}
 
+Los métodos de variables de estado para el análisis y diseño de sistemas de tiempo continuo pueden extenderse al análisis y diseño de sistemas de tiempo discreto. El diseño de sistemas de tiempo discreto es usando la función de transferencia en z. Se observa que mientras tratamos con sistemas de tiempo discreto, a menudo encontramos dos situaciones diferentes. Los sistemas que son completamente discretos con respecto al tiempo en el sentido de que reciben y entregan sólo señales discretas (por ejemplos sistemas basados en computadoras digitales) y los sistemas con componentes de tiempo continuo discretizados como consecuencia de operaciones de muestreo.
+Para un sistema lineal e invariante en el tiempo discreto de n$-$ésimo orde se representa por:
+
+\begin{equation}
+	x(k + 1) = A x(k) + B u (t)
+\end{equation}
+
+un conjunto de ecuaciones en diferencias de primer orden que representan la dinamica del sistema en tiempo discreto, siendo $x(k)$ el vector de estado de dimensiones $n \times I$
+
+\begin{equation}
+	y(k) = C x(k) + D u (k)
+\end{equation}
+
+La ecuacion de salida es simplentente una ecuacion algebraica. 
+
 
 \todo[inline]{Polinomio caracteristico}
+
+Se parte de que cada matriz $A$ de orden $m$ se tiene que $det(A - \lambda I)$ es un polinomio de grado $m$ que se llama polinomio característico de $A$ y se denota por $pA(\lambda)$. La ecuación $det(A - \lambda I) = 0$ se llama ecuación característica de $A$, donde se denota $I$ como la matriz indentidad. Las relaciones que ligan las entradas de una matriz con los coeficientes del polinomio característico son muy complicadas. No obstante, ciertos coeficientes de dicho polinomio son bien conocidos: el coeficiente líder, el siguiente y el término independiente.
 \todo[inline]{Funcion de transferencia y la transformada z}
+
 \todo[inline]{Estabilidad}
 
 \section{Dinamica}
