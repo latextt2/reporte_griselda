@@ -791,7 +791,7 @@ de las respuestas del sistema a esas señales básicas.
 comodidad al tratar los sistemas LTI.
 \end{itemize}
 
-\subsection{Diferentes representanciones}
+\subsubsection{Diferentes representanciones}
 \todo[inline]{Aqui se explican las diferentes formas de representar
 un sistema, ecuacion diferencial, funcion de transferencia y variables de estado   \textbf{hecho}}
 
@@ -810,7 +810,7 @@ A partir del concepto de función de transferencia, es posible representar la din
 El estado de un sistema dinámico es el conjunto de variables más pequeño (llamadas
 variables de estado), de forma que el conocimiento de estas variables en $t = t_0$, junto con el conocimiento de la entrada para $ t\geq t_0 $, determinan completamente el comportamiento del sistema en cualquier $ t\geq t_0 $.
 
-\subsection{Respuestas de los sistemas LTI de segundo orden}
+\subsubsection{Respuestas de los sistemas LTI de segundo orden}
 \todo[inline]{Se describne las diferencias en la respuesta de un sistema segun el lugar de las raices, amortiguado, subamortiguado, criticamente amorgituado}
 
 Las ecuaciones diferenciales lineales de coeficientes constantes de segundo orden, describen las dinámicas de sistemas y es importante para el diseño de controladores ya que habitualmente la mayor parte de los sistemas pueden ser aproximados a un sistema de segundo orden:
@@ -826,7 +826,7 @@ y su forma est\'andar de la funci\'on de tranferencia es la siguiente:
 en la que el polinomio del denominador se denomina polinomio característico, cuyas raíces (solución de la ecuación característica) son los polos de la función de transferencia. Donde $ \omega_n$ es la frecuencia natural no amortiguada y $\varsigma$ es el factor de amortiguamiento de la se\~nal, Los 3 comportamiento d\'inamico del sistema de segundo orden se describe en terminos de los parametros $\omega$ y $\varsigma$. Comportamiento subamortiguada donde $0 < \varsigma < 1$ alcaza a proximar a cero mas rapidamenten que en el caso amortiguado critico pero oscila al rededor de cero, comportamiento amortiguadamente critico donde $\varsigma = 1$ proporciona la forma mas ripa de aproximar a cero y comportamiento sobreamortiguado $\varsigma > 1$ causara que la amplitud cero sea mas lento que en caso anterior
 
 
-git st\subsection{Estabilidad}
+git st\subsubsection{Estabilidad}
 \todo[inline]{Se introduce el concepto del estabilidad leapunov y como el lugar de las raices afecta esto, inluyendo los eigenvalores de la matriz de espcio de estados}
 
 La estabilidad de un sistema puede pensarse como una continuidad en su comportamiento dinámico. Si se presenta un cambio pequeño en las entradas o condiciones iniciales, un sistema estable presentará modificaciones pequeñas en su respuesta perturbada. Por otro lado, en un sistema inestable cualquier perturbación, por pequeña que sea, llevará a los estados y/o las salidas a crecer sin límite o hasta que el sistema se salga de rango dinámico o se descontrole y es lo primero que debe garantizarse en el diseño de un sistema de control. 
