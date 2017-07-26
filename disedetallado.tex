@@ -66,83 +66,53 @@ En [paper numero de polos]  se estudia de manera mas detallada los efectos de va
 \subsection{Electroimán}
 
 \subsection{Selecci\'on de Material}
-Tras el inconveniente de la ferrita de manganeso, la saturación de este material es un impedimento para generar una mayor fuerza, aunque se le aumente la corriente eléctrica o el número de vueltas a la bobina, este material no generara más de lo deseado ya que su dominio magnético se encuentra casi por completo. Por lo que se dio a la tarea de buscar un nuevo material que tuviera las mismas propiedades de la ferrita de manganeso o parecidos y esto no fue sencillo ya que la restricción principal es no ser un material tipo metal para evitar las corrientes parasitas (corrientes de Foucault). La cual se encontró dos posible candidato, el material permalloy y el material somaloy.
-El material permalloy es ideal para la aplicación ya que en su primera información encontrada tiene una saturación de inducción de 1.6 tesla y una permeabilidad relativa de 25 000\cite{cite_s1_2017}
-\\
 
-Con respeto al Somaloy, es patentado y desarrollado por la empresa H\"ogan\"as\cite{cite_s2_2017}  el cual fabrica tres tipos de somaloy: somaloy 5P, 3P y 1P, de estos tres tipos de materiales se seleccionó el somaloy 1000 3P el cual tiene una saturación de inducción de entre 1.42 y 1.63, una permeabilidad relativa de 950 (véase en el anexo D) además de este datos, promocionan datos mecánicos y datos eléctrico del material, lo cual es de gran ayuda para las simulaciones y acercarnos a su comportamiento real.
-\\   
-Tras tener estos dos materiales y compararlos se eligió el somaloy de la empresa H\"ogan\"as, aunque el material permalloy sobresale del somaloy, este materia por sus pobres datos encontrados fueron insuficientes para ser contemplado, considerando que la b\'usqueda de este materia se dedujo que no estaba accesible o falta de información, en comparación de somaloy, ya que al pedir el catálogo del material, la empresa da accesoria referente a su materia y posibles variantes del materia de acuerdo a las aplicaciones del cliente.
+Para las aplicaciones de electroimanes lo ideal es utilizar materiales con un alto punto de saturación y permeabilidad relativa. El punto de saturación limita la fuerza máxima que puede ejercer un electroimán [vease seccion ...] y al tener una permeabilidad relativa alta podemos confiar que la mayoría del flujo magnético circula dentro del núcleo. 
+
+Entre los materiales con estas características encontramos ferritas y aleaciones de hierro laminadas. Las ferritas poseen una alta permeabilidad pero tienen un punto de saturación más bajo, mientras que las aleaciones de hierro poseen un punto de saturación más alto y permeabilidad intermedia. Estos últimos al ser conductores presentan pérdidas por corrientes parásitas (corrientes de Foucault) lo cual disminuye la eficiencia total del electroimán.  
+
+[insertar tabla de materiales]
+
+Como alternativa a los anteriores existen nuevos materiales como el Somaloy y Permalloy, estos son aleaciones de níquel-hierro que gracias a su proceso de sinterización les permite alcanzar altos puntos de saturación y permeabilidad relativa sin ser conductores. 
+
+El Permalloy posee un punto de saturación de 1.6 T y una permeabilidad relativa de 2500\cite{cite_s1_2017}, mientras que el Somaloy 3P posee un punto de saturación de entre 1.42 y 1.63 y una permeabilidad relativa de 950 [véase anexo D]. 
+
+A pesar de que el Permalloy posee mejores características, la empresa fabricante del Somaloy proporciona una documentación más extensa en cuanto a las características de éste como son: curva de saturación a diferentes temperaturas, curvas de respuesta en frecuencia y caracterización de pérdidas. Estos datos son de suma importancia al momento de realizar una simulación y por eso se seleccionó el Somaloy como el material del núcleo.      
 
 \subsubsection{Núcleo ferromagnético}
+
+Fuerza sacada del culo 
+
 $$F_{max} = 50[N]$$
+
+La distancia es la usada comunmente para el diseño de RM (referencias)
 $$y_{max} = 0.75[mm]$$
 $$y_{min} = 0.25[mm]$$
+
+Usando el material seleccionado y estos nuevos datos y siguiendo los pasos de la seccion [electroimanes] resulta en esta area 
 $$A = 288[mm^2]$$
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/electroiman_radial_final}
     \caption{Electroimán radial}
 \end{figure}
+
 \subsubsection{Bobina}
+
+La razon de elegir 2 A fue porque es mas sencillo realizar una electronica mas eficiente a ese valor
 $$I = 2[A]$$
+
+Usando las formulas de conductores se calculan las vueltas 
 $$N = 278[vueltas]$$
+
+Usando las formulas de calculo de conductores se calcula el area 
 $$A_b = 254[mm^2]$$
-\subsection{Calculo de conductores}
-
-La sección de los conductores que se usaran depende directamente de la intensidad de corriente eléctrica  que circula por ella. Los alambres usados pueden ser: aluminio o cobre recocido. Se usa más el cobre que el aluminio por ser este mucho más dúctil, maleable y flexible. Dadas estas propiedades del cobre, el área del embobinado del electroimán depende directamente del número de vueltas requeridas y  el área de sección transversal del conductor magnético. 
-\\
-También se debe considera un factor de empaquetamiento de la bobina, este factor toma en consideración la forma en que se distribuye el alambre  en el embobinado.
-\\
-\\
-\\
-\\
-\\
-\\
-\\
-\\
-\\
-
-\begin{figure}[h!]
-    \centering
-    \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{images/Capitulo_2/empaquetamiento_cobre_1}
-        \caption{Configuraci\'on L\'ineal}
-        \label{fig:geometria-radial}
-    \end{subfigure}
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-      %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{images/Capitulo_2/empaquetamiento_cobre_2}
-        \caption{Configuraci\'on Hexagonal}
-        \label{fig:geometria-axial}
-    \end{subfigure}
-    \caption{Configuraciones de empaquetamiento\cite{cite_c2_2017}}\label{fig:geometria-electroimanes}
-\end{figure}
-
-Como se puede observar la configuración hexagonal aprovecha al máximo el área del embobinado, dejando menos cavidades entre los conductores, además la construcción en  esta configuración es más sencilla de realizar. La sección transversal del conductor  depende de la intensidad de corriente máxima que soporte. Teniendo en cuenta que se hará pasar al menos 2 ampere, la elección del calibre se hace a través de las tablas cables AWG\cite{cite_c1_2017}, obteniendo como resultado:
-\\
-\\
-\begin{tabular}{|c|l|c|c|c|c|}
-\hline 
-AWG & Di\'ametro & Area\;($mm^2$) & Resistencia (ohms/km) & Maximo Ampere & Maxima Frecuencia \\ 
-\hline 
-18 & 1.023 & 0.823 & 20.94 & 2.3 & 17 $Khz$ \\ 
-\hline 
-\end{tabular} 
 
 \subsection{Calculo de conductor del electroim\'an radial}
 
 Con los datos del calibre 18 de la tabla AWG se procede a calcular al \'area m\'inima del embobinado; tomando en cuenta que las vueltas m\'inimas para el embobinado son de 314 vueltas:
-\begin{equation}
-	Ab = \frac{Ac \; \cdot \; V}{K}
-\end{equation}
-\begin{itemize}
-	\item $Ab$ = \'Area m\'inima de la bobina
-	\item $Ac$ = \'Area de secci\'on transversal del conductor
-	\item $V$ = Vueltas m\'inimas  requeridas de la bobina
-	\item $K$ = Factor de empaquetamiento  de la bobina  dada por 0.90\cite{cite_c2_2017} 
-\end{itemize}
+
 Por lo que  el \'area m\'inima necesaria del embobinado es de: $287.13 \; mm^2 \; \approx \; 288 \; mm^2$
 
 \subsection{Calculo de conductor del electroim\'an Axial}
