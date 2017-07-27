@@ -100,7 +100,7 @@ $$F_{min} = 50[N]$$
 Al tratarse de un rodamiento con fines demostrativos, se propuso esa fuerza para que el resultado final ocupe el menor espacio posible.
 
 El problema de seleccionar una distancia de operación recae en que una distancia muy grande requiere una mayor inducción magnética para generar una fuerza determinada, mientras que con una distancia pequeña es más fácil generar la misma fuerza con la desventaja de que se alcanza el punto de saturación con mayor rapidez. Además si la distancia es muy pequeña hay poco espacio para estabilizarlo. 
-
+ 
 En la literatura podemos identificar rangos de operación de entre [...] [referencia] por lo que se optó por trabajar con un rango de:
 
 $$y_{max} = 0.75[mm]$$
@@ -116,7 +116,7 @@ $$A = 288[mm^2]$$
     \caption{Electroimán radial}
 \end{figure}
 
-\subsection{Calculo de la bobina}
+\subsection{Calculo de la bobina} \label{sec:radial-calculo-bobina}
 
 Como se explica en la sección \ref{sec:calc-conductores}, la relación entre el número de vueltas y corriente depende del balance entre eficiencia y respuesta en frecuencia. Se optó por utilizar una corriente de 2 A debido a la gran disponibilidad de componentes electrónicos que operan a este valor de corriente, además de ser un valor lo suficientemente algo como para que la inductancia no degrade la respuesta en frecuencia del electroimán. 
 
@@ -164,45 +164,72 @@ En cambio si decidimos operar en el modo de saturación y corte, tendríamos en la
 
 Para regular la corriente que circula conmutamos de un estado a otro de manera que el promedio de la corriente sea la corriente deseada.
 
-En la practica estos switches son implemetados usando transistores, en especial transistores MOSFET debido a su baja resistencia en encendido Ron.
-
-El mosfet es un dispositivo que controla la corriente a traves del voltaje aplicado en sus temrinales. donde la relacion entre estas se encuntra determinada por
+En la practica esta conmutación se realiza mediante transistores MOSFET debido a su baja resistencia en encendido Ron. El MOSFET es un dispositivo que controla la corriente a través del voltaje aplicado en sus terminales, donde la relación entre estas se encuentra determinada por:
 
 \begin{equation}
 I_d = G(V_g - V_{th})^2
 \end{equation}
 
-Donde $V_{th}$ conocido como voltaje de treshhold es volaje minimo para activar el transistor. Una vez el voltage de compuerta $Vg$ llega sobrepasa el valor $V{sat}$ el transistor no puede dejar pasar mas corriente y simplemente se comparta como un ressitencia de valor $R_{on}$ a esta modo de operacion se le conoce como saturacion.
+Donde $V_{th}$, conocido como voltaje de treshhold, es el voltaje mínimo para activar el transistor. Una vez el voltaje de compuerta $Vg$ llega sobrepasa el valor $V{sat}$ el transistor no deja incrementar mas la corriente y simplemente se comporta como una resistencia de valor $R_{on}$. A este modo de operación se le conoce como saturación.
 
-Cuando se trata de conmutar una carga inductiva se generan picos de voltaje y la corriente que circula por un inductor no puede cambiar de manera instantánea o discontinua. Es por eso que se necesitan de un diodo, para que lo corriente logre recircular y disminuir de manera controlada, para el circuito de la figura ?? la corriente disminuye en una razon de $-L/V_d$. 
+Cuando se trata de conmutar una carga inductiva se generan picos de voltaje, pues la corriente que circula por un inductor no puede cambiar de manera instantánea o discontinua. Es por eso que se necesita de un diodo para proveer un camino por el que la corriente logre recircular y disminuir de manera controlada.
 
-[insertar figura de diodos de recirculacion y caidas de corriente controlada]
+[insertar figura de diodos de recirculacion y caidas de corriente controlada / grafica carga y descarga del inductor]
 
-El problema ahora es que el incremento y decremento en la corriente actua de forma asimetrica, debido a que el cambio de la corriente depende del voltaje aplicado seria necesario aplicar un voltaje inverso, para eso es necesaria una configuarion como la mostrada en figura ??
+La razón de cambio en la corriente en un inductor depende del voltaje aplicado en sus terminales. En el circuito [imagen de arriba], cuando el transistor está activado el voltaje en las terminales es $V_{cc} \approx 20$, y cuando está desactivado (y la corriente circula por el diodo) el voltaje en las terminales es el voltaje de diodo $V_d \approx 0.5$. Entonces los valores de carga y descarga del inductor serán de:
+
+\begin{equation}
+\frac{di}{dt}_{on} = \frac{V_{cc}}{L}
+\end{equation}
+
+\begin{equation}
+\frac{di}{dt}_{off} = \frac{-2V_{cc}}{L}
+\end{equation}
+
+El problema es que el incremento y decremento de la corriente actúan de forma asimétrica, entonces para obtener cargas y descargas simétricas será necesario aplicar un voltaje de $-V_{cc}$ durante el ciclo de descarga. Para eso es necesaria una configuración como la mostrada en la figura [...]
 
 [insertar figura medio puente H]
 
-Esta configuracion es comunmente conocida como puente H y presenta varios detalles para implementacion, el primero de estos es la  activacion de los transistores, como ya se ha mencionado antes para operar de la manera mas eficiente es necesario llevar los trasistores a su punto de saturacion, en la mayoria de los trasistres de potencia este valor se encutra entre los 10 y 15 volts, dado que la mayoria de los circuitos de control operan entre 5 y 1.8 es necesario de un circuito extra para elevar el voltaje, no hacer esto terminaria en polarizar los trasistores en su zona lineal lo que resltaria en el calentamiento de  estos y baja eficiencia. 
+Esta configuración es comúnmente conocida como puente "H" e implica varios detalles para su implementación, el primero de estos es la activación de los transistores. Como ya se ha mencionado, para operar de la manera mas eficiente es necesario llevar los transistores a su punto de saturación, en la mayoría de los transistores de potencia el voltaje de compuerta en saturación $V_{sat}$ oscila entre los 10 y 15 volts, y dado que la mayoría de los circuitos de procesamiento operan entre los 5 y 1.8 volts, es necesario de un circuito complementario para elevar los niveles de voltaje. No hacer esto causaría la polarización de los transistores en la zona lineal, lo que resultaría en el calentamiento de estos y una operación con baja eficiencia. 
 
-Otro problema polarizar los trasitore ?? y ??, ya que para su correcta activacion es necesario un voltaje de hasta $V_{cc} + V{sat}$, ambos problemas son resulta mediante el uso de un circuito conocido como gate driver, donde su usa un arreglo de transtores, diodos y capacitores para proveer los voltajes correctos en las compuertas de los transistores sin nececidad de una fuente separada.
+Otro problema consiste en polarizar los transistores de la figura [...], ya que para su correcta activación es necesario un voltaje de compuerta de hasta $V_{cc} + V{sat}$. 
 
-Podemos definir ahora dos estados de operacion del puente H, un modo de accionamiento, donde se incrementa o decrementa la corriente que circula en la bobina, y un modo de reeciclacion, donde la corriente se mantiene a un nivel casi constante, y donde solo estan presentes la perdidas ohmicas causadas por $R_{ESR}$ y $R_on$
+Ambos problemas son solucionados mediante el uso de un circuito conocido como Gate Driver, donde se usa un arreglo de transistores, diodos y capacitores para proveer los voltajes correctos en las compuertas de los transistores sin necesidad de una fuente separada.
 
-Esta logica de operacion puede implementarse usando el circuto de la figura ??, donde el arreglo de comparadores y flip flops permite controlar la corriente con una precision del $xx\%$
 
-Como ya se ha mencionado, la razon de cambio de un inductor esta limitador por su inductancia y el voltaje aplicado en sus terminales con una magnitud de xx, esto implica que si tratamos de generar  una señal senoidal, la frecuencia maxima que podriamos generar sin distorsionar la señal seria seria
+Suponiendo que queremos mantener constante la corriente del inductor podemos desactivar todos los transistores dejándolos recircular por los diodos. Cuando la corriente recircula por los diodos, ésta disminuye en una razón de:
+
+\begin{equation}
+\frac{di}{dt} = \frac{-2V_d}{L}
+\end{equation}
+
+Como la resistencia de los transistores Ron es baja, si activamos los transistores 1 y 2 recirculando la corriente por estos la taza de cambio será:
+
+\begin{equation}
+\frac{di}{dt} = \frac{R i}{L}
+\end{equation}
+
+A este modo de operación se le conoce como rectificación síncrona. Esto no se puede realizar con transistores bipolares, pero si con transistores MOSFET. 
+
+Podemos definir ahora dos estados de operación del puente H, un modo de accionamiento, donde se incrementa o decrementa la corriente en la bobina, y un modo de recirculación, donde la corriente se mantiene a un nivel casi constante, y donde solo están presentes la perdidas resistivas causadas por $R_{ESR}$ y $R_{on}$
+
+Estos modos de operación puede implementarse usando el circuto de la figura [...], donde el arreglo de comparadores y flip flops permite controlar la corriente con una precision del $n\%$
+
+[insertar figura circuito de activacion]
+
+Como ya se ha mencionado, la razón de cambio en la corriente de un inductor está limitada por su inductancia. Esto implica que si tratamos de generar  una señal senoidal, la frecuencia máxima $F_{max}$ que podríamos producir sin distorsionarla sería:
 
 \begin{equation}
 \frac{di}{dt}_{max} = 2 \pi f_{max} A = \frac{L}{V} 
 \end{equation}
 
-depejando la frecuencia maxima tenemos
+Donde $V$ es el voltaje de alimentación del circuito. Si despejamos la frecuencia máxima tenemos:
 
 \begin{equation}
 f_{max} = \frac{L}{2 \pi V A} 
 \end{equation} 
 
-Donde podemos ver la frecuencia maxima de la señal de salida depende de la amplitud de la misma, esta condicion  conocida como "slew rate limiting" es un fenomeno comun en los amplificadores y basta con conocer los limites de operacion del dispositivo para evitar tal operacion.
+Podemos ver que la frecuencia máxima de la señal de salida depende de la amplitud de la misma. Esta condición  conocida como "slew rate limiting" es un fenómeno común en los amplificadores y basta con conocer los limites de operación del dispositivo para evitar esta situación.
 
 \begin{figure}[htb]
     \centering
@@ -219,19 +246,19 @@ Donde podemos ver la frecuencia maxima de la señal de salida depende de la ampli
     \caption{Linearizacion de electroimanes}
 \end{figure}
 
-En caso de operar mas alla del limite se presenta una atenuacion de magnitud
+En caso de operar mas allá de los limites frecuencia-amplitud, se presentará una atenuación de magnitud:
 
 \begin{equation}
 A = \frac{L}{2 \pi V f} 
 \end{equation} 
 
-esta atenuacion concide con la de un filtro de pasabajas de primer orden, con frecuencia de corte $f_max$ y una caida de $20dB$ por decada, para los electrimanes presentados en ?? esta respuesta corresponde a las graficas de la figura ??. 
+Esta atenuación coincide con la de un filtro pasabajas de primer orden, con frecuencia de corte $f_{max}$ y una caída de $20dB$ por década. Para los electroimanes presentados en \ref{sec:radial-calculo-bobina} esta respuesta corresponde a las gráficas de la figura \ref{fig:respuesta-frecuencia-electroiman}. 
 
-
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/respuesta_dinamica_cp}
+    \includegraphics[width=\textwidth]{images/Capitulo_3/respuesta_dinamica_cp}
     \caption{Respuesta en frecuencia del circuito de accionamiento.}
+    \label{fig:respuesta-frecuencia-electroiman}
 \end{figure}
 
 
