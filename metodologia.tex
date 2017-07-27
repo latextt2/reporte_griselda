@@ -741,65 +741,61 @@ La capacitancia depende del entrehierro o distancia entre los electrodos conduct
 \newpage
 
 
-\section{Sistemas dinamicos}
+\section{Sistemas dinámicos}
 \subsection{Sistemas}
 
-Un sistema es un conjunto de partes o elementos organizadas y relacionadas que interactúan entre sí para lograr un objetivo. Los sistemas reciben \textbf{(entrada)} datos, energía o materia del ambiente y proveen \textbf{(salida)} información, energía o materia.  Los sistemas pueden  ser  de \textbf{fisicos} (compuestos por equipos, maquinaria, objetos y cosas reales) o \textbf{abstractos} (compuestos por conceptos, planes, hipótesis e ideas). De la misma forma pueden ser \textbf{cerrados} (no presentan intercambio con el medio ambiente que los rodea, son herméticos a cualquier influencia ambiental. No reciben ningún recurso externo y nada producen que sea enviado hacia fuera. En rigor, no existen sistemas cerrados. Se da el nombre de sistema cerrado a aquellos sistemas cuyo comportamiento es determinista y programado y que opera con muy pequeño intercambio de energía y materia con el ambiente. Se aplica el término a los sistemas completamente estructurados, donde los elementos y relaciones se combinan de una manera peculiar y rígida produciendo una salida invariable, como las máquinas) o \textbf{abiertos} (presentan intercambio con el ambiente, a través de entradas y salidas. Intercambian energía y materia con el ambiente. Son adaptativos para sobrevivir. Su estructura es óptima cuando el conjunto de elementos del sistema se organiza, aproximándose a una operación adaptativa).
+Un sistema es un conjunto de partes o elementos organizados y relacionados que interactúan entre sí para lograr un objetivo. Los sistemas reciben datos, energía o materia del ambiente \textbf{(entrada)}, y proveen información, energía o materia \textbf{(salida)}. Los sistemas pueden ser de tipo \textbf{físicos} (compuestos por equipos, maquinaria, objetos y cosas reales), o \textbf{abstractos} (compuestos por conceptos, planes, hipótesis e ideas). Su clasificación puede estar dada por su interacción con el ambiente:
 
+\begin{itemize}
+\item\textbf{Cerrados}: No presentan intercambio con el medio ambiente que los rodea, son herméticos a cualquier influencia ambiental. No reciben ningún recurso externo y producen nada que sea enviado hacia afuera. Siendo en rigor que no existen sistemas cerrados, el comportamiento de estos es determinista y programado, y operan con un muy pequeño intercambio de energía y materia con el ambiente. Por ello, usualmente se aplica el término a los sistemas completamente estructurados, donde los elementos y relaciones se combinan de una manera peculiar y rígida produciendo una salida invariable, como las máquinas.
 
-Los sistemas \textbf{dinámicos} son sistemas cuyos parámetros internos (variables de estado) siguen una serie de reglas temporales. Se llaman sistemas porque están descritos por un conjunto de ecuaciones \textbf{(sistemas)} y dinámicos porque sus parámetros varían con respeto a alguna variable que generalmente es el tiempo. 
-Los sistemas dinámicos pueden dividirse en dos grandes clases: aquellos en los que le tiempo varia \textbf{continuamente} y en los que el tiempo varia \textbf{discretamente}. Los sistemas de tiempo dinámico de tiempo continuo se expresan en ecuaciones diferenciales ordinarias. Por otro lado, si el tiempo es discreto los sistemas se describen por medio de ecuaciones de diferencias también conocidos como mapas iterados.\\
+\item\textbf{Abiertos}: Presentan intercambios con el ambiente en forma de energía y materia, a través de entradas y salidas. Su estructura es óptima cuando el conjunto de elementos del sistema se organiza, aproximándose a una operación adaptativa.
+\end{itemize}
 
+Los sistemas \textbf{dinámicos} son aquellos cuyos parámetros internos (variables de estado) siguen una serie de reglas temporales. Se llaman sistemas porque están descritos por un conjunto de ecuaciones \textbf{(sistemas)} y dinámicos porque sus parámetros varían con respecto a alguna variable que generalmente es el tiempo. 
+Los sistemas dinámicos pueden dividirse en dos grandes clases: aquellos en los que el tiempo varía \textbf{continuamente} y en los que el tiempo varía \textbf{discretamente}. Los sistemas dinámicos de tiempo continuo se expresan en ecuaciones diferenciales ordinarias. Por otro lado, si el tiempo es discreto, los sistemas se describen por medio de ecuaciones de diferencias también conocidos como mapas iterados.\\
 
-Un sistema que responde a un entrada con una salida, unicamente despues de que esta fue aplicada es conocido como causal.
-Lo que se busca en el modelado es, a partir de un conjunto de un 
-conjunto de leyes fisicas llegar a un sistema de ecuaciones diferenciales que despues 
-seran de ayuda para diseñar un control adecuado. Debido a la naturaleza mixta del 
-sistema, las ecuaciones resultantes incluiran terminos tanto del dominio mecanico como 
-del dominio electromagnetico. Posteriormente este conjnto de ecuaciones no lineales seran linearizadas con fin de aprovechar las tecnicas de control moderno.
+Un sistema que responde a una entrada con una salida, únicamente después de que esta fue aplicada es conocido como causal. Lo que se busca en el modelado es que, a partir de un conjunto de leyes físicas, se llegue a un sistema de ecuaciones diferenciales que después serán de ayuda para diseñar un control adecuado. Debido a la naturaleza mixta del sistema, las ecuaciones resultantes incluirán términos tanto del dominio mecánico como del dominio electromagnético. Posteriormente este conjunto de ecuaciones no lineales serán linearizadas con el fin de aprovechar las técnicas de control moderno.
 
 En parte se pueden clasificar como:
 \begin{itemize}
-\item lineales o no lineales
-\item Deterministicos o Estocasticos
+\item Lineales o no lineales
+\item Determinísticos o estocásticos
 \item Variantes o invariantes en el tiempo
 \end{itemize}
 
 \subsection{Sistema LTI}
 
-Los sistemas lineales e invariantes en el tiempo (o sistemas \textbf{LTI} por sus siglas en inglé   \textbf{\textit{Linear and Time Invariant}}) corresponden a una importante clase de sistemas en el análisis de fenómenos reales, al permitir modelar comportamientos complejos con herramientas matemáticas tan poderosas como las transformadas de Fourier y Laplace.
-Los sistemas LTI son sistemas que tienen una ecuacion diferencial de la forma
+Los sistemas lineales e invariantes en el tiempo (sistemas \textbf{LTI}, por sus siglas en inglés \textbf{\textit{Linear and Time Invariant}}) corresponden a una importante clase de sistemas en el análisis de fenómenos reales, al permitir modelar comportamientos complejos con herramientas matemáticas tan poderosas como las transformadas de Fourier y Laplace.
+
+Los sistemas LTI son sistemas que tienen una ecuación diferencial de la forma:
 
 \begin{equation} \label{eq:def_lti}
 a_n\frac{d^ny(t)}{dt^n} + a_{n-1}\frac{d^{n-1}y(t)}{dt^{n-1}} + ... + a_1\frac{dy(t)}{dt} +a_0y(t) = b_0F(t) + b_1\frac{dF(t)}{dt} +...+ b_{m-1}\frac{d^{m-1}F(t)}{dt^{m-1}} + b_m\frac{d^mF(t)}{dt^m}
 \end{equation}
 
-
-donde $y$ es la salida del sistema y $F$ es la entrada. 
+Donde $y$ es la salida del sistema y $F$ es la entrada. 
 La relación de entrada-salida para los sistemas LTI se describe en términos de una operación de convolución. La importancia de la operación de convolución en sistemas LTI proviene del hecho de que el conocimiento de la respuesta de un sistema LTI a la entrada de impulsos unitarios nos permite encontrar su salida a cualquier señal de entrada. La linealidad y la invarianza en el tiempo juegan un papel fundamental por varias razones:
 
 \begin{itemize}
-\item Muchos procesos Físicos son LTI $\Rightarrow$ pueden modelarse como sistemas LTI.
+\item Muchos procesos físicos son LTI $\Rightarrow$ si pueden modelarse como sistemas LTI.
 \item Poseen la propiedad de superposición (linealidad) $\Rightarrow$ si la entrada a un sistema LTI se puede representar como combinación lineal de un conjunto de señales
-básicas (concepto de base de señales), la salida será la misma combinacián lineal
+básicas (concepto de base de señales),así la salida será la misma combinación lineal
 de las respuestas del sistema a esas señales básicas.
-\item Cualquier señal se puede representar como combinación lineal de impulsos unitarios retardados. Esto nos permitirá caracterizar cualquier sistema LTI mediante su respuesta al impulso unitario. Esta representación se conoce como suma de convolución (sistemas LTI discretos) o integral de convolución (sistemas continuos) y proporciona una gran
-comodidad al tratar los sistemas LTI.
+\item Cualquier señal se puede representar como combinación lineal de impulsos unitarios retardados. Esto nos permitirá caracterizar cualquier sistema LTI mediante su respuesta al impulso unitario. Esta representación se conoce como suma de convolución (sistemas LTI discretos) o integral de convolución (sistemas continuos) y proporciona una gran comodidad al tratar los sistemas LTI.
 \end{itemize}
 
 \subsubsection{Diferentes representanciones}
 
-
 Las representaciones de un sistema LTI son las siguientes: 
 \begin{itemize}
-  \item Sistemas de ecuaciones diferenciales (anteriormente mensionado ecuacion \ref{eq:def_lti})
-\item Funcion de tranferencia: La función de transferencia de un sistema descrito mediante
-una ecuación diferencial lineal e invariante en el tiempo se define como el cociente entre la transformada de Laplace de la salida (función de respuesta) y la transformada de Laplace de la entrada (función de excitación) bajo la suposición de que todas las condiciones iniciales son cero.
+  \item Sistemas de ecuaciones diferenciales (anteriormente mencionado en la ecuación \ref{eq:def_lti})
+\item Función de tranferencia: La función de transferencia de un sistema descrito mediante una ecuación diferencial lineal e invariante en el tiempo se define como el cociente entre la transformada de Laplace de la salida (función de respuesta) y la transformada de Laplace de la entrada (función de excitación) bajo la suposición de que todas las condiciones iniciales son cero.
 \begin{equation}
 	G_{(s)} = \frac{\mathcal{L}[entrada]}{\mathcal{L}[salida]}
 \end{equation}
 A partir del concepto de función de transferencia, es posible representar la dinámica de un sistema mediante ecuaciones algebraicas en s.
-\item Variables de estado: Las variables de un sistema dinámico son las variables que constituyen el menor conjunto de variables que determinan el estado del sistema dinámico. Si al menos se nesecitan $n$ variables $X_1, X_2,...,X_n$ para describir completamente el comportamiento de un sistema dinámico (de forma que una vez que la entrada para $ t\geq t_0 $ está dada y el estado inicial  en $t = t_0$ esta espesificado, el estado futuro del sistema está determinado  completamente,) entonces tales $n$ variables son un cojunto de variables de estado.
+\item Variables de estado: Las variables de un sistema dinámico son las variables que constituyen el menor conjunto de variables que determinan el estado del sistema dinámico. Si al menos se necesitan $n$ variables $X_1, X_2,...,X_n$ para describir completamente el comportamiento de un sistema dinámico (de forma que una vez que la entrada para $ t\geq t_0 $ está dada y el estado inicial  en $t = t_0$ esta especificado, el estado futuro del sistema está determinado  completamente), entonces tales $n$ variables son un cojunto de variables de estado.
 \end{itemize}
 
 El estado de un sistema dinámico es el conjunto de variables más pequeño (llamadas
@@ -807,63 +803,58 @@ variables de estado), de forma que el conocimiento de estas variables en $t = t_
 
 \subsubsection{Respuestas de los sistemas LTI de segundo orden}
 
-
 Las ecuaciones diferenciales lineales de coeficientes constantes de segundo orden, describen las dinámicas de sistemas y es importante para el diseño de controladores ya que habitualmente la mayor parte de los sistemas pueden ser aproximados a un sistema de segundo orden:
 \begin{equation}
 	a_{2}\frac{d^{2}y(t)}{dt^{2}} + a_1\frac{dy(t)}{dt} 		+a_0y(t) = b_0x(t) + b_1\frac{dx(t)}{dt} +b_{2}\frac{d^{2}x(t)}{dt^{2}}
 \end{equation}
-y su forma est\'andar de la funci\'on de tranferencia es la siguiente:
 
+Y su forma est\'andar de la funci\'on de tranferencia es la siguiente:
 \begin{equation}
 	G_{(s)} =  \frac{\omega^2_n}{s^2 + 2\varsigma \omega_ns + \omega^2_n}
 \end{equation}
 
-en la que el polinomio del denominador se denomina polinomio característico, cuyas raíces (solución de la ecuación característica) son los polos de la función de transferencia. Donde $ \omega_n$ es la frecuencia natural no amortiguada y $\varsigma$ es el factor de amortiguamiento de la se\~nal, Los 3 comportamiento d\'inamico del sistema de segundo orden se describe en terminos de los parametros $\omega$ y $\varsigma$. Comportamiento subamortiguada donde $0 < \varsigma < 1$ alcaza a proximar a cero mas rapidamenten que en el caso amortiguado critico pero oscila al rededor de cero, comportamiento amortiguadamente critico donde $\varsigma = 1$ proporciona la forma mas ripa de aproximar a cero y comportamiento sobreamortiguado $\varsigma > 1$ causara que la amplitud cero sea mas lento que en caso anterior
-
+En la que el polinomio del denominador se denomina polinomio característico, cuyas raíces (solución de la ecuación característica) son los polos de la función de transferencia; donde $ \omega_n$ es la frecuencia natural no amortiguada y $\varsigma$ es el factor de amortiguamiento de la se\~nal. El comportamiento d\'inamico del sistema de segundo orden se describe en términos de los parámetros $\omega$ y $\varsigma$. En el comportamiento subamortiguado, donde $0 < \varsigma < 1$, se aproxima a cero más rápidamente que en el comportamiento críticamente  amortiguado pero termina oscilando alrededor de cero. Para el comportamiento críticamente  amortiguado, donde $\varsigma = 1$, se proporciona la forma más rápida de aproximarse a cero y para el comportamiento sobreamortiguado, donde $\varsigma > 1$, se aproxima a cero pero más lento que en el caso críticamente amortiguado.
 
 \subsubsection{Estabilidad}
 
-La estabilidad de un sistema puede pensarse como una continuidad en su comportamiento dinámico. Si se presenta un cambio pequeño en las entradas o condiciones iniciales, un sistema estable presentará modificaciones pequeñas en su respuesta perturbada. Por otro lado, en un sistema inestable cualquier perturbación, por pequeña que sea, llevará a los estados y/o las salidas a crecer sin límite o hasta que el sistema se salga de rango dinámico o se descontrole y es lo primero que debe garantizarse en el diseño de un sistema de control. 
+La estabilidad de un sistema puede pensarse como una continuidad en su comportamiento dinámico. Si se presenta un cambio pequeño en las entradas o condiciones iniciales, un sistema estable presentará modificaciones pequeñas en su respuesta perturbada. Por otro lado, en un sistema inestable cualquier perturbación, por pequeña que sea, llevará a los estados y/o a las salidas a crecer sin límite o hasta que el sistema se salga del rango dinámico o se descontrole y en el diseño de un sistema de control este tipo de eventos no deben presentarse. 
 
-La respuesta de los sistemas dinámicos lineales se descompone en la respuesta a estado cero y respuesta a entrada cero, se habla de dos tipos de estabilidad.  Estabilidad Interna, se refiere a la estabilidad del sistema autónomo (sin entradas). La estabilidad interna describe el efecto de perturbaciones en las condiciones iniciales sobre comportamiento dinámico de los estados del sistema. Estabilidad Externa o  de Entrada $-$ Salida, se refiere a la estabilidad del sistema con condiciones iniciales nulas, describe el efecto de perturbaciones en las entradas sobre el comportamiento dinámico de la salida.
+La respuesta de los sistemas dinámicos lineales se descompone en la respuesta a estado cero y respuesta a entrada cero. Así mismo, se habla de dos tipos de estabilidad: la estabilidad interna, que se refiere a la estabilidad del sistema autónomo (sin entradas) y describe el efecto de perturbaciones en las condiciones iniciales sobre comportamiento dinámico de los estados del sistema, y la estabilidad externa (de Entrada $-$ Salida), que se refiere a la estabilidad del sistema con condiciones iniciales nulas y describe el efecto de perturbaciones en las entradas sobre el comportamiento dinámico de la salida.
 
-La estabilidad interna recibe el nombre del científico ruso Alexander Mikhailovich Lyapunov, quien realizó estudios en el tema a fines del siglo XIX. Lyapunov introdujo por primera vez métodos que permiten determinar la estabilidad de sistemas de ecuaciones diferenciales sin necesidad de calcular explícitamente las soluciones. La estabilidad en el sentido de Lyapunov hace hincapié en las propiedades de los puntos de equilibrio, y se basa en una generalización matemática del concepto de energía de sistemas mecánicos. Los métodos de Lyapunov pueden aplicarse a sistemas no lineales y no estacionarios.
-
+La estabilidad interna recibe el nombre del científico ruso Alexander Mikhailovich Lyapunov, quien realizó estudios en el tema a fines del siglo XIX. Lyapunov introdujo por primera vez métodos que permiten determinar la estabilidad de sistemas de ecuaciones diferenciales sin necesidad de calcular explícitamente las soluciones. La estabilidad, en el sentido de Lyapunov, hace hincapié en las propiedades de los puntos de equilibrio, y se basa en una generalización matemática del concepto de energía de sistemas mecánicos. Los métodos de Lyapunov pueden aplicarse a sistemas no lineales y no estacionarios.
 
 \subsection{LTI discretos}
 
-
-Un sistema discreto se caracteriza por que su variable independiente sólo puede tomar determinados valores y es descrito mediante una ecuacion en diferencias con coeficiente constantes: 
+Un sistema discreto se caracteriza por que su variable independiente sólo puede tomar determinados valores y es descrito mediante una ecuación en diferencias con coeficientes constantes: 
 
 \begin{equation}
 	\sum_{i=0}^{N}a_iy[n - i] = \sum_{k=0}^M b_k x[n - k] 
 \end{equation}
 
-Esta se representan con una secuencia de numeros denominados muestras, una muestra de una se\~nal o se cuencia se denota por $x[n]$ siendo $n$ enteros en el intervalo $ - \infty < n < \infty$ y solo esta definida por numeros enteros. En muchas aplicaciones la secuencia discreta se obtiene muestreando una señal continua a intervalos de tiempo regulares. Si todos los valores de la secuencia $x[n]$ son reales se dice que la secuencia es real, en otro caso se dice que se trata de una secuencia compleja
+Esta se representan con una secuencia de números denominados muestras, una muestra de una se\~nal o secuencia se denota por $x[n]$ siendo $n$ enteros en el intervalo $ - \infty < n < \infty$ y solo está definida por números enteros. En muchas aplicaciones, la secuencia discreta se obtiene muestreando una señal continua a intervalos de tiempo regulares. Si todos los valores de la secuencia $x[n]$ son reales se dice que la secuencia es real, en otro caso se dice que se trata de una secuencia compleja.
+
 \subsubsection{Variables de estado discreto}
 
-
-Los métodos de variables de estado para el análisis y diseño de sistemas de tiempo continuo pueden extenderse al análisis y diseño de sistemas de tiempo discreto. El diseño de sistemas de tiempo discreto es usando la función de transferencia en z. Se observa que mientras tratamos con sistemas de tiempo discreto, a menudo encontramos dos situaciones diferentes. Los sistemas que son completamente discretos con respecto al tiempo en el sentido de que reciben y entregan sólo señales discretas (por ejemplos sistemas basados en computadoras digitales) y los sistemas con componentes de tiempo continuo discretizados como consecuencia de operaciones de muestreo.
-Para un sistema lineal e invariante en el tiempo discreto de n$-$ésimo orde se representa por:
+Los métodos de variables de estado para el análisis y diseño de sistemas de tiempo continuo pueden extenderse al análisis y diseño de sistemas de tiempo discreto. El diseño de sistemas de tiempo discreto se implementa usando la función de transferencia en z. Se observa que, mientras tratamos con sistemas de tiempo discreto, a menudo encontramos dos situaciones diferentes. Los sistemas que son completamente discretos con respecto al tiempo en el sentido de que reciben y entregan sólo señales discretas (i. e. sistemas basados en computadoras digitales) y los sistemas con componentes de tiempo continuo discretizados como consecuencia de operaciones de muestreo.
+Para un sistema lineal e invariante en el tiempo discreto de n$-$ésimo orden se representa por:
 
 \begin{equation}
 	x(k + 1) = A x(k) + B u (t)
 \end{equation}
 
-un conjunto de ecuaciones en diferencias de primer orden que representan la dinamica del sistema en tiempo discreto, siendo $x(k)$ el vector de estado de dimensiones $n \times I$
+Esta ecuación en diferencias de primer orden representan la dinámica del sistema, en tiempo discreto, siendo $x(k)$ el vector de estado de dimensiones $n \times I$.
 
 \begin{equation}
 	y(k) = C x(k) + D u (k)
 \end{equation}
 
-La ecuacion de salida es simplentente una ecuacion algebraica. 
+La ecuación de salida es simplentente una ecuación algebraica. 
 
-\subsubsection{Polinomio caracteristico}
+\subsubsection{Polinomio característico}
 
+Para cada matriz $A$ de orden $m$ se tiene que en $det(A - \lambda I)$ es un polinomio de grado $m$ que se llama polinomio característico de $A$ y se denota por $pA(\lambda)$. La ecuación $det(A - \lambda I) = 0$ se llama ecuación característica de $A$, donde se denota $I$ como la matriz indentidad. Las relaciones que ligan las entradas de una matriz con los coeficientes del polinomio característico son muy complicadas. No obstante, ciertos coeficientes de dicho polinomio son conocidos.
 
-Se parte de que cada matriz $A$ de orden $m$ se tiene que $det(A - \lambda I)$ es un polinomio de grado $m$ que se llama polinomio característico de $A$ y se denota por $pA(\lambda)$. La ecuación $det(A - \lambda I) = 0$ se llama ecuación característica de $A$, donde se denota $I$ como la matriz indentidad. Las relaciones que ligan las entradas de una matriz con los coeficientes del polinomio característico son muy complicadas. No obstante, ciertos coeficientes de dicho polinomio son conocidos.
-\subsubsection{Funcion de transferencia y la transformada z}
-
+\subsubsection{Función de transferencia y la transformada z}
 
 El análisis de los sistemas lineales discretos se ve facilitado por el uso de una herramienta matemática denominada transformada $Z$, la cual se define a partir de una secuencia de números $x\left( k \right)$ del modo siguiente:
 
@@ -871,18 +862,17 @@ El análisis de los sistemas lineales discretos se ve facilitado por el uso de un
 	Z\left[ x \left(k\right) \right] = X\left(z)\right] = \sum_{k=0}^\infty x \left(k)\right)z^{-k}
 \end{equation}
 
-La transformada $Z$ definida por la ecuación anterior se denomina unilateral, ya que se considera que $x\left( k \right)$ sólo está definido para $k > 0$, para el caso que esté definido desde $ - \infty $ se denominada bilateral. La transformada $Z$ aplicada a sistemas de tiempo discreto guarda una gran anlogía con la transformada de Laplace de aplicación a los sistemas de tiempo continuo. Por lo que la funcion de tranferencia en discretos tiene igual una gran similitud:
+La transformada $Z$ definida por la ecuación anterior se denomina unilateral, ya que se considera que $x\left( k \right)$ sólo está definido para $k > 0$, para el caso que esté definido desde $ - \infty $ se denominada bilateral. La transformada $Z$ aplicada a sistemas de tiempo discreto guarda una gran analogía con la transformada de Laplace de aplicación a los sistemas de tiempo continuo. Por lo que la función de tranferencia en tiempo discreto tiene igual una gran similitud:
 \begin{equation}
 	G\left(z \right) = \frac{Z\left[y\left(k \right)\right]}{Z\left[u\left(k \right)\right]} = \frac{Y\left(z \right)}{X \left(z \right)}
 \end{equation} 
 
 \subsubsection{Estabilidad discreta}
 
-Al igual que en el caso continuo, un sistema discreto es estable si se presenta un cambio pequeño en las entradas, un sistema estable presentará modificaciones pequeñas en su respuesta.
-La estabilidad se puede determinar a partir de la localizacion de los polos de lazo cerrado en el plano z. EL sistema es estable, si los polos de las raices de la ecuacion caracteristica quedan localizadas dentro del circulo unitario en el plano Z. Si un polo  esta ubicado en $z=1$
-o $z = -1$, el sistema es marginalmente estable, si un par de polos conjugados complejos esta sobre el circulo unitario o polos multiples el sistema es inestable.
+Al igual que en el caso continuo, un sistema discreto es estable si se presenta un cambio pequeño en las entradas, un sistema estable presentará modificaciones pequeñas en su respuesta. La estabilidad se puede determinar a partir de la localizacion de los polos de lazo cerrado en el plano z. EL sistema es estable si los polos de las raíces de la ecuación característica quedan localizadas dentro del círculo unitario en el plano Z. Por el contrario, si un par de polos conjugados complejos están fuera el círculo unitario o polos múltiples el sistema es inestable, pero si al menos un polo  está ubicado en $z=1$ o $z = -1$, el sistema es marginalmente estable.
 
-\section{Dinamica}
+\section{Dinámica}
+
 Para modelar el comportamiento de los cuerpos en movimientos es decesario aplicar las ecuaciones de la mecanica clasica.
 Un cuerpo rigido ubicado en el espacio posee 6 grados de libertad (parametros necesarios para describir su configuracion), la posicion espacial de su centro de masa, y su orientacion. La segunda ley de newton nos permite calcular la traslacion del objeto, mientras que las ecuaciones de euler nos permiten calcular su orientacion.
 
