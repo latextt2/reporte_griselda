@@ -317,7 +317,7 @@ $\phi$ & Flujo magnético & $I$ & Corriente eléctrica \\
 
 \subsection{Modelado}
 
-Para diseñar un electroimán se requiere de un modelo que relacione la geometría del núcleo con la fuerza máxima que este puede ejercer. La fuerza esta determinada por
+Para diseñar un electroimán se requiere de un modelo que relacione la geometría del núcleo con la fuerza máxima que este puede ejercer. La fuerza esta determinada por:
 \begin{equation}
 	F =  \frac{(NI)^2}{2} \frac{d}{dy}(\mathcal{R}^{-1})
 	\label{eq:electroiman:formula-general-fuerza}
@@ -340,42 +340,42 @@ por lo que el problema de calcular la fuerza se reduce a calcular la reluctancia
         \caption{Modelo de reluctancias}
         \label{fig:modelo-reluctancias-radial}
     \end{subfigure}
-    \caption{Electroiman radial}
+    \caption{Electroimán radial}
 \end{figure}
 
-El electroiman posee una geometría como la de la figura \ref{fig:geometria-radial}, aplicando el análisis de circuitos magnéticos el sistema se pude modelar como el circuito de reluctancias de la figura \ref{fig:modelo-reluctancias-radial}. Entonces la reluctancia total puede escribirse como:
+El electroimán posee una geometría similar al de la figura \ref{fig:geometria-radial}, aplicando el análisis de circuitos magnéticos el sistema se puede modelar como el circuito de reluctancias de la figura \ref{fig:modelo-reluctancias-radial}. Entonces la reluctancia total puede escribirse como:
 
 \begin{equation}
 	\mathcal{R} = \mathcal{R}_e + \mathcal{R}_a + \mathcal{R}_g = (\frac{l_e}{\mu_{re}}+ \frac{l_a}{ \mu_{ra}}+ 2y)\frac{1}{\mu_0A} \label{eq:electroiman:reluctancia-total}
 \end{equation}
 
-En los materiales ferromagneticos los valores de $\mu_r$ suelen ser grandes, entonces es posible considerar los términos $\frac{l_e}{\mu_{re}}$ y $\frac{l_a}{ \mu_{ra}}$ como insignificantes, asi la reluctancia total puede expresarse como:
+En los materiales ferromagnéticos los valores de $\mu_r$ suelen ser grandes, por lo que es posible considerar los términos $\frac{l_e}{\mu_{re}}$ y $\frac{l_a}{ \mu_{ra}}$ como insignificantes. De esta forma, la reluctancia total puede expresarse como:
 
 \begin{equation}
 \mathcal{R} = \frac{2y}{\mu_0A}
 \end{equation}
 
-Aplicando la ecuacion \ref{eq:electroiman:formula-general-fuerza}, la fuerza se determina con:
+Aplicando la ecuación \ref{eq:electroiman:formula-general-fuerza}, la fuerza se determina con:
 
 \begin{equation}
 	F_m = - \frac{\mu_0 A N^2 I^2 }{ 4 y^2}
 	\label{eq:electroiman:fuerza-ideal}
 \end{equation}
 
-La ecuacion \ref{eq:electroiman:fuerza-ideal} puede encontrarse en la literatura \cite{cite_s4_2017},\cite{cite_s6_2017} y \cite{cite_s7_2017}. Esta ecuación se considera un caso ideal ya que se desprecia los efectos del flujo de fluga, flujo marginal y la reluctancia del núcleo.
+La ecuación \ref{eq:electroiman:fuerza-ideal} puede encontrarse en la literatura \cite{cite_s4_2017},\cite{cite_s6_2017} y \cite{cite_s7_2017}. Esta ecuación se considera un caso ideal, ya que son despreciados los efectos del flujo de fuga, flujo marginal y la reluctancia del núcleo.
 
-Si ponemos a prueba  la ecuaciones bajo las condiciones de operación del Rodamiento Magnético (considerando un entrehierro pequeño), resulta en un error en la fuerza de n\% comparado con la simulación de elemento finito, esto se debe a que la reluctancia del entrehierro y la del núcleo se encuentran en el mismo orden de magnitud. 
+Si ponemos a prueba las ecuaciones bajo las condiciones de operación del rodamiento magnético (considerando un entrehierro pequeño), resulta en un error en la fuerza de n(insertar el valor de la simulación)\% comparado con la simulación de elemento finito. Esto es debido a que la reluctancia del entrehierro y la del núcleo se encuentran en el mismo orden de magnitud. 
 
-%en cambio si realizamos simulacion en FEM, para el mismo sistema, la simulacion arroja un valor de N.
+%En cambio si realizamos simulacion en FEM, para el mismo sistema, la simulación arroja un valor de N.
 
-Si reescribimos la ecuación \ref{eq:electroiman:fuerza-ideal} pero esta vez sin ignorar los terminos $\frac{l_e}{\mu_{re}}$ y $\frac{l_a}{ \mu_{ra}}$, obtenemos la ecuación:
+Si reescribimos la ecuación \ref{eq:electroiman:fuerza-ideal} ahora sin ignorar los términos $\frac{l_e}{\mu_{re}}$ y $\frac{l_a}{ \mu_{ra}}$, se obtiene la ecuación:
 
 \begin{equation}
 	F_m = - \frac{\mu_0 A N^2 I^2}{(\frac{l_e}{\mu_{re}}+ \frac{l_a}{\mu_{ra}}+ 2y)^2}
 	\label{eq:electroiman:fuerza-real}
 \end{equation}
 
-Rehaciendo los cálculos bajo las condiciones anteriores obtenemos una diferencia de tan solo n\% con respecto a la simulación de elemento finito. 
+Rehaciendo los cálculos bajo las condiciones anteriores, se llega a una diferencia de tan solo n\% con respecto a la simulación de elemento finito. 
 
 \begin{figure}[h]
     \centering
@@ -394,13 +394,13 @@ Rehaciendo los cálculos bajo las condiciones anteriores obtenemos una diferencia
     \caption{Electroimán axial}
 \end{figure}
 
-Repitiendo el análisis para el electroimán axial con geometría \ref{fig:geom-axial} obtenemos el modelo de reluctancias de la figura \ref{fig:modelo-axial}, al igual que en el electroimán radial la fuerza y la reluctancia quedan determinadas por las ecuaciones \ref{eq:electroiman:reluctancia-total}, con la diferencia de que el área corresponde a una sección transversal circular. 
+Repitiendo el análisis para el electroimán axial con geometría \ref{fig:geom-axial},  obtenemos el modelo de reluctancias de la figura \ref{fig:modelo-axial} al igual que en el electroimán radial la fuerza y la reluctancia quedan determinadas por las ecuaciones \ref{eq:electroiman:reluctancia-total}, con la diferencia de que el área corresponde a una sección transversal circular. 
 
-Si comparamos los resultados de estas ecuaciones con la simulación de elemento finito podemos observar un error de n\% en la fuerza ejercida. Esta es una gran desviación comparada con los resultados del electroimán radial. 
+Si comparamos los resultados de estas ecuaciones con la simulación de elemento finito podemos observar un error de n\% en la fuerza ejercida. Esta es una gran desviación comparada con los resultados del electroimán radial.
 
-%Para un electroimán axisimetrico donde la geometría cumple condiciones de xx, xx. calculamos una fuerza xx N, sin embargo la simulacion FEM nos arroja un valor de xx.
+%Para un electroimán axisimétrico donde la geometría cumple condiciones de xx, xx. calculamos una fuerza xx N, sin embargo la simulación FEM nos arroja un valor de xx.
 
-Si analizamos los resultados de la simulación podemos observar que las lineas del flujo magnético se curvan de manera significativa en los extremos del imán. A esta distorsión en el campo magnético debido a las discontinuidades del medio se le conoce como flujo marginal.
+Si analizamos los resultados de la simulación podemos observar que las líneas del flujo magnético se curvan de manera significativa en los extremos del imán. A esta distorsión en el campo magnético debido a las discontinuidades del medio se le conoce como flujo marginal.
 
 Entonces para el correcto modelado del electroimán necesitamos incluir los efectos del flujo marginal. En \cite{cite_s8_2017_paper} se presenta un nuevo método para modelar la reluctancia de un entrehierro. Usando este nuevo modelo los resultados de la simulación se acercan en un n\%.   
 
