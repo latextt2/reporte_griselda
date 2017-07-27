@@ -410,25 +410,25 @@ Ahora que tenemos un modelo adecuado para la fuerza de los electroimanes, es nec
 
 Idealmente queremos diseñar un electroimán pequeño, de bajo consumo y que pueda ejercer la fuerza $F_{min}$ que necesitamos a una distancia $d$.
 
-Empezando por los requerimientos de fuerza y tamaño, en la ecuación \ref{eq:electroiman:fuerza-real} se puede apreciar que la fuerza depende de la sección transversal del núcleo y los amperes/vuelta del devanado ($NI$), por lo que para minimizar el tamaño del electroimán necesitamos incrementar el valor de $NI$. Como se puede apreciar en la siguiente ecuación la densidad de flujo solo depende de los amperes/vuelta y de la distancia de operación del electroimán: 
+Empezando por los requerimientos de fuerza y tamaño, en la ecuación \ref{eq:electroiman:fuerza-real} se puede apreciar que la fuerza depende de la sección transversal del núcleo y los amperes/vuelta del devanado ($NI$), por lo que para minimizar el tamaño del electroimán necesitamos incrementar el valor de $NI$. Como se puede apreciar en la siguiente ecuación, la densidad de flujo solo depende de los amperes/vuelta y de la distancia de operación del electroimán: 
 
 \begin{equation}
 	B = \frac{\phi}{A} = \frac{\mu_0 NI}{2y}
 \end{equation} 
 
-Esto significa que el punto de saturación del material impone un límite en el valor máximo aplicable de $NI$ si es que queremos mantenernos en el régimen lineal del material. Esto para minimizar las pérdidas por histéresis y facilitar el modelado.Esto implica que materiales con un punto de saturación mas alto son mejores para aplicaciones con electroimanes. Entonces el número máximo de amperes/vuelta quedará determinado por:
+Esto significa que el punto de saturación del material impone un límite en el valor máximo aplicable de $NI$, si es que queremos mantenernos en el régimen lineal del material. Esto para minimizar las pérdidas por histéresis y facilitar el modelado.Esto implica que materiales con un punto de saturación más alto son mejores para aplicaciones con electroimanes. Entonces el número máximo de amperes/vuelta quedará determinado por:
 
 \begin{equation}
 NI_{max}= \frac{2yB_{sat}}{\mu_0}
 \end{equation}
 
-Conociendo ahora la $F_{MM}$ máxima que podemos aplicar al núcleo, solo nos queda variar la sección transversal del entrehierro para generar la fuerza requerida $F_min$ mediante la formula:
+Conociendo ahora la $F_{MM}$ máxima que podemos aplicar al núcleo, solo nos queda variar la sección transversal del entrehierro para generar la fuerza requerida $F_min$ mediante la fórmula:
 
 \begin{equation}
 NI = \sqrt[2]{\frac{4 F_m y^2}{\mu_0 A}}
 \end{equation}
 
-Falta ahora determinar los valores de $N$ e $I$, la relación de estos dos términos es de suma importancia, ya que ambos determinan las características eléctricas del electroimán definidas por los términos de inductancia $L$ y resistencia $R$, la inductancia como se vera mas adelante limitara la respuesta en frecuencia de los electroimanes mientras que la resistencia determinara la eficiencia.
+Falta ahora determinar los valores de $N$ e $I$, la relación de estos dos términos es de suma importancia ya que ambos determinan las características eléctricas del electroimán definidas por los términos de inductancia $L$ y resistencia $R$. La inductancia, como se verá más adelante, limitará la respuesta en frecuencia de los electroimanes mientras que la resistencia determinará la eficiencia.
 
 La inductancia está determinada por:
 
@@ -436,26 +436,26 @@ La inductancia está determinada por:
 L = \frac{ \lambda }{I} = \frac{N \Phi}{I} = \frac{N^2}{\mathcal{R}}
 \end{equation}
 
-y la resistencia de la bobina del electroimán esta dada por: 
+mientras que la resistencia de la bobina del electroimán esta dada por: 
 
 \begin{equation}
 R = \frac{N l \sigma}{A}  
 \end{equation}
 
-Donde $l$ es la longitud promedio de una espira, $A$ es la sección transversal del conductor, $\sigma$ la resistividad del conductor y N es el numero de vueltas. Las pérdidas por efecto joule provocadas por esta resistencia están dadas por:
+Donde $l$ es la longitud promedio de una espira, $A$ es la sección transversal del conductor, $\sigma$ la resistividad del conductor y N es el número de vueltas. Las pérdidas por efecto joule provocadas por esta resistencia están dadas por:
 
 \begin{equation}
 W = I^2R 
 \end{equation}
 
-Las perdidas no dependen del balance entre N e I ya que se compensan entre sí, usar un numero reducido de vueltas requiere emplear una gran corriente y por lo tanto un conductor más grueso. En contraste utilizar un calibre menor limita la corriente máxima de la bobina lo cual requiere un mayor numero de vueltas. En este caso es recomendable atenerse a las tablas de conductores AWG.   
+Las pérdidas no dependen del balance entre N e I ya que se compensan entre sí, usar un número reducido de vueltas requiere emplear una gran corriente y por lo tanto un conductor más grueso. En contraste, utilizar un calibre menor limita la corriente máxima de la bobina, lo cual requiere un mayor número de vueltas. En este caso es recomendable atenerse a las tablas de conductores AWG.   
 
 Entonces la relación N e I deberá ser guiada por el valor deseado de inductancia que se adecua a la respuesta en frecuencia de los electroimanes y el voltaje de operación de la electrónica de accionamiento. 
 
-Teniendo en consideración todo lo anterior podemos resumir le proceso de diseño de un electroimán en los siguientes pasos:
+Teniendo en consideración todo lo anterior podemos resumir el proceso de diseño de un electroimán en los siguientes pasos:
 
 \begin{enumerate}
-\item Determinar condiciones de operacion y, v, $f_{max}$, $F_{max}$, $W_{loss_max}$. 
+\item Determinar condiciones de operación y, v, $f_{max}$, $F_{max}$, $W_{loss_max}$. 
 \item Seleccionar un material con un $B_{sat}$ y $\mu_r$ elevados. 
 \item Calcular $NI_max$.
 \item Calcular A.
@@ -480,7 +480,7 @@ Donde $l_g$ y $A_g$ son la longitud y sección transversal del entrehierro respec
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_flujo_maginal}
-    \caption{Diagrama de flujo marginal}
+    \caption{Diagrama de flujo marginal.}
 \end{figure}
 
 Se conocen dos enfoques para la consideración en el flujo marginal para calcular la reluctancia del entrehierro: \\
@@ -506,7 +506,7 @@ Este método surge a partir de aplicar la transformación Schwarz-Christoffel al s
 
 %Inserte imagen (figura 3 del paper)
 
-La figura [1...] se toma como base para calcular estructuras de entrehierro más complejas. La figura [4 paper] muestra como se pueden alcanzar diferentes geometrías a partir del modelo básico, además de establecer los valores de $\omega$ y $l$. El valor $h$ representa la distancia desde el borde del entrehierro a la siguiente esquina del n\'ucleo.
+La figura [1...] se toma como base para calcular estructuras de entrehierro más complejas. La figura [4 paper] muestra cómo se pueden alcanzar diferentes geometrías a partir del modelo básico, además de establecer los valores de $\omega$ y $l$. El valor $h$ representa la distancia desde el borde del entrehierro a la siguiente esquina del n\'ucleo.
 
 %Inserte imagen (figura 4 del paper)
 
@@ -537,7 +537,7 @@ La reluctancia del entrehierro se puede entonces calcular fácilmente como:
 	R_{m,airgap} = \sigma \frac{a}{\mu_0 t b}
 \end{equation}
 
-Así mismo el factor de corrección que considera los efectos marginales en un sistema axisimétrico es: 
+Así mismo, el factor de corrección que considera los efectos marginales en un sistema axisimétrico es: 
 
 \begin{equation}
 	\sigma_r = \frac{R^\prime}{\frac{l_g}{\mu_0 r}}
@@ -553,7 +553,7 @@ Donde $l_g$ es la longitud del entrehierro, $r$ el radio del entrehierro, y $R^\
 
 El calibre de los conductores depende únicamente de la intensidad de corriente eléctrica que circula a través de ellos. La selección del calibre se hace a través de las tablas de conductores AWG\cite{cite_c1_2017}. El AWG (American Wire Gauge) es una sistema estandarizado usado predominantemente en Norteamérica para la clasificación de los diámetros de conductores eléctricos. 
 
-Dependiendo del material del que esté hecho el conductor existen tablas que relacionan un calibre AWG con la corriente máxima que soporta este. Los materiales más usados son el aluminio y el cobre recocido, pero debido a que posee una mejor conductividad eléctrica se selecciona el cobre. A continuación se muestra la tabla AWG para cobre esmaltado: 
+Existen tablas que relacionan un calibre AWG con la corriente máxima que soporta el elemento conductor dependiendo del material del que esté hecho. Los materiales más usados son el aluminio y el cobre recocido, pero debido a que posee una mejor conductividad eléctrica se selecciona el cobre. A continuación se muestra la tabla AWG para cobre esmaltado: 
 
 \begin{table}
 \centering
@@ -572,15 +572,15 @@ AWG & Di\'ametro & Area\;($mm^2$) & Resistencia (ohms/km) & Corriente Máxima & F
 \label{tabla:AWG-COBRE}
 \end{table}
 
-El área del embobinado del electroimán depende directamente del número de vueltas requeridas y del calibre del conductor magnético. También se debe considerar el factor de empaquetamiento de la bobina, el cual toma en cuenta la forma en que se distribuye el alambre en el embobinado.
+El área del embobinado del electroimán depende directamente del número de vueltas requeridas y del calibre del conductor magnético. También se debe considerar el factor de empaquetamiento de la bobina, el cuál toma en cuenta la forma en que se distribuye el alambre en el embobinado.
 
-Existen dos configuraciones para el embobinado, la lineal y la hexagonal, cada una con su propio factor de empaquetamiento. Como se observa en la figura \ref{fig:paq-bobina} la configuración hexagonal aprovecha al máximo el área del embobinado, dejando menos cavidades entre los conductores, además la construcción en esta configuración es más sencilla de realizar.   
+Existen dos configuraciones para el embobinado: la lineal y la hexagonal, cada una con su propio factor de empaquetamiento. Como se observa en la figura \ref{fig:paq-bobina}, la configuración hexagonal aprovecha al máximo el área del embobinado al  dejar menos cavidades entre los conductores. Además, la construcción en esta configuración es más sencilla de realizar.   
 
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_2/empaquetamiento_cobre_1}
-        \caption{Configuraci\'on L\'ineal}
+        \caption{Configuraci\'on Lineal}
         \label{fig:empaq-lineal}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
@@ -623,7 +623,7 @@ Proponiendo un imán permanente y guía de flujo magnético con la siguiente geomet
 \begin{center}
 \centering
 	\includegraphics[width=5cm, height=5cm]{images/Capitulo_1/Geometria_de_iman_y_ferrita_guia}
-	\caption{\textit{Geometria de imán y ferrita guia.}}
+	\caption{\textit{Geometría de imán y ferrita guía.}}
 \end{center}
 \end{figure}
 
@@ -651,7 +651,7 @@ Podemos calcular la inducción magnética en el entrehierro:
 	  B_g(g) = (\frac{A_m}{A_g}) \frac{B_r}{2(1+(\frac{\mu_m}{\mu_0})(\frac{A_m}{A_g})(\frac{g}{l_m}))} 
 \end{equation}
 
-Y por consiguiente la fuerza aplicada por el imán permanente debido a una variación en la energía aplicada en el entrehierro:
+Y por consiguiente, la fuerza aplicada por el imán permanente debido a una variación en la energía aplicada en el entrehierro:
 
 \begin{equation}
 	F_g(g)= \frac{1}{2} \mu_0  \oint \oint B_g^2 ds \hat{n}
@@ -665,8 +665,8 @@ Y por consiguiente la fuerza aplicada por el imán permanente debido a una variac
 	F_g(g) = \frac{B_r^2}{2 \mu_0 (1 + (\frac{\mu_m}{\mu_0})(\frac{A_m}{A_g})(\frac{g}{l_m}))^2}[\frac{A_m + 2A_g}{2Ag}] \hat{n}
 \end{equation}
 
-Donde:\\
-	$A_m$: Es la sección transversal del imán permanente\\
+Donde son:\\
+	$A_m$: La sección transversal del imán permanente\\
 	$A_g$: La sección transversal del entrehierro\\
 	$l_m$: La longitud media del imán permanente\\
 	$B_r$: La inducción remanente\\
@@ -680,7 +680,7 @@ Donde:\\
 \subsection{Tipos de sensores}
 
 La mayoría de los sensores de desplazamiento de alta precisión requieren de contacto directo como los encoders de cuadratura, potenciómetros y sensores LVDT (Linear Variable Differential Transformer).
-Los sensores que no requieren de directo con el objeto se basan en la transformación de energía (transductores) o en la medición de alguna propiedad fundamental (resistencia, capacitancia, inductancia) para la detección de esa distancia. Entre los sensores de tipo transductor encontramos los sensores ultrasónicos que:
+Los sensores que no requieren de contacto directo con el objeto se basan en la transformación de energía (transductores) o en la medición de alguna propiedad fundamental (resistencia, capacitancia, inductancia) para la detección de esa distancia. Entre los sensores de tipo transductor encontramos los sensores ultrasónicos que:
 
 \begin{enumerate}
 	\item Emiten ondas sónicas de alta frecuencia.
@@ -694,28 +694,28 @@ Otros sensores de operación similar son los sensores de tipo "time of fligth" (t
 
 Los inductivos son especialmente útiles para la detección de materiales metálicos y ferromagnéticos pero debido a la presencia de un campo variable generado por los electroimanes adyacentes, sus mediciones podrían presentar errores debido a la interferencia.
 
-Por otro lado los sensores capacitivos presentan una alta resolución, rango reducido y una detección de objetos no aterrizados y sin contacto siempre y cuando el objeto posea una permitividad mayor a la del vacío, además de poseer una respuesta ultrarrápida.
+Por otro lado los sensores capacitivos presentan una alta resolución, rango reducido y una detección de objetos no aterrizados y sin contacto (siempre y cuando el objeto posea una permitividad mayor a la del vacío), además de poseer una respuesta ultrarrápida.
 
 \subsection{Sensores de desplazamiento capacitivo}
 
 Los capacitores son dispositivos que consisten en dos electrodos separados por un aislante, los capacitores generalmente se componen de dos placas conductivas separadas por un material no conductivo llamado dieléctrico. La energía eléctrica o carga es almacenada en estas placas.
 
-Una vez que un voltaje es aplicado a través de las terminales del capacitor los platos conductivos comenzaran a almacenar energía eléctrica hasta que la diferencial de potencial entre estas iguale al voltaje aplicado por la fuente de voltaje. La carga eléctrica permanece en las placas incluso después de desconectar la fuente de voltaje a menos que otro componente consuma esta carga o el capacitor se descargue a cusa de las fugas de corriente debido la imperfecciones del aislante dieléctrico.
+Una vez que un voltaje es aplicado a través de las terminales del capacitor, los platos conductivos comenzarán a almacenar energía eléctrica hasta que la diferencia de potencial entre estas sea igual al voltaje aplicado por la fuente de voltaje. La carga eléctrica permanece en las placas incluso después de desconectar la fuente de voltaje a menos que otro componente consuma esta carga o el capacitor se descargue a cusa de las fugas de corriente debido la imperfecciones del aislante dieléctrico.
 
-Un sensor capacitivo convierte el cambio eléctrico entre dos conductores en una señal eléctrica. Los sensores se construyen variando algunos de los parámetros que influyen en la capacitancia, que de acuerdo a la ecuación  de capacitancia entre placas paralelas, serían el área, la distancia entre placas o la permitividad del dieléctrico.
+Un sensor capacitivo convierte el cambio eléctrico entre dos conductores a una señal eléctrica. Los sensores se construyen variando algunos de los parámetros que influyen en la capacitancia, que de acuerdo a la ecuación  de capacitancia entre placas paralelas; serían el área, la distancia entre placas o la permitividad del dieléctrico.
 
 \begin{equation}
 C=F(d,A,\varepsilon_r)
 \end{equation}
 
 Un sensor de proximidad es un transductor que es capaz de detectar la presencia de un objeto sin contacto físico. Normalmente un sensor de proximidad emite algún campo electromagnético o electrostático, o un haz de radiación electromagnética (radiación infrarroja) y detecta cualquier cambio en el campo o señal de retorno.\\ 
-Los sensores de proximidad capacitivos consisten en un oscilador cuya frecuencia está determinada por la capacitancia del circuito al cual los electrodos están conectados, cuando un conductor aterrizado o un material con una alta permeabilidad eléctrica se acercan al electrodo, la capacitancia cambia la frecuencia del oscilador. Este cambio es detectado y enviado a la unidad de control. El objeto detectado se le refiere comúnmente como objetivo. El campo eléctrico distribuido alrededor del capacitor experimenta un cambio el cual es detectado por la unidad de control.
+Los sensores de proximidad capacitivos consisten en un oscilador cuya frecuencia está determinada por la capacitancia del circuito al cual los electrodos están conectados. Cuando un conductor aterrizado o un material con una alta permeabilidad eléctrica se acercan al electrodo, la capacitancia cambia la frecuencia del oscilador. Este cambio es detectado y enviado a la unidad de control. El objeto detectado se le refiere comúnmente como objetivo. El campo eléctrico distribuido alrededor del capacitor experimenta un cambio que es detectado por la unidad de control.
 
 \begin{figure}[htb]
 \begin{center}
 \centering	
 	\includegraphics[width=5cm, height=5cm]{images/Capitulo_1/Interaccion_del_campo_electrico_en_un_capacitor_aire}
-	\caption{\textit{Interacción del campo eléctrico en un capacitor de placas coplanarias con espacio frontal relleno de aire .}}
+	\caption{\textit{Interacción del campo eléctrico en un capacitor de placas coplanarias con espacio frontal relleno de aire.}}
 \end{center}
 \end{figure}
 
@@ -727,16 +727,16 @@ Los sensores de proximidad capacitivos consisten en un oscilador cuya frecuencia
 \end{center}
 \end{figure}
 
-La distancia máxima que el sensor de proximidad es capaz de detectar es conocido como rango nominal. Algunos sensores tienen ajustes del rango nominal o maneras de reportar una detección graduada de la distancia, un sensor de proximidad ajustado a un rango muy limitada es comúnmente referido como un sensor táctil. Los sensores capacitivos usualmente tienen el doble de rango los sensores inductivos.
+La distancia máxima que el sensor de proximidad es capaz de detectar es conocido como rango nominal. Algunos sensores tienen ajustes del rango nominal o maneras de reportar una detección graduada de la distancia, un sensor de proximidad ajustado a un rango muy limitado es comúnmente referido como un sensor táctil. Los sensores capacitivos usualmente tienen el doble de rango los sensores inductivos.
 
 \subsubsection{Suceptibilidad a capacitancias parásitas}
-Los electrodos del sensor poseen capacitancias en el rango de fracción de picofaradios y conectar esas señales a un cable coaxial de 60pF por metro podría obscurecer totalmente la señal. Sin embargo con el blindaje correcto al igual que cualquier otra capacitancia parasita es posible eliminar en mayor medida los efectos  del ruido.
+Los electrodos del sensor poseen capacitancias en el rango de fracción de picofaradios y conectar esas señales a un cable coaxial de 60pF por metro podría obscurecer totalmente la señal. Sin embargo, con el blindaje correcto al igual que cualquier otra capacitancia parásita, es posible eliminar en mayor medida los efectos  del ruido.
 
 \subsubsection{Susceptibilidad al ruido}
-Un peligro para los circuitos osciladores  es que la frecuencia variaría de manera intermitente en el caso de existiría interferencia cruzada causada por circuitos adyacentes, estos problemas pueden ser resueltos mediante un blindaje, una correcta disposición de pistas e integrados en el circuito y el  uso de capacitores de "bypass" en las fuentes de alimentación.
+Un peligro para los circuitos osciladores es que la frecuencia variaría de manera intermitente en el caso de existiría interferencia cruzada causada por circuitos adyacentes. Estos problemas pueden ser resueltos mediante un blindaje, una correcta disposición de pistas e integrados en el circuito y el uso de capacitores de "bypass" en las fuentes de alimentación.
 
 \subsubsection{Distancia entre los electrodos}
-La capacitancia depende del entrehierro o distancia entre los electrodos conductivos. Esta distancia pude incrementar o decrementar dependiendo de las condiciones ambientales, y del material que podrían generar un mediciones poco exactas, por ejemplo suciedad en la superficie del sensor.
+La capacitancia depende del entrehierro o distancia entre los electrodos conductivos. Esta distancia puede incrementar o decrementar dependiendo de las condiciones ambientales, y del material que podrían generar mediciones poco exactas, por ejemplo suciedad en la superficie del sensor.
 
 \newpage
 
