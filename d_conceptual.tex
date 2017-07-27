@@ -4,7 +4,7 @@
 
 Cuando se plantea el desarrollo de una máquina de alta velocidad, ya sea como parte de un proyecto académico o industrial, existen una gran cantidad de factores que se deben considerar, desde el tipo de motor que debe utilizar, los materiales de fabricación, la morfología, dimensiones y por supuesto el uso o aplicación que se le dará. Sin embargo, a veces los dispositivos y componentes más pequeños o "simples" plantean el verdadero problema cuando se quiere diseñar este tipo de máquinas. 
 
-Uno de estos dispositivos son los cojinetes, los cuales son sumamente importantes para las máquinas con elementos rotativos ya que sirven como puntos de apoyo de ejes y árboles, para facilitar su rotación y evitar deslizamientos. Estos ejes y árboles se encuentran sometidos constantemente a la fricción y a las vibraciones producto del contacto que existe entre estos y las piezas a las que estén conectados, lo que conlleva una serie de problemas como el aumento de la temperatura de operación y el desgaste de las piezas, y que incrementan de manera considerable si la maquina requiere operar a un alto régimen de revoluciones. 
+Uno de estos dispositivos son los cojinetes, los cuales son sumamente importantes para las máquinas con elementos rotativos ya que sirven como puntos de apoyo de ejes y árboles, para facilitar su rotación y evitar deslizamientos. Estos ejes y árboles se encuentran sometidos constantemente a la fricción y a las vibraciones producto del contacto que existe entre estos y las piezas a las que estén conectados, lo que conlleva una serie de problemas como el aumento de la temperatura de operación y el desgaste de las piezas, y que incrementan de manera considerable si la máquina requiere operar a un alto régimen de revoluciones. 
 
 Normalmente para este tipo de máquinas se utilizan cojinetes de rodadura, conocidos simplemente como rodamientos, ya que están diseñados para permitir velocidades mayores y admitir cargas tanto axiales como radiales, además de que usualmente el calentamiento y el desgaste es menor. Sin embargo, estos dispositivos también tienen límites, y lo que sucede normalmente cuando se utilizan en máquinas de alta velocidad es que requieren ser reemplazados con cierta regularidad, disminuyendo su practicidad y elevando los costos de mantenimiento.\par
 Partiendo de este problema, una alternativa que se puede utilizar son un nuevo tipo de rodamiento conocido como rodamiento magnético. Este genera un campo magnético que ayuda al eje o árbol de transmisión a permanecer en un estado de levitación, suprimiendo el contacto directo que tendría con un cojinete o rodamiento convencional y facilitando el giro del eje. Esto implica una disminución de la temperatura de operación, las vibraciones y el ruido, así como la posibilidad de reducir la potencia de los motores y los costos de mantenimiento relacionados al remplazo de piezas por desgaste y a la utilización de lubricantes.\par
@@ -70,7 +70,7 @@ A continuación se muestra el diagrama por áreas funcionales del rodamiento magné
 
 Del diagrama de áreas funcionales podemos reconocer que el sistema cuenta con 2 entradas que determinan el funcionamiento y el comportamiento del mismo: el suministro de energía eléctrica y las perturbaciones que llegan al sistema. Este diagrama se divide en 3 secciones principales: la primera sección lo componen los módulos que generan los campos magnéticos de levitación, los cuales deben variar de acuerdo a lo que indique el controlador. Este se encuentra dominado por el monitoreo del módulo de sensores y la interfaz de usuario, la cual además muestra información sobre la posición del rotor. 
 
-La tercera sección incluye el convertidor de energía que alimenta todos los sistemas eléctricos, incluyendo el módulo de seguridad, el cual se rige a través de la información que provea el controlador, ya que este sólo actúa con el corte del suministro eléctrico o por alguna falla detectada por el controlador. 
+La tercera sección incluye el convertidor de energía que alimenta todos los sistemas eléctricos, incluyendo el módulo de seguridad, gestado a través de la información que provea el controlador, ya que este sólo actúa con el corte del suministro eléctrico o por alguna falla detectada por el controlador. 
 
 \newpage
 
@@ -82,7 +82,7 @@ Sin embargo, debido a que la cantidad de elementos mecánicos u otros componentes
 
 %\subsection{Rodamiento Magnético Activo Radial}
 
-En el caso del rodamiento magnético activo para la carga radial (RMR) se considero que estos utilizan un arreglo de electroimánes opuestos para generar los campos magnéticos de levitación, y están diseñados para soportar las cargas radiales que actúan sobre el rotor, manteniéndolo centrado sobre el eje de rotación. Considerando esto se planteó el siguiente concepto para la disposición de los electroimánes:
+En el caso del rodamiento magnético activo para la carga radial (RMR) se consideró que estos utilizan un arreglo de electroimanes opuestos para generar los campos magnéticos de levitación, y están diseñados para soportar las cargas radiales que actúan sobre el rotor, manteniéndolo centrado sobre el eje de rotación. Considerando esto, se planteó el siguiente concepto para la disposición de los electroimanes:
 
 \begin{figure}[htb]
 \centering
@@ -90,15 +90,15 @@ En el caso del rodamiento magnético activo para la carga radial (RMR) se conside
 	\caption{\textit{Diseño conceptual del rodamiento magnético activo radial.}}
 \end{figure}
 
-Este es considerado el módulo central del rodamiento magnético híbrido, debido a que las dimensiones finales dependen principalmente del tamaño del arreglo de electroimánes.  
+Este es considerado el módulo central del rodamiento magnético híbrido, debido a que las dimensiones finales dependen principalmente del tamaño del arreglo de electroimanes.  
 
 %\subsection{Rodamiento Magnético Activo Axial}
 
 \newpage
 
-El siguiente módulo consiste en el rodamiento magnético activo axial (RMA) el cual, como su nombre lo dice, está diseñado para soportar cargas axiales. Utilizan una pieza o collar de soporte constituido generalmente por un disco plano, sólido, de material ferromagnético fijado al rotor. 
+El siguiente módulo consiste en el rodamiento magnético activo axial (RMA). Como su nombre lo indica, este está diseñado para soportar cargas axiales. Utilizan una pieza o collar de soporte constituido generalmente por un disco plano, sólido, de material ferromagnético fijado al rotor. 
 
-Los electroimánes en forma de disco están situados en uno ó a ambos lados del disco y sujetos a la carcasa o armazón del rodamiento. Ademas utilizan un sensor o arreglo de sensores que mide la posición del rotor en dirección axial. 
+Los electroimanes en forma de disco están situados en uno ó a ambos lados del disco y sujetos a la carcasa o armazón del rodamiento. Además utilizan un sensor o arreglo de sensores que mide la posición del rotor en dirección axial. 
 
 \begin{figure}[htb]
 \centering
@@ -108,7 +108,7 @@ Los electroimánes en forma de disco están situados en uno ó a ambos lados del di
 
 %\subsection{Módulo de Sensores}
 
-Los rodamientos magnéticos que funcionan por medio de electroimánes utilizan sensores que miden la posición del eje y enviar estas señales de posición al controlador. El controlador utiliza esta información para modificar el campo electromagnético en el rodamiento, haciendo las correcciones necesarias para estabilizarlo.
+Los rodamientos magnéticos que funcionan por medio de electroimanes utilizan sensores que miden la posición del eje y envían estas señales de posición al controlador. El controlador utiliza esta información para modificar el campo electromagnético en el rodamiento, haciendo las correcciones necesarias para estabilizarlo.
 \newpage
 Se plateó un arreglo de tres sensores dispuestos a 120° ya que por lo general este tipo de arreglo ofrece mejores mediciones.
 
@@ -122,9 +122,9 @@ Se plateó un arreglo de tres sensores dispuestos a 120° ya que por lo general es
 
 %\subsection{Módulo de Compensación de Cargas Estáticas}
 
-Como se ha mencionado en otras secciones, el proyecto consiste en un rodamiento magnético híbrido debido a que, ademas de utilizar electroimánes como los rodamientos magnéticos activos, utiliza un imán permanente para generar un campo magnético base de levitación siguiendo el principio de operación de los rodamientos magnéticos pasivos. Esto con el propósito de ayudar a disminuir el consumo de energía del rodamiento magnético radial.
+Como se ha mencionado en otras secciones, el proyecto consiste en un rodamiento magnético híbrido debido a que, además de utilizar electroimanes como los rodamientos magnéticos activos, utiliza un imán permanente para generar un campo magnético como base de levitación siguiendo el principio de operación de los rodamientos magnéticos pasivos. Esto con el propósito de ayudar a disminuir el consumo de energía del rodamiento magnético radial.
 
-Debido a que el campo magnético que genera el imán permanente no puede ajustarse de la misma forma que los electroimánes, este debe acoplarse a un mecanismo de desplazamiento que varíe la distancia entre el imán permanente y el eje para ajustar el campo magnético. 
+Debido a que el campo magnético que genera el imán permanente no puede ajustarse de la misma forma que los electroimanes, este debe acoplarse a un mecanismo de desplazamiento que varíe la distancia entre el imán permanente y el eje para ajustar el campo magnético. 
 
 \begin{figure}[h!]
 \centering
