@@ -1319,9 +1319,66 @@ Su kis vakries oriouies deseadis d eka natruz $A-BK$ es decir os poslos en lazo 
 \end{equation}
 
 \subsection{Servocontrol discreto}
-\todo[inline]{se explica la diferencia principal entre el servocontrol discreto y la diferncia y la relacion integrador acumulador}.
 
-\todo[inline]{se derivan las formulas para el servocontrolador discreto}.
+Las entradas de referencia consideradas pueden incluir pasos, rampas y otras señales discretas  persistentes, tales como sinusoides. Para una entrada escalonada, sabemos que se pueden obtener errores cero de seguimiento en estado cero  Esta idea se formaliza aquí mediante la introducción de un modelo interno de la referencia de entrada en el compensador, cuando este contiene un integrador. 
+Considerando un modelo:
+
+\begin{equation}
+	x(k + 1) = Ax(k) + Bu(k) + \Gamma\omega
+\end{equation}
+
+\begin{equation}
+	y(k) = Cx(k) + E\omega
+\end{equation}
+
+Donde $\omega$ es una  constante de perturbacion. El  itegrador $z(k + 1) = z(k) + r -y(k)$ al agregarlo al modelo anterior obtenemos:
+
+\begin{equation}
+	\begin{pmatrix}
+		x(k + 1)\\
+		z(k + 1)
+	\end{pmatrix} = A \begin{pmatrix}
+	x(k)\\
+	z(k)
+	\end{pmatrix} + Bu(k) + \begin{pmatrix}
+	\Gamma \\
+	-E
+	\end{pmatrix} \omega + \begin{pmatrix}
+	0 \\
+	I_m
+	\end{pmatrix}r
+\end{equation}
+donde:
+\begin{equation}
+	A = \begin{pmatrix}
+	A & 0\\
+	-C & I_m
+	\end{pmatrix} \hspace{2cm},\hspace{2cm} B = \begin{pmatrix}
+	B\\
+	0
+	\end{pmatrix}
+\end{equation}
+
+Designando $ F = [F_1 F_2]$ tal que $|\lambda(A + BF)| < 1$ \\
+Lema: $(A,B)$ es controlable(respectivamente estabilizables) si solo si:
+
+\begin{itemize}
+\item $(A,B)$ es controlable y respectivamente establizable y
+\item el rago de $\begin{pmatrix} (I_n - A) & A\\C 0 \end{pmatrix} = n + m$
+\end{itemize}
+
+\begin{equation}
+	u(k) = F_1x(k) + F_2z(k)
+\end{equation}
+
+Es una salida retroalimentada asumiendo que $(A,C)$ es detectable designando a un observador que estime $x$ por $\hat{x}$ y tome:
+
+\begin{equation}
+	u(k) = F_1\hat{x}(k) + F_2z(k)
+\end{equation}
+
+
+
 
 \subsection{Control calendarizado}
 Uno de los problemas que surgen a partir de tratar de controlar un sistema no lineal a partir de una aproximacion linearizada, es que cuando nos alejamos del punto de equilibro la diferencia entre el sistema no lineal y el linearizado puede volverse significativa, hasta el punto de que el sistema de control/observador se vuelva inefectivo.
