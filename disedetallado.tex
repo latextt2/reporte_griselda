@@ -65,7 +65,7 @@ En [paper numero de polos]  se estudia de manera mas detallada los efectos de va
 
 \subsection{Electroimán}
 
-\subsection{Selecci\'on de Material}
+\subsection{Selecci\'on de Material} \label{sec:seleccion-somaloy}
 
 Para las aplicaciones de electroimanes lo ideal es utilizar materiales con un alto punto de saturación y permeabilidad relativa. El punto de saturación limita la fuerza máxima que puede ejercer un electroimán [vease sección \ref{sec:diseno-elec}] y al tener una permeabilidad relativa alta podemos confiar que la mayoría del flujo magnético circula dentro del núcleo. 
 
@@ -108,17 +108,11 @@ $$y_{min} = 0.25[mm]$$
 
 Teniendo en cuenta las características del material seleccionado y las condiciones de operación descritas anteriormente se procede a utilizar las formulas de la sección \ref{sec:diseno-elec}. 
 
-$$A = 288[mm^2]$$
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/electroiman_radial_final}
-    \caption{Electroimán radial}
-\end{figure}
+$$A = 12 * 24 = 288[mm^2]$$
 
 \subsection{Calculo de la bobina} \label{sec:radial-calculo-bobina}
 
-Como se explica en la sección \ref{sec:calc-conductores}, la relación entre el número de vueltas y corriente depende del balance entre eficiencia y respuesta en frecuencia. Se optó por utilizar una corriente de 2 A debido a la gran disponibilidad de componentes electrónicos que operan a este valor de corriente, además de ser un valor lo suficientemente algo como para que la inductancia no degrade la respuesta en frecuencia del electroimán. 
+Como se explica en la sección \ref{sec:calc-conductores}, la relación entre el número de vueltas y la corriente depende del balance entre eficiencia y respuesta en frecuencia. Se optó por utilizar una corriente de 2 A debido a la gran disponibilidad de componentes electrónicos que operan a este valor de corriente, además de ser un valor lo suficientemente alto como para que la inductancia no degrade la respuesta en frecuencia del electroimán. 
 
 $$I = 2[A]$$
 
@@ -134,17 +128,26 @@ AWG & Di\'ametro & Area\;($mm^2$) & Resistencia (ohms/km) & Corriente Máxima & F
 \hline  
 \end{tabular} 
 \caption{Especificaciones técnicas para el alambre de cobre esmaltado AWG 18.}
+\label{tabla:awg-18}
 \end{table}
 
 Aplicando la siguiente formula para determinar el número de vueltas, obtenemos que:
 
-$$N = \frac{NI_{max}}{I} = 314 [vueltas]$$
+\begin{equation}
+N = \frac{NI_{max}}{I} = 314 [vueltas] \label{eq:vueltas-bobina}
+\end{equation}
 
 A través de la formula \ref{eq:area-bobina} y con las especificaciones del alambre esmaltado seleccionado, obtenemos la sección transversal de la bobina de:
 
 $$A_b = 287.13 \; mm^2 \; \approx \; 288 \; mm^2$$
 
-\subsection{Modelado y simulación}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/electroiman_radial_final}
+    \caption{Electroimán radial}
+\end{figure}
+
+\subsection{Simulación FEM}
 
 \begin{figure}[H]
     \centering
@@ -152,7 +155,7 @@ $$A_b = 287.13 \; mm^2 \; \approx \; 288 \; mm^2$$
     \caption{Rodamiento magnético radial}
 \end{figure}
 
-\subsection{Accionamiento}
+\subsection{Electrónica de accionamiento}
 
 Ahora que conocemos las características de los electroimanes, es necesario un circuito para controlar la corriente que circula por la bobinas. Para este punto ya conocemos las características eléctricas de las bobinas como la inductancia y la resistencia. Estos datos nos servirán mas adelante para calcular una circuiteria con un bajo índice de pérdidas. 
 
@@ -221,12 +224,14 @@ Como ya se ha mencionado, la razón de cambio en la corriente de un inductor está
 
 \begin{equation}
 \frac{di}{dt}_{max} = 2 \pi f_{max} A = \frac{L}{V} 
+\label{eq:respuesta-frecuencia-accionamiento-1}
 \end{equation}
 
 Donde $V$ es el voltaje de alimentación del circuito. Si despejamos la frecuencia máxima tenemos:
 
 \begin{equation}
 f_{max} = \frac{L}{2 \pi V A} 
+\label{eq:respuesta-frecuencia-accionamiento-2}
 \end{equation} 
 
 Podemos ver que la frecuencia máxima de la señal de salida depende de la amplitud de la misma. Esta condición  conocida como "slew rate limiting" es un fenómeno común en los amplificadores y basta con conocer los limites de operación del dispositivo para evitar esta situación.
@@ -261,8 +266,24 @@ Esta atenuación coincide con la de un filtro pasabajas de primer orden, con frec
     \label{fig:respuesta-frecuencia-electroiman}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/simulacion_radial}
+    \caption{Rodamiento magnético radial}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/EIR_assembly}
+    \caption{Rodamiento magnético radial}
+\end{figure}
+
+\newpage
 
 \section{Rodamiento magnético axial}
+
+El Rodamiento Magnético Axial (RMA) sirve para ejercer fuerzas de atracción alineadas con el eje de rotación del rodamiento. Consiste en un par de electroimanes axisimétricos ubicados en los extremos del eje y una electrónica de accionamiento para activar dichos electroimanes. Estos tienen que actuar en pares para ejercer fuerzas en ambas direcciones del eje. 
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_rma}
@@ -272,46 +293,76 @@ Esta atenuación coincide con la de un filtro pasabajas de primer orden, con frec
 \subsection{Electroimán}
 
 \subsubsection{Núcleo ferromagnético}
-$$F_{max} = 10[N]$$
+
+Como se realizó en la sección \ref{sec:seleccion-somaloy} se selecciona el material Somaloy 3P [hoja de datos en anexo D] para formar el núcleo del electroimán, este material tiene unas características de: 
+
+\begin{itemize}
+\item Punto de saturación: $1.42 - 1.63 T$
+\item Permeabilidad relativa: $\mu_r = 950$
+\end{itemize}
+
+Debido a que las cargas principales se encuentran en el plano de acción del RMR, no es necesario que el RMA posea la misma capacidad de carga. Entonces, con la finalidad de reducir el espacio que ocupa el RMA, se seleccionó una fuerza de $F_{min} = 10 N$. 
+
+Como se requiere aplicar una menor fuerza es posible utilizar un rango de operación más grande. De esta manera se estableció un rango de:
+
 $$y_{max} = 2[mm]$$
 $$y_{min} = 1.0[mm]$$
-$$A = ??[mm^2]$$
 
-\subsection{Calculo de conductor del electroim\'an Axial}
-Para el c\'alculo del conductor del electroim\'an axial se repite el procedimiento con se hizo en el radial, las vueltas m\'inimas para el embobinado son de 162 vueltas: 
-\begin{equation}
-	Ab = \frac{Ac \; \cdot \; V}{K}
-\end{equation}
-\begin{itemize}
-	\item $Ab$ = \'Area m\'inima de la bobina
-	\item $Ac$ = \'Area de secci\'on transversal del conductor
-	\item $V$ = Vueltas m\'inimas  requeridas de la bobina
-	\item $K$ = Factor de empaquetamiento  de la bobina  dada por 0.90\cite{cite_c2_2017}
-\end{itemize}
- 
-Por lo que  el \'area m\'inima necesaria del embobinado es de: $148.14 \; mm^2 \; \approx \; 148 \; mm^2$
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/simulacion_radial}
-    \caption{Rodamiento magnético radial}
-\end{figure}
+Siguiendo el procedimiento desarrollado en la sección \ref{sec:diseno-elec}, y con los parámetros establecidos anteriormente, se llegó a una sección transversal de:
+
+$$A = \frac{36 \pi}{4} = 1017[mm^2]$$
+
+\subsection{Calculo de la bobina}
+
+Con el fin de usar la misma electrónica de accionamiento para controlar el electroimán axial, se optó por usar el mismo valor de corriente en las bobinas de $I = 2 A$. 
+
+Como se explica en la sección \ref{sec:radial-calculo-bobina} para una corriente de $2 A$ corresponde un calibre AWG $18$ [ver tabla \ref{tabla:awg-18}.
+
+Para el cálculo del número de vueltas se utiliza la ecuación \ref{eq:vueltas-bobina} resultando en $162$ vueltas.
+
+Con los parámetros anteriores y con la formula \ref{eq:area-bobina} se determina un área mínima de de: $148.14 \; mm^2 \; \approx \; 148 \; mm^2$. 
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/EIR_assembly}
-    \caption{Rodamiento magnético radial}
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/EIA_ensamble}
+    \caption{Dimensiones del Electroimán Axial}
 \end{figure}
-\begin{figure}[h]
+
+\subsection{Simulación FEM}
+
+Con el fin de validar los cálculos y comprobar que el núcleo no alcance su punto de saturación, se realizó una simulación de elemento finito con ayuda del software FEMM donde se obtuvieron los siguientes resultados:
+
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/simulacion_EIA_simple}
-    \caption{Rodamiento magnético radial}
+    \caption{Simulación del electroimán axial en FEMM.}
+    \label{fig:simulacion-femm-axial}
 \end{figure}
-\begin{figure}[h]
+
+En la figura \ref{fig:simulacion-femm-axial} se puede observar que el valor máximo de inducción magnética es de $0.244 T$ lo cuál está por debajo del punto de saturación del material. Como se puede observar, las líneas de flujo magnético se curvan en los límites del entrehierro. A esto se le conoce como flujo marginal, y los efectos que causa sobre la fuerza del electroimán se puede observar en la figura \ref{fig:curva-fuerza-rma}:
+
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/simulacion_vs_modelo_axial}
-    \caption{Rodamiento magnético radial}
+    \caption{Curva Fuerza - Distancia del RMA.}
+    \label{fig:curva-fuerza-rma}
 \end{figure}
-\subsection{Accionamiento}
+
+Cabe destacar que el modelado desarrollado en la sección \ref{sec:flujo-marginal} el cual toma en cuenta los efectos del flujo marginal coincide con los resultados de la simulación FEM. 1
+
+\subsection{Electrónica de accionamiento}
+
+Como se mencionó anteriormente, se usará la misma electrónica de accionamiento que en el RMR. Sin embargo, debido a la diferencia en la inductancia de sus bobinas el sistema posee una respuesta en frecuencia distinta. 
+
+Usando las formulas \ref{eq:respuesta-frecuencia-accionamiento-1} y \ref{eq:respuesta-frecuencia-accionamiento-2} podemos determinar que la respuesta en frecuencia del electroimán para diferentes valores de corriente resultan en la figura \ref{fig:respuesta-frecuencia-electroiman-RMA}.  
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/Capitulo_3/respuesta_dinamica_cp}
+    \caption{Respuesta en frecuencia de la electrónica de accionamiento RMA.}
+    \label{fig:respuesta-frecuencia-electroiman-RMA}
+\end{figure}
+
 
 \section{Modulo de compensación de carga estática}
 \begin{figure}[h]
