@@ -916,7 +916,6 @@ masa - Matriz de inercia
 
 Describir la orientacion es mas complejo, para eso necesitamos tener el claro los conceptos analogos
 \subsubsection{Momento de torsion}
-\todo[inline]{Se introduce la definicion de torque}
 Cuando se aplica una fuerza en algún punto de un cuerpo rígido, dicho cuerpo tiende a realizar un movimiento de rotación en torno a algún eje,  la propiedad de la fuerza aplicada para hacer girar al cuerpo se mide con una magnitud física que llamamos torque o momento de torsion. El momento de torsion es la capacidad de dicha fuerza para producir una rotacion al rededor de un punto.
 
 \begin{equation}
@@ -1391,16 +1390,13 @@ Para asegurar la estabildad del sistema, este debe de ser controlable y observab
 
 
 \subsection{Discretizacion de controladores}
-\todo[inline]{Se explican la necesidad de discretizar un controlador}
-\todo[inline]{Se explica el procedimiento para generar un sistema de control discreto}
-\todo[inline]{diagrama}
-\todo[inline]{formulas}
+
 La discritización (o digitalizacion) de controladores continuos es basicamente emplear metodos de discretizacion para el procesamiento digital de señales. Existen varion metodos para la discretizacion controladores continuos, en este caso particular se utiliza el metodo de la transformada bilinear (trapezoidal, o tustin).
 
 Este método, desarrollado por el profesor Arnold Tustin, es una técnica de mapeo de polos y ceros de una función de tiempo continuo para un sistema de desplazamiento invariante discreto, describe $H(z)$ de un sistema LTI, descrito por un $H (s)$ (pasa del plano  $s$ al plano $z$). La transformada bilineal se define como :
-%\arrowvert_
+%\arrowvert_    \bracevert_ 
 \begin{equation}
-	H(z) = H(s) \bracevert_{s = \frac{2}{t}(\frac{1 - z^{-1}}{1 + z^{-1}})} 
+	H(z) = H(s) \arrowvert_{s = \frac{2}{t}(\frac{1 - z^{-1}}{1 + z^{-1}})} 
 \end{equation}   
 
 Toma la funcion $H(s)$ y todas sus variables acompañados por $s$ y sustituye los terminos equivalentes en $z$. Lo que esto implica que si el sistema es controlable y es estable al hacer la tranformacion garantiza la controlabilidad y la estabilidad en $z$.
@@ -1456,9 +1452,7 @@ x = x * tu + w
 
 
 \subsubsection{El filtro de Kalman}
-\todo[inline]{Se muestran las formulas del filtro de kalman}
-\todo[inline]{explica el filtro de kalman desde la perspectica de un observador de estados}
-\todo[inline]{se explica la perspectiva del filtro de kalman desde la perspectiva de un estimador bayesiano}
+
 
 El filtro de Kalman es un algoritmo que se basa en el modelo de espacio de estados de un sistema para estimar el estado futuro y la salida futura realizando un filtrado optimo (El filtro de Kalman es \'opitmo respecto a casi cualquier criterio  que tenga sentido) a la se\~nal de salida, y dependiendo del retraso de las muestras que se le ingresan puede cumplir la función de estimador de parámetros o únicamente de filtro. Pero en ambos casos elimina ruido, estas ecuaciones son ampliamente utilizadas ya que incluyen probabilidades estadísticas puesto que toma en cuenta la aleatoriedad tanto de la señal como del ruido. Hace uso del conocimiento del sistema y de la dinámica de los  instrumentos de medición, describe estadisticamente los errores de la medic\'ion y la incertidumbre de los modelos dinamicos. 
 A diferencia de otros tipos de filtros este no requiere de una frecuencia de corte específica debido a que se basa en la característica del ruido permitiendo de esta manera filtrar en todo el espectro de frecuencias. 
