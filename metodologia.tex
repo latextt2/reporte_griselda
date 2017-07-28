@@ -1395,6 +1395,27 @@ Para asegurar la estabildad del sistema, este debe de ser controlable y observab
 \todo[inline]{Se explica el procedimiento para generar un sistema de control discreto}
 \todo[inline]{diagrama}
 \todo[inline]{formulas}
+La discritización (o digitalizacion) de controladores continuos es basicamente emplear metodos de discretizacion para el procesamiento digital de señales. Existen varion metodos para la discretizacion controladores continuos, en este caso particular se utiliza el metodo de la transformada bilinear (trapezoidal, o tustin).
+
+Este método, desarrollado por el profesor Arnold Tustin, es una técnica de mapeo de polos y ceros de una función de tiempo continuo para un sistema de desplazamiento invariante discreto, describe $H(z)$ de un sistema LTI, descrito por un $H (s)$ (pasa del plano  $s$ al plano $z$). La transformada bilineal se define como :
+%\arrowvert_
+\begin{equation}
+	H(z) = H(s) \bracevert_{s = \frac{2}{t}(\frac{1 - z^{-1}}{1 + z^{-1}})} 
+\end{equation}   
+
+Toma la funcion $H(s)$ y todas sus variables acompañados por $s$ y sustituye los terminos equivalentes en $z$. Lo que esto implica que si el sistema es controlable y es estable al hacer la tranformacion garantiza la controlabilidad y la estabilidad en $z$.
+
+
+\begin{figure}[htb]
+\centering
+	\includegraphics[width=0.75\textwidth]{images/Capitulo_1/mapeo_s_z}
+	\caption{\textit{Tranformacion de bilineal.}}
+\end{figure}
+
+
+
+
+
 \subsection{El observador de Kalman}
 \subsubsection{Variables aleatorias}
 Una variable aleatoria es una funcion que  asigna eventos posibles, cuyos valores se miden como resultado de un eperimento aleatorio. Los experimentos aleatorios son aquellos que, desarrollados bajo las mismas condiciones, puden ofrecer resultados diferentes, por ejemplo arrojar un moneda al aire o medir una temperatura. No se sabe que valor adoptara la variable hasta que sea determinada o medida, pero si se puede conocer como se distribuyen las probabilidad vinculadas a los valores posibles. Si la variable pude tomar cualquier valor en el intervalo de observacion se dice que la misma es una variable aleatoria continua, de lo contrario, si posee un conjunto numerable de valores se considera discreta.
