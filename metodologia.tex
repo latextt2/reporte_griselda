@@ -317,7 +317,7 @@ $\phi$ & Flujo magnético & $I$ & Corriente eléctrica \\
 
 \subsection{Modelado}
 
-Para diseñar un electroimán se requiere de un modelo que relacione la geometría del núcleo con la fuerza máxima que este puede ejercer. La fuerza esta determinada por
+Para diseñar un electroimán se requiere de un modelo que relacione la geometría del núcleo con la fuerza máxima que este puede ejercer. La fuerza esta determinada por:
 \begin{equation}
 	F =  \frac{(NI)^2}{2} \frac{d}{dy}(\mathcal{R}^{-1})
 	\label{eq:electroiman:formula-general-fuerza}
@@ -340,42 +340,42 @@ por lo que el problema de calcular la fuerza se reduce a calcular la reluctancia
         \caption{Modelo de reluctancias}
         \label{fig:modelo-reluctancias-radial}
     \end{subfigure}
-    \caption{Electroiman radial}
+    \caption{Electroimán radial}
 \end{figure}
 
-El electroiman posee una geometría como la de la figura \ref{fig:geometria-radial}, aplicando el análisis de circuitos magnéticos el sistema se pude modelar como el circuito de reluctancias de la figura \ref{fig:modelo-reluctancias-radial}. Entonces la reluctancia total puede escribirse como:
+El electroimán posee una geometría similar al de la figura \ref{fig:geometria-radial}, aplicando el análisis de circuitos magnéticos el sistema se puede modelar como el circuito de reluctancias de la figura \ref{fig:modelo-reluctancias-radial}. Entonces la reluctancia total puede escribirse como:
 
 \begin{equation}
 	\mathcal{R} = \mathcal{R}_e + \mathcal{R}_a + \mathcal{R}_g = (\frac{l_e}{\mu_{re}}+ \frac{l_a}{ \mu_{ra}}+ 2y)\frac{1}{\mu_0A} \label{eq:electroiman:reluctancia-total}
 \end{equation}
 
-En los materiales ferromagneticos los valores de $\mu_r$ suelen ser grandes, entonces es posible considerar los términos $\frac{l_e}{\mu_{re}}$ y $\frac{l_a}{ \mu_{ra}}$ como insignificantes, asi la reluctancia total puede expresarse como:
+En los materiales ferromagnéticos los valores de $\mu_r$ suelen ser grandes, por lo que es posible considerar los términos $\frac{l_e}{\mu_{re}}$ y $\frac{l_a}{ \mu_{ra}}$ como insignificantes. De esta forma, la reluctancia total puede expresarse como:
 
 \begin{equation}
 \mathcal{R} = \frac{2y}{\mu_0A}
 \end{equation}
 
-Aplicando la ecuacion \ref{eq:electroiman:formula-general-fuerza}, la fuerza se determina con:
+Aplicando la ecuación \ref{eq:electroiman:formula-general-fuerza}, la fuerza se determina con:
 
 \begin{equation}
 	F_m = - \frac{\mu_0 A N^2 I^2 }{ 4 y^2}
 	\label{eq:electroiman:fuerza-ideal}
 \end{equation}
 
-La ecuacion \ref{eq:electroiman:fuerza-ideal} puede encontrarse en la literatura \cite{cite_s4_2017},\cite{cite_s6_2017} y \cite{cite_s7_2017}. Esta ecuación se considera un caso ideal ya que se desprecia los efectos del flujo de fluga, flujo marginal y la reluctancia del núcleo.
+La ecuación \ref{eq:electroiman:fuerza-ideal} puede encontrarse en la literatura \cite{cite_s4_2017},\cite{cite_s6_2017} y \cite{cite_s7_2017}. Esta ecuación se considera un caso ideal, ya que son despreciados los efectos del flujo de fuga, flujo marginal y la reluctancia del núcleo.
 
-Si ponemos a prueba  la ecuaciones bajo las condiciones de operación del Rodamiento Magnético (considerando un entrehierro pequeño), resulta en un error en la fuerza de n\% comparado con la simulación de elemento finito, esto se debe a que la reluctancia del entrehierro y la del núcleo se encuentran en el mismo orden de magnitud. 
+Si ponemos a prueba las ecuaciones bajo las condiciones de operación del rodamiento magnético (considerando un entrehierro pequeño), resulta en un error en la fuerza de n(insertar el valor de la simulación)\% comparado con la simulación de elemento finito. Esto es debido a que la reluctancia del entrehierro y la del núcleo se encuentran en el mismo orden de magnitud. 
 
-%en cambio si realizamos simulacion en FEM, para el mismo sistema, la simulacion arroja un valor de N.
+%En cambio si realizamos simulacion en FEM, para el mismo sistema, la simulación arroja un valor de N.
 
-Si reescribimos la ecuación \ref{eq:electroiman:fuerza-ideal} pero esta vez sin ignorar los terminos $\frac{l_e}{\mu_{re}}$ y $\frac{l_a}{ \mu_{ra}}$, obtenemos la ecuación:
+Si reescribimos la ecuación \ref{eq:electroiman:fuerza-ideal} ahora sin ignorar los términos $\frac{l_e}{\mu_{re}}$ y $\frac{l_a}{ \mu_{ra}}$, se obtiene la ecuación:
 
 \begin{equation}
 	F_m = - \frac{\mu_0 A N^2 I^2}{(\frac{l_e}{\mu_{re}}+ \frac{l_a}{\mu_{ra}}+ 2y)^2}
 	\label{eq:electroiman:fuerza-real}
 \end{equation}
 
-Rehaciendo los cálculos bajo las condiciones anteriores obtenemos una diferencia de tan solo n\% con respecto a la simulación de elemento finito. 
+Rehaciendo los cálculos bajo las condiciones anteriores, se llega a una diferencia de tan solo n\% con respecto a la simulación de elemento finito. 
 
 \begin{figure}[h]
     \centering
@@ -394,13 +394,13 @@ Rehaciendo los cálculos bajo las condiciones anteriores obtenemos una diferencia
     \caption{Electroimán axial}
 \end{figure}
 
-Repitiendo el análisis para el electroimán axial con geometría \ref{fig:geom-axial} obtenemos el modelo de reluctancias de la figura \ref{fig:modelo-axial}, al igual que en el electroimán radial la fuerza y la reluctancia quedan determinadas por las ecuaciones \ref{eq:electroiman:reluctancia-total}, con la diferencia de que el área corresponde a una sección transversal circular. 
+Repitiendo el análisis para el electroimán axial con geometría \ref{fig:geom-axial},  obtenemos el modelo de reluctancias de la figura \ref{fig:modelo-axial} al igual que en el electroimán radial la fuerza y la reluctancia quedan determinadas por las ecuaciones \ref{eq:electroiman:reluctancia-total}, con la diferencia de que el área corresponde a una sección transversal circular. 
 
-Si comparamos los resultados de estas ecuaciones con la simulación de elemento finito podemos observar un error de n\% en la fuerza ejercida. Esta es una gran desviación comparada con los resultados del electroimán radial. 
+Si comparamos los resultados de estas ecuaciones con la simulación de elemento finito podemos observar un error de n\% en la fuerza ejercida. Esta es una gran desviación comparada con los resultados del electroimán radial.
 
-%Para un electroimán axisimetrico donde la geometría cumple condiciones de xx, xx. calculamos una fuerza xx N, sin embargo la simulacion FEM nos arroja un valor de xx.
+%Para un electroimán axisimétrico donde la geometría cumple condiciones de xx, xx. calculamos una fuerza xx N, sin embargo la simulación FEM nos arroja un valor de xx.
 
-Si analizamos los resultados de la simulación podemos observar que las lineas del flujo magnético se curvan de manera significativa en los extremos del imán. A esta distorsión en el campo magnético debido a las discontinuidades del medio se le conoce como flujo marginal.
+Si analizamos los resultados de la simulación podemos observar que las líneas del flujo magnético se curvan de manera significativa en los extremos del imán. A esta distorsión en el campo magnético debido a las discontinuidades del medio se le conoce como flujo marginal.
 
 Entonces para el correcto modelado del electroimán necesitamos incluir los efectos del flujo marginal. En \cite{cite_s8_2017_paper} se presenta un nuevo método para modelar la reluctancia de un entrehierro. Usando este nuevo modelo los resultados de la simulación se acercan en un n\%.   
 
@@ -410,25 +410,25 @@ Ahora que tenemos un modelo adecuado para la fuerza de los electroimanes, es nec
 
 Idealmente queremos diseñar un electroimán pequeño, de bajo consumo y que pueda ejercer la fuerza $F_{min}$ que necesitamos a una distancia $d$.
 
-Empezando por los requerimientos de fuerza y tamaño, en la ecuación \ref{eq:electroiman:fuerza-real} se puede apreciar que la fuerza depende de la sección transversal del núcleo y los amperes/vuelta del devanado ($NI$), por lo que para minimizar el tamaño del electroimán necesitamos incrementar el valor de $NI$. Como se puede apreciar en la siguiente ecuación la densidad de flujo solo depende de los amperes/vuelta y de la distancia de operación del electroimán: 
+Empezando por los requerimientos de fuerza y tamaño, en la ecuación \ref{eq:electroiman:fuerza-real} se puede apreciar que la fuerza depende de la sección transversal del núcleo y los amperes/vuelta del devanado ($NI$), por lo que para minimizar el tamaño del electroimán necesitamos incrementar el valor de $NI$. Como se puede apreciar en la siguiente ecuación, la densidad de flujo solo depende de los amperes/vuelta y de la distancia de operación del electroimán: 
 
 \begin{equation}
 	B = \frac{\phi}{A} = \frac{\mu_0 NI}{2y}
 \end{equation} 
 
-Esto significa que el punto de saturación del material impone un límite en el valor máximo aplicable de $NI$ si es que queremos mantenernos en el régimen lineal del material. Esto para minimizar las pérdidas por histéresis y facilitar el modelado.Esto implica que materiales con un punto de saturación mas alto son mejores para aplicaciones con electroimanes. Entonces el número máximo de amperes/vuelta quedará determinado por:
+Esto significa que el punto de saturación del material impone un límite en el valor máximo aplicable de $NI$, si es que queremos mantenernos en el régimen lineal del material. Esto para minimizar las pérdidas por histéresis y facilitar el modelado.Esto implica que materiales con un punto de saturación más alto son mejores para aplicaciones con electroimanes. Entonces el número máximo de amperes/vuelta quedará determinado por:
 
 \begin{equation}
 NI_{max}= \frac{2yB_{sat}}{\mu_0}
 \end{equation}
 
-Conociendo ahora la $F_{MM}$ máxima que podemos aplicar al núcleo, solo nos queda variar la sección transversal del entrehierro para generar la fuerza requerida $F_min$ mediante la formula:
+Conociendo ahora la $F_{MM}$ máxima que podemos aplicar al núcleo, solo nos queda variar la sección transversal del entrehierro para generar la fuerza requerida $F_min$ mediante la fórmula:
 
 \begin{equation}
 NI = \sqrt[2]{\frac{4 F_m y^2}{\mu_0 A}}
 \end{equation}
 
-Falta ahora determinar los valores de $N$ e $I$, la relación de estos dos términos es de suma importancia, ya que ambos determinan las características eléctricas del electroimán definidas por los términos de inductancia $L$ y resistencia $R$, la inductancia como se vera mas adelante limitara la respuesta en frecuencia de los electroimanes mientras que la resistencia determinara la eficiencia.
+Falta ahora determinar los valores de $N$ e $I$, la relación de estos dos términos es de suma importancia ya que ambos determinan las características eléctricas del electroimán definidas por los términos de inductancia $L$ y resistencia $R$. La inductancia, como se verá más adelante, limitará la respuesta en frecuencia de los electroimanes mientras que la resistencia determinará la eficiencia.
 
 La inductancia está determinada por:
 
@@ -436,26 +436,26 @@ La inductancia está determinada por:
 L = \frac{ \lambda }{I} = \frac{N \Phi}{I} = \frac{N^2}{\mathcal{R}}
 \end{equation}
 
-y la resistencia de la bobina del electroimán esta dada por: 
+mientras que la resistencia de la bobina del electroimán esta dada por: 
 
 \begin{equation}
 R = \frac{N l \sigma}{A}  
 \end{equation}
 
-Donde $l$ es la longitud promedio de una espira, $A$ es la sección transversal del conductor, $\sigma$ la resistividad del conductor y N es el numero de vueltas. Las pérdidas por efecto joule provocadas por esta resistencia están dadas por:
+Donde $l$ es la longitud promedio de una espira, $A$ es la sección transversal del conductor, $\sigma$ la resistividad del conductor y N es el número de vueltas. Las pérdidas por efecto joule provocadas por esta resistencia están dadas por:
 
 \begin{equation}
 W = I^2R 
 \end{equation}
 
-Las perdidas no dependen del balance entre N e I ya que se compensan entre sí, usar un numero reducido de vueltas requiere emplear una gran corriente y por lo tanto un conductor más grueso. En contraste utilizar un calibre menor limita la corriente máxima de la bobina lo cual requiere un mayor numero de vueltas. En este caso es recomendable atenerse a las tablas de conductores AWG.   
+Las pérdidas no dependen del balance entre N e I ya que se compensan entre sí, usar un número reducido de vueltas requiere emplear una gran corriente y por lo tanto un conductor más grueso. En contraste, utilizar un calibre menor limita la corriente máxima de la bobina, lo cual requiere un mayor número de vueltas. En este caso es recomendable atenerse a las tablas de conductores AWG.   
 
 Entonces la relación N e I deberá ser guiada por el valor deseado de inductancia que se adecua a la respuesta en frecuencia de los electroimanes y el voltaje de operación de la electrónica de accionamiento. 
 
-Teniendo en consideración todo lo anterior podemos resumir le proceso de diseño de un electroimán en los siguientes pasos:
+Teniendo en consideración todo lo anterior podemos resumir el proceso de diseño de un electroimán en los siguientes pasos:
 
 \begin{enumerate}
-\item Determinar condiciones de operacion y, v, $f_{max}$, $F_{max}$, $W_{loss_max}$. 
+\item Determinar condiciones de operación y, v, $f_{max}$, $F_{max}$, $W_{loss_max}$. 
 \item Seleccionar un material con un $B_{sat}$ y $\mu_r$ elevados. 
 \item Calcular $NI_max$.
 \item Calcular A.
@@ -480,7 +480,7 @@ Donde $l_g$ y $A_g$ son la longitud y sección transversal del entrehierro respec
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_flujo_maginal}
-    \caption{Diagrama de flujo marginal}
+    \caption{Diagrama de flujo marginal.}
 \end{figure}
 
 Se conocen dos enfoques para la consideración en el flujo marginal para calcular la reluctancia del entrehierro: \\
@@ -506,7 +506,7 @@ Este método surge a partir de aplicar la transformación Schwarz-Christoffel al s
 
 %Inserte imagen (figura 3 del paper)
 
-La figura [1...] se toma como base para calcular estructuras de entrehierro más complejas. La figura [4 paper] muestra como se pueden alcanzar diferentes geometrías a partir del modelo básico, además de establecer los valores de $\omega$ y $l$. El valor $h$ representa la distancia desde el borde del entrehierro a la siguiente esquina del n\'ucleo.
+La figura [1...] se toma como base para calcular estructuras de entrehierro más complejas. La figura [4 paper] muestra cómo se pueden alcanzar diferentes geometrías a partir del modelo básico, además de establecer los valores de $\omega$ y $l$. El valor $h$ representa la distancia desde el borde del entrehierro a la siguiente esquina del n\'ucleo.
 
 %Inserte imagen (figura 4 del paper)
 
@@ -537,7 +537,7 @@ La reluctancia del entrehierro se puede entonces calcular fácilmente como:
 	R_{m,airgap} = \sigma \frac{a}{\mu_0 t b}
 \end{equation}
 
-Así mismo el factor de corrección que considera los efectos marginales en un sistema axisimétrico es: 
+Así mismo, el factor de corrección que considera los efectos marginales en un sistema axisimétrico es: 
 
 \begin{equation}
 	\sigma_r = \frac{R^\prime}{\frac{l_g}{\mu_0 r}}
@@ -553,7 +553,7 @@ Donde $l_g$ es la longitud del entrehierro, $r$ el radio del entrehierro, y $R^\
 
 El calibre de los conductores depende únicamente de la intensidad de corriente eléctrica que circula a través de ellos. La selección del calibre se hace a través de las tablas de conductores AWG\cite{cite_c1_2017}. El AWG (American Wire Gauge) es una sistema estandarizado usado predominantemente en Norteamérica para la clasificación de los diámetros de conductores eléctricos. 
 
-Dependiendo del material del que esté hecho el conductor existen tablas que relacionan un calibre AWG con la corriente máxima que soporta este. Los materiales más usados son el aluminio y el cobre recocido, pero debido a que posee una mejor conductividad eléctrica se selecciona el cobre. A continuación se muestra la tabla AWG para cobre esmaltado: 
+Existen tablas que relacionan un calibre AWG con la corriente máxima que soporta el elemento conductor dependiendo del material del que esté hecho. Los materiales más usados son el aluminio y el cobre recocido, pero debido a que posee una mejor conductividad eléctrica se selecciona el cobre. A continuación se muestra la tabla AWG para cobre esmaltado: 
 
 \begin{table}
 \centering
@@ -572,15 +572,15 @@ AWG & Di\'ametro & Area\;($mm^2$) & Resistencia (ohms/km) & Corriente Máxima & F
 \label{tabla:AWG-COBRE}
 \end{table}
 
-El área del embobinado del electroimán depende directamente del número de vueltas requeridas y del calibre del conductor magnético. También se debe considerar el factor de empaquetamiento de la bobina, el cual toma en cuenta la forma en que se distribuye el alambre en el embobinado.
+El área del embobinado del electroimán depende directamente del número de vueltas requeridas y del calibre del conductor magnético. También se debe considerar el factor de empaquetamiento de la bobina, el cuál toma en cuenta la forma en que se distribuye el alambre en el embobinado.
 
-Existen dos configuraciones para el embobinado, la lineal y la hexagonal, cada una con su propio factor de empaquetamiento. Como se observa en la figura \ref{fig:paq-bobina} la configuración hexagonal aprovecha al máximo el área del embobinado, dejando menos cavidades entre los conductores, además la construcción en esta configuración es más sencilla de realizar.   
+Existen dos configuraciones para el embobinado: la lineal y la hexagonal, cada una con su propio factor de empaquetamiento. Como se observa en la figura \ref{fig:paq-bobina}, la configuración hexagonal aprovecha al máximo el área del embobinado al  dejar menos cavidades entre los conductores. Además, la construcción en esta configuración es más sencilla de realizar.   
 
 \begin{figure}[h!]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_2/empaquetamiento_cobre_1}
-        \caption{Configuraci\'on L\'ineal}
+        \caption{Configuraci\'on Lineal}
         \label{fig:empaq-lineal}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
@@ -623,7 +623,7 @@ Proponiendo un imán permanente y guía de flujo magnético con la siguiente geomet
 \begin{center}
 \centering
 	\includegraphics[width=5cm, height=5cm]{images/Capitulo_1/Geometria_de_iman_y_ferrita_guia}
-	\caption{\textit{Geometria de imán y ferrita guia.}}
+	\caption{\textit{Geometría de imán y ferrita guía.}}
 \end{center}
 \end{figure}
 
@@ -651,7 +651,7 @@ Podemos calcular la inducción magnética en el entrehierro:
 	  B_g(g) = (\frac{A_m}{A_g}) \frac{B_r}{2(1+(\frac{\mu_m}{\mu_0})(\frac{A_m}{A_g})(\frac{g}{l_m}))} 
 \end{equation}
 
-Y por consiguiente la fuerza aplicada por el imán permanente debido a una variación en la energía aplicada en el entrehierro:
+Y por consiguiente, la fuerza aplicada por el imán permanente debido a una variación en la energía aplicada en el entrehierro:
 
 \begin{equation}
 	F_g(g)= \frac{1}{2} \mu_0  \oint \oint B_g^2 ds \hat{n}
@@ -665,8 +665,8 @@ Y por consiguiente la fuerza aplicada por el imán permanente debido a una variac
 	F_g(g) = \frac{B_r^2}{2 \mu_0 (1 + (\frac{\mu_m}{\mu_0})(\frac{A_m}{A_g})(\frac{g}{l_m}))^2}[\frac{A_m + 2A_g}{2Ag}] \hat{n}
 \end{equation}
 
-Donde:\\
-	$A_m$: Es la sección transversal del imán permanente\\
+Donde son:\\
+	$A_m$: La sección transversal del imán permanente\\
 	$A_g$: La sección transversal del entrehierro\\
 	$l_m$: La longitud media del imán permanente\\
 	$B_r$: La inducción remanente\\
@@ -680,7 +680,7 @@ Donde:\\
 \subsection{Tipos de sensores}
 
 La mayoría de los sensores de desplazamiento de alta precisión requieren de contacto directo como los encoders de cuadratura, potenciómetros y sensores LVDT (Linear Variable Differential Transformer).
-Los sensores que no requieren de directo con el objeto se basan en la transformación de energía (transductores) o en la medición de alguna propiedad fundamental (resistencia, capacitancia, inductancia) para la detección de esa distancia. Entre los sensores de tipo transductor encontramos los sensores ultrasónicos que:
+Los sensores que no requieren de contacto directo con el objeto se basan en la transformación de energía (transductores) o en la medición de alguna propiedad fundamental (resistencia, capacitancia, inductancia) para la detección de esa distancia. Entre los sensores de tipo transductor encontramos los sensores ultrasónicos que:
 
 \begin{enumerate}
 	\item Emiten ondas sónicas de alta frecuencia.
@@ -694,28 +694,28 @@ Otros sensores de operación similar son los sensores de tipo "time of fligth" (t
 
 Los inductivos son especialmente útiles para la detección de materiales metálicos y ferromagnéticos pero debido a la presencia de un campo variable generado por los electroimanes adyacentes, sus mediciones podrían presentar errores debido a la interferencia.
 
-Por otro lado los sensores capacitivos presentan una alta resolución, rango reducido y una detección de objetos no aterrizados y sin contacto siempre y cuando el objeto posea una permitividad mayor a la del vacío, además de poseer una respuesta ultrarrápida.
+Por otro lado los sensores capacitivos presentan una alta resolución, rango reducido y una detección de objetos no aterrizados y sin contacto (siempre y cuando el objeto posea una permitividad mayor a la del vacío), además de poseer una respuesta ultrarrápida.
 
 \subsection{Sensores de desplazamiento capacitivo}
 
 Los capacitores son dispositivos que consisten en dos electrodos separados por un aislante, los capacitores generalmente se componen de dos placas conductivas separadas por un material no conductivo llamado dieléctrico. La energía eléctrica o carga es almacenada en estas placas.
 
-Una vez que un voltaje es aplicado a través de las terminales del capacitor los platos conductivos comenzaran a almacenar energía eléctrica hasta que la diferencial de potencial entre estas iguale al voltaje aplicado por la fuente de voltaje. La carga eléctrica permanece en las placas incluso después de desconectar la fuente de voltaje a menos que otro componente consuma esta carga o el capacitor se descargue a cusa de las fugas de corriente debido la imperfecciones del aislante dieléctrico.
+Una vez que un voltaje es aplicado a través de las terminales del capacitor, los platos conductivos comenzarán a almacenar energía eléctrica hasta que la diferencia de potencial entre estas sea igual al voltaje aplicado por la fuente de voltaje. La carga eléctrica permanece en las placas incluso después de desconectar la fuente de voltaje a menos que otro componente consuma esta carga o el capacitor se descargue a cusa de las fugas de corriente debido la imperfecciones del aislante dieléctrico.
 
-Un sensor capacitivo convierte el cambio eléctrico entre dos conductores en una señal eléctrica. Los sensores se construyen variando algunos de los parámetros que influyen en la capacitancia, que de acuerdo a la ecuación  de capacitancia entre placas paralelas, serían el área, la distancia entre placas o la permitividad del dieléctrico.
+Un sensor capacitivo convierte el cambio eléctrico entre dos conductores a una señal eléctrica. Los sensores se construyen variando algunos de los parámetros que influyen en la capacitancia, que de acuerdo a la ecuación  de capacitancia entre placas paralelas; serían el área, la distancia entre placas o la permitividad del dieléctrico.
 
 \begin{equation}
 C=F(d,A,\varepsilon_r)
 \end{equation}
 
 Un sensor de proximidad es un transductor que es capaz de detectar la presencia de un objeto sin contacto físico. Normalmente un sensor de proximidad emite algún campo electromagnético o electrostático, o un haz de radiación electromagnética (radiación infrarroja) y detecta cualquier cambio en el campo o señal de retorno.\\ 
-Los sensores de proximidad capacitivos consisten en un oscilador cuya frecuencia está determinada por la capacitancia del circuito al cual los electrodos están conectados, cuando un conductor aterrizado o un material con una alta permeabilidad eléctrica se acercan al electrodo, la capacitancia cambia la frecuencia del oscilador. Este cambio es detectado y enviado a la unidad de control. El objeto detectado se le refiere comúnmente como objetivo. El campo eléctrico distribuido alrededor del capacitor experimenta un cambio el cual es detectado por la unidad de control.
+Los sensores de proximidad capacitivos consisten en un oscilador cuya frecuencia está determinada por la capacitancia del circuito al cual los electrodos están conectados. Cuando un conductor aterrizado o un material con una alta permeabilidad eléctrica se acercan al electrodo, la capacitancia cambia la frecuencia del oscilador. Este cambio es detectado y enviado a la unidad de control. El objeto detectado se le refiere comúnmente como objetivo. El campo eléctrico distribuido alrededor del capacitor experimenta un cambio que es detectado por la unidad de control.
 
 \begin{figure}[htb]
 \begin{center}
 \centering	
 	\includegraphics[width=5cm, height=5cm]{images/Capitulo_1/Interaccion_del_campo_electrico_en_un_capacitor_aire}
-	\caption{\textit{Interacción del campo eléctrico en un capacitor de placas coplanarias con espacio frontal relleno de aire .}}
+	\caption{\textit{Interacción del campo eléctrico en un capacitor de placas coplanarias con espacio frontal relleno de aire.}}
 \end{center}
 \end{figure}
 
@@ -727,79 +727,75 @@ Los sensores de proximidad capacitivos consisten en un oscilador cuya frecuencia
 \end{center}
 \end{figure}
 
-La distancia máxima que el sensor de proximidad es capaz de detectar es conocido como rango nominal. Algunos sensores tienen ajustes del rango nominal o maneras de reportar una detección graduada de la distancia, un sensor de proximidad ajustado a un rango muy limitada es comúnmente referido como un sensor táctil. Los sensores capacitivos usualmente tienen el doble de rango los sensores inductivos.
+La distancia máxima que el sensor de proximidad es capaz de detectar es conocido como rango nominal. Algunos sensores tienen ajustes del rango nominal o maneras de reportar una detección graduada de la distancia, un sensor de proximidad ajustado a un rango muy limitado es comúnmente referido como un sensor táctil. Los sensores capacitivos usualmente tienen el doble de rango los sensores inductivos.
 
 \subsubsection{Suceptibilidad a capacitancias parásitas}
-Los electrodos del sensor poseen capacitancias en el rango de fracción de picofaradios y conectar esas señales a un cable coaxial de 60pF por metro podría obscurecer totalmente la señal. Sin embargo con el blindaje correcto al igual que cualquier otra capacitancia parasita es posible eliminar en mayor medida los efectos  del ruido.
+Los electrodos del sensor poseen capacitancias en el rango de fracción de picofaradios y conectar esas señales a un cable coaxial de 60pF por metro podría obscurecer totalmente la señal. Sin embargo, con el blindaje correcto al igual que cualquier otra capacitancia parásita, es posible eliminar en mayor medida los efectos  del ruido.
 
 \subsubsection{Susceptibilidad al ruido}
-Un peligro para los circuitos osciladores  es que la frecuencia variaría de manera intermitente en el caso de existiría interferencia cruzada causada por circuitos adyacentes, estos problemas pueden ser resueltos mediante un blindaje, una correcta disposición de pistas e integrados en el circuito y el  uso de capacitores de "bypass" en las fuentes de alimentación.
+Un peligro para los circuitos osciladores es que la frecuencia variaría de manera intermitente en el caso de existiría interferencia cruzada causada por circuitos adyacentes. Estos problemas pueden ser resueltos mediante un blindaje, una correcta disposición de pistas e integrados en el circuito y el uso de capacitores de "bypass" en las fuentes de alimentación.
 
 \subsubsection{Distancia entre los electrodos}
-La capacitancia depende del entrehierro o distancia entre los electrodos conductivos. Esta distancia pude incrementar o decrementar dependiendo de las condiciones ambientales, y del material que podrían generar un mediciones poco exactas, por ejemplo suciedad en la superficie del sensor.
+La capacitancia depende del entrehierro o distancia entre los electrodos conductivos. Esta distancia puede incrementar o decrementar dependiendo de las condiciones ambientales, y del material que podrían generar mediciones poco exactas, por ejemplo suciedad en la superficie del sensor.
 
 \newpage
 
 
-\section{Sistemas dinamicos}
+\section{Sistemas dinámicos}
 \subsection{Sistemas}
 
-Un sistema es un conjunto de partes o elementos organizadas y relacionadas que interactúan entre sí para lograr un objetivo. Los sistemas reciben \textbf{(entrada)} datos, energía o materia del ambiente y proveen \textbf{(salida)} información, energía o materia.  Los sistemas pueden  ser  de \textbf{fisicos} (compuestos por equipos, maquinaria, objetos y cosas reales) o \textbf{abstractos} (compuestos por conceptos, planes, hipótesis e ideas). De la misma forma pueden ser \textbf{cerrados} (no presentan intercambio con el medio ambiente que los rodea, son herméticos a cualquier influencia ambiental. No reciben ningún recurso externo y nada producen que sea enviado hacia fuera. En rigor, no existen sistemas cerrados. Se da el nombre de sistema cerrado a aquellos sistemas cuyo comportamiento es determinista y programado y que opera con muy pequeño intercambio de energía y materia con el ambiente. Se aplica el término a los sistemas completamente estructurados, donde los elementos y relaciones se combinan de una manera peculiar y rígida produciendo una salida invariable, como las máquinas) o \textbf{abiertos} (presentan intercambio con el ambiente, a través de entradas y salidas. Intercambian energía y materia con el ambiente. Son adaptativos para sobrevivir. Su estructura es óptima cuando el conjunto de elementos del sistema se organiza, aproximándose a una operación adaptativa).
+Un sistema es un conjunto de partes o elementos organizados y relacionados que interactúan entre sí para lograr un objetivo. Los sistemas reciben datos, energía o materia del ambiente \textbf{(entrada)}, y proveen información, energía o materia \textbf{(salida)}. Los sistemas pueden ser de tipo \textbf{físicos} (compuestos por equipos, maquinaria, objetos y cosas reales), o \textbf{abstractos} (compuestos por conceptos, planes, hipótesis e ideas). Su clasificación puede estar dada por su interacción con el ambiente:
 
+\begin{itemize}
+\item\textbf{Cerrados}: No presentan intercambio con el medio ambiente que los rodea, son herméticos a cualquier influencia ambiental. No reciben ningún recurso externo y producen nada que sea enviado hacia afuera. Siendo en rigor que no existen sistemas cerrados, el comportamiento de estos es determinista y programado, y operan con un muy pequeño intercambio de energía y materia con el ambiente. Por ello, usualmente se aplica el término a los sistemas completamente estructurados, donde los elementos y relaciones se combinan de una manera peculiar y rígida produciendo una salida invariable, como las máquinas.
 
-Los sistemas \textbf{dinámicos} son sistemas cuyos parámetros internos (variables de estado) siguen una serie de reglas temporales. Se llaman sistemas porque están descritos por un conjunto de ecuaciones \textbf{(sistemas)} y dinámicos porque sus parámetros varían con respeto a alguna variable que generalmente es el tiempo. 
-Los sistemas dinámicos pueden dividirse en dos grandes clases: aquellos en los que le tiempo varia \textbf{continuamente} y en los que el tiempo varia \textbf{discretamente}. Los sistemas de tiempo dinámico de tiempo continuo se expresan en ecuaciones diferenciales ordinarias. Por otro lado, si el tiempo es discreto los sistemas se describen por medio de ecuaciones de diferencias también conocidos como mapas iterados.\\
+\item\textbf{Abiertos}: Presentan intercambios con el ambiente en forma de energía y materia, a través de entradas y salidas. Su estructura es óptima cuando el conjunto de elementos del sistema se organiza, aproximándose a una operación adaptativa.
+\end{itemize}
 
+Los sistemas \textbf{dinámicos} son aquellos cuyos parámetros internos (variables de estado) siguen una serie de reglas temporales. Se llaman sistemas porque están descritos por un conjunto de ecuaciones \textbf{(sistemas)} y dinámicos porque sus parámetros varían con respecto a alguna variable que generalmente es el tiempo. 
+Los sistemas dinámicos pueden dividirse en dos grandes clases: aquellos en los que el tiempo varía \textbf{continuamente} y en los que el tiempo varía \textbf{discretamente}. Los sistemas dinámicos de tiempo continuo se expresan en ecuaciones diferenciales ordinarias. Por otro lado, si el tiempo es discreto, los sistemas se describen por medio de ecuaciones de diferencias también conocidos como mapas iterados.\\
 
-Un sistema que responde a un entrada con una salida, unicamente despues de que esta fue aplicada es conocido como causal.
-Lo que se busca en el modelado es, a partir de un conjunto de un 
-conjunto de leyes fisicas llegar a un sistema de ecuaciones diferenciales que despues 
-seran de ayuda para diseñar un control adecuado. Debido a la naturaleza mixta del 
-sistema, las ecuaciones resultantes incluiran terminos tanto del dominio mecanico como 
-del dominio electromagnetico. Posteriormente este conjnto de ecuaciones no lineales seran linearizadas con fin de aprovechar las tecnicas de control moderno.
+Un sistema que responde a una entrada con una salida, únicamente después de que esta fue aplicada es conocido como causal. Lo que se busca en el modelado es que, a partir de un conjunto de leyes físicas, se llegue a un sistema de ecuaciones diferenciales que después serán de ayuda para diseñar un control adecuado. Debido a la naturaleza mixta del sistema, las ecuaciones resultantes incluirán términos tanto del dominio mecánico como del dominio electromagnético. Posteriormente este conjunto de ecuaciones no lineales serán linearizadas con el fin de aprovechar las técnicas de control moderno.
 
 En parte se pueden clasificar como:
 \begin{itemize}
-\item lineales o no lineales
-\item Deterministicos o Estocasticos
+\item Lineales o no lineales
+\item Determinísticos o estocásticos
 \item Variantes o invariantes en el tiempo
 \end{itemize}
 
 \subsection{Sistema LTI}
 
-Los sistemas lineales e invariantes en el tiempo (o sistemas \textbf{LTI} por sus siglas en inglé   \textbf{\textit{Linear and Time Invariant}}) corresponden a una importante clase de sistemas en el análisis de fenómenos reales, al permitir modelar comportamientos complejos con herramientas matemáticas tan poderosas como las transformadas de Fourier y Laplace.
-Los sistemas LTI son sistemas que tienen una ecuacion diferencial de la forma
+Los sistemas lineales e invariantes en el tiempo (sistemas \textbf{LTI}, por sus siglas en inglés \textbf{\textit{Linear and Time Invariant}}) corresponden a una importante clase de sistemas en el análisis de fenómenos reales, al permitir modelar comportamientos complejos con herramientas matemáticas tan poderosas como las transformadas de Fourier y Laplace.
+
+Los sistemas LTI son sistemas que tienen una ecuación diferencial de la forma:
 
 \begin{equation} \label{eq:def_lti}
 a_n\frac{d^ny(t)}{dt^n} + a_{n-1}\frac{d^{n-1}y(t)}{dt^{n-1}} + ... + a_1\frac{dy(t)}{dt} +a_0y(t) = b_0F(t) + b_1\frac{dF(t)}{dt} +...+ b_{m-1}\frac{d^{m-1}F(t)}{dt^{m-1}} + b_m\frac{d^mF(t)}{dt^m}
 \end{equation}
 
-
-donde $y$ es la salida del sistema y $F$ es la entrada. 
+Donde $y$ es la salida del sistema y $F$ es la entrada. 
 La relación de entrada-salida para los sistemas LTI se describe en términos de una operación de convolución. La importancia de la operación de convolución en sistemas LTI proviene del hecho de que el conocimiento de la respuesta de un sistema LTI a la entrada de impulsos unitarios nos permite encontrar su salida a cualquier señal de entrada. La linealidad y la invarianza en el tiempo juegan un papel fundamental por varias razones:
 
 \begin{itemize}
-\item Muchos procesos Físicos son LTI $\Rightarrow$ pueden modelarse como sistemas LTI.
+\item Muchos procesos físicos son LTI $\Rightarrow$ si pueden modelarse como sistemas LTI.
 \item Poseen la propiedad de superposición (linealidad) $\Rightarrow$ si la entrada a un sistema LTI se puede representar como combinación lineal de un conjunto de señales
-básicas (concepto de base de señales), la salida será la misma combinacián lineal
+básicas (concepto de base de señales),así la salida será la misma combinación lineal
 de las respuestas del sistema a esas señales básicas.
-\item Cualquier señal se puede representar como combinación lineal de impulsos unitarios retardados. Esto nos permitirá caracterizar cualquier sistema LTI mediante su respuesta al impulso unitario. Esta representación se conoce como suma de convolución (sistemas LTI discretos) o integral de convolución (sistemas continuos) y proporciona una gran
-comodidad al tratar los sistemas LTI.
+\item Cualquier señal se puede representar como combinación lineal de impulsos unitarios retardados. Esto nos permitirá caracterizar cualquier sistema LTI mediante su respuesta al impulso unitario. Esta representación se conoce como suma de convolución (sistemas LTI discretos) o integral de convolución (sistemas continuos) y proporciona una gran comodidad al tratar los sistemas LTI.
 \end{itemize}
 
 \subsubsection{Diferentes representanciones}
 
-
 Las representaciones de un sistema LTI son las siguientes: 
 \begin{itemize}
-  \item Sistemas de ecuaciones diferenciales (anteriormente mensionado ecuacion \ref{eq:def_lti})
-\item Funcion de tranferencia: La función de transferencia de un sistema descrito mediante
-una ecuación diferencial lineal e invariante en el tiempo se define como el cociente entre la transformada de Laplace de la salida (función de respuesta) y la transformada de Laplace de la entrada (función de excitación) bajo la suposición de que todas las condiciones iniciales son cero.
+  \item Sistemas de ecuaciones diferenciales (anteriormente mencionado en la ecuación \ref{eq:def_lti})
+\item Función de tranferencia: La función de transferencia de un sistema descrito mediante una ecuación diferencial lineal e invariante en el tiempo se define como el cociente entre la transformada de Laplace de la salida (función de respuesta) y la transformada de Laplace de la entrada (función de excitación) bajo la suposición de que todas las condiciones iniciales son cero.
 \begin{equation}
 	G_{(s)} = \frac{\mathcal{L}[entrada]}{\mathcal{L}[salida]}
 \end{equation}
 A partir del concepto de función de transferencia, es posible representar la dinámica de un sistema mediante ecuaciones algebraicas en s.
-\item Variables de estado: Las variables de un sistema dinámico son las variables que constituyen el menor conjunto de variables que determinan el estado del sistema dinámico. Si al menos se nesecitan $n$ variables $X_1, X_2,...,X_n$ para describir completamente el comportamiento de un sistema dinámico (de forma que una vez que la entrada para $ t\geq t_0 $ está dada y el estado inicial  en $t = t_0$ esta espesificado, el estado futuro del sistema está determinado  completamente,) entonces tales $n$ variables son un cojunto de variables de estado.
+\item Variables de estado: Las variables de un sistema dinámico son las variables que constituyen el menor conjunto de variables que determinan el estado del sistema dinámico. Si al menos se necesitan $n$ variables $X_1, X_2,...,X_n$ para describir completamente el comportamiento de un sistema dinámico (de forma que una vez que la entrada para $ t\geq t_0 $ está dada y el estado inicial  en $t = t_0$ esta especificado, el estado futuro del sistema está determinado  completamente), entonces tales $n$ variables son un cojunto de variables de estado.
 \end{itemize}
 
 El estado de un sistema dinámico es el conjunto de variables más pequeño (llamadas
@@ -807,63 +803,58 @@ variables de estado), de forma que el conocimiento de estas variables en $t = t_
 
 \subsubsection{Respuestas de los sistemas LTI de segundo orden}
 
-
 Las ecuaciones diferenciales lineales de coeficientes constantes de segundo orden, describen las dinámicas de sistemas y es importante para el diseño de controladores ya que habitualmente la mayor parte de los sistemas pueden ser aproximados a un sistema de segundo orden:
 \begin{equation}
 	a_{2}\frac{d^{2}y(t)}{dt^{2}} + a_1\frac{dy(t)}{dt} 		+a_0y(t) = b_0x(t) + b_1\frac{dx(t)}{dt} +b_{2}\frac{d^{2}x(t)}{dt^{2}}
 \end{equation}
-y su forma est\'andar de la funci\'on de tranferencia es la siguiente:
 
+Y su forma est\'andar de la funci\'on de tranferencia es la siguiente:
 \begin{equation}
 	G_{(s)} =  \frac{\omega^2_n}{s^2 + 2\varsigma \omega_ns + \omega^2_n}
 \end{equation}
 
-en la que el polinomio del denominador se denomina polinomio característico, cuyas raíces (solución de la ecuación característica) son los polos de la función de transferencia. Donde $ \omega_n$ es la frecuencia natural no amortiguada y $\varsigma$ es el factor de amortiguamiento de la se\~nal, Los 3 comportamiento d\'inamico del sistema de segundo orden se describe en terminos de los parametros $\omega$ y $\varsigma$. Comportamiento subamortiguada donde $0 < \varsigma < 1$ alcaza a proximar a cero mas rapidamenten que en el caso amortiguado critico pero oscila al rededor de cero, comportamiento amortiguadamente critico donde $\varsigma = 1$ proporciona la forma mas ripa de aproximar a cero y comportamiento sobreamortiguado $\varsigma > 1$ causara que la amplitud cero sea mas lento que en caso anterior
-
+En la que el polinomio del denominador se denomina polinomio característico, cuyas raíces (solución de la ecuación característica) son los polos de la función de transferencia; donde $ \omega_n$ es la frecuencia natural no amortiguada y $\varsigma$ es el factor de amortiguamiento de la se\~nal. El comportamiento d\'inamico del sistema de segundo orden se describe en términos de los parámetros $\omega$ y $\varsigma$. En el comportamiento subamortiguado, donde $0 < \varsigma < 1$, se aproxima a cero más rápidamente que en el comportamiento críticamente  amortiguado pero termina oscilando alrededor de cero. Para el comportamiento críticamente  amortiguado, donde $\varsigma = 1$, se proporciona la forma más rápida de aproximarse a cero y para el comportamiento sobreamortiguado, donde $\varsigma > 1$, se aproxima a cero pero más lento que en el caso críticamente amortiguado.
 
 \subsubsection{Estabilidad}
 
-La estabilidad de un sistema puede pensarse como una continuidad en su comportamiento dinámico. Si se presenta un cambio pequeño en las entradas o condiciones iniciales, un sistema estable presentará modificaciones pequeñas en su respuesta perturbada. Por otro lado, en un sistema inestable cualquier perturbación, por pequeña que sea, llevará a los estados y/o las salidas a crecer sin límite o hasta que el sistema se salga de rango dinámico o se descontrole y es lo primero que debe garantizarse en el diseño de un sistema de control. 
+La estabilidad de un sistema puede pensarse como una continuidad en su comportamiento dinámico. Si se presenta un cambio pequeño en las entradas o condiciones iniciales, un sistema estable presentará modificaciones pequeñas en su respuesta perturbada. Por otro lado, en un sistema inestable cualquier perturbación, por pequeña que sea, llevará a los estados y/o a las salidas a crecer sin límite o hasta que el sistema se salga del rango dinámico o se descontrole y en el diseño de un sistema de control este tipo de eventos no deben presentarse. 
 
-La respuesta de los sistemas dinámicos lineales se descompone en la respuesta a estado cero y respuesta a entrada cero, se habla de dos tipos de estabilidad.  Estabilidad Interna, se refiere a la estabilidad del sistema autónomo (sin entradas). La estabilidad interna describe el efecto de perturbaciones en las condiciones iniciales sobre comportamiento dinámico de los estados del sistema. Estabilidad Externa o  de Entrada $-$ Salida, se refiere a la estabilidad del sistema con condiciones iniciales nulas, describe el efecto de perturbaciones en las entradas sobre el comportamiento dinámico de la salida.
+La respuesta de los sistemas dinámicos lineales se descompone en la respuesta a estado cero y respuesta a entrada cero. Así mismo, se habla de dos tipos de estabilidad: la estabilidad interna, que se refiere a la estabilidad del sistema autónomo (sin entradas) y describe el efecto de perturbaciones en las condiciones iniciales sobre comportamiento dinámico de los estados del sistema, y la estabilidad externa (de Entrada $-$ Salida), que se refiere a la estabilidad del sistema con condiciones iniciales nulas y describe el efecto de perturbaciones en las entradas sobre el comportamiento dinámico de la salida.
 
-La estabilidad interna recibe el nombre del científico ruso Alexander Mikhailovich Lyapunov, quien realizó estudios en el tema a fines del siglo XIX. Lyapunov introdujo por primera vez métodos que permiten determinar la estabilidad de sistemas de ecuaciones diferenciales sin necesidad de calcular explícitamente las soluciones. La estabilidad en el sentido de Lyapunov hace hincapié en las propiedades de los puntos de equilibrio, y se basa en una generalización matemática del concepto de energía de sistemas mecánicos. Los métodos de Lyapunov pueden aplicarse a sistemas no lineales y no estacionarios.
-
+La estabilidad interna recibe el nombre del científico ruso Alexander Mikhailovich Lyapunov, quien realizó estudios en el tema a fines del siglo XIX. Lyapunov introdujo por primera vez métodos que permiten determinar la estabilidad de sistemas de ecuaciones diferenciales sin necesidad de calcular explícitamente las soluciones. La estabilidad, en el sentido de Lyapunov, hace hincapié en las propiedades de los puntos de equilibrio, y se basa en una generalización matemática del concepto de energía de sistemas mecánicos. Los métodos de Lyapunov pueden aplicarse a sistemas no lineales y no estacionarios.
 
 \subsection{LTI discretos}
 
-
-Un sistema discreto se caracteriza por que su variable independiente sólo puede tomar determinados valores y es descrito mediante una ecuacion en diferencias con coeficiente constantes: 
+Un sistema discreto se caracteriza por que su variable independiente sólo puede tomar determinados valores y es descrito mediante una ecuación en diferencias con coeficientes constantes: 
 
 \begin{equation}
 	\sum_{i=0}^{N}a_iy[n - i] = \sum_{k=0}^M b_k x[n - k] 
 \end{equation}
 
-Esta se representan con una secuencia de numeros denominados muestras, una muestra de una se\~nal o se cuencia se denota por $x[n]$ siendo $n$ enteros en el intervalo $ - \infty < n < \infty$ y solo esta definida por numeros enteros. En muchas aplicaciones la secuencia discreta se obtiene muestreando una señal continua a intervalos de tiempo regulares. Si todos los valores de la secuencia $x[n]$ son reales se dice que la secuencia es real, en otro caso se dice que se trata de una secuencia compleja
+Esta se representan con una secuencia de números denominados muestras, una muestra de una se\~nal o secuencia se denota por $x[n]$ siendo $n$ enteros en el intervalo $ - \infty < n < \infty$ y solo está definida por números enteros. En muchas aplicaciones, la secuencia discreta se obtiene muestreando una señal continua a intervalos de tiempo regulares. Si todos los valores de la secuencia $x[n]$ son reales se dice que la secuencia es real, en otro caso se dice que se trata de una secuencia compleja.
+
 \subsubsection{Variables de estado discreto}
 
-
-Los métodos de variables de estado para el análisis y diseño de sistemas de tiempo continuo pueden extenderse al análisis y diseño de sistemas de tiempo discreto. El diseño de sistemas de tiempo discreto es usando la función de transferencia en z. Se observa que mientras tratamos con sistemas de tiempo discreto, a menudo encontramos dos situaciones diferentes. Los sistemas que son completamente discretos con respecto al tiempo en el sentido de que reciben y entregan sólo señales discretas (por ejemplos sistemas basados en computadoras digitales) y los sistemas con componentes de tiempo continuo discretizados como consecuencia de operaciones de muestreo.
-Para un sistema lineal e invariante en el tiempo discreto de n$-$ésimo orde se representa por:
+Los métodos de variables de estado para el análisis y diseño de sistemas de tiempo continuo pueden extenderse al análisis y diseño de sistemas de tiempo discreto. El diseño de sistemas de tiempo discreto se implementa usando la función de transferencia en z. Se observa que, mientras tratamos con sistemas de tiempo discreto, a menudo encontramos dos situaciones diferentes. Los sistemas que son completamente discretos con respecto al tiempo en el sentido de que reciben y entregan sólo señales discretas (i. e. sistemas basados en computadoras digitales) y los sistemas con componentes de tiempo continuo discretizados como consecuencia de operaciones de muestreo.
+Para un sistema lineal e invariante en el tiempo discreto de n$-$ésimo orden se representa por:
 
 \begin{equation}
 	x(k + 1) = A x(k) + B u (t)
 \end{equation}
 
-un conjunto de ecuaciones en diferencias de primer orden que representan la dinamica del sistema en tiempo discreto, siendo $x(k)$ el vector de estado de dimensiones $n \times I$
+Esta ecuación en diferencias de primer orden representan la dinámica del sistema, en tiempo discreto, siendo $x(k)$ el vector de estado de dimensiones $n \times I$.
 
 \begin{equation}
 	y(k) = C x(k) + D u (k)
 \end{equation}
 
-La ecuacion de salida es simplentente una ecuacion algebraica. 
+La ecuación de salida es simplentente una ecuación algebraica. 
 
-\subsubsection{Polinomio caracteristico}
+\subsubsection{Polinomio característico}
 
+Para cada matriz $A$ de orden $m$ se tiene que en $det(A - \lambda I)$ es un polinomio de grado $m$ que se llama polinomio característico de $A$ y se denota por $pA(\lambda)$. La ecuación $det(A - \lambda I) = 0$ se llama ecuación característica de $A$, donde se denota $I$ como la matriz indentidad. Las relaciones que ligan las entradas de una matriz con los coeficientes del polinomio característico son muy complicadas. No obstante, ciertos coeficientes de dicho polinomio son conocidos.
 
-Se parte de que cada matriz $A$ de orden $m$ se tiene que $det(A - \lambda I)$ es un polinomio de grado $m$ que se llama polinomio característico de $A$ y se denota por $pA(\lambda)$. La ecuación $det(A - \lambda I) = 0$ se llama ecuación característica de $A$, donde se denota $I$ como la matriz indentidad. Las relaciones que ligan las entradas de una matriz con los coeficientes del polinomio característico son muy complicadas. No obstante, ciertos coeficientes de dicho polinomio son conocidos.
-\subsubsection{Funcion de transferencia y la transformada z}
-
+\subsubsection{Función de transferencia y la transformada z}
 
 El análisis de los sistemas lineales discretos se ve facilitado por el uso de una herramienta matemática denominada transformada $Z$, la cual se define a partir de una secuencia de números $x\left( k \right)$ del modo siguiente:
 
@@ -871,18 +862,17 @@ El análisis de los sistemas lineales discretos se ve facilitado por el uso de un
 	Z\left[ x \left(k\right) \right] = X\left(z)\right] = \sum_{k=0}^\infty x \left(k)\right)z^{-k}
 \end{equation}
 
-La transformada $Z$ definida por la ecuación anterior se denomina unilateral, ya que se considera que $x\left( k \right)$ sólo está definido para $k > 0$, para el caso que esté definido desde $ - \infty $ se denominada bilateral. La transformada $Z$ aplicada a sistemas de tiempo discreto guarda una gran anlogía con la transformada de Laplace de aplicación a los sistemas de tiempo continuo. Por lo que la funcion de tranferencia en discretos tiene igual una gran similitud:
+La transformada $Z$ definida por la ecuación anterior se denomina unilateral, ya que se considera que $x\left( k \right)$ sólo está definido para $k > 0$, para el caso que esté definido desde $ - \infty $ se denominada bilateral. La transformada $Z$ aplicada a sistemas de tiempo discreto guarda una gran analogía con la transformada de Laplace de aplicación a los sistemas de tiempo continuo. Por lo que la función de tranferencia en tiempo discreto tiene igual una gran similitud:
 \begin{equation}
 	G\left(z \right) = \frac{Z\left[y\left(k \right)\right]}{Z\left[u\left(k \right)\right]} = \frac{Y\left(z \right)}{X \left(z \right)}
 \end{equation} 
 
 \subsubsection{Estabilidad discreta}
 
-Al igual que en el caso continuo, un sistema discreto es estable si se presenta un cambio pequeño en las entradas, un sistema estable presentará modificaciones pequeñas en su respuesta.
-La estabilidad se puede determinar a partir de la localizacion de los polos de lazo cerrado en el plano z. EL sistema es estable, si los polos de las raices de la ecuacion caracteristica quedan localizadas dentro del circulo unitario en el plano Z. Si un polo  esta ubicado en $z=1$
-o $z = -1$, el sistema es marginalmente estable, si un par de polos conjugados complejos esta sobre el circulo unitario o polos multiples el sistema es inestable.
+Al igual que en el caso continuo, un sistema discreto es estable si se presenta un cambio pequeño en las entradas, un sistema estable presentará modificaciones pequeñas en su respuesta. La estabilidad se puede determinar a partir de la localizacion de los polos de lazo cerrado en el plano z. EL sistema es estable si los polos de las raíces de la ecuación característica quedan localizadas dentro del círculo unitario en el plano Z. Por el contrario, si un par de polos conjugados complejos están fuera el círculo unitario o polos múltiples el sistema es inestable, pero si al menos un polo  está ubicado en $z=1$ o $z = -1$, el sistema es marginalmente estable.
 
-\section{Dinamica}
+\section{Dinámica}
+
 Para modelar el comportamiento de los cuerpos en movimientos es decesario aplicar las ecuaciones de la mecanica clasica.
 Un cuerpo rigido ubicado en el espacio posee 6 grados de libertad (parametros necesarios para describir su configuracion), la posicion espacial de su centro de masa, y su orientacion. La segunda ley de newton nos permite calcular la traslacion del objeto, mientras que las ecuaciones de euler nos permiten calcular su orientacion.
 
@@ -1523,18 +1513,18 @@ El diseño de ingeniería es un proceso secuencial e iterativo, donde en cada una 
 \subsection{Diseño mecatrónico}
 El diseño mecatrónico trabaja sobre un enfoque concurrente, lo que implica la participación de todas las áreas de la mecatrónica (mecánica, eléctrica, informática, etc.) a lo largo del proceso de diseño. Comenzando con el diseño básico, y avanzando a través de la fase de producción, el diseño mecatrónico optimiza los parámetros en cada fase para obtener un producto de calidad en menor tiempo.
 
-En el diseño de un producto mecatrónico, es necesario que el conocimiento y la información requerida se coordinen entre los diferentes grupos de trabajo, lo que se conoce como ingeniería concurrente; la ingeniería concurrente es un enfoque de diseño en el que el diseño y la fabricación de un producto se fusionan. Esto fue influenciado en parte por el reconocimiento de que muchos de los altos costos en la fabricación se deciden en la etapa de diseño. 
+En el diseño de un producto mecatrónico, es necesario que el conocimiento y la información requerida se coordinen entre los diferentes grupos de trabajo, lo que se conoce como ingeniería concurrente. La ingeniería concurrente es un enfoque de diseño en el que el diseño y la fabricación de un producto se fusionan. Esto fue influenciado en parte por el reconocimiento de que muchos de los altos costos en la fabricación se deciden en la etapa de diseño. 
 
 \newpage
 
 Sin embargo, el diseño mecatrónico se refiere no sólo a la manufactura de productos en sí, sino también al mantenimiento de los mismos dentro de un área denominada diseño del ciclo de vida del producto. 
 
-El Ciclo de Vida reúne toda una serie de actividades que van desde la integración del diseño, ingeniería y fabricación, logística, almacenamiento y distribución, clientes y proveedores, ventas, actividades de marketing y la administración financiera y de control.
+El \textit{ciclo de vida} reúne toda una serie de actividades que van desde la integración del diseño, ingeniería y fabricación, logística, almacenamiento y distribución, clientes y proveedores, ventas, actividades de marketing y la administración financiera y de control.
 
 \begin{figure}[htb]
 \centering
 	\includegraphics[width=\textwidth]{images/Capitulo_1/Ciclo_Vida}
-	\caption{\textit{Diagrama del Ciclo de Vida de un producto \cite{cite_1_2017}.}}
+	\caption{\textit{Diagrama del ciclo de vida de un producto \cite{cite_1_2017}.}}
 \end{figure}
 
 \newpage
@@ -1551,7 +1541,7 @@ Debido a su modularidad, los sistemas mecatrónicos son adecuados para aplicacion
 
 \newpage
 
-A continuación, se presenta un diagrama más detallado del proceso de diseño mecatrónico, donde se muestra además algunas de las herramientas y métodos que se utilizan durante cada una de las etapas:
+A continuación, se presenta un diagrama más detallado del proceso de diseño mecatrónico, donde se muestran además algunas de las herramientas y métodos que se utilizan durante cada una de las etapas:
 
 \begin{figure}[htb]
 \centering
@@ -1560,7 +1550,7 @@ A continuación, se presenta un diagrama más detallado del proceso de diseño meca
 \end{figure}
 
 \subsection{Especificaciones de diseño del producto (PDS)}
-Dado que el proceso de diseño debe partir de las restricciones del producto, debe utilizarse una herramienta que documente estas características. A este documento se le conoce como PDS, Product Design Specifications por sus siglas en inglés. 
+Dado que el proceso de diseño debe partir de las restricciones del producto, debe utilizarse una herramienta que documente estas características. A este documento se le conoce como PDS (Product Design Specifications por sus siglas en inglés).
 
 Es considerada una herramienta técnico-administrativa que permite al equipo de diseño describir a detalle los requerimientos y necesidades con las que debe cumplir el producto. Tiene como objetivo reducir las posibles dificultades del proyecto y reducir considerablemente el tiempo de cada una de las etapas de desarrollo, debido en gran parte al reconocimiento e interpretación de las necesidades del cliente. 
 
@@ -1571,8 +1561,7 @@ En resumen, es un documento técnico para el equipo de diseño que describe qué es
 \item Formular exactamente el problema, definiendo todas las funciones y restricciones. 
 \end{itemize}
 
-Este documento permanece en constante evolución a lo largo del desarrollo del proyecto, esto gracias a la información adquirida a través de las etapas del proceso de diseño, a las recomendaciones o especificaciones del cliente y a las modificaciones que los diseñadores consideren necesarias. 
-Los elementos del PDS dependen del problema de diseño a resolver, por lo que no existe un formato específico para documentar dichas especificaciones. Sin embargo, si deben considerarse ciertas características para elaborar el PDS, las cuales se presentan en la siguiente tabla \cite{cite_4_2017}: 
+Este documento permanece en constante evolución a lo largo del desarrollo del proyecto, esto gracias a la información adquirida a través de las etapas del proceso de diseño, a las recomendaciones o especificaciones del cliente y a las modificaciones que los diseñadores consideren necesarias. Los elementos del PDS dependen del problema de diseño a resolver, por lo que no existe un formato específico para documentar dichas especificaciones. Sin embargo, deben considerarse ciertas características para elaborar el PDS, las cuales se presentan en la siguiente tabla \cite{cite_4_2017}: 
 
 \begin{figure}[htb]
 \centering
@@ -1582,15 +1571,15 @@ Los elementos del PDS dependen del problema de diseño a resolver, por lo que no 
 
 \subsection{Diseño Conceptual}
 
-El diseño conceptual forma parte del área de proceso creativo del diseño mecatrónico y tiene como objetivo principal dar una solución a un problema de diseño planteado a partir de las especificaciones, requerimientos y necesidades planteadas, por lo que es precedido por una investigación de mercado y antecedentes que justifiquen el desarrollo de un nuevo producto.  
+El diseño conceptual forma parte del área de proceso creativo del diseño mecatrónico y tiene como objetivo principal dar una solución a un problema de diseño con base en las especificaciones, requerimientos y necesidades planteadas. Por lo tanto, este es precedido por una investigación de mercado y antecedentes que justifiquen el desarrollo de un nuevo producto.  
 
 El diseño conceptual se caracteriza por un alto nivel de abstracción, se ocupa de las propiedades, atributos y funciones principales del producto, y no de dimensiones, materiales y otras características más específicas, ya que éstas se determinan en el diseño detallado. 
 
 Emplea información adquirida de diversas herramientas y métodos a lo largo de todo el proceso, el cual evoluciona de manera constante, más que en cualquier otra etapa del desarrollo de producto, desde la investigación previa, estudio de mercado, el análisis del ciclo de vida, planteamiento del problema, la generación de ideas por medio de bocetos o esquemas, hasta obtener el concepto de diseño del producto, como modelos en 3D o prototipos rápidos. 
-Una de las herramientas de las que se vale el diseño conceptual para obtener más información es el Análisis Funcional.
+Una de las herramientas de las que se vale el diseño conceptual para obtener más información es el \textit{análisis funcional}.
 
 \subsubsection{Análisis funcional en ingeniería}
-El análisis funcional en ingeniería tiene como objetivo identificar las funciones o prestaciones con las que el producto debe cumplir para cumplir con las necesidades y especificaciones del cliente y traducirlas en requerimientos de diseño. Esto presenta múltiples ventajas \cite{cite_5_2017}:
+El análisis funcional, en ingeniería, tiene como objetivo identificar las funciones o prestaciones que el producto debe respetar para cumplir con las necesidades y especificaciones del cliente y traducirlas en requerimientos de diseño. Esto presenta múltiples ventajas \cite{cite_5_2017}:
 
 \begin{itemize}
 \item Permite apreciar una visión global del producto que se va a desarrollar.
@@ -1602,7 +1591,7 @@ El análisis funcional en ingeniería tiene como objetivo identificar las funcione
 \item Permite alejarse de soluciones ya conocidas. 
 \end{itemize}
 
-Para poder comprender mejor el problema de diseño normalmente se hace una descomposición detallada y especifica en subfunciones organizadas jerárquicamente, pasando de lo general a lo particular, y esto se hace por medio de los diagramas de funciones. 
+Para poder comprender mejor el problema de diseño normalmente se hace una descomposición detallada y específica en subfunciones organizadas jerárquicamente, pasando de lo general a lo particular, y esto se hace por medio de los diagramas de funciones. 
 El diagrama de funciones puede representar: 
 
 \begin{itemize}
@@ -1646,8 +1635,4 @@ Para realizar un diagrama de funciones se pueden seguir los siguientes procedimi
 	\includegraphics[width=\textwidth]{images/Capitulo_1/Diagrama_funciones}
 	\caption{\textit{Ejemplo de un diagrama de funciones\cite{cite_5_2017}.}}
 \end{figure}
-
-
-
-
 
