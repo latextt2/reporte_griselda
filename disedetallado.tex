@@ -12,6 +12,7 @@ El Rodamiento Magnético Radial (RMR) consiste en un conjunto de electroimanes co
 \subsection{Numero de polos}
 Antes de diseñar los electroimanes es necesario determinar en numero de polos que conformaran el EIR.
 Suponiendo que tenemos $N$ polos, la distancia angular $\alpha$ entre ellos sera de $360/N$ (fig. \ref{fig:rmr:diagrama-de-polos}). El EIR debe ser capaz de generar una fuerza arbitraria $F_r$ dentro del plano $YZ$. Teniendo en cuenta que los electroimanes sólo son capaces de ejercer fuerzas de atracción sobre los materiales ferromagnéticos. La fuerza $F_r$ deberá ser proporcionada únicamente por las fuerzas de los electroimanes adyacentes $F_1$ y $F_2$ (fig. \ref{fig:rmr:diagrama-de-fuerzas}).  
+
 \begin{figure}[htb]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
@@ -28,7 +29,7 @@ Suponiendo que tenemos $N$ polos, la distancia angular $\alpha$ entre ellos sera
     \end{subfigure}
     \caption{Polos del electroimán radial}
 \end{figure}
-\\
+
 Se define a $\theta$ como el angulo entre la fuerzas $F_r$ y $F_1$, entonces para una fuerza de magnitud $F_r$ las magnitudes de las fuerzas $F_1$ y $F_2$ serán: 
 \begin{equation}
     F_1 = F_r (\frac{cos \theta - sin \theta}{tan \alpha})
@@ -63,9 +64,11 @@ Para que el rodamiento axial pueda ejercer fuerzas en cualquier dirección del pl
 
 En [paper numero de polos]  se estudia de manera mas detallada los efectos de variar el numero de polos en un RMR, se concluye que utilizar 6 polos minimiza el diámetro exterior para una capacidad dada.
 
+\newpage
+
 \subsection{Electroimán}
 
-\subsection{Selecci\'on de Material} \label{sec:seleccion-somaloy}
+\subsubsection{Selecci\'on de Material} \label{sec:seleccion-somaloy}
 
 Para las aplicaciones de electroimanes lo ideal es utilizar materiales con un alto punto de saturación y permeabilidad relativa. El punto de saturación limita la fuerza máxima que puede ejercer un electroimán [vease sección \ref{sec:diseno-elec}] y al tener una permeabilidad relativa alta podemos confiar que la mayoría del flujo magnético circula dentro del núcleo. 
 
@@ -110,7 +113,7 @@ Teniendo en cuenta las características del material seleccionado y las condicion
 
 $$A = 12 * 24 = 288[mm^2]$$
 
-\subsection{Calculo de la bobina} \label{sec:radial-calculo-bobina}
+\subsubsection{Calculo de la bobina} \label{sec:radial-calculo-bobina}
 
 Como se explica en la sección \ref{sec:calc-conductores}, la relación entre el número de vueltas y la corriente depende del balance entre eficiencia y respuesta en frecuencia. Se optó por utilizar una corriente de 2 A debido a la gran disponibilidad de componentes electrónicos que operan a este valor de corriente, además de ser un valor lo suficientemente alto como para que la inductancia no degrade la respuesta en frecuencia del electroimán. 
 
@@ -141,19 +144,34 @@ A través de la formula \ref{eq:area-bobina} y con las especificaciones del alamb
 
 $$A_b = 287.13 \; mm^2 \; \approx \; 288 \; mm^2$$
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/electroiman_radial_final}
-    \caption{Electroimán radial}
+    \caption{Dimensiones del Electroimán Radial.}
 \end{figure}
+
+\newpage
 
 \subsection{Simulación FEM}
 
+Con el fin de validar los cálculos y comprobar que el núcleo no alcance su punto de saturación, se realizó una simulación de elemento finito con ayuda del software FEMM donde se obtuvieron los siguientes resultados:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/simulacion_radial}
+    \caption{Simulación del electroimán radial en FEMM.}
+    \label{fig:simulacion-femm-radial}
+\end{figure}
+En la figura \ref{fig:simulacion-femm-radial} se puede observar que el valor máximo de inducción magnética es de $0.917 T$ lo cuál está por debajo del punto de saturación del material. 
+
+Existe una diferencia entre el modelo ideal y la simulación. Esta diferencia se debe a los efectos de la reluctancia del núcleo. Un modelo que incluya la reluctancia del núcleo se acerca más al modelo real tal y como se muestra en la figura \ref{fig:curva-fuerza-rmr}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/simulacion_vs_modelo_radial}
-    \caption{Rodamiento magnético radial}
+    \caption{Curva Fuerza - Distancia del RMR.}
+    \label{fig:curva-fuerza-rmr}
 \end{figure}
+
+\newpage
 
 \subsection{Electrónica de accionamiento}
 
@@ -266,16 +284,13 @@ Esta atenuación coincide con la de un filtro pasabajas de primer orden, con frec
     \label{fig:respuesta-frecuencia-electroiman}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/simulacion_radial}
-    \caption{Rodamiento magnético radial}
-\end{figure}
+Una vez ensamblado el conjunto de electroimanes resulta en el modelo de la figura \ref{fig:Modelo-3D-RMR}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/EIR_assembly}
-    \caption{Rodamiento magnético radial}
+    \caption{Modelo final del Rodamiento Magnético Radial (RMR).}
+    \label{fig:Modelo-3D-RMR}
 \end{figure}
 
 \newpage
@@ -312,7 +327,7 @@ Siguiendo el procedimiento desarrollado en la sección \ref{sec:diseno-elec}, y c
 
 $$A = \frac{36 \pi}{4} = 1017[mm^2]$$
 
-\subsection{Calculo de la bobina}
+\subsubsection{Calculo de la bobina}
 
 Con el fin de usar la misma electrónica de accionamiento para controlar el electroimán axial, se optó por usar el mismo valor de corriente en las bobinas de $I = 2 A$. 
 
@@ -348,7 +363,7 @@ En la figura \ref{fig:simulacion-femm-axial} se puede observar que el valor máxi
     \label{fig:curva-fuerza-rma}
 \end{figure}
 
-Cabe destacar que el modelado desarrollado en la sección \ref{sec:flujo-marginal} el cual toma en cuenta los efectos del flujo marginal coincide con los resultados de la simulación FEM. 1
+Cabe destacar que el modelado desarrollado en la sección \ref{sec:flujo-marginal} el cual toma en cuenta los efectos del flujo marginal coincide con los resultados de la simulación FEM. 
 
 \subsection{Electrónica de accionamiento}
 
@@ -363,6 +378,7 @@ Usando las formulas \ref{eq:respuesta-frecuencia-accionamiento-1} y \ref{eq:resp
     \label{fig:respuesta-frecuencia-electroiman-RMA}
 \end{figure}
 
+\newpage
 
 \section{Modulo de compensación de carga estática}
 \begin{figure}[h]
