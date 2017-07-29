@@ -153,7 +153,7 @@ $$A_b = 287.13 \; mm^2 \; \approx \; 288 \; mm^2$$
 
 \newpage
 
-\subsection{Simulación FEM}
+\subsection{Simulación FEM} \label{sec:simulacion-fem-electroiman}
 
 Con el fin de validar los cálculos y comprobar que el núcleo no alcance su punto de saturación, se realizó una simulación de elemento finito con ayuda del software FEMM donde se obtuvieron los siguientes resultados:
 \begin{figure}[H]
@@ -463,71 +463,73 @@ Es posible variar la fuerza que ejerce un imán permanente variando la distancia 
 
 \subsection{Imán Permanente y Núcleo Ferromagnético}
 
+La fuerza que ejerce un imán permanente puede modelarse mediante la formula:
+
 \begin{equation}
 	F = \frac{B_r^2}{2 \mu_0 (1 + (\frac{\mu_m}{\mu_0})(\frac{A_m}{A_g})(\frac{g}{l_m}))^2}[\frac{A_m + 2A_g}{2A_g}]
 	\label{eq:fuerza-iman-permanente}
 \end{equation}
 
-Gracias a la ecuación \ref{eq:fuerza-iman-permanente} sabemos que la fuerza que ejerce un permanente esta dada por $H_c$ y $B_r$ las cuales dependen del material del que esta compuesto, también depende del las dimensiones $l_m$ y $A_m$, donde esta ultima es el parámetro dominante dominante. Incrementar la sección transversal producirá mas fuerza de una manera mas o menos lineal, mientras que incrementar su longitud solo incrementara la fuerza de manera logarítmica.
+Esta fuerza depende tanto de la geometría del imán permanente como del material del que esté compuesto. Donde $H_c$, $B_r$ y $A_m$ son los términos dominantes.  
 
-Es nuestro objetivo en este caso diseñar un par imán-núcleo lo mas pequeño posible, debido a que las dimensiones de electroimanes y composicion de los imanes permantes estan dadas por el fabricante nos limitamos a seleccionar el iman mas pequeño disponible que generara al menos una cantidad $F_{min}$ de fuerza estando en la configuracion xx.
+Es nuestro objetivo diseñar un conjunto imán-núcleo lo mas pequeño posible, y debido a que las dimensiones y composición de los imanes permanentes están determinadas por el fabricante nos limitamos a seleccionar el imán mas pequeño disponible. Este imán deberá generar al menos una fuerza $F_{min}$.   
 
-Las dimensiones del nucleo se seleccionan de tal manera que el iman pasivo pueda se acomodado dentro de este.
+Finalmente las dimensiones del núcleo se determinan de tal manera que el imán permanente pueda instalarse dentro de éste.  
 
+Para el diseño del imán tenemos el siguiente proceso:
 
-Para el diseño del imán tenemos el siguiente proceso
 \begin{enumerate}
-\item Especificar $F_{max}$, $y_{min}$
-\item Seleccionar el iman con el $H_c$, $B_r$
-\item Seleccionar las dimensiones segun la tabla ??
-\item Dimensionar el nucleo guia de manera que acomode correctamente el iman passivo
-\item Usar la formula ?? Calcular la fuerza $F_{max}$.
-\item Si la fuerza $F_{req} > F_{im}$ incrementar las dimension y repetir los pasos.
+\item Especificar las condiciones de operación $F_{min}$, $y_{min}$. 
+\item Seleccionar el material del imán permanente con el $H_c$, $B_r$ más altos disponibles. 
+\item Seleccionar las dimensiones del imán permanente según disponibilidad del fabricante. 
+\item Dimensionar el núcleo guía de manera que acomode correctamente el imán permanente. 
+\item Usar la formula \ref{eq:fuerza-iman-permanente} para calcular la fuerza $F_{ip}$. 
+\item Si la fuerza $F_{min} > F_{ip}$ incrementar las dimension y repetir los pasos.
 \end{enumerate}
 
+\subsubsection{Selección del imán permanente}
 
-\begin{figure}[htb]
-\begin{center}
-\centering
-\missingfigure[figwidth=8cm]{Fuerza del iman pasivo}
-\caption{Software calculo de iman permanente}
-\end{center}
-\end{figure}
+Entre las diferentes composiciones de imanes permanentes destaca el Neodimio-Hierro-Boro comúnmente conocidos como imanes de neodimio. Los valores mas altos $H_c$ y  $B_r$ son alcanzados por los imanes de grado $N52$, con valores de $B_r = 1400mT$ y $H_c=796kA/m$ [véase anexo B]. 
 
-Entre las diferentes composiciones de imanes permanentes destaca el Neodimio-Hierro-Boro comúnmente conocidos como imanes de neodimio. Estos materiales se encuentran graduados bajo la norma ??, los valores mas altos $H_c$ y  $B_r$ son alcanzados por el tipo $N52$, con valores de $B_r = 1400mT$ y $H_c=796kA/m$.
+Siguiendo el procedimiento anterior para generar una fuerza $F_{min}$ de al menos $50 N$ resultó en un imán cúbico de 10 mm por lado [...].
 
-\begin{figure}[h]
+Así pues el conjunto Imán Permanente - Núcleo Ferromagnético queda representado por la figura \ref{fig:conjunto-ip-nucleo}.
+
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/IP_ensamble}
-    \caption{Arreglo de Imán permanente}
+    \caption{Conjunto Imán permanente - Núcleo Ferromagnético.}
+    \label{fig:conjunto-ip-nucleo}
 \end{figure}
 
-\subsubsection{Simulación FEMM}
+\subsubsection{Simulación FEM}
 
-Asi como se hizo en la seccion ??, podemos validar nuestro modelo mediante una simulacion FEM, los que resulta en la siguiente grafica.
+Así como se hizo en la sección \ref{sec:simulacion-fem-electroiman}, podemos validar nuestro modelo mediante una simulación FEM, lo que resulta en la siguiente curva característica de la figura \ref{fig:iman-permanente-curva}.
 
 \begin{figure}[h]
 \begin{center}
 \centering
 \missingfigure[figwidth=8cm]{Fuerza del iman pasivo}
-\caption{Resultados simulacion magnetica}
+\caption{Curva característica del imán permanente.}
+\label{fig:iman-permanente-curva}
 \end{center}
 \end{figure}
 
 \subsection{Mecanismo de retracción}
 
 El servomecanismo que utilizará el imán permanente para su desplazamiento consiste en un par de rieles que se montarán sobre la base del motorreductor y la base del imán permanente; esta última será la que se desplazará a lo largo de los rieles. 
+
 Para generar dicho desplazamiento se utiliza un mecanismo tornillo-tuerca, conocido también como husillo-tuerca. Es un mecanismo de transformación circular a lineal compuesto por una tuerca alojada en un eje roscado (tornillo).
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \centering
-	\includegraphics[scale=1]{images/Capitulo_3/Tornillo}
-	\caption{\textit{Mecanismo Tornillo Tuerca.}}
+	\includegraphics[scale=.5]{images/Capitulo_3/Tornillo}
+	\caption{\textit{Mecanismo Tornillo Tuerca [...].}}
 \end{figure}
 
 Este mecanismo se puede plantear de dos formas: un tornillo de posición fija que al girar provoca el desplazamiento de la tuerca, o una tuerca fija que produce el desplazamiento del tornillo cuando este gira. En este caso utilizaremos el tornillo de posición fija, y la tuerca consistirá en la base del imán permanente. 
 Este tipo de mecanismos son utilizados en diferentes aplicaciones y son ideales como mecanismos de desplazamiento, debido en parte a su gran precisión y al reducido espacio que requieren. 
-El avance depende de dos factores [18]:
+El avance depende de dos factores [18 ...]:
 
 \begin{itemize}
 \item La velocidad de giro del elemento motriz.
@@ -536,101 +538,132 @@ El avance depende de dos factores [18]:
 
 \subsubsection{Selecci\'on de la Rosca}
 
-\begin{figure}[h]
-    \centering
-    \begin{subfigure}[b]{0.4\textwidth}
-		\includegraphics[width=\textwidth]{images/Capitulo_3/Rosca}
-		\caption{\textit{Especificaciones para rosca M 2 x 0.4.}}
-    \end{subfigure}
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-      %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{images/Capitulo_3/motoreductor}
-        \caption{Motoreductor}
-    \end{subfigure}
-    \caption{}
-\end{figure}
-
 El mecanismo tornillo-tuerca presenta una ventaja muy importante respecto a otros sistemas de conversión de movimiento circular en longitudinal: por cada vuelta del tornillo la tuerca solamente avanza la distancia correspondiente al paso de la rosca. 
+
 En general el avance del tornillo viene dado por:
 
-%ecuacion A = p * e
+\begin{equation}
+A = p * e
+\end{equation}
 
-Donde p es el paso de la rosca y e corresponde al número de entradas del tornillo. 
+Donde $p$ es el paso de la rosca y $e$ corresponde al número de entradas del tornillo. 
 
-Con el fin de reducir la fuerza producida por el imán permanente hasta un valor mínimo, se necesita un recorrido de 4 mm respecto a la distancia mínima entre éste y el collarín de levitación. Con estas consideraciones se determinó el uso de una rosca métrica M 2 x 0,4, que corresponde a un diámetro nominal de 2 mm, paso de rosca de 0.4 mm y una entrada, con lo que únicamente requeriríamos generar 10 vueltas del motorreductor para el desplazamiento máximo de 4 mm. 
+Con el fin de reducir la fuerza producida por el imán permanente hasta un valor mínimo, se necesita un recorrido de 4 mm respecto a la distancia mínima entre éste y el collarín de levitación. Con estas consideraciones se determinó el uso de una rosca métrica M 2 x 0,4, que corresponde a un diámetro nominal de 2 mm, paso de rosca de 0.4 mm y una entrada [véase anexo A], con lo que únicamente requeriríamos generar 10 vueltas del motorreductor para el desplazamiento máximo de 4 mm. 
 
-\subsubsection{Moto-reductor}
+\begin{figure}[H]
+\centering
+		\includegraphics[width=0.5\textwidth]{images/Capitulo_3/Rosca}
+		\caption{\textit{Especificaciones de la rosca M 2 x 0.4 [...].}}
+\end{figure}
 
+\subsubsection{Motorreductor} \label{sec:Motorreductor}
+
+Para el motorreductor se seleccionó el modelo \textbf{LP 6V 1000:1} de Pololu [...]. Este motorreductor miniatura de alto par tiene una caja de cambios de $1000: 1$, por lo que es una gran opción para aplicaciones que requieren un control preciso a velocidades muy bajas. Estas unidades tienen un eje de salida en forma de D de $3 mm$ de diámetro.
+
+Este motorreductor posee unas especificaciones clave de $14 RPM @ 6 V$ y $40 mA$ al vacio, $5 kg-cm$ de par y $0.36 A$ en bloqueo.
+
+Estos motores están diseñados para poder operar a $6 V$, aunque en general, estos tipos de motores pueden funcionar a voltajes por encima y por debajo de este voltaje nominal, por lo que deberían funcionar cómodamente en el rango de $3 - 9 V$. 
+ 
+    \begin{figure}[H]
+    \centering
+        \includegraphics[width=0.3\textwidth]{images/Capitulo_3/motoreductor}
+        \caption{Motoreductor.}
+    \end{figure}
+
+Finalmente el ensamble del MCCE queda ilustrado en la figura \ref{fig:configuracion-final-MCCE}.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.625\textwidth]{images/Capitulo_3/Mecanismo_ensamble}
+    \includegraphics[width=\textwidth]{images/Capitulo_3/Mecanismo_ensamble}
     \caption{Configuracion final MCCE}
+    \label{fig:configuracion-final-MCCE}
 \end{figure}
 
 \subsection{Accionamiento}
 
+Como se indica en la sección \ref{sec:Motorreductor} la corriente máxima que demanda el motor es de $360 mA$. Como queremos mover el motor en ambas direcciones es necesario un circuito de puente H para su accionamiento. Para ello se seleccionó el circuito integrado L293. 
+
+Este controlador de motor cuenta con dos puentes H que se pueden utilizar para el control bidireccional de dos motores de corriente continua o para controlar un solo motor de pasos. Funciona a partir de $4.5$ a $36 V$ y puede entregar una corriente pico de $1 A$ por canal. La conexión de este circuito integrado se muestra en la figura \ref{fig:puente-h-l293}.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/Capitulo_3/CircuitoL293}
+    \caption{Circuito Puente H L293.}
+    \label{fig:puente-h-l293}
+\end{figure}
+
 \subsection{Modelado electromecánico}
+
+Para el modelado del MCCE comenzamos por establecer las ecuaciones \ref{eq:motor-MCCE-1}, \ref{eq:motor-MCCE-2} y \ref{eq:motor-MCCE-3} correspondientes al motor de DC, donde la entrada del sistema es el voltaje de alimentación $V{in}$ y como salidas tenemos el par de accionamiento $T_1$.
 
 \begin{figure}[htb]
 \begin{center}
 \centering
 \includegraphics[width=8cm]{images/Capitulo_2/modelo_electromecanico_mcce}
-\caption{Modelo electrodinámico MCCE}
+\caption{Modelo electrodinámico del MCCE.}
 \end{center}
 \end{figure}
 
-Para el modelado del comenzamos por estabecler la eucacion ?? correspodientes al motor de dc, la entrada del sistema es el voltaje de alimetancion de motor $V{in}$ y como salidas tenemos el par de accionamiento $T_1$
+Comenzamos con la malla del motor que describe la razón de cambio en la corriente:
 
-La ecuacion de la malla del motor, que describe la razon de cambio en la corriente del motor
 \begin{equation}
- V_{in} = Ri + L \frac{d}{dt}i + V_{E}  	
+ V_{in} = Ri + L \frac{d}{dt}i + V_{E}  
+ \label{eq:motor-MCCE-1}	
 \end{equation}
 
-El par torsor de salida que es proporcional a la corriente del motor
+Seguimos con el par torsor de salida que es proporcional a la corriente del motor:
+
 \begin{equation}
  T = K_t i 
+ \label{eq:motor-MCCE-2}	
 \end{equation}
 
-El voltaje contra electromotriz, que es proporcional a la velocidad del motor 
+Y finalmente el voltaje contraelectromotriz, la cual es proporcional a la velocidad del motor:
+ 
 \begin{equation}
  V_{E} = K_v \omega 
+  \label{eq:motor-MCCE-3}	
 \end{equation}
 
-En los engranajes del motor tenemos una relacion de salida de $N_1/N_2$, entonces las velocidades angulares son 
+A continuación modelamos la parte mecánica para relacionar el par del motor con la fuerza de elevación del mecanismo. En los engranajes del motor tenemos una relación de engranes de $N_1/N_2$, entonces las velocidades angulares serán:
+
 \begin{equation}
- T_2 = N_1/N_2 T_1
-\end{equation}
-\begin{equation}
- \omega_2 = N_2/N_1 \omega_1 
+ \omega_2 = \frac{N_2}{N_1} \omega_1
 \end{equation}
 
-y finalmente relacionamos el par torsor, con la fuerza de elevacion de descensor del tornillo, debido a la accion de la friccion se tiene una ecuacion para descenso y otra para el ascenso.
+Y la relación de los pares torsores será: 
+
+\begin{equation}
+ T_2 = \frac{N_1}{N_2} T_1
+\end{equation}
+
+Finalmente relacionamos el par torsor con la fuerza de elevación y descenso del tornillo. Debido a la acción de la fricción se tiene una ecuación para el descenso y otra para la elevación. Para el par de elevación tenemos:
 
 \begin{equation}
     T = \frac{F \cdot d_m}{2} \cdot \frac{\rho + (\pi \cdot \mu \cdot d_m \cdot \sec \theta)}{(\pi \cdot d_m) - (\mu \cdot \rho \cdot  \sec \theta)} 
 \end{equation}
 
 donde: \\
-    F = Valor de la carga\\
+    $F$ = Valor de la carga\\
     $\rho$ = paso del tornillo \\
     $d_m$ = diametro medio del tornillo\\
     $\mu$ = Coeficiente de rozamientre la rosca y le tornillo \\
     $\theta$ = $\frac{Angulo;de;la;rosca}{2}$\\
 
+Y para el par de descenso tenemos:
 
 \begin{equation}
     T= \frac{F \cdot d_m}{2} \cdot \frac{\pi \cdot \mu \cdot d_m \cdot \sec \theta - \rho}{\pi \cdot d_m + \mu \cdot \rho \cdot \sec \theta}
 \end{equation}
 
-como resultado tenemos el siguiente modelo de simulink
+Todas estas ecuaciones se introducen en el modelo de \textbf{Simulink} que queda representado en la figura \ref{fig:modelo-simulink-mcce}.
 
 \begin{figure}[htb]
 \begin{center}
 \centering
 \includegraphics[width=\textwidth]{images/Capitulo_2/simulink_mcce}
-\caption{Modelo en simulink del MCCE}
+\caption{Modelo en \textbf{Simulink} del MCCE.}
+\label{fig:modelo-simulink-mcce}
 \end{center}
 \end{figure}
 
