@@ -9,7 +9,8 @@ El Rodamiento Magnético Radial (RMR) consiste en un conjunto de electroimanes co
     \caption{Diagrama funcional del rodamiento magnético radial}
 \end{figure}
 
-\subsection{Numero de polos}
+\subsection{Numero de polos} \label{sec:numero-polos}
+
 Antes de diseñar los electroimanes es necesario determinar en numero de polos que conformaran el EIR.
 Suponiendo que tenemos $N$ polos, la distancia angular $\alpha$ entre ellos sera de $360/N$ (fig. \ref{fig:rmr:diagrama-de-polos}). El EIR debe ser capaz de generar una fuerza arbitraria $F_r$ dentro del plano $YZ$. Teniendo en cuenta que los electroimanes sólo son capaces de ejercer fuerzas de atracción sobre los materiales ferromagnéticos. La fuerza $F_r$ deberá ser proporcionada únicamente por las fuerzas de los electroimanes adyacentes $F_1$ y $F_2$ (fig. \ref{fig:rmr:diagrama-de-fuerzas}).  
 
@@ -43,7 +44,7 @@ Analizando los casos críticos (1) donde $F_r$ esta alineado con $F_1$ ($\theta =
 Para los casos (1) y (3) toda la fuerza es ejercida por los electroimanes $E1$ y $E2$ respectivamente, con fuerzas de $F_1 = F_r, F_2 = 0$ para el caso 1, y $F_1 = 0, F_2 = F_r$ para el caso 3. Como lo indica la ecuación:
 
 \begin{equation}
-P = (\frac{R F}{K_e} ) 
+P = (\frac{R F}{K_e} )
 \end{equation}
 
 tendremos un consumo de magnitud $(\frac{R F_r}{K_e} )$. %, lo mismo sucede en el caso 3, 
@@ -57,10 +58,10 @@ F = F_1 = F_2 = (\frac{F_r sin (\frac{\alpha}{2}) }{sin \alpha} )
 lo cual corresponde a una perdida de:
 
 \begin{equation}
-P = 2 (\frac{R F_r}{K_e} ) \label{prueba_ecuacion}
+P = 2 (\frac{R F_r}{K_e} ) \label{eq:cosumo-electroiman-caso-especial}
 \end{equation}
 
-Para que el rodamiento axial pueda ejercer fuerzas en cualquier dirección del plano YZ es necesario un mínimo de 3 polos. Sin embargo incrementar el numero de polos reduce el consumo en las regiones intermedias (ecuación \ref{prueba_ecuacion}), esto se debe a que no estamos utilizando corriente para generar componentes de fuerza que terminaran por cancelarse mutuamente.
+Para que el rodamiento axial pueda ejercer fuerzas en cualquier dirección del plano YZ es necesario un mínimo de 3 polos. Sin embargo incrementar el numero de polos reduce el consumo en las regiones intermedias (ecuación \ref{eq:cosumo-electroiman-caso-especial}), esto se debe a que no estamos utilizando corriente para generar componentes de fuerza que terminaran por cancelarse mutuamente.
 
 En [paper numero de polos]  se estudia de manera mas detallada los efectos de variar el numero de polos en un RMR, se concluye que utilizar 6 polos minimiza el diámetro exterior para una capacidad dada.
 
@@ -414,7 +415,9 @@ Usando las formulas \ref{eq:respuesta-frecuencia-accionamiento-1} y \ref{eq:resp
 
 \section{Modulo de compensación de carga estática}
 
-El MCCE consisten en las siguientes partes: imán permanente, núcleo ferromagnético, funda, tornillo de potencia, moto-reductor. El imán permanente magnetiza todo el circuito, el núcleo ferromagnético guía el flujo magnético (provee de una trayectoria  de baja reluctancia) y maximiza la fuerza que el imán permanente puede ejercer, la funda provee el soporte para el arreglo imán-núcleo y actúa como guía dentro de la cavidad del modulo; el tornillo convierte el movimiento rotación del motor en movimiento lineal para el imán permanente.
+Ante los problemas del alto consumo de corriente en los rodamientos magnéticos activos se propone una solución con base en los principios de funcionamiento de los rodamientos magnéticos pasivos, donde se optó por utilizar un imán permanente que deberá proveer un campo magnético base para reducir su consumo. 
+
+El MCCE consiste en un imán permanente cuya distancia al collarín de levitación es variada mediante un servomecanismo de retracción. De esta manera se puede ejercer una fuerza cuasiconstante con un mínimo consumo energético. Este se conforma de: imán permanente, núcleo ferromagnético, mecanismo de retracción, motor y un circuito de accionamiento. El imán permanente magnetiza todo el circuito, el núcleo guía el flujo magnético y maximiza la fuerza que el imán permanente puede ejercer. El mecanismo de retracción convierte el movimiento de rotación del motor en movimiento lineal para el imán permanente, y el circuito de accionamiento se encarga de controlar el motor. 
 
 \begin{figure}[h]
     \centering
@@ -422,43 +425,40 @@ El MCCE consisten en las siguientes partes: imán permanente, núcleo ferromagnéti
     \caption{Modulo de compensación para cargas estáticas}
 \end{figure}
 
-Dentro de los rodamientos magnéticos existe una clasificación basada en la fuente generadora del campo magnético, y en ella se encuentran los rodamientos magnéticos pasivos. Estos logran la levitación del objeto gracias a las fuerzas de atracción o repulsión magnéticas producidas por imanes permanentes. 
-Un diseño muy simple de un rodamiento magnético pasivo consiste en anillos magnéticos permanentes en el eje giratorio y el estator, encargados de generar dichas fuerzas.
-
-\begin{figure}[htb]
-\centering
-	\includegraphics[scale=1]{images/Capitulo_3/Rod_pas}
-	\caption{\textit{Configuración básica de un rodamiento magnético pasivo.}}
-\end{figure}
-
-Ante los problemas del alto consumo de corriente en los rodamientos magnéticos se hicieron varias investigaciones entre las cuales se encuentra el uso de un campo magnético base para la levitación.
-Con base en los principios de funcionamiento de los rodamientos magnéticos pasivos se optó por utilizar un imán permanente que deberá proveer un campo magnético base y así disminuir el consumo de corriente de los rodamientos activos, los cuales a su vez ayudan a compensar la baja rigidez y amortiguamiento de los rodamientos pasivos. 
-Este hará uso de un servomecanismo que tendrá la función de variar la distancia entre el imán permanente y el collarín de levitación, y con esto también el campo magnético base que se necesita para estabilizar el objeto.
-
 \subsection{Análisis de consumo energético} 
 
-Sabemos que la fuerza de los electroimanes es $F = kI^2$, y  las pérdidas son $W = RI^2$, eso significa que tenemos perdidas aproximadas a $W = (R/k)F$. Si descomponemos esta fuerza en sus componentes de Fourier tenemos termino constante y la suma de los componentes a diversas frecuencias.
-El termino constate/estático que usualmente corresponden al peso del objeto cuenta como la mayor parte la fuerza, y por lo tanto, de las perdidas.
+Como se indica en la sección \ref{sec:numero-polos} el consumo en un electroimán esta dado por:
 
-Eliminar esa componente  de fuerza de los electroimanes terminaria por reducir la corriente y el consumo energetico total del rodamiento.
+\begin{equation}
+P = (\frac{R F}{K_e}) \label{eq:consumo-electroiman}
+\end{equation}
 
-Un imán permanente calculado para ejercer una fuerza $F_{ip}$ puede disminuir el consumo, terminando con perdidas de magnitud $(R/K)|F_L - F_{ip}|$.
+En la ecuación \ref{eq:consumo-electroiman} se puede observa que el consumo depende de manera proporcionada a la fuerza aplicada por el electroimán. Si descomponemos esta fuerza en sus componentes de Fourier tenemos un termino constante y la suma de las componentes armónicas a diversas frecuencias.
 
-Es posible variar la fuerza que ejerce un imán pasivo cambiando la distancia entre este y el objetivo, asi pues, el MCCE consiste en un  tenemos un iman capaz de ejercer un fuerza $F_ip$ mas grande de la requerida montado sobre un plataforma movil (mecanismo de retraccion), asi acercando o aljendo el motor y un sistema de servocontrol sobre la corriente del electroiman de la parte superior, el modulo puede adaptarse y reducir la corriente promedio de los electroimanes  a.
+El término constate que usualmente corresponden al peso del objeto representa la mayor parte la fuerza, y por lo tanto, de las pérdidas. Eliminar esa componente de fuerza reduciría la corriente y el consumo energético total del rodamiento.
+
+Usar un imán permanente con fuerza $F_{ip}$ como en el caso de un rodamiento pasivo, reduce las pérdidas del sistema a un valor de: 
+
+\begin{equation}
+|\frac{R (F_L - F_{ip})}{K}|
+\end{equation}
+
+El problema consiste en decidir de antemano el valor de la carga estática para igualar los términos $F_l$ y $F_{ip}$, y así reducir las pérdidas. 
+
+Es posible variar la fuerza que ejerce un imán permanente variando la distancia entre este y el objetivo. Si usamos un imán capaz de ejercer un fuerza $F_ip$ mucho más grande de la requerida y la montamos sobre una plataforma móvil (mecanismo de retracción), podríamos ajustar la fuerza hasta llevar las pérdidas a $0$.  
 
 \begin{figure}[htb]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_2/iman_permanente}
-        \caption{Iman permanente}
+        \caption{Imán permanente.}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
       %(or a blank line to force the subfigure onto a new line)
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_2/mecanismo_retraccion}
-        \caption{Mecanismo de retracción}
+        \caption{Mecanismo de retracción.}
     \end{subfigure}
-    \caption{Modulo de compensación}
 \end{figure}
 
 \subsection{Imán Permanente y Núcleo Ferromagnético}
