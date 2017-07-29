@@ -17,7 +17,7 @@ Suponiendo que tenemos $N$ polos, la distancia angular $\alpha$ entre ellos sera
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_3/diagrama_polos}
-        \caption{Posicion de los polos}
+        \caption{Posición de los polos.}
         \label{fig:rmr:diagrama-de-polos}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
@@ -27,7 +27,7 @@ Suponiendo que tenemos $N$ polos, la distancia angular $\alpha$ entre ellos sera
         \caption{Diagrama de Fuerzas}
         \label{fig:rmr:diagrama-de-fuerzas}
     \end{subfigure}
-    \caption{Polos del electroimán radial}
+    \caption{Polos del electroimán radial.}
 \end{figure}
 
 Se define a $\theta$ como el angulo entre la fuerzas $F_r$ y $F_1$, entonces para una fuerza de magnitud $F_r$ las magnitudes de las fuerzas $F_1$ y $F_2$ serán: 
@@ -83,7 +83,7 @@ TDK {[}...{]} & N27 & MnZn & 2000 & 500 & 23 & 150k \\ \hline
 MMG {[}...{]} & F44 & MnZn & 2500 & 470 & 15 & 500k \\ \hline
 NEC {[}...{]} & BH3 & MnZn & 1800 & 540 & 15 & 400k \\ \hline
 TDK {[}...{]} & PC90 & MnZn & 2200 & 540 & 13 & 300k \\ \hline
-Ferroxcube & 3C98 & MnZn & 2500 & 530 & 12 & 400k \\ \hline
+Ferroxcube {[}...{]} & 3C98 & MnZn & 2500 & 530 & 12 & 400k \\ \hline
 \end{tabular}
 \caption{Propiedades de diferentes Ferritas MnZn.}
 \end{table}
@@ -177,9 +177,14 @@ Existe una diferencia entre el modelo ideal y la simulación. Esta diferencia se 
 
 Ahora que conocemos las características de los electroimanes, es necesario un circuito para controlar la corriente que circula por la bobinas. Para este punto ya conocemos las características eléctricas de las bobinas como la inductancia y la resistencia. Estos datos nos servirán mas adelante para calcular una circuiteria con un bajo índice de pérdidas. 
 
-[insertar figura de amplificador lineal]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/Capitulo_3/MOSFET_1}
+    \caption{Amplificador lineal.}
+    \label{fig:amplificador-lineal}
+\end{figure}
 
-Un amplificador que opera en modo lineal como el de la figura \ref{fig:apl-lineal} opera de la siguiente manera: supongamos que tenemos que hacer pasar una corriente de 1 ampere a través de una carga de 10 Ohms, para que exista 1 ampere se necesitan 10 volts. Si nuestra fuente es de 20 volts esto implica que el transistor debe de absorber los 10 volts restantes. Esto implica disipar 10 W de potencia en forma de calor. Entonces es evidente la baja eficiencia que resulta operar de este modo.
+Un amplificador que opera en modo lineal como el de la figura \ref{fig:amplificador-lineal} opera de la siguiente manera: supongamos que tenemos que hacer pasar una corriente de 1 ampere a través de una carga de 10 Ohms, para que exista 1 ampere se necesitan 10 volts. Si nuestra fuente es de 20 volts esto implica que el transistor debe de absorber los 10 volts restantes. Esto implica disipar 10 W de potencia en forma de calor. Entonces es evidente la baja eficiencia que resulta operar de este modo.
 
 En cambio si decidimos operar en el modo de saturación y corte, tendríamos en las terminales del transistor unos valores de 0 volts, 20 amperes y 20 volts, 0 amperes respectivamente. Ambas situaciones corresponden a una potencia disipada de 0 W en el transistor. En otras palabras, la disipación de energía en forma de calor es mínima. 
 
@@ -195,9 +200,23 @@ Donde $V_{th}$, conocido como voltaje de treshhold, es el voltaje mínimo para ac
 
 Cuando se trata de conmutar una carga inductiva se generan picos de voltaje, pues la corriente que circula por un inductor no puede cambiar de manera instantánea o discontinua. Es por eso que se necesita de un diodo para proveer un camino por el que la corriente logre recircular y disminuir de manera controlada.
 
-[insertar figura de diodos de recirculacion y caidas de corriente controlada / grafica carga y descarga del inductor]
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_3/MOSFET_2}
+        \caption{Circuito con diodo de recirculación.}
+        \label{fig:circuito-recirculacion}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_3/Grafica_Accionamiento_simple}
+        \caption{Carga y descarga del inductor.}
+        \label{fig:carga-descarga-inductor-simple}
+    \end{subfigure}
+\end{figure}
 
-La razón de cambio en la corriente en un inductor depende del voltaje aplicado en sus terminales. En el circuito [imagen de arriba], cuando el transistor está activado el voltaje en las terminales es $V_{cc} \approx 20$, y cuando está desactivado (y la corriente circula por el diodo) el voltaje en las terminales es el voltaje de diodo $V_d \approx 0.5$. Entonces los valores de carga y descarga del inductor serán de:
+La razón de cambio en la corriente en un inductor depende del voltaje aplicado en sus terminales. En el circuito   \ref{fig:circuito-recirculacion} , cuando el transistor está activado el voltaje en las terminales es $V_{cc} \approx 20$, y cuando está desactivado (y la corriente circula por el diodo) el voltaje en las terminales es el voltaje de diodo $V_d \approx 0.5$. Entonces los valores de carga y descarga del inductor serán de:
 
 \begin{equation}
 \frac{di}{dt}_{on} = \frac{V_{cc}}{L}
@@ -207,16 +226,29 @@ La razón de cambio en la corriente en un inductor depende del voltaje aplicado e
 \frac{di}{dt}_{off} = \frac{-2V_{cc}}{L}
 \end{equation}
 
-El problema es que el incremento y decremento de la corriente actúan de forma asimétrica, entonces para obtener cargas y descargas simétricas será necesario aplicar un voltaje de $-V_{cc}$ durante el ciclo de descarga. Para eso es necesaria una configuración como la mostrada en la figura [...]
+El problema es que el incremento y decremento de la corriente actúan de forma asimétrica (fig. \ref{fig:carga-descarga-inductor-simple}), entonces para obtener cargas y descargas simétricas será necesario aplicar un voltaje de $-V_{cc}$ durante el ciclo de descarga. Para eso es necesaria una configuración como la mostrada en la figura \ref{fig:puente-h}.
 
-[insertar figura medio puente H]
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_3/Puente_H}
+        \caption{Circuito de Puente H.}
+        \label{fig:puente-h}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_3/Grafica_accionamiento_avanzado}
+        \caption{Carga y descarga rápida.}
+        \label{fig:carga-descarga-rapida}
+    \end{subfigure}
+\end{figure}
 
 Esta configuración es comúnmente conocida como puente "H" e implica varios detalles para su implementación, el primero de estos es la activación de los transistores. Como ya se ha mencionado, para operar de la manera mas eficiente es necesario llevar los transistores a su punto de saturación, en la mayoría de los transistores de potencia el voltaje de compuerta en saturación $V_{sat}$ oscila entre los 10 y 15 volts, y dado que la mayoría de los circuitos de procesamiento operan entre los 5 y 1.8 volts, es necesario de un circuito complementario para elevar los niveles de voltaje. No hacer esto causaría la polarización de los transistores en la zona lineal, lo que resultaría en el calentamiento de estos y una operación con baja eficiencia. 
 
-Otro problema consiste en polarizar los transistores de la figura [...], ya que para su correcta activación es necesario un voltaje de compuerta de hasta $V_{cc} + V{sat}$. 
+Otro problema consiste en polarizar los transistores de la figura \ref{fig:puente-h}, ya que para su correcta activación es necesario un voltaje de compuerta de hasta $V_{cc} + V{sat}$. 
 
 Ambos problemas son solucionados mediante el uso de un circuito conocido como Gate Driver, donde se usa un arreglo de transistores, diodos y capacitores para proveer los voltajes correctos en las compuertas de los transistores sin necesidad de una fuente separada.
-
 
 Suponiendo que queremos mantener constante la corriente del inductor podemos desactivar todos los transistores dejándolos recircular por los diodos. Cuando la corriente recircula por los diodos, ésta disminuye en una razón de:
 
@@ -232,7 +264,7 @@ Como la resistencia de los transistores Ron es baja, si activamos los transistor
 
 A este modo de operación se le conoce como rectificación síncrona. Esto no se puede realizar con transistores bipolares, pero si con transistores MOSFET. 
 
-Podemos definir ahora dos estados de operación del puente H, un modo de accionamiento, donde se incrementa o decrementa la corriente en la bobina, y un modo de recirculación, donde la corriente se mantiene a un nivel casi constante, y donde solo están presentes la perdidas resistivas causadas por $R_{ESR}$ y $R_{on}$
+Podemos definir ahora dos estados de operación del puente H, un modo de accionamiento, donde se incrementa o decrementa la corriente en la bobina ($t_{fast}$ de la figura \ref{fig:carga-descarga-rapida}), y un modo de recirculación, donde la corriente se mantiene a un nivel casi constante, y donde solo están presentes la perdidas resistivas causadas por $R_{ESR}$ y $R_{on}$ ($t_{slow}$ de la figura \ref{fig:carga-descarga-rapida}).
 
 Estos modos de operación puede implementarse usando el circuto de la figura [...], donde el arreglo de comparadores y flip flops permite controlar la corriente con una precision del $n\%$
 
@@ -381,15 +413,14 @@ Usando las formulas \ref{eq:respuesta-frecuencia-accionamiento-1} y \ref{eq:resp
 \newpage
 
 \section{Modulo de compensación de carga estática}
+
+El MCCE consisten en las siguientes partes: imán permanente, núcleo ferromagnético, funda, tornillo de potencia, moto-reductor. El imán permanente magnetiza todo el circuito, el núcleo ferromagnético guía el flujo magnético (provee de una trayectoria  de baja reluctancia) y maximiza la fuerza que el imán permanente puede ejercer, la funda provee el soporte para el arreglo imán-núcleo y actúa como guía dentro de la cavidad del modulo; el tornillo convierte el movimiento rotación del motor en movimiento lineal para el imán permanente.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_mcce}
     \caption{Modulo de compensación para cargas estáticas}
 \end{figure}
-Sabemos que la fuerza de los electroimanes es $F = kI^2$, y  las perdidas son $W = RI^2$, eso significa que tenemos perdidas aproximadas a $W = (R/k)F$, si descomponemos esta fuerza en sus componentes de fourier tenemos termino constante y la suma de los componentes a diversas frecuencias.
-El termino constate/estatico que usualmente correspoden al peso del objeto cuenta como la mayor parte la fuerza, y por lo tanto, de las perdidas.
-
-\subsection*{Te\'orico}
 
 Dentro de los rodamientos magnéticos existe una clasificación basada en la fuente generadora del campo magnético, y en ella se encuentran los rodamientos magnéticos pasivos. Estos logran la levitación del objeto gracias a las fuerzas de atracción o repulsión magnéticas producidas por imanes permanentes. 
 Un diseño muy simple de un rodamiento magnético pasivo consiste en anillos magnéticos permanentes en el eje giratorio y el estator, encargados de generar dichas fuerzas.
@@ -400,15 +431,90 @@ Un diseño muy simple de un rodamiento magnético pasivo consiste en anillos magné
 	\caption{\textit{Configuración básica de un rodamiento magnético pasivo.}}
 \end{figure}
 
-Los rodamientos magnéticos pasivos presentan algunas ventajas frente a los rodamientos electromagnéticos (activos), debido a que no requieren de una fuente de energía externa y el uso de circuitos de control. Esto implica una disminución significativa de los costos de mantenimiento y de operación [16]. 
-Sin embargo,  también poseen ciertas desventajas por las que para ciertas aplicaciones no resultan viables. Por ejemplo, poseen una menor rigidez y menor amortiguación, por lo que deben contar con la suficiente rigidez y amortiguación integrada para que puedan trabajar dentro de todo su rango de operación [15].
-Para aplicaciones que operen bajo un rango de temperatura limitado, una alternativa es utilizar un estator soportado viscoelásticamente con el fin de amortiguar las vibraciones del rotor, o el uso de amortiguadores especiales para restringir las vibraciones. Sin embargo estas medidas de amortiguación vuelven más complejo el modelado del sistema. 
-
 Ante los problemas del alto consumo de corriente en los rodamientos magnéticos se hicieron varias investigaciones entre las cuales se encuentra el uso de un campo magnético base para la levitación.
 Con base en los principios de funcionamiento de los rodamientos magnéticos pasivos se optó por utilizar un imán permanente que deberá proveer un campo magnético base y así disminuir el consumo de corriente de los rodamientos activos, los cuales a su vez ayudan a compensar la baja rigidez y amortiguamiento de los rodamientos pasivos. 
-Este hará uso de un servomecanismo que tendrá la función de variar la distancia entre el imán permanente y el collarín de levitación, y con esto también el campo magnético base que se necesita para estabilizar el objeto. 
+Este hará uso de un servomecanismo que tendrá la función de variar la distancia entre el imán permanente y el collarín de levitación, y con esto también el campo magnético base que se necesita para estabilizar el objeto.
 
-\subsection{Propuesta de Soluci\'on}
+\subsection{Análisis de consumo energético} 
+
+Sabemos que la fuerza de los electroimanes es $F = kI^2$, y  las pérdidas son $W = RI^2$, eso significa que tenemos perdidas aproximadas a $W = (R/k)F$. Si descomponemos esta fuerza en sus componentes de Fourier tenemos termino constante y la suma de los componentes a diversas frecuencias.
+El termino constate/estático que usualmente corresponden al peso del objeto cuenta como la mayor parte la fuerza, y por lo tanto, de las perdidas.
+
+Eliminar esa componente  de fuerza de los electroimanes terminaria por reducir la corriente y el consumo energetico total del rodamiento.
+
+Un imán permanente calculado para ejercer una fuerza $F_{ip}$ puede disminuir el consumo, terminando con perdidas de magnitud $(R/K)|F_L - F_{ip}|$.
+
+Es posible variar la fuerza que ejerce un imán pasivo cambiando la distancia entre este y el objetivo, asi pues, el MCCE consiste en un  tenemos un iman capaz de ejercer un fuerza $F_ip$ mas grande de la requerida montado sobre un plataforma movil (mecanismo de retraccion), asi acercando o aljendo el motor y un sistema de servocontrol sobre la corriente del electroiman de la parte superior, el modulo puede adaptarse y reducir la corriente promedio de los electroimanes  a.
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/iman_permanente}
+        \caption{Iman permanente}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=\textwidth]{images/Capitulo_2/mecanismo_retraccion}
+        \caption{Mecanismo de retracción}
+    \end{subfigure}
+    \caption{Modulo de compensación}
+\end{figure}
+
+\subsection{Imán Permanente y Núcleo Ferromagnético}
+
+\begin{equation}
+	F = \frac{B_r^2}{2 \mu_0 (1 + (\frac{\mu_m}{\mu_0})(\frac{A_m}{A_g})(\frac{g}{l_m}))^2}[\frac{A_m + 2A_g}{2A_g}]
+	\label{eq:fuerza-iman-permanente}
+\end{equation}
+
+Gracias a la ecuación \ref{eq:fuerza-iman-permanente} sabemos que la fuerza que ejerce un permanente esta dada por $H_c$ y $B_r$ las cuales dependen del material del que esta compuesto, también depende del las dimensiones $l_m$ y $A_m$, donde esta ultima es el parámetro dominante dominante. Incrementar la sección transversal producirá mas fuerza de una manera mas o menos lineal, mientras que incrementar su longitud solo incrementara la fuerza de manera logarítmica.
+
+Es nuestro objetivo en este caso diseñar un par imán-núcleo lo mas pequeño posible, debido a que las dimensiones de electroimanes y composicion de los imanes permantes estan dadas por el fabricante nos limitamos a seleccionar el iman mas pequeño disponible que generara al menos una cantidad $F_{min}$ de fuerza estando en la configuracion xx.
+
+Las dimensiones del nucleo se seleccionan de tal manera que el iman pasivo pueda se acomodado dentro de este.
+
+
+Para el diseño del imán tenemos el siguiente proceso
+\begin{enumerate}
+\item Especificar $F_{max}$, $y_{min}$
+\item Seleccionar el iman con el $H_c$, $B_r$
+\item Seleccionar las dimensiones segun la tabla ??
+\item Dimensionar el nucleo guia de manera que acomode correctamente el iman passivo
+\item Usar la formula ?? Calcular la fuerza $F_{max}$.
+\item Si la fuerza $F_{req} > F_{im}$ incrementar las dimension y repetir los pasos.
+\end{enumerate}
+
+
+\begin{figure}[htb]
+\begin{center}
+\centering
+\missingfigure[figwidth=8cm]{Fuerza del iman pasivo}
+\caption{Software calculo de iman permanente}
+\end{center}
+\end{figure}
+
+Entre las diferentes composiciones de imanes permanentes destaca el Neodimio-Hierro-Boro comúnmente conocidos como imanes de neodimio. Estos materiales se encuentran graduados bajo la norma ??, los valores mas altos $H_c$ y  $B_r$ son alcanzados por el tipo $N52$, con valores de $B_r = 1400mT$ y $H_c=796kA/m$.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/IP_ensamble}
+    \caption{Arreglo de Imán permanente}
+\end{figure}
+
+\subsubsection{Simulación FEMM}
+
+Asi como se hizo en la seccion ??, podemos validar nuestro modelo mediante una simulacion FEM, los que resulta en la siguiente grafica.
+
+\begin{figure}[h]
+\begin{center}
+\centering
+\missingfigure[figwidth=8cm]{Fuerza del iman pasivo}
+\caption{Resultados simulacion magnetica}
+\end{center}
+\end{figure}
+
+\subsection{Mecanismo de retracción}
 
 El servomecanismo que utilizará el imán permanente para su desplazamiento consiste en un par de rieles que se montarán sobre la base del motorreductor y la base del imán permanente; esta última será la que se desplazará a lo largo de los rieles. 
 Para generar dicho desplazamiento se utiliza un mecanismo tornillo-tuerca, conocido también como husillo-tuerca. Es un mecanismo de transformación circular a lineal compuesto por una tuerca alojada en un eje roscado (tornillo).
@@ -428,88 +534,7 @@ El avance depende de dos factores [18]:
 \item El paso de la rosca del tornillo. Cuanto mayor sea el paso, mayor será la velocidad de avance.
 \end{itemize}
 
-
-
-
-Eliminar esa componente  de fuerza de los electroimanes terminaria por reducir la corriente y el consumo energetico total del rodamiento.
-
-Un imán permanente calculado para ejercer una fuerza $F_{ip}$ puede disminuir el consumo, terminando con perdidas de magnitud $(R/K)|F_L - F_{ip}|$.
-
-
-Es posible variar la fuerza que ejerce un imán pasivo cambiando la distancia entre este y el objetivo, asi pues, el MCCE consiste en un  tenemos un iman capaz de ejercer un fuerza $F_ip$ mas grande de la requerida montado sobre un plataforma movil (mecanismo de retraccion), asi acercando o aljendo el motor y un sistema de servocontrol sobre la corriente del electroiman de la parte superior, el modulo puede adaptarse y reducir la corriente promedio de los electroimanes  a.
-
-
-\begin{figure}[htb]
-    \centering
-    \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{images/Capitulo_2/iman_permanente}
-        \caption{Iman permanente}
-    \end{subfigure}
-    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-      %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{images/Capitulo_2/mecanismo_retraccion}
-        \caption{Mecanismo de retracción}
-    \end{subfigure}
-    \caption{Modulo de compensación}
-\end{figure}
-
-
-El MCCE consisten en las siguientes partes: imán permanente, núcleo ferromagnético, funda, tornillo de potencia, moto-reductor. El imán permanente magnetiza todo el circuito, el núcleo ferromagnético guía el flujo magnético (provee de una trayectoria  de baja reluctancia) y maximiza la fuerza que el imán permanente puede ejercer, la funda provee el soporte para el arreglo imán-núcleo y actúa como guía dentro de la cavidad del modulo; el tornillo convierte el movimiento rotación del motor en movimiento lineal para el imán permanente.
-
-\begin{equation}
-	F = \frac{B_r^2}{2 \mu_0 (1 + (\frac{\mu_m}{\mu_0})(\frac{A_m}{A_g})(\frac{g}{l_m}))^2}[\frac{A_m + 2A_g}{2A_g}]
-	\label{eq:fuerza-iman-permanente}
-\end{equation}
-
-Gracias a la ecuación \ref{eq:fuerza-iman-permanente} sabemos que la fuerza que ejerce un permanente esta dada por $H_c$ y $B_r$ las cuales dependen del material del que esta compuesto, también depende del las dimensiones $l_m$ y $A_m$, donde esta ultima es el parámetro dominante dominante. Incrementar la sección transversal producirá mas fuerza de una manera mas o menos lineal, mientras que incrementar su longitud solo incrementara la fuerza de manera logarítmica.
-
-Es nuestro objetivo en este caso diseñar un par imán-núcleo lo mas pequeño posible, debido a que las dimensiones de electroimanes y composicion de los imanes permantes estan dadas por el fabricante nos limitamos a seleccionar el iman mas pequeño disponible que generara al menos una cantidad $F_{min}$ de fuerza estando en la configuracion xx.
-
-Las dimensiones del nucleo se seleccionan de tal manera que el iman pasivo pueda se acomodado dentro de este.
-
-
-Para el diseño del mecanismo tenemos el siguiente proceso
-\begin{enumerate}
-\item Especificar $F_{max}$, $y_{min}$
-\item Seleccionar el iman con el $H_c$, $B_r$
-\item Seleccionar las dimensiones segun la tabla ??
-\item Dimensionar el nucleo guia de manera que acomode correctamente el iman passivo
-\item Usar la formula ?? Calcular la fuerza $F_{max}$.
-\item Si la fuerza $F_{req} > F_{im}$ incrementar las dimension y repetir los pasos.
-\end{enumerate}
-
-
-\begin{figure}[htb]
-\begin{center}
-\centering
-\missingfigure[figwidth=8cm]{Fuerza del iman pasivo}
-\caption{Software calculo de iman permanente}
-\end{center}
-\end{figure}
-
-Asi como se hizo en la seccion ??, podemos validar nuestro modelo mediante una simulacion FEM, los que resulta en la siguiente grafica.
-
-Entre las diferentes composiciones de imanes permanentes destaca el Neodimio-Hierro-Boro comúnmente conocidos como imanes de neodimio. Estos materiales se encuentran graduados bajo la norma ??, los valores mas altos $H_c$ y  $B_r$ son alcanzados por el tipo $N52$, con valores de $B_r = 1400mT$ y $H_c=796kA/m$.
-
-\begin{figure}[h]
-\begin{center}
-\centering
-\missingfigure[figwidth=8cm]{Fuerza del iman pasivo}
-\caption{Resultados simulacion magnetica}
-\end{center}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/IP_ensamble}
-    \caption{Arreglo de Imán permanente}
-\end{figure}
-
-
-
-
-\subsection{Selecci\'on de la Rosca}
+\subsubsection{Selecci\'on de la Rosca}
 
 \begin{figure}[h]
     \centering
@@ -535,6 +560,8 @@ Donde p es el paso de la rosca y e corresponde al número de entradas del tornill
 
 Con el fin de reducir la fuerza producida por el imán permanente hasta un valor mínimo, se necesita un recorrido de 4 mm respecto a la distancia mínima entre éste y el collarín de levitación. Con estas consideraciones se determinó el uso de una rosca métrica M 2 x 0,4, que corresponde a un diámetro nominal de 2 mm, paso de rosca de 0.4 mm y una entrada, con lo que únicamente requeriríamos generar 10 vueltas del motorreductor para el desplazamiento máximo de 4 mm. 
 
+\subsubsection{Moto-reductor}
+
 
 \begin{figure}[h]
     \centering
@@ -542,7 +569,10 @@ Con el fin de reducir la fuerza producida por el imán permanente hasta un valor 
     \caption{Configuracion final MCCE}
 \end{figure}
 
-\subsection{El modelado electromecánico}
+\subsection{Accionamiento}
+
+\subsection{Modelado electromecánico}
+
 \begin{figure}[htb]
 \begin{center}
 \centering
@@ -550,7 +580,6 @@ Con el fin de reducir la fuerza producida por el imán permanente hasta un valor 
 \caption{Modelo electrodinámico MCCE}
 \end{center}
 \end{figure}
-
 
 Para el modelado del comenzamos por estabecler la eucacion ?? correspodientes al motor de dc, la entrada del sistema es el voltaje de alimetancion de motor $V{in}$ y como salidas tenemos el par de accionamiento $T_1$
 
@@ -605,11 +634,7 @@ como resultado tenemos el siguiente modelo de simulink
 \end{center}
 \end{figure}
 
-\subsection{Imán permanente}
-\subsection{Núcleo ferromagnético}
-\subsection{Mecanismo de retracción}
-\subsection{Moto-reductor}
-\subsection{Accionamiento}
+\newpage
 
 \section{Sensor de distancia capacitivo}
 \begin{figure}[htb]
