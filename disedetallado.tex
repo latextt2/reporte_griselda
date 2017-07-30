@@ -793,7 +793,7 @@ Finalmente el circuito queda dentro de una caja metálica a fin de operar como ja
 
 Como se mencionó anteriormente, con el propósito de lograr la levitación del eje sin importar el material del que esté fabricado, se propuso el uso de un collarín que sostenga el eje dentro del rodamiento y que cuente con una sección de material ferromagnético, de manera que sea esta la que interactúe con los electroimanes de los rodamientos activos y con el imán permanente. 
 
-Este collarín se compone principalmente de cuatro partes: el cuerpo principal, el anillo ferromagnético para el EIR y el MCCE, el disco posterior y el disco ferromagnético para el EIA. 
+Este collarín se compone principalmente de cuatro partes: el cuerpo principal, el anillo ferromagnético para el RMR (núcleo radial) y el MCCE (núcleo pasivo), el disco de detección y el disco ferromagnético para el RMA (núcleo axial). 
 
 \begin{figure}[H]
     \centering
@@ -801,6 +801,16 @@ Este collarín se compone principalmente de cuatro partes: el cuerpo principal, e
     \caption{Diagrama funcional del Collarín de levitación.}
 \end{figure}
 
+\subsection{Material del anillo y disco ferromagético}
+
+Como se realizó en la sección \ref{sec:seleccion-somaloy} se selecciona el material Somaloy 3P [hoja de datos en anexo D] para formar el anillo y núcleo ferromagnéticos. Este material posee las siguientes características: 
+
+\begin{itemize}
+\item Punto de saturación: $1.42 - 1.63 T$
+\item Permeabilidad relativa: $\mu_r = 950$
+\end{itemize}
+
+\subsection{Material del cuerpo principal}
 
 El cuerpo principal se usa como medio de acople entre el collarín y el eje, además de servir como soporte para el resto de los componentes. Sin embargo, el cuerpo del collarín cuenta con algunas restricciones en cuanto al material del que esté fabricado:
 
@@ -857,7 +867,7 @@ Esto nos ayuda a establecer un parámetro de selección a falta de contar con dato
 
 Como podemos notar, las restricciones en cuanto a la familia de materiales y los valores de densidad y módulo de Young redujeron de manera significativa la cantidad de materiales de selección, tratándose en su mayoría de ABS, PET y Polipropilenos. 
 
-El siguiente parámetro que se consideró fue la permitividad eléctrica del material, que como se estableció en las especificaciones, se prefiere optar por materiales con un valor $\epsilon$ mayor, por lo que se estableció una permitividad relativa mínima de 3.5 
+El siguiente parámetro que se consideró fue la permitividad eléctrica del material, que como se estableció en las especificaciones, se prefiere optar por materiales con un valor $\epsilon$ mayor. Se definió una permitividad relativa mínima de $3.5$, el cual corresponde al valor de la permitividad relativa del Nylon [...]. 
 
 Con este último parámetro se obtuvo el siguiente diagrama, con un total de 91 materiales de selección posibles de los 738 que se tenían originalmente: 
 
@@ -875,20 +885,23 @@ Al consultar individualmente las propiedades de los materiales restantes se cons
     \caption{Identificación del material Acetal (POM).}
 \end{figure}
 
-El Acetal se caracteriza por su bajo coeficiente de fricción, su resistencia al desgaste y buena resistencia a la abrasión, así como facilidad de maquinado. Tiene alta resistencia a impactos repetidos y a la humedad, provee alta resistencia y rigidez en combinación con su excelente estabilidad dimensional y elevado módulo de elasticidad.
-Se utiliza principalmente para la fabricación de engranes, cojinetes, dispositivos de sujeción, ruedas, rodillos, soportes estructurales, etc.
+El Acetal se caracteriza por su bajo coeficiente de fricción, su resistencia al desgaste y buena resistencia a la abrasión, así como facilidad de maquinado. Tiene alta resistencia a impactos y a la humedad, provee alta resistencia y rigidez en combinación con su excelente estabilidad dimensional y elevado módulo de elasticidad.
+Se utiliza principalmente para la fabricación de engranes, cojinetes, dispositivos de sujeción, ruedas, rodillos, soportes estructurales, etc [...].
 
 Debido a sus características y aplicaciones se consideró el Acetal (POM) como el material del que se constituiría el collarín de levitación ya que cumple con las propiedades necesarias para cubrir las especificaciones que se plantearon inicialmente. 
-La segunda pieza que se debe considerar es el disco posterior. Este disco debe su forma a que se utiliza como superficie para medir la posición del rotor en la dirección axial con ayuda del sensor acoplado al EIA. A modo de simplificación se optó porque dicho disco se componga del mismo material que el cuerpo principal del collarín [Acetal (POM)]. Este a su vez contiene en su centro un disco de material ferromagnético para actuar con el EIA.  
+
+La segunda pieza que se debe considerar es el disco posterior. Este disco debe su forma a que se utiliza como superficie para medir la posición del rotor en la dirección axial con ayuda del sensor acoplado al RMA. A modo de simplificación se optó porque dicho disco se componga del mismo material que el cuerpo principal del collarín [Acetal (POM)].
+
+El ensamble final de los componentes descritos anteriormente se muestran en la figura \ref{fig:collarin-ensamble}.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/funda_asm}
-    \caption{Collarín de levitación.}
+    \caption{Ensamble final del collarín de levitación.}
+    \label{fig:collarin-ensamble}
 \end{figure}
 
-
-
+\newpage
 
 \section{Controlador}
 \begin{figure}[h]
