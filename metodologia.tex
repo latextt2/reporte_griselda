@@ -1360,18 +1360,13 @@ Es una salida retroalimentada asumiendo que $(A,C)$ es detectable designando a u
 	u(k) = F_1\hat{x}(k) + F_2z(k)
 \end{equation}
 
-
-
-
 \subsection{Control calendarizado}
-Uno de los problemas que surgen a partir de tratar de controlar un sistema no lineal a partir de una aproximacion linearizada, es que cuando nos alejamos del punto de equilibro la diferencia entre el sistema no lineal y el linearizado puede volverse significativa, hasta el punto de que el sistema de control/observador se vuelva inefectivo.
 
-Para resolver este problema existen diferentes soluciones, entre las que encotramos el  control calendarizado interpolante, este esquema consiste linearizar en diferentes puntos de equilibro dentro del espacio de operacion del sistema, esto incluye el calculo de las matrices $A,B,C$ y las matrices de ganancia de controlador y observador $K,Ki,Ko$. Ahora dependiendo del estado del sistema(punto de operacion), recalculamos para ese punto.
+Uno de los problemas que surgen a partir de tratar de controlar un sistema no lineal usando una aproximación linealizada, es que cuando nos alejamos del punto de equilibro la diferencia entre el sistema no lineal y el linealizado puede volverse significativa, hasta el punto en que el sistema controlador-observador se vuelva inefectivo y en el peor de los casos inestable.
 
-En lugar de cambiar el conjunto de matrices mas cercano se interpola para tener una transicion mas cercano.
-Para asegurar la estabildad del sistema, este debe de ser controlable y observable en toda la region de operacion.
-\todo[inline]{parametrizacion el contrlador}
+Para resolver este problema existen diferentes soluciones, entre las que encontramos el control calendarizado interpolante. Este esquema consiste en linealizar en diferentes puntos de equilibro dentro del espacio de operación del sistema, para obtener el conjunto de matrices $A, B$ y $C$. Además de recalcular las matrices de ganancia del controlador-observador $K, Ki$ y $Ko$. Finalmente dependiendo del estado del sistema se interpolan las matrices anteriormente calculadas para obtener el conjunto de matrices que se utilizarán en este nuevo punto de operación. 
 
+Para asegurar la estabilidad del sistema, este debe de ser controlable y observable dentro de toda la región de operación.
 
 \subsection{Discretizacion de controladores}
 
