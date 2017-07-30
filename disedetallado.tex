@@ -1,18 +1,18 @@
 \chapter{Dise\~no Detallado}
 \section{Rodamiento magnético radial}
 
-El Rodamiento Magnético Radial (RMR) consiste en un conjunto de electroimanes colocados en una circunferencia, de manera que sus campos magnéticos puedan ejercer una fuerza arbitraria en su plano de acción. Para controlar la fuerza que cada electroiman ejerce se tiene un circuito de accionamiento, que alimenta las bobinas del electroiman con la corriente necesaria.
+El Rodamiento Magnético Radial (RMR) consiste en un conjunto de electroimanes colocados en una circunferencia, de manera que sus campos magnéticos puedan ejercer una fuerza arbitraria en su plano de acción. Para controlar la fuerza que cada electroimán ejerce se tiene un circuito de accionamiento, que alimenta las bobinas del electroimán con la corriente necesaria.
 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_rmr}
-    \caption{Diagrama funcional del rodamiento magnético radial}
+    \caption{Diagrama funcional del rodamiento magnético radial.}
 \end{figure}
 
-\subsection{Numero de polos} \label{sec:numero-polos}
+\subsection{Número de polos} \label{sec:numero-polos}
 
-Antes de diseñar los electroimanes es necesario determinar en numero de polos que conformaran el EIR.
-Suponiendo que tenemos $N$ polos, la distancia angular $\alpha$ entre ellos sera de $360/N$ (fig. \ref{fig:rmr:diagrama-de-polos}). El EIR debe ser capaz de generar una fuerza arbitraria $F_r$ dentro del plano $YZ$. Teniendo en cuenta que los electroimanes sólo son capaces de ejercer fuerzas de atracción sobre los materiales ferromagnéticos. La fuerza $F_r$ deberá ser proporcionada únicamente por las fuerzas de los electroimanes adyacentes $F_1$ y $F_2$ (fig. \ref{fig:rmr:diagrama-de-fuerzas}).  
+Antes de diseñar los electroimanes es necesario determinar en número de polos que conformarán el EIR.
+Suponiendo que tenemos $N$ polos, la distancia angular $\alpha$ entre ellos será de $360/N$ (fig. \ref{fig:rmr:diagrama-de-polos}). El EIR debe ser capaz de generar una fuerza arbitraria $F_r$ dentro del plano $YZ$. Teniendo en cuenta que los electroimanes sólo son capaces de ejercer fuerzas de atracción sobre los materiales ferromagnéticos. La fuerza $F_r$ deberá ser proporcionada únicamente por las fuerzas de los electroimanes adyacentes $F_1$ y $F_2$ (fig. \ref{fig:rmr:diagrama-de-fuerzas}).  
 
 \begin{figure}[htb]
     \centering
@@ -25,13 +25,13 @@ Suponiendo que tenemos $N$ polos, la distancia angular $\alpha$ entre ellos sera
       %(or a blank line to force the subfigure onto a new line)
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_3/diagrama_fuerza_polos}
-        \caption{Diagrama de Fuerzas}
+        \caption{Diagrama de Fuerzas.}
         \label{fig:rmr:diagrama-de-fuerzas}
     \end{subfigure}
     \caption{Polos del electroimán radial.}
 \end{figure}
 
-Se define a $\theta$ como el angulo entre la fuerzas $F_r$ y $F_1$, entonces para una fuerza de magnitud $F_r$ las magnitudes de las fuerzas $F_1$ y $F_2$ serán: 
+Se define a $\theta$ como el ángulo entre la fuerzas $F_r$ y $F_1$. Luego entonces, para una fuerza de magnitud $F_r$, las magnitudes de las fuerzas $F_1$ y $F_2$ serán: 
 \begin{equation}
     F_1 = F_r (\frac{cos \theta - sin \theta}{tan \alpha})
 \end{equation}
@@ -39,15 +39,15 @@ Se define a $\theta$ como el angulo entre la fuerzas $F_r$ y $F_1$, entonces par
     F_2 = F_r (\frac{sin \theta}{sin \alpha} )
 \end{equation}
 
-Analizando los casos críticos (1) donde $F_r$ esta alineado con $F_1$ ($\theta = 0$), (2) donde $F_r$ esta orientado en medio de $F_1$ y $F_2$ ($\theta = \alpha/2)$ y (3) donde $F_r$ esta alineado con $F_2$ ($\theta = \alpha$) se vuelve clara la forma en la que el numero de polos afecta tanto la fuerza máxima como la eficiencia del sistema.
+Analizando los casos críticos: 1) donde $F_r$ esta alineado con $F_1$ ($\theta = 0$), 2) donde $F_r$ esta orientado en medio de $F_1$ y $F_2$ ($\theta = \alpha/2)$ y 3) donde $F_r$ esta alineado con $F_2$ ($\theta = \alpha$); se vuelve clara la forma en la que el número de polos afecta tanto la fuerza máxima como la eficiencia del sistema.
 
-Para los casos (1) y (3) toda la fuerza es ejercida por los electroimanes $E1$ y $E2$ respectivamente, con fuerzas de $F_1 = F_r, F_2 = 0$ para el caso 1, y $F_1 = 0, F_2 = F_r$ para el caso 3. Como lo indica la ecuación:
+Para los casos 1 y 3 toda la fuerza es ejercida por los electroimanes $E1$ y $E2$ respectivamente, con fuerzas de $F_1 = F_r, F_2 = 0$ para el caso 1, y $F_1 = 0, F_2 = F_r$ para el caso 3. Como lo indica la ecuación:
 
 \begin{equation}
 P = (\frac{R F}{K_e} )
 \end{equation}
 
-tendremos un consumo de magnitud $(\frac{R F_r}{K_e} )$. %, lo mismo sucede en el caso 3, 
+Tendremos un consumo de magnitud $(\frac{R F_r}{K_e} )$. %, lo mismo sucede en el caso 3, 
 
 En cambio en el caso 2 la fuerza tiene que ser proporcionada por F1 y F2 en partes iguales, y con una magnitud de:
 
@@ -55,15 +55,15 @@ En cambio en el caso 2 la fuerza tiene que ser proporcionada por F1 y F2 en part
 F = F_1 = F_2 = (\frac{F_r sin (\frac{\alpha}{2}) }{sin \alpha} ) 
 \end{equation}
 
-lo cual corresponde a una perdida de:
+Lo cual corresponde a una pérdida de:
 
 \begin{equation}
 P = 2 (\frac{R F_r}{K_e} ) \label{eq:cosumo-electroiman-caso-especial}
 \end{equation}
 
-Para que el rodamiento axial pueda ejercer fuerzas en cualquier dirección del plano YZ es necesario un mínimo de 3 polos. Sin embargo incrementar el numero de polos reduce el consumo en las regiones intermedias (ecuación \ref{eq:cosumo-electroiman-caso-especial}), esto se debe a que no estamos utilizando corriente para generar componentes de fuerza que terminaran por cancelarse mutuamente.
+Para que el rodamiento axial pueda ejercer fuerzas en cualquier dirección del plano YZ es necesario un mínimo de 3 polos. Sin embargo, incrementar el número de polos reduce el consumo en las regiones intermedias (ecuación \ref{eq:cosumo-electroiman-caso-especial}), ya que no estamos utilizando corriente para generar componentes de fuerza que terminarán por cancelarse mutuamente.
 
-En [paper numero de polos]  se estudia de manera mas detallada los efectos de variar el numero de polos en un RMR, se concluye que utilizar 6 polos minimiza el diámetro exterior para una capacidad dada.
+En [paper número de polos]  se estudia de manera más detallada los efectos de variar el número de polos en un RMR, se concluye que utilizar 6 polos minimiza el diámetro exterior para una capacidad dada.
 
 \newpage
 
@@ -71,9 +71,9 @@ En [paper numero de polos]  se estudia de manera mas detallada los efectos de va
 
 \subsubsection{Selecci\'on de Material} \label{sec:seleccion-somaloy}
 
-Para las aplicaciones de electroimanes lo ideal es utilizar materiales con un alto punto de saturación y permeabilidad relativa. El punto de saturación limita la fuerza máxima que puede ejercer un electroimán [vease sección \ref{sec:diseno-elec}] y al tener una permeabilidad relativa alta podemos confiar que la mayoría del flujo magnético circula dentro del núcleo. 
+En el caso de las aplicaciones de electroimanes, lo ideal es utilizar materiales con un alto punto de saturación y permeabilidad relativa. El punto de saturación limita la fuerza máxima que puede ejercer un electroimán [vease sección \ref{sec:diseno-elec}] y al tener una permeabilidad relativa alta podemos confiar que la mayoría del flujo magnético circula dentro del núcleo. 
 
-Entre los materiales con estas características encontramos ferritas y aleaciones de hierro laminadas. Las ferritas poseen una alta permeabilidad pero tienen un punto de saturación más bajo, mientras que las aleaciones de hierro poseen un punto de saturación más alto y permeabilidad intermedia. Estos últimos al ser conductores presentan pérdidas por corrientes parásitas (corrientes de Foucault) lo cual disminuye la eficiencia total del electroimán.  
+Entre los materiales con estas características encontramos ferritas y aleaciones de hierro laminadas. Las ferritas poseen una alta permeabilidad pero tienen un punto de saturación más bajo, mientras que las aleaciones de hierro poseen un punto de saturación más alto y permeabilidad intermedia. Estos últimos al ser conductores presentan pérdidas por corrientes parásitas (corrientes de Foucault) que disminuye la eficiencia total del electroimán.  
 
 \begin{table}[H]
 \centering
@@ -93,7 +93,7 @@ Como alternativa a los anteriores existen nuevos materiales como el Somaloy y Pe
 
 El Permalloy posee un punto de saturación de 1.6 T y una permeabilidad relativa de 2500\cite{cite_s1_2017}, mientras que el Somaloy 3P posee un punto de saturación de entre 1.42 y 1.63 y una permeabilidad relativa de 950 [véase anexo D]. 
 
-A pesar de que el Permalloy posee mejores características, la empresa fabricante del Somaloy proporciona una documentación más extensa en cuanto a las características de éste como son: curva de saturación a diferentes temperaturas, curvas de respuesta en frecuencia y caracterización de pérdidas. Estos datos son de suma importancia al momento de realizar una simulación y por eso se seleccionó el Somaloy como el material del núcleo.      
+A pesar de que el Permalloy posee mejores características, la empresa fabricante del Somaloy proporciona una documentación más extensa en cuanto a las características de este como son: curva de saturación a diferentes temperaturas, curvas de respuesta en frecuencia y caracterización de pérdidas. Estos datos son de suma importancia al momento de realizar una simulación y por eso se seleccionó el Somaloy como el material del núcleo.      
 
 \subsubsection{Núcleo ferromagnético}
 
@@ -103,18 +103,18 @@ $$F_{min} = 50[N]$$
 
 Al tratarse de un rodamiento con fines demostrativos, se propuso esa fuerza para que el resultado final ocupe el menor espacio posible.
 
-El problema de seleccionar una distancia de operación recae en que una distancia muy grande requiere una mayor inducción magnética para generar una fuerza determinada, mientras que con una distancia pequeña es más fácil generar la misma fuerza con la desventaja de que se alcanza el punto de saturación con mayor rapidez. Además si la distancia es muy pequeña hay poco espacio para estabilizarlo. 
+El problema de seleccionar una distancia de operación recae en que una distancia muy grande requiere una mayor inducción magnética para generar una fuerza determinada, mientras que con una distancia pequeña es más fácil generar la misma fuerza con la desventaja de que se alcanza el punto de saturación con mayor rapidez. Además, si la distancia es muy pequeña hay poco espacio para estabilizarlo. 
  
 En la literatura podemos identificar rangos de operación de entre [...] [referencia] por lo que se optó por trabajar con un rango de:
 
 $$y_{max} = 0.75[mm]$$
 $$y_{min} = 0.25[mm]$$
 
-Teniendo en cuenta las características del material seleccionado y las condiciones de operación descritas anteriormente se procede a utilizar las formulas de la sección \ref{sec:diseno-elec}. 
+Teniendo en cuenta las características del material seleccionado y las condiciones de operación descritas anteriormente se procede a utilizar las fórmulas de la sección \ref{sec:diseno-elec}. 
 
 $$A = 12 * 24 = 288[mm^2]$$
 
-\subsubsection{Calculo de la bobina} \label{sec:radial-calculo-bobina}
+\subsubsection{Cálculo de la bobina} \label{sec:radial-calculo-bobina}
 
 Como se explica en la sección \ref{sec:calc-conductores}, la relación entre el número de vueltas y la corriente depende del balance entre eficiencia y respuesta en frecuencia. Se optó por utilizar una corriente de 2 A debido a la gran disponibilidad de componentes electrónicos que operan a este valor de corriente, además de ser un valor lo suficientemente alto como para que la inductancia no degrade la respuesta en frecuencia del electroimán. 
 
@@ -135,13 +135,13 @@ AWG & Di\'ametro & Area\;($mm^2$) & Resistencia (ohms/km) & Corriente Máxima & F
 \label{tabla:awg-18}
 \end{table}
 
-Aplicando la siguiente formula para determinar el número de vueltas, obtenemos que:
+Aplicando la siguiente fórmula para determinar el número de vueltas, obtenemos que:
 
 \begin{equation}
 N = \frac{NI_{max}}{I} = 314 [vueltas] \label{eq:vueltas-bobina}
 \end{equation}
 
-A través de la formula \ref{eq:area-bobina} y con las especificaciones del alambre esmaltado seleccionado, obtenemos la sección transversal de la bobina de:
+A través de la fórmula \ref{eq:area-bobina} y con las especificaciones del alambre esmaltado seleccionado, obtenemos la sección transversal de la bobina de:
 
 $$A_b = 287.13 \; mm^2 \; \approx \; 288 \; mm^2$$
 
@@ -185,19 +185,19 @@ Ahora que conocemos las características de los electroimanes, es necesario un ci
     \label{fig:amplificador-lineal}
 \end{figure}
 
-Un amplificador que opera en modo lineal como el de la figura \ref{fig:amplificador-lineal} opera de la siguiente manera: supongamos que tenemos que hacer pasar una corriente de 1 ampere a través de una carga de 10 Ohms, para que exista 1 ampere se necesitan 10 volts. Si nuestra fuente es de 20 volts esto implica que el transistor debe de absorber los 10 volts restantes. Esto implica disipar 10 W de potencia en forma de calor. Entonces es evidente la baja eficiencia que resulta operar de este modo.
+Un amplificador que opera en modo lineal, como el de la figura \ref{fig:amplificador-lineal}, opera de la siguiente manera: supongamos que tenemos que hacer pasar una corriente de 1 ampere a través de una carga de 10 Ohms, para que exista 1 ampere se necesitan 10 volts. Si nuestra fuente es de 20 volts esto implica que el transistor debe de absorber los 10 volts restantes. Esto implica disipar 10 W de potencia en forma de calor. Entonces es evidente la baja eficiencia que resulta operar de este modo.
 
 En cambio si decidimos operar en el modo de saturación y corte, tendríamos en las terminales del transistor unos valores de 0 volts, 20 amperes y 20 volts, 0 amperes respectivamente. Ambas situaciones corresponden a una potencia disipada de 0 W en el transistor. En otras palabras, la disipación de energía en forma de calor es mínima. 
 
 Para regular la corriente que circula conmutamos de un estado a otro de manera que el promedio de la corriente sea la corriente deseada.
 
-En la practica esta conmutación se realiza mediante transistores MOSFET debido a su baja resistencia en encendido Ron. El MOSFET es un dispositivo que controla la corriente a través del voltaje aplicado en sus terminales, donde la relación entre estas se encuentra determinada por:
+De manera pragmática, esta conmutación se realiza mediante transistores MOSFET debido a su baja resistencia en encendido Ron. El MOSFET es un dispositivo que controla la corriente a través del voltaje aplicado en sus terminales, donde la relación entre estas se encuentra determinada por:
 
 \begin{equation}
 I_d = G(V_g - V_{th})^2
 \end{equation}
 
-Donde $V_{th}$, conocido como voltaje de treshhold, es el voltaje mínimo para activar el transistor. Una vez el voltaje de compuerta $Vg$ llega sobrepasa el valor $V{sat}$ el transistor no deja incrementar mas la corriente y simplemente se comporta como una resistencia de valor $R_{on}$. A este modo de operación se le conoce como saturación.
+Donde $V_{th}$, conocido como voltaje de treshhold, es el voltaje mínimo para activar el transistor. Una vez el voltaje de compuerta $Vg$ llega sobrepasa el valor $V{sat}$ el transistor no deja incrementar más la corriente y simplemente se comporta como una resistencia de valor $R_{on}$. A este modo de operación se le conoce como saturación.
 
 Cuando se trata de conmutar una carga inductiva se generan picos de voltaje, pues la corriente que circula por un inductor no puede cambiar de manera instantánea o discontinua. Es por eso que se necesita de un diodo para proveer un camino por el que la corriente logre recircular y disminuir de manera controlada.
 
@@ -217,7 +217,7 @@ Cuando se trata de conmutar una carga inductiva se generan picos de voltaje, pue
     \end{subfigure}
 \end{figure}
 
-La razón de cambio en la corriente en un inductor depende del voltaje aplicado en sus terminales. En el circuito   \ref{fig:circuito-recirculacion} , cuando el transistor está activado el voltaje en las terminales es $V_{cc} \approx 20$, y cuando está desactivado (y la corriente circula por el diodo) el voltaje en las terminales es el voltaje de diodo $V_d \approx 0.5$. Entonces los valores de carga y descarga del inductor serán de:
+La razón de cambio en la corriente en un inductor depende del voltaje aplicado en sus terminales. En el circuito \ref{fig:circuito-recirculacion}, cuando el transistor está activado el voltaje en las terminales es $V_{cc} \approx 20$, y cuando está desactivado (y la corriente circula por el diodo) el voltaje en las terminales es el voltaje de diodo $V_d \approx 0.5$. Entonces los valores de carga y descarga del inductor serán de:
 
 \begin{equation}
 \frac{di}{dt}_{on} = \frac{V_{cc}}{L}
@@ -245,7 +245,7 @@ El problema es que el incremento y decremento de la corriente actúan de forma as
     \end{subfigure}
 \end{figure}
 
-Esta configuración es comúnmente conocida como puente "H" e implica varios detalles para su implementación, el primero de estos es la activación de los transistores. Como ya se ha mencionado, para operar de la manera mas eficiente es necesario llevar los transistores a su punto de saturación, en la mayoría de los transistores de potencia el voltaje de compuerta en saturación $V_{sat}$ oscila entre los 10 y 15 volts, y dado que la mayoría de los circuitos de procesamiento operan entre los 5 y 1.8 volts, es necesario de un circuito complementario para elevar los niveles de voltaje. No hacer esto causaría la polarización de los transistores en la zona lineal, lo que resultaría en el calentamiento de estos y una operación con baja eficiencia. 
+Esta configuración es comúnmente conocida como puente "H" e implica varios detalles para su implementación, el primero de estos es la activación de los transistores. Como ya se ha mencionado, para operar de la manera más eficiente es necesario llevar los transistores a su punto de saturación, en la mayoría de los transistores de potencia el voltaje de compuerta en saturación $V_{sat}$ oscila entre los 10 y 15 volts, y dado que la mayoría de los circuitos de procesamiento operan entre los 5 y 1.8 volts, es necesario de un circuito complementario para elevar los niveles de voltaje. No hacer esto causaría la polarización de los transistores en la zona lineal, lo que resultaría en el calentamiento de estos y una operación con baja eficiencia. 
 
 Otro problema consiste en polarizar los transistores de la figura \ref{fig:puente-h}, ya que para su correcta activación es necesario un voltaje de compuerta de hasta $V_{cc} + V{sat}$. 
 
@@ -257,7 +257,7 @@ Suponiendo que queremos mantener constante la corriente del inductor podemos des
 \frac{di}{dt} = \frac{-2V_d}{L}
 \end{equation}
 
-Como la resistencia de los transistores Ron es baja, si activamos los transistores 1 y 2 recirculando la corriente por estos la taza de cambio será:
+Como la resistencia de los transistores Ron es baja, si activamos los transistores 1 y 2 recirculando la corriente por estos la tasa de cambio será:
 
 \begin{equation}
 \frac{di}{dt} = \frac{R i}{L}
@@ -265,9 +265,9 @@ Como la resistencia de los transistores Ron es baja, si activamos los transistor
 
 A este modo de operación se le conoce como rectificación síncrona. Esto no se puede realizar con transistores bipolares, pero si con transistores MOSFET. 
 
-Podemos definir ahora dos estados de operación del puente H, un modo de accionamiento, donde se incrementa o decrementa la corriente en la bobina ($t_{fast}$ de la figura \ref{fig:carga-descarga-rapida}), y un modo de recirculación, donde la corriente se mantiene a un nivel casi constante, y donde solo están presentes la perdidas resistivas causadas por $R_{ESR}$ y $R_{on}$ ($t_{slow}$ de la figura \ref{fig:carga-descarga-rapida}).
+Podemos definir ahora dos estados de operación del puente H, un modo de accionamiento, donde se incrementa o decrementa la corriente en la bobina ($t_{fast}$ de la figura \ref{fig:carga-descarga-rapida}), y un modo de recirculación, donde la corriente se mantiene a un nivel casi constante, y donde solo están presentes la pérdidas resistivas causadas por $R_{ESR}$ y $R_{on}$ ($t_{slow}$ de la figura \ref{fig:carga-descarga-rapida}).
 
-Estos modos de operación puede implementarse usando el circuto de la figura [...], donde el arreglo de comparadores y flip flops permite controlar la corriente con una precision del $n\%$
+Estos modos de operación puede implementarse usando el circuto de la figura [...], donde el arreglo de comparadores y flip flops permite controlar la corriente con una precisión del $n\%$.
 
 [insertar figura circuito de activacion]
 
@@ -291,15 +291,15 @@ Podemos ver que la frecuencia máxima de la señal de salida depende de la amplitu
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_2/fb_linearization}
-        \caption{Esquema de retroalimentacion}
+        \caption{Esquema de retroalimentacion.}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
       %(or a blank line to force the subfigure onto a new line)
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_2/ferzas_radial}
-        \caption{Equivalencia de fuerzas}
+        \caption{Equivalencia de fuerzas.}
     \end{subfigure}
-    \caption{Linearizacion de electroimanes}
+    \caption{Linearización de electroimanes.}
 \end{figure}
 
 En caso de operar mas allá de los limites frecuencia-amplitud, se presentará una atenuación de magnitud:
@@ -335,7 +335,7 @@ El Rodamiento Magnético Axial (RMA) sirve para ejercer fuerzas de atracción alin
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_rma}
-    \caption{Rodamiento magnético axial}
+    \caption{Rodamiento magnético axial.}
 \end{figure}
 
 \subsection{Electroimán}
@@ -360,20 +360,20 @@ Siguiendo el procedimiento desarrollado en la sección \ref{sec:diseno-elec}, y c
 
 $$A = \frac{36 \pi}{4} = 1017[mm^2]$$
 
-\subsubsection{Calculo de la bobina}
+\subsubsection{Cálculo de la bobina}
 
 Con el fin de usar la misma electrónica de accionamiento para controlar el electroimán axial, se optó por usar el mismo valor de corriente en las bobinas de $I = 2 A$. 
 
-Como se explica en la sección \ref{sec:radial-calculo-bobina} para una corriente de $2 A$ corresponde un calibre AWG $18$ [ver tabla \ref{tabla:awg-18}.
+Retomando la sección \ref{sec:radial-calculo-bobina}, para una corriente de $2 A$ corresponde un calibre AWG $18$ [ver tabla \ref{tabla:awg-18}.
 
 Para el cálculo del número de vueltas se utiliza la ecuación \ref{eq:vueltas-bobina} resultando en $162$ vueltas.
 
-Con los parámetros anteriores y con la formula \ref{eq:area-bobina} se determina un área mínima de de: $148.14 \; mm^2 \; \approx \; 148 \; mm^2$. 
+Con los parámetros anteriores y con la fórmula \ref{eq:area-bobina} se determina un área mínima de: $148.14 \; mm^2 \; \approx \; 148 \; mm^2$. 
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/EIA_ensamble}
-    \caption{Dimensiones del Electroimán Axial}
+    \caption{Dimensiones del Electroimán Axial.}
 \end{figure}
 
 \subsection{Simulación FEM}
@@ -387,7 +387,7 @@ Con el fin de validar los cálculos y comprobar que el núcleo no alcance su punto
     \label{fig:simulacion-femm-axial}
 \end{figure}
 
-En la figura \ref{fig:simulacion-femm-axial} se puede observar que el valor máximo de inducción magnética es de $0.244 T$ lo cuál está por debajo del punto de saturación del material. Como se puede observar, las líneas de flujo magnético se curvan en los límites del entrehierro. A esto se le conoce como flujo marginal, y los efectos que causa sobre la fuerza del electroimán se puede observar en la figura \ref{fig:curva-fuerza-rma}:
+En la figura \ref{fig:simulacion-femm-axial} se puede observar que el valor máximo de inducción magnética es de $0.244 T$, lo cuál está por debajo del punto de saturación del material. Nótese como las líneas de flujo magnético se curvan en los límites del entrehierro, a esto se le conoce como flujo marginal y los efectos que causa sobre la fuerza del electroimán se puede observar en la figura \ref{fig:curva-fuerza-rma}:
 
 \begin{figure}[H]
     \centering
@@ -396,13 +396,13 @@ En la figura \ref{fig:simulacion-femm-axial} se puede observar que el valor máxi
     \label{fig:curva-fuerza-rma}
 \end{figure}
 
-Cabe destacar que el modelado desarrollado en la sección \ref{sec:flujo-marginal} el cual toma en cuenta los efectos del flujo marginal coincide con los resultados de la simulación FEM. 
+Cabe destacar que el modelado desarrollado en la sección \ref{sec:flujo-marginal}, el cual toma en cuenta los efectos del flujo marginal, coincide con los resultados de la simulación FEM. 
 
 \subsection{Electrónica de accionamiento}
 
 Como se mencionó anteriormente, se usará la misma electrónica de accionamiento que en el RMR. Sin embargo, debido a la diferencia en la inductancia de sus bobinas el sistema posee una respuesta en frecuencia distinta. 
 
-Usando las formulas \ref{eq:respuesta-frecuencia-accionamiento-1} y \ref{eq:respuesta-frecuencia-accionamiento-2} podemos determinar que la respuesta en frecuencia del electroimán para diferentes valores de corriente resultan en la figura \ref{fig:respuesta-frecuencia-electroiman-RMA}.  
+Usando las fórmulas \ref{eq:respuesta-frecuencia-accionamiento-1} y \ref{eq:respuesta-frecuencia-accionamiento-2} podemos determinar que la respuesta en frecuencia del electroimán para diferentes valores de corriente resultan en la figura \ref{fig:respuesta-frecuencia-electroiman-RMA}.  
 
 \begin{figure}[H]
     \centering
@@ -413,29 +413,29 @@ Usando las formulas \ref{eq:respuesta-frecuencia-accionamiento-1} y \ref{eq:resp
 
 \newpage
 
-\section{Modulo de compensación de carga estática}
+\section{Módulo de compensación de carga estática}
 
-Ante los problemas del alto consumo de corriente en los rodamientos magnéticos activos se propone una solución con base en los principios de funcionamiento de los rodamientos magnéticos pasivos, donde se optó por utilizar un imán permanente que deberá proveer un campo magnético base para reducir su consumo. 
+Ante los problemas del alto consumo de corriente en los rodamientos magnéticos activos, se propone una solución con base en los principios de funcionamiento de los rodamientos magnéticos pasivos, donde se optó por utilizar un imán permanente que deberá proveer un campo magnético base para reducir su consumo. 
 
-El MCCE consiste en un imán permanente cuya distancia al collarín de levitación es variada mediante un servomecanismo de retracción. De esta manera se puede ejercer una fuerza cuasiconstante con un mínimo consumo energético. Este se conforma de: imán permanente, núcleo ferromagnético, mecanismo de retracción, motor y un circuito de accionamiento. El imán permanente magnetiza todo el circuito, el núcleo guía el flujo magnético y maximiza la fuerza que el imán permanente puede ejercer. El mecanismo de retracción convierte el movimiento de rotación del motor en movimiento lineal para el imán permanente, y el circuito de accionamiento se encarga de controlar el motor. 
+El MCCE consiste en un imán permanente cuya distancia al collarín de levitación es variada mediante un servomecanismo de retracción. De esta manera, se puede ejercer una fuerza cuasiconstante con un mínimo consumo energético. Este se conforma de: imán permanente, núcleo ferromagnético, mecanismo de retracción, motor y un circuito de accionamiento. El imán permanente magnetiza todo el circuito, el núcleo guía el flujo magnético y maximiza la fuerza que el imán permanente puede ejercer. El mecanismo de retracción convierte el movimiento de rotación del motor en movimiento lineal para el imán permanente, y el circuito de accionamiento se encarga de controlar el motor. 
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_mcce}
-    \caption{Modulo de compensación para cargas estáticas}
+    \caption{Módulo de compensación para cargas estáticas.}
 \end{figure}
 
 \subsection{Análisis de consumo energético} 
 
-Como se indica en la sección \ref{sec:numero-polos} el consumo en un electroimán esta dado por:
+Como se indica en la sección \ref{sec:numero-polos}, el consumo en un electroimán esta dado por:
 
 \begin{equation}
 P = (\frac{R F}{K_e}) \label{eq:consumo-electroiman}
 \end{equation}
 
-En la ecuación \ref{eq:consumo-electroiman} se puede observa que el consumo depende de manera proporcionada a la fuerza aplicada por el electroimán. Si descomponemos esta fuerza en sus componentes de Fourier tenemos un termino constante y la suma de las componentes armónicas a diversas frecuencias.
+En la ecuación \ref{eq:consumo-electroiman} se puede observar que el consumo depende de manera proporcionada a la fuerza aplicada por el electroimán. Si descomponemos esta fuerza en sus componentes de Fourier tenemos un término constante y la suma de las componentes armónicas a diversas frecuencias.
 
-El término constate que usualmente corresponden al peso del objeto representa la mayor parte la fuerza, y por lo tanto, de las pérdidas. Eliminar esa componente de fuerza reduciría la corriente y el consumo energético total del rodamiento.
+El término constate que usualmente corresponde al peso del objeto representa la mayor parte la fuerza, y por lo tanto, de las pérdidas. Eliminar esa componente de fuerza reduciría la corriente y el consumo energético total del rodamiento.
 
 Usar un imán permanente con fuerza $F_{ip}$ como en el caso de un rodamiento pasivo, reduce las pérdidas del sistema a un valor de: 
 
@@ -463,7 +463,7 @@ Es posible variar la fuerza que ejerce un imán permanente variando la distancia 
 
 \subsection{Imán Permanente y Núcleo Ferromagnético}
 
-La fuerza que ejerce un imán permanente puede modelarse mediante la formula:
+La fuerza que ejerce un imán permanente puede modelarse mediante la fórmula:
 
 \begin{equation}
 	F = \frac{B_r^2}{2 \mu_0 (1 + (\frac{\mu_m}{\mu_0})(\frac{A_m}{A_g})(\frac{g}{l_m}))^2}[\frac{A_m + 2A_g}{2A_g}]
@@ -472,7 +472,7 @@ La fuerza que ejerce un imán permanente puede modelarse mediante la formula:
 
 Esta fuerza depende tanto de la geometría del imán permanente como del material del que esté compuesto. Donde $H_c$, $B_r$ y $A_m$ son los términos dominantes.  
 
-Es nuestro objetivo diseñar un conjunto imán-núcleo lo mas pequeño posible, y debido a que las dimensiones y composición de los imanes permanentes están determinadas por el fabricante nos limitamos a seleccionar el imán mas pequeño disponible. Este imán deberá generar al menos una fuerza $F_{min}$.   
+Es nuestro objetivo diseñar un conjunto imán-núcleo lo más pequeño posible, y debido a que las dimensiones y composición de los imanes permanentes están determinadas por el fabricante nos limitamos a seleccionar el imán más pequeño disponible. Este imán deberá generar al menos una fuerza $F_{min}$.   
 
 Finalmente las dimensiones del núcleo se determinan de tal manera que el imán permanente pueda instalarse dentro de éste.  
 
@@ -484,12 +484,12 @@ Para el diseño del imán tenemos el siguiente proceso:
 \item Seleccionar las dimensiones del imán permanente según disponibilidad del fabricante. 
 \item Dimensionar el núcleo guía de manera que acomode correctamente el imán permanente. 
 \item Usar la formula \ref{eq:fuerza-iman-permanente} para calcular la fuerza $F_{ip}$. 
-\item Si la fuerza $F_{min} > F_{ip}$ incrementar las dimension y repetir los pasos.
+\item Si la fuerza $F_{min} > F_{ip}$ incrementar las dimensión y repetir los pasos.
 \end{enumerate}
 
 \subsubsection{Selección del imán permanente}
 
-Entre las diferentes composiciones de imanes permanentes destaca el Neodimio-Hierro-Boro comúnmente conocidos como imanes de neodimio. Los valores mas altos $H_c$ y  $B_r$ son alcanzados por los imanes de grado $N52$, con valores de $B_r = 1400mT$ y $H_c=796kA/m$ [véase anexo B]. 
+Entre las diferentes composiciones de imanes permanentes destaca el Neodimio-Hierro-Boro comúnmente conocidos como imanes de neodimio. Los valores más altos $H_c$ y  $B_r$ son alcanzados por los imanes de grado $N52$, con valores de $B_r = 1400mT$ y $H_c=796kA/m$ [véase anexo B]. 
 
 Siguiendo el procedimiento anterior para generar una fuerza $F_{min}$ de al menos $50 N$ resultó en un imán cúbico de 10 mm por lado [...].
 
@@ -527,7 +527,7 @@ Para generar dicho desplazamiento se utiliza un mecanismo tornillo-tuerca, conoc
 	\caption{\textit{Mecanismo Tornillo Tuerca [...].}}
 \end{figure}
 
-Este mecanismo se puede plantear de dos formas: un tornillo de posición fija que al girar provoca el desplazamiento de la tuerca, o una tuerca fija que produce el desplazamiento del tornillo cuando este gira. En este caso utilizaremos el tornillo de posición fija, y la tuerca consistirá en la base del imán permanente. 
+Este mecanismo se puede plantear de dos formas: un tornillo de posición fija que al girar provoca el desplazamiento de la tuerca, o una tuerca fija que produce el desplazamiento del tornillo cuando este gira. En este caso, utilizaremos el tornillo de posición fija y la tuerca consistirá en la base del imán permanente. 
 Este tipo de mecanismos son utilizados en diferentes aplicaciones y son ideales como mecanismos de desplazamiento, debido en parte a su gran precisión y al reducido espacio que requieren. 
 El avance depende de dos factores [18 ...]:
 
@@ -560,14 +560,14 @@ Con el fin de reducir la fuerza producida por el imán permanente hasta un valor 
 
 Para el motorreductor se seleccionó el modelo \textbf{LP 6V 1000:1} de Pololu [...]. Este motorreductor miniatura de alto par tiene una caja de cambios de $1000: 1$, por lo que es una gran opción para aplicaciones que requieren un control preciso a velocidades muy bajas. Estas unidades tienen un eje de salida en forma de D de $3 mm$ de diámetro.
 
-Este motorreductor posee unas especificaciones clave de $14 RPM @ 6 V$ y $40 mA$ al vacio, $5 kg-cm$ de par y $0.36 A$ en bloqueo.
+Este motorreductor posee unas especificaciones clave de $14 RPM @ 6 V$ y $40 mA$ al vacío, $5 kg-cm$ de par y $0.36 A$ en bloqueo.
 
 Estos motores están diseñados para poder operar a $6 V$, aunque en general, estos tipos de motores pueden funcionar a voltajes por encima y por debajo de este voltaje nominal, por lo que deberían funcionar cómodamente en el rango de $3 - 9 V$. 
  
     \begin{figure}[H]
     \centering
         \includegraphics[width=0.3\textwidth]{images/Capitulo_3/motoreductor}
-        \caption{Motoreductor.}
+        \caption{Motorreductor.}
     \end{figure}
 
 Finalmente el ensamble del MCCE queda ilustrado en la figura \ref{fig:configuracion-final-MCCE}.
@@ -575,13 +575,13 @@ Finalmente el ensamble del MCCE queda ilustrado en la figura \ref{fig:configurac
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/Capitulo_3/Mecanismo_ensamble}
-    \caption{Configuracion final MCCE}
+    \caption{Configuración final MCCE.}
     \label{fig:configuracion-final-MCCE}
 \end{figure}
 
 \subsection{Accionamiento}
 
-Como se indica en la sección \ref{sec:Motorreductor} la corriente máxima que demanda el motor es de $360 mA$. Como queremos mover el motor en ambas direcciones es necesario un circuito de puente H para su accionamiento. Para ello se seleccionó el circuito integrado L293. 
+Como se indica en la sección \ref{sec:Motorreductor}, la corriente máxima que demanda el motor es de $360 mA$. Como queremos mover el motor en ambas direcciones es necesario un circuito de puente H para su accionamiento. Para ello se seleccionó el circuito integrado L293. 
 
 Este controlador de motor cuenta con dos puentes H que se pueden utilizar para el control bidireccional de dos motores de corriente continua o para controlar un solo motor de pasos. Funciona a partir de $4.5$ a $36 V$ y puede entregar una corriente pico de $1 A$ por canal. La conexión de este circuito integrado se muestra en la figura \ref{fig:puente-h-l293}.
 
@@ -618,7 +618,7 @@ Seguimos con el par torsor de salida que es proporcional a la corriente del moto
  \label{eq:motor-MCCE-2}	
 \end{equation}
 
-Y finalmente el voltaje contraelectromotriz, la cual es proporcional a la velocidad del motor:
+Y finalmente el voltaje contraelectromotriz, el cual es proporcional a la velocidad del motor:
  
 \begin{equation}
  V_{E} = K_v \omega 
@@ -637,17 +637,17 @@ Y la relación de los pares torsores será:
  T_2 = \frac{N_1}{N_2} T_1
 \end{equation}
 
-Finalmente relacionamos el par torsor con la fuerza de elevación y descenso del tornillo. Debido a la acción de la fricción se tiene una ecuación para el descenso y otra para la elevación. Para el par de elevación tenemos:
+Finalmente se relaciona el par torsor con la fuerza de elevación y descenso del tornillo. Debido a la acción de la fricción se tiene una ecuación para el descenso y otra para la elevación. Para el par de elevación tenemos:
 
 \begin{equation}
     T = \frac{F \cdot d_m}{2} \cdot \frac{\rho + (\pi \cdot \mu \cdot d_m \cdot \sec \theta)}{(\pi \cdot d_m) - (\mu \cdot \rho \cdot  \sec \theta)} 
 \end{equation}
 
-donde: \\
+Donde: \\
     $F$ = Valor de la carga\\
-    $\rho$ = paso del tornillo \\
-    $d_m$ = diametro medio del tornillo\\
-    $\mu$ = Coeficiente de rozamientre la rosca y le tornillo \\
+    $\rho$ = Paso del tornillo \\
+    $d_m$ = Diámetro medio del tornillo\\
+    $\mu$ = Coeficiente de rozamiento la rosca y le tornillo \\
     $\theta$ = $\frac{Angulo;de;la;rosca}{2}$\\
 
 Y para el par de descenso tenemos:
@@ -673,7 +673,7 @@ Todas estas ecuaciones se introducen en el modelo de \textbf{Simulink} que queda
 
 El sensor de distancia capacitivo sirve para medir la posición del rotor dentro del rodamiento. Este sensor consiste en un electrodo y un circuito de acondicionamiento. 
 
-El electrodo proyecta un campo eléctrico al frente de éste y la interacción del rotor con este campo causa cambios en la capacitancia que son convertidos a una señal de frecuencia variable por el circuito de acondicionamiento.
+El electrodo proyecta un campo eléctrico al frente de este y la interacción del rotor con este campo causa cambios en la capacitancia que son convertidos a una señal de frecuencia variable por el circuito de acondicionamiento.
 
 \begin{figure}[htb]
     \centering
@@ -710,7 +710,7 @@ Para el sensor se utilizó un diseño similar al presentado por [14...], con la di
 
 \subsection{Electrodos}
 
-El electrodo consiste en una placa frontal ($S_1$), un conductor cilíndrico externo que actúa como blindaje pasivo del sistema ($S_3$) y un conductor cilíndrico interno ($S_2$) que actúa como blindaje activo, el cual reduce los efectos de la capacitancia parásita dentro del electrodo. Finalmente un conductor recubierto en el centro conecta el área sensitiva de la placa frontal con el circuito de acondicionamiento.
+El electrodo consiste en una placa frontal ($S_1$), un conductor cilíndrico externo que actúa como blindaje pasivo del sistema ($S_3$) y un conductor cilíndrico interno ($S_2$) que actúa como blindaje activo que reduce los efectos de la capacitancia parásita dentro del electrodo. Finalmente un conductor recubierto en el centro conecta el área sensitiva de la placa frontal con el circuito de acondicionamiento.
 
 La geometría del electrodo determina la capacitancia y por lo tanto la sensitividad del dispositivo. Modelar la relación entre la geometría del sensor y su capacitancia requiere solucionar la ecuación: 
 
@@ -735,7 +735,7 @@ El electrodo del SCD posee una geometría como se muestra en la figura \ref{fig:g
         \includegraphics[height=6cm]{images/Capitulo_3/cdc_geometria_side}
         \caption{Vista lateral.}
     \end{subfigure}
-    \caption{Geometria del SDC}
+    \caption{Geometría del SDC}
     \label{fig:geometria-sdc}
 \end{figure}
 
@@ -745,7 +745,7 @@ Se define $A_3$ como el área del anillo externo $S_3$ y $A_1$ como el área de la
 \alpha = \frac{A_1}{A_3}
 \end{equation}
 
-Si realizamos una simulación variando los parámetros $A_1$ y $A_3$, podemos observar que entre mas grande sea el área del electrodo más grande será la capacitancia. Este comportamiento concuerda con la ecuación del capacitor de placas paralelas \ref{eq:capacitor-placas-paralelas}.
+Si realizamos una simulación variando los parámetros $A_1$ y $A_3$, podemos observar que entre más grande sea el área del electrodo más grande será la capacitancia. Este comportamiento concuerda con la ecuación del capacitor de placas paralelas \ref{eq:capacitor-placas-paralelas}.
 
 \begin{equation}
 C = \frac{\epsilon A}{d}
@@ -758,9 +758,9 @@ Sin embargo el rotor es un objetivo con una superficie curva por lo que hay que 
 
 [insertar figura de curvas desfasadas]
 
-Entonces para calcular el punto optimo es necesario realizar un conjunto de simulaciones variando $\alpha$ contemplando la curvatura real del rotor. Esto se realiza mediante un script de \textbf{Matlab} capaz de generar diferentes configuraciones del electrodo y ejecutar una simulación en FEMM para calcular la capacitancia dentro de cada configuración. Este conjunto de datos es recolectado y graficado para determinar el punto óptimo como se muestra en la figura [punto optimo de alpha...].
+Entonces para calcular el punto óptimo es necesario realizar un conjunto de simulaciones variando $\alpha$, contemplando la curvatura real del rotor. Esto se realiza mediante un script de \textbf{Matlab} capaz de generar diferentes configuraciones del electrodo y ejecutar una simulación en FEMM para calcular la capacitancia dentro de cada configuración. Este conjunto de datos es recolectado y graficado para determinar el punto óptimo como se muestra en la figura [punto optimo de alpha...].
 
-Finalmente se ejecuta otro script que varia la distancia entre el objetivo y el sensor para obtener la curva característica mostrada en la figura [curva caracterisitica...]
+Finalmente se ejecuta otro script que varía la distancia entre el objetivo y el sensor para obtener la curva característica mostrada en la figura [curva caracterisitica...]
 
 [insertar figura de curva caracteristica]
 
@@ -770,7 +770,7 @@ Una vez conocidos el rango de capacitancias es posible diseñar un circuito que s
 
 La conversión es realizada por un circuito integrado 555 en configuración de multivibrador astable, usando el electrodo como capacitor de temporización. Este  circuito debe de ser la versión CMOS del 555 que presenta menores corrientes de polarización, las cuales podrían alterar la frecuencia de oscilación.
 
-El potencial del blindaje activo es controlado por un amplificador operacional en modo seguidor de voltaje, el cual tiene una salida idéntica al voltaje de su entrada, además de una alta impedancia de entrada con el fin de no alterar las mediciones de frecuencia. Además la conversión de señal simple a señal balanceada es realizada por un driver diferencial.
+El potencial del blindaje activo es controlado por un amplificador operacional en modo seguidor de voltaje, el cual tiene una salida idéntica al voltaje de su entrada además de una alta impedancia de entrada con el fin de no alterar las mediciones de frecuencia. Además la conversión de señal simple a señal balanceada es realizada por un driver diferencial.
 
 \begin{figure}[H]
     \centering
@@ -798,12 +798,12 @@ Este collarín se compone principalmente de cuatro partes: el cuerpo principal, e
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_cl}
-    \caption{Diagrama funcional del Collarín de levitación.}
+    \caption{Diagrama funcional del collarín de levitación.}
 \end{figure}
 
 \subsection{Material del anillo y disco ferromagético}
 
-Como se realizó en la sección \ref{sec:seleccion-somaloy} se selecciona el material Somaloy 3P [hoja de datos en anexo D] para formar el anillo y núcleo ferromagnéticos. Este material posee las siguientes características: 
+Como se realizó en la sección \ref{sec:seleccion-somaloy}, se selecciona el material Somaloy 3P [hoja de datos en anexo D] para formar el anillo y núcleo ferromagnéticos. Este material posee las siguientes características: 
 
 \begin{itemize}
 \item Punto de saturación: $1.42 - 1.63 T$
@@ -815,7 +815,7 @@ Como se realizó en la sección \ref{sec:seleccion-somaloy} se selecciona el mater
 El cuerpo principal se usa como medio de acople entre el collarín y el eje, además de servir como soporte para el resto de los componentes. Sin embargo, el cuerpo del collarín cuenta con algunas restricciones en cuanto al material del que esté fabricado:
 
 \begin{itemize}
-\item El material no puede ser metálico para evitar las corrientes parásitas (Corrientes de Foucault).
+\item El material no puede ser metálico para evitar las corrientes parásitas (corrientes de Foucault).
 \item Debe ser lo suficientemente rígido para evitar deformarse por las fuerzas que actúen sobre él. 
 \item Debe ser lo suficientemente liviano para no exceder la fuerza máxima que puede generar los electroimanes y el imán permanente.  
 \item Además debe contar con una permitividad eléctrica ($\epsilon$) alta para mejorar su detectabilidad antes el SDC. 
@@ -834,17 +834,17 @@ Para nuestro caso compararemos dos propiedades relacionadas a las restricciones 
 \item Densidad. 
 \end{itemize}
 
-Como sabemos, el Módulo de Elasticidad, también llamado Módulo de Young, es un parámetro característico de un material que indica la relación que existe entre la tensión y la correspondiente deformación unitaria en un material sometido a un esfuerzo, y que está por debajo del límite de elasticidad del material. El módulo de Young indica la rigidez del material, es decir, la oposición de éste a ser deformado. Cuanto más rígido sea el material, mayor es su módulo de elasticidad. 
+Como sabemos, el Módulo de Elasticidad, también llamado Módulo de Young, es un parámetro característico de un material que indica la relación que existe entre la tensión y la correspondiente deformación unitaria en un material sometido a un esfuerzo, y que está por debajo del límite de elasticidad del material. El módulo de Young indica la rigidez del material, es decir, la oposición de este a ser deformado. Cuanto más rígido sea el material, mayor es su módulo de elasticidad. 
 
 Para el análisis del material con el software CES EduPack compararemos únicamente polímeros relacionando el Módulo de Young y la densidad, obteniendo un total de 738 materiales disponibles:
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\textwidth]{images/Capitulo_3/Material1}
-    \caption{Diagrama total de materiales (Modulo de Young vs. Densidad).}
+    \caption{Diagrama total de materiales (Módulo de Young vs. Densidad).}
 \end{figure}
 
-Para poder reducir el número de materiales desplegados y facilitar la selección podemos definir algunos limites dentro de los parámetros que se establecieron. En este caso nos basaremos en los valores de densidad y módulo de Young de las poliamidas que, como ya vimos, son uno de los plásticos de ingeniería más utilizados, principalmente para la fabricación de componentes mecánicos como rodamientos y engranes. 
+Para poder reducir el número de materiales desplegados y facilitar la selección podemos definir algunos límites dentro de los parámetros que se establecieron. En este caso, nos basaremos en los valores de densidad y módulo de Young de las poliamidas que, como ya vimos, son uno de los plásticos de ingeniería más utilizados, principalmente para la fabricación de componentes mecánicos como rodamientos y engranes. 
 
 Esto nos ayuda a establecer un parámetro de selección a falta de contar con datos más específicos en cuanto a las condiciones de operación más allá de las restricciones que se establecieron anteriormente. Estos datos pueden ser obtenidos dentro de la biblioteca de materiales que contiene el software. Sin embargo, debido a la gran cantidad de compuestos y variantes que presenta este material no puede establecerse un valor exacto, por lo que se proponen unos valores promedio de:
 
@@ -856,7 +856,7 @@ Esto nos ayuda a establecer un parámetro de selección a falta de contar con dato
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\textwidth]{images/Capitulo_3/Material2}
-    \caption{Límite máximo para el modulo de Young.}
+    \caption{Límite máximo para el módulo de Young.}
 \end{figure}
 
 \begin{figure}[h!]
@@ -907,17 +907,17 @@ El ensamble final de los componentes descritos anteriormente se muestran en la f
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_controlador}
-    \caption{Controlador}
+    \caption{Controlador.}
 \end{figure}
 \subsection{Modelo dinámico de rotor}
 \subsection{Linearización}
 \subsection{Controlador retroalimentado}
 \subsection{Controlador integral}
 \subsection{Observador simple}
-\subsection{Observador kalman}
+\subsection{Observador Kalman}
 
-\section{Integracion}
-Para la correcta simulacion y control de se requiere de las ecuaciones que describan la dinamica del rotor.
+\section{Integración}
+Para la correcta simulación y control de se requiere de las ecuaciones que describan la dinamica del rotor.
 \begin{figure}[htb]
 \begin{center}
 \centering
