@@ -904,29 +904,34 @@ El ensamble final de los componentes descritos anteriormente se muestran en la f
 \newpage
 
 \section{Controlador}
-\begin{figure}[h]
+
+Un rodamiento magnético no estaría completo sin un sistema de control que se encarga de hacer las correcciones necesarias para mantener el eje en levitación. Este sistema de control consiste en un controlador retroalimentado en espacio de estados y un observador para determinar el estado del sistema. 
+
+El procedimiento realizado a continuación consiste en obtener un modelo dinámico del eje, linealizar la representación del sistema, especificar la respuesta deseada, calcular las ganancias del controlador-observador en modo continuo y discretizar el conjunto controlador-observador. Además mediante el control calendarizado se compensaran los efectos de controlar un sistema no lineal usando una aproximación linealizada. Finalmente se discuten los efectos que puede tener el ruido de los sensores y su solución mediante la implementación del observador de Kalman. 
+
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_controlador}
-    \caption{Controlador}
+    \caption{Diagrama funcional del controlador.}
 \end{figure}
-\subsection{Modelo dinámico de rotor}
-\subsection{Linearización}
-\subsection{Controlador retroalimentado}
-\subsection{Controlador integral}
-\subsection{Observador simple}
-\subsection{Observador kalman}
 
-\section{Integracion}
-Para la correcta simulacion y control de se requiere de las ecuaciones que describan la dinamica del rotor.
+\newpage
+
+\subsection{Modelo dinámico del eje}
+
+El primer paso consiste en obtener el modelo dinámico del sistema. En la figura \ref{fig:diagrama-cl-eje} podemos observar las fuerzas que actúan sobre el eje $F_a$, $F_r$, $F_p$ correspondientes al EIA, EIR e IP respectivamente. 
+
 \begin{figure}[htb]
 \begin{center}
 \centering
-\includegraphics[width=12cm]{images/Capitulo_2/diagrama_cuerpo_libre_rotor}
-\caption{Diagrama de cuerpo libre del rotor}
-\label{fig:control:inercia-rmh}
+\includegraphics[width=\textwidth]{images/Capitulo_2/diagrama_cuerpo_libre_rotor}
+\caption{Diagrama de cuerpo libre del eje.}
+\label{fig:diagrama-cl-eje}
 \end{center}
 \end{figure}
-Los electroimanes radiales Fr1 y Fr2 ejercen fuezas en el plano z,y, mientras que los electroimanes axiales ejercen fuerzas en el ejex, y el iman permanente ejerce fuerzas en el eje z.
+
+El EIR ejerce fuerzas en el plano $Y-Z$, mientras el EIA y el IP ejercen fuerzas en los ejes $X$ y $Z$ respectivamente. Estas fuerzas están representadas en la ecuación \ref{eq:fuerzas-rotor}. 
+
 \begin{equation}
 	\vec{F}_{r} = \begin{pmatrix}
 	0\\
@@ -943,41 +948,56 @@ Los electroimanes radiales Fr1 y Fr2 ejercen fuezas en el plano z,y, mientras qu
 	0\\
 	F_{pz}\\
 	\end{pmatrix}
+	\label{eq:fuerzas-rotor}
 \end{equation}
-Los respectivos momentos son
+
+Los respectivos momentos generados por el EIR y el IP son:
+
 \begin{equation}
 	\vec{M}_r = \vec{r}_r \times \vec{F}_r 
 \end{equation}
-Existe un problema con simplificar la acción conjunta de los electroimanes axiales en xx, es posible ver que el momento generado cuando la fuerza es xx es xx, y el torque generado cuando la fuerza es xx va en el mismo sentido, entonces tenemos que el momento que ejerce los electrimanes raidales es
+
+\begin{equation}
+	\vec{M}_p = \vec{r}_p \times \vec{F}_p 
+\end{equation}
+
+Si consideramos la acción conjunta de ambos EIA como una sola fuerza, entonces el momento generado por estos será de la forma:
+
 \begin{equation}
 	\vec{M}_A = \vec{r}_a \times abs(\vec{F}_a)
 \end{equation}
+
+Para establecer la ecuación de suma de momentos es necesario determinar la matriz de inercia para el eje representado por la figura \ref{fig:inercia-rotor-diagrama}. 
 
 \begin{figure}[htb]
 \begin{center}
 \centering
 \includegraphics[width=12cm]{images/Capitulo_2/diagrama_momentos}
-\caption{Momentos de inercia}
-\label{fig:control:inercia-rmh}
+\caption{Diagrama de momentos de inercia.}
+\label{fig:inercia-rotor-diagrama}
 \end{center}
 \end{figure}
 
+En la figura \ref{fig:inercia-rotor-diagrama} podemos identificar tres elementos correspondientes al eje y al par de collarines. Podemos calcular la matriz de inercia respecto a los ejes principales aplicando el teorema de ejes paralelos, lo que resulta en la ecuación \ref{eq:matriz-inercia-paralelos}. 
 
-Para la matriz de inercial podemos diferencia la barra de los collarines de levitación como se muestra en la figura \ref{fig:control:inercia-rmh} y aplicando el teorema de ejes paralelos podemos reescribir su matriz de inercia como
 \begin{equation}
 	[I] = \begin{pmatrix}
 	I_{xxa} + 2I_{xxb}  & 0 & 0\\
 	0 & I_{yya} + 2I_{yyb} + 2m_b r_b^2 & 0\\
 	0 & 0 & I_{zza}+2I_{zzb}+ 2 m_b r_b^2
 	\end{pmatrix}
+	\label{eq:matriz-inercia-paralelos}
 \end{equation}
-gracias a la simetría radial del cuerpo eje-collarín los momentos principales $Iyy$ e $Izz$ son iguales, pudiendo reducir la ecuación xx a la forma 
+
+Debido a que el conjunto eje-collarín posee simetría radial respecto al eje $X$, los momentos principales $Iyy$ e $Izz$ son iguales, lo que permite reducir la ecuación \ref{eq:matriz-inercia-paralelos} a la forma:  
+
 \begin{equation}
 	[I] = \begin{pmatrix}
 	I_{xx}  & 0 & 0\\
 	0 & I_{\rho}  & 0\\
 	0 & 0 & I_{\rho}
 	\end{pmatrix}
+	\label{eq:matriz-inercia-reducida}
 \end{equation}
 
 \begin{figure}[htb]
@@ -1018,16 +1038,13 @@ calcular el producto cruz requiere que ambos vectores esten en el mismo marco de
 	\end{pmatrix}
 \end{equation}
 
+\subsection{Linealización}
 
-\subsection{Modelo dinamico del rotor}
-\todo[inline]{Modelo del eje}
-\todo[inline]{Modelo completo del sistema}
-\subsection{Controladores}
-\todo[inline]{Observador de estados}
-\todo[inline]{Estabilzacion}
-\todo[inline]{Servocontrol}
-\todo[inline]{Discretizacion}
-\todo[inline]{Fusion de sensores}
-\todo[inline]{El problema del ruido}
-\todo[inline]{Integrar los datos de 3 sensores}
-\todo[inline]{El aplicando el filtro de kalman}
+\subsection{Controlador retroalimentado}
+
+\subsection{Controlador integral}
+
+\subsection{Observador simple}
+
+\subsection{Observador kalman}
+
