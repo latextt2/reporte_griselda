@@ -1126,7 +1126,7 @@ Nótese que debido al orden multivariable del sistema, lo que en la ecuación \ref
 \end{equation}
 
 \subsection{Controlabilidad}
-Se dice que un sistema es controlable, si se puede trasferir desde cualquier estado inicial $x(t_0)$ cualquier otro estado mediante un vector de control sin restricciones, en un intevalo de tiempo finito.\\
+Se dice que un sistema es controlable si se puede trasferir desde cualquier estado inicial $x(t_0)$ a cualquier otro estado mediante un vector de control sin restricciones en un intevalo de tiempo finito.\\
 Para un sistema de la forma:
 \begin{equation}
 	\label{eq:control:sistema-lti}
@@ -1136,16 +1136,16 @@ Para un sistema de la forma:
 	\label{eq:control:salida}
 	y=Cx + Du
 \end{equation}
-Se define la matriz de controlabilidad asociada $M_c$
+Se define la matriz de controlabilidad asociada $M_c$ como:
 \begin{equation}
 	\label{eq:control:matriz-de-controlabilidad}
 	 M_c= [\ B\  AB\ \cdots\  A^{n-1}B\ ]
 \end{equation}
-El sistema es de estado completamente controlable si y solo si la matriz $M_c$ de $n \times nr$ tiene rango $n$, o sea que contenga n vectores columna linealmente independientes.
+El sistema es de estado completamente controlable sí y solo sí la matriz $M_c$ de $n \times nr$ tiene rango $n$, o sea, que contenga n vectores columna linealmente independientes.
 
 \subsection{Observabilidad}
-Para un sistema descrito  por las ecuaciones \ref{eq:control:sistema-lti} y  \ref{eq:control:salida}, se dice que es completamente observable si el estado $x(t_0)$ se puede determinar a partir de las observaciones de $y(t)$ durante un intervalo de tiempo finito $t_0 < t < t_1$ por tanto, el sitema es completamente obsevable si todas la transiciones del estado afectan eventualmente a todos los elementos del vector de salida. El concepto de observabilidad es util al resolver el problema de reconstruir variables de estado no medibles a partir de variables que si lo son en el tiempo minimo posible.\\
-Se define la matriz de observabilidad $M_o$ como
+Para un sistema descrito por las ecuaciones \ref{eq:control:sistema-lti} y \ref{eq:control:salida}, se dice que es completamente observable si el estado $x(t_0)$ se puede determinar a partir de las observaciones de $y(t)$ durante un intervalo de tiempo finito $t_0 < t < t_1$. Por tanto, el sistema es completamente obsevable si todas la transiciones del estado afectan eventualmente a todos los elementos del vector de salida. El concepto de observabilidad es útil al resolver el problema de reconstruir variables de estado no medibles a partir de variables que sí lo son.\\
+Se define la matriz de observabilidad $M_o$ como:
 \begin{equation}
 	\label{eq:control:observabilidad}
 	M_o = 
@@ -1156,52 +1156,51 @@ Se define la matriz de observabilidad $M_o$ como
 	CA^{n-1}
 	\end{pmatrix}
 \end{equation}
-El sistema descrito por las ecuaiones es completamente obsevable si y solo si la matriz ${M_o}^T$ es de rango n o $M_o$ tiene n vectores fila linealmente independientes.
+El sistema descrito por las ecuaciones es completamente obsevable sí y solo sí la matriz ${M_o}^T$ es de rango n ó $M_o$ tiene n vectores fila linealmente independientes.
 
 \subsection{Control retroalimentado}
-En esta seccion se presenta un metodo de diseño conocido comunmente como tecnicas de ubicacion o de asignacion de polos. Se supondra que todas las variables de estado son medibles y que estan disponibles para su realimentacion. Se demostara que, si el sistema considerado es de estado completamente controlabe, los polos del sistema en lazo cerrado se pueden colocar en cualquier posicion deseada mediante una realimentacion del estado a traves de una matriz de ganancia adecuada.
+En esta sección se presenta un método de diseño conocido comúnmente como técnicas de ubicación o de asignación de polos. Se supondrá que todas las variables de estado son medibles y que están disponibles para su realimentación. Si el sistema considerado es de estado completamente controlable, los polos del sistema en lazo cerrado se pueden colocar en cualquier posición deseada mediante una realimentación del estado a través de una matriz de ganancia adecuada.
 
-La tecnica de diseño empieza con la determinacion de los polos en lazo cerrado deseados a partir de las respuesta transistoria y/o las especificaionnes de la repuesta en frecuencia, tales como velocidad, razon de amotiguamiento, o ancho de banda, al igual que los requisitos en estado estacionario.
+La técnica de diseño empieza con la determinación de los polos en lazo cerrado deseados a partir de las respuesta transitoria y/o las especificaciones de la respuesta en frecuencia, tales como velocidad, razón de amortiguamiento, o ancho de banda, al igual que los requisitos en estado estacionario.
 
-En lugar deespecificar solo los polos domonantes en lazo cerrado (enfoque del diseño convencion), el enfoque actual de aisgnacion de poslos especificia toos los polos en lazo cerrado. (sin embargo, ahy un costo asocial con color todolos los en lazo cerrado porque hacerlo requiere tener buenas medidas de todas las variables de esto, o bien incluir un obsevador de estado en el sistema.) Tambien existe un requisito por parte del sistema para que los polos en lazo cerrado se pueda situar en posiciones elegidas de forma arbitraria. La exigencia es que el sistema sea de estado completamente controlable.
+En lugar de especificar sólo los polos dominantes en lazo cerrado (enfoque del diseño por convención), en el enfoque actual de asignación de polos, se especifican todos los polos en lazo cerrado. Sin embargo, hay un costo asociado con colocar todo los polos en lazo cerrado, porque hacerlo requiere tener buenas medidas de todas las variables, o bien incluir un obsevador de estado en el sistema. También existe un requisito por parte del sistema para que los polos en lazo cerrado se puedan situar en posiciones elegidas de forma arbitraria. La exigencia es que el sistema sea de estado completamente controlable.
 \subsubsection{Controlador de estados}
-Consideremos el esquema de control de la figura \ref{fig:control:control-retroalimentado}, en este esque de control conocida como retrolimentacion de estado completo se usa como entrada el producto de vector de estados $x$ y la matriz de ganancias $K$ de manera que
+Consideremos el esquema de control de la figura \ref{fig:control:control-retroalimentado}, en este esquema de control conocida como retrolimentación de estado completo, se usa como entrada el producto de vector de estados $x$ y la matriz de ganancias $K$ de manera que:
 \begin{figure}[htb]
 \begin{center}
 \centering
 	\includegraphics[height=4cm]{images/Capitulo_1/control_retroalimentado}
-	\caption{\textit{Esquema de control retroalimentado}}
+	\caption{\textit{Esquema de control retroalimentado.}}
 	\label{fig:control:control-retroalimentado}
 \end{center}
 \end{figure}
 \begin{equation}
 	u = -Kx
 \end{equation}
-sustiyendo esta nueva entrada en la ecuacion ?? obtenemos la ecuacion
+Sustituyendo esta nueva entrada en la ecuación \ref{eq:control:sistema-lti} obtenemos:
 \begin{equation}
 	\dot{x} = (A- BK)x = \tilde{A}x
 \end{equation}
-Esta nueva ecuacion tiene una dinamica establecida por los polos de la matriz $\tilde{A}$, entonces con la correcta seleccion de la matriz $K$ podemos cambiar de manera arbitraria la dinamica del sistema, simpre y cuando el sistema sea copletamente controlable.
+Esta nueva ecuación tiene una dinámica establecida por los polos de la matriz $\tilde{A}$. Luego entonces con la correcta selección de la matriz $K$ podemos cambiar de manera arbitraria la dinámica del sistema, siempre y cuando, este sea completamente controlable.
 
-Exiten varios metodos para calcular la matriz $K$ entre los que destacan el metodo de kalman, el metodo de ackerman. en al caso de sistema con una sola entrada esta matriz existen soluciones unicas, para sistemas con multriple entradas existen infinitas solciones, en estos ultimos el metodo de kalman y ackerman no funcionan.
+Exiten varios métodos para calcular la matriz $K$ entre los que destacan el método de Kalman y el método de Ackerman. Para el caso de sistemas con una sola entrada existen soluciones únicas para esta matriz, sin embargo, para sistemas con múltiples entradas existen infinita cantidad de soluciones. Por tanto, el método de Kalman y Ackerman no funcionan para estos últimos.
 
-Debido a las infinitas soluciones se necesitan restricciones adicionales para obtener soluciones concretas, un metodo que reslta robusto es de [] en donde se mimiminza la sensitivdad del sistema a las perturbaciones.
-Este metodo es el que implemeta el comand 'place' de matlab
+Debido a las infinitas soluciones, se necesitan restricciones adicionales para obtener soluciones concretas. Un método que resulta robusto es el desarrollado por Kautsky et al. en 1985, donde se minimiza la sensitivdad del sistema a las perturbaciones. Este método es el que implementa el comando 'place' de Matlab.
 \subsubsection{Observador de estados}
-Un observador de estado estima las variables de estado basandose en las mediciones de las variables de salida y de control. El concepto de obsevabilidad juega un papel importante.
+Un observador de estado estima las variables de estado basándose en las mediciones de las variables de salida y de control. El concepto de obsevabilidad juega un papel importante.
 
 \begin{figure}[htb]
 \begin{center}
 \centering
 	\includegraphics[height=4cm]{images/Capitulo_1/observador_estados}
-	\caption{\textit{Observador de estados}}
+	\caption{\textit{Observador de estados.}}
 \end{center}
 \end{figure}
 
 
-En el analsis que sisgue de los observadores de estado, se ultizara la notacion $\tilde{x}$ para desigar el vector de estado observado. En muchos casos practicos, el vector de estado obsevado $\tilde{x}$ se usa en la realimentacion del estado para generar el vector de control deseado.
+En el análisis de los observadores de estado que se presenta a continuación, se utilizará la notación $\tilde{x}$ para designar el vector de estado observado. En muchos casos prácticos, el vector de estado observado $\tilde{x}$ se usa en la realimentación del estado para generar el vector de control deseado.
 
-servador de estado. Un observador de estado estima las varables de estado basandose en las mediciones de las variables de salida y de controll Por lo tando, el concepto de obvabilidad analiza en ref?? juega un papel importante. como se veras mas adelas obesvadores de estado diseñarse si solo si se satisface la condicion de observabilidad.
+Observador de estado. Un observador de estado estima las variables de estado basándose en las mediciones de las variables de salida y de control. Por ende, el concepto de observabilidad analiza en ref?? juega un papel importante. Como se verá más adelante, los observadores de estado pueden diseñarse sí y solo sí se satisface la condición de observabilidad.
 
 En el analsis que sisgue de los observadores de estado, se tulizara la notacion $\tilde{x}$ para desigar el vector de estado obseravdo. En muchos casos practicos, el vector de estado obsevado $\tilde{x}$ se usa en la realimentacion del estado para generar el vector de control desseado.
 El observadoro es un subsistema para reconstruir el vector de estado de la planada. El modelo matematico del observador es basicamente el mismo que el de la planta, salvo que se inluye un termino adicional que contiene el error de estimacion para compsensar las imprecisiones en las matrices Ay B y la falta del erroe icinial. El error de estimacion o erroe deobsevacion la diferencia en tres la salida mediad y la salida estimada el error inicial es la diferencial entre el estado inicial y el estado esmitado iniial. De esta forma, se define el modelo matmatico el observador como
