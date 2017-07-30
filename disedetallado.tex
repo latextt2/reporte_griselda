@@ -670,80 +670,109 @@ Todas estas ecuaciones se introducen en el modelo de \textbf{Simulink} que queda
 \newpage
 
 \section{Sensor de distancia capacitivo}
+
+El sensor de distancia capacitivo sirve para medir la posición del rotor dentro del rodamiento. Este sensor consiste en un electrodo y un circuito de acondicionamiento. 
+
+El electrodo proyecta un campo eléctrico al frente de éste y la interacción del rotor con este campo causa cambios en la capacitancia que son convertidos a una señal de frecuencia variable por el circuito de acondicionamiento.
+
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_sdc}
-    \caption{Sensor de distancia capacitivo}
+    \caption{Sensor de distancia capacitivo (SDC).}
 \end{figure}
 
-\subsection{Requerimientos del sensor}
-
-Las condiciones de operación del sensor presentan dificultades incluyendo:
+Este sensor presenta ventajas como: 
 
 \begin{enumerate}
-	\item Un rango de operación reducido (1mm a 3mm).
+	\item Un rango de operación de $0.5 mm$ a $2mm$.
 	\item Medición sin contacto. 
 	\item Inmunidad al ruido de acoplamiento magnético causado por los electroimanes.
 	\item Rápida respuesta.
-	\item Resolución mínima 100$um$.
 \end{enumerate}
 
-\subsection{Electrodos}
-El elctrodo es la parte fundamental del SCD, y su geometria afecta de manera directa a la sensitivadad del dispositivo.
+Para el sensor se utilizó un diseño similar al presentado por [14...], con la diferencia de que el circuito de acondicionamiento se encuentra embebido dentro de la  carcasa del electrodo, esto con el fin de eliminar los efectos de la capacitancia parásita producidos e introducidos por el cable coaxial, además dado que la carcasa actúa como blindaje se previenen interferencias externa de tipo eléctrico.
 
-Modelar la relacion entre la geometria del sensor y su sensitividad requiere solucionar la ecuacion.
+\subsection{Electrodos}
+
+El electrodo consiste en una placa frontal ($S_1$), un conductor cilíndrico externo que actúa como blindaje pasivo del sistema ($S_3$) y un conductor cilíndrico interno ($S_2$) que actúa como blindaje activo, el cual reduce los efectos de la capacitancia parásita dentro del electrodo. Finalmente un conductor recubierto en el centro conecta el área sensitiva de la placa frontal con el circuito de acondicionamiento.
+
+La geometría del electrodo determina la capacitancia y por lo tanto la sensitividad del dispositivo. Modelar la relación entre la geometría del sensor y su capacitancia requiere solucionar la ecuación: 
+
 \begin{equation}
-ecuacion de poisson para medio discontinueo
+\nabla^2 V = 0
 \end{equation}
 
-Las soluciones de esta ecuacion estan fuerza del alcanze de este trabajo, asi como se hace [??] nos disponemos usar el simulador electrostatico de FEMM para determinar la configuracion optima.
+Las soluciones analíticas de esta ecuación para la geometría usada en este sensor está fuera del alcance de este trabajo, en su lugar usando el software de simulación electrostática FEMM encontramos soluciones numéricas y de esta manera determinamos la capacitancia del electrodo, así como se realizó en [paper texas instruments...]. 
 
-El electrodo del SCD posee una geometria de forma
-\begin{figure}[htb]
+El electrodo del SCD posee una geometría como se muestra en la figura \ref{fig:geometria-sdc}.
+
+\begin{figure}[H]
     \centering
-    \begin{subfigure}[b]{0.4\textwidth}
-        \includegraphics[width=\textwidth]{images/Capitulo_2/cdc_geometria_top}
-        \caption{Vista frontal}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \includegraphics[height=6cm]{images/Capitulo_3/cdc_geometria_top}
+        \caption{Vista frontal.}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
       %(or a blank line to force the subfigure onto a new line)
-    \begin{subfigure}[b]{0.4\textwidth}
+    \begin{subfigure}[b]{0.45\textwidth}
     	\centering
-        \includegraphics[height=4cm]{images/Capitulo_2/cdc_geometria_side}
-        \caption{Vista lateral}
+        \includegraphics[height=6cm]{images/Capitulo_3/cdc_geometria_side}
+        \caption{Vista lateral.}
     \end{subfigure}
     \caption{Geometria del SDC}
+    \label{fig:geometria-sdc}
 \end{figure}
 
-donde $d_i$ es el diametro externo del electrodo positivo, $d_o$ es el diametro interno del electrodo positivo, la relacion entre las area de ambos electrodos es $\alpha$
-
-Si relizamos una simlacion en barrido, variando los parametros podemos observar que, entres mas grande sea el area del electrodo mas grande es capacitancia, esto se podia esperar observando la ecuacion del capacitor ??. 
-Dado un diametro total $D$ el valor de $\alpha$ que maximiza la capacitancia del sensor es 1, o en otras palabras, areas iguales del anillo interior y exterior.
-
-Calcular los parametros que maximizan la capacitancia, consideramos funcion escalar $f(\vec{P})$ el gradiente $\nabla f$ es el vector que indica el mas rapido incremento de la funcion f, asi pues si calculos de manera iterativa el vector de parametros p de la forma
+Se define $A_3$ como el área del anillo externo $S_3$ y $A_1$ como el área de la placa frontal $S_1$. Y a la relación entre estos dos como $\alpha$ de manera que: 
 
 \begin{equation}
-\vec{P}_{k+1} = \vec{P}_k + \gamma \nabla f
+\alpha = \frac{A_1}{A_3}
 \end{equation}
 
-el vector de parametros $\vec{P}$ terminara por converger en el maximo local, de la fucion $f$, este metodo es conocido como descenso por gradiente.
+Si realizamos una simulación variando los parámetros $A_1$ y $A_3$, podemos observar que entre mas grande sea el área del electrodo más grande será la capacitancia. Este comportamiento concuerda con la ecuación del capacitor de placas paralelas \ref{eq:capacitor-placas-paralelas}.
 
-Para su implemtacion, usamos un script capaz de generar una configuracion del sistema, usar femm para calcular su capacitancia, y de manera descrita calcular las derivadas, y de manera iterativa llegar los parametros que optimizan la sensitividad.
+\begin{equation}
+C = \frac{\epsilon A}{d}
+\label{eq:capacitor-placas-paralelas}
+\end{equation} 
+
+Suponiendo un objetivo de sensado con superficie plana y un área total constante $A_t$ el valor de $\alpha$ que maximiza la capacitancia del sensor es igual a $1$, en otras palabras, áreas iguales entre la placa frontal y el anillo exterior [referencia paper texas instruments].
 
 
-\todo[inline]{Descripcion de los efectos de la geometria en los sosores de capacitancia proyectada}
-\todo[inline]{Simulacion femm}
-\todo[inline]{Software para calculo de geometria optica}
-\todo[inline]{Dimensiones finales del sensore}
-\todo[inline]{Caracteristicas finales del sensores}
+Sin embargo el rotor es un objetivo con una superficie curva por lo que hay que tener en cuenta los efectos que pueda tener en la sensitividad del sensor. En la figura [curvas desfasadas...] se puede observar que bajo diferentes curvaturas el valor óptimo de $\alpha$ se desfasa. 
+
+[insertar figura de curvas desfasadas]
+
+Entonces para calcular el punto optimo es necesario realizar un conjunto de simulaciones variando $\alpha$ contemplando la curvatura real del rotor. Esto se realiza mediante un script de \textbf{Matlab} capaz de generar diferentes configuraciones del electrodo y ejecutar una simulación en FEMM para calcular la capacitancia dentro de cada configuración. Este conjunto de datos es recolectado y graficado para determinar el punto óptimo como se muestra en la figura [punto optimo de alpha...].
+
+Finalmente se ejecuta otro script que varia la distancia entre el objetivo y el sensor para obtener la curva característica mostrada en la figura [curva caracterisitica...]
+
+[insertar figura de curva caracteristica]
+
 \subsection{Circuito de acondicionamiento}
-\todo[inline]{Conversion de capacitancia a frecuencia}
-\begin{figure}[h]
+
+Una vez conocidos el rango de capacitancias es posible diseñar un circuito que se encargará de convertir la capacitancia del electrodo en una señal cuadrada con una frecuencia variable, seguido de la conversión de la señal cuadrada a una señal diferencial para aumentar su inmunidad al ruido. Este circuito además se encarga de aplicar un voltaje al blindaje activo del electrodo hasta llevarlo al mismo potencial eléctrico que la placa frontal con el fin de reducir los efectos de la capactitancia parásita. 
+
+La conversión es realizada por un circuito integrado 555 en configuración de multivibrador astable, usando el electrodo como capacitor de temporización. Este  circuito debe de ser la versión CMOS del 555 que presenta menores corrientes de polarización, las cuales podrían alterar la frecuencia de oscilación.
+
+El potencial del blindaje activo es controlado por un amplificador operacional en modo seguidor de voltaje, el cual tiene una salida idéntica al voltaje de su entrada, además de una alta impedancia de entrada con el fin de no alterar las mediciones de frecuencia. Además la conversión de señal simple a señal balanceada es realizada por un driver diferencial.
+
+\begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/sdc_ensamble}
-    \caption{Explosionado SDC}
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/Circuito_acondicionamiento}
+    \caption{Circuito de acondicionamiento.}
 \end{figure}
 
+Finalmente el circuito queda dentro de una caja metálica a fin de operar como jaula de Faraday y aislarlo del posible ruido eléctrico en el ambiente como se muestra en la figura \ref{fig:explosionado-sdc}. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/sdc_ensamble}
+    \caption{Explosionado del SDC.}
+    \label{fig:explosionado-sdc}
+\end{figure}
+
+\newpage
 
 \section{Collarín de levitación}
 \begin{figure}[h]
