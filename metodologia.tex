@@ -873,69 +873,62 @@ Al igual que en el caso continuo, un sistema discreto es estable si se presenta 
 
 \section{Dinámica}
 
-Para modelar el comportamiento de los cuerpos en movimientos es decesario aplicar las ecuaciones de la mecanica clasica.
-Un cuerpo rigido ubicado en el espacio posee 6 grados de libertad (parametros necesarios para describir su configuracion), la posicion espacial de su centro de masa, y su orientacion. La segunda ley de newton nos permite calcular la traslacion del objeto, mientras que las ecuaciones de euler nos permiten calcular su orientacion.
+Para modelar el comportamiento de los cuerpos en movimiento es necesario aplicar las ecuaciones de la mecánica clásica. Un cuerpo rígido ubicado en el espacio posee 6 grados de libertad (cantidad mínima de parámetros necesarios para describir su configuración), la posición espacial de su centro de masa, y su orientación. La segunda ley de Newton nos permite calcular la traslación del objeto, mientras que las ecuaciones de Euler nos permiten calcular su orientación.
 
-En el sistema coordenado cartesiano se define el vector de posicion r como
+Para el sistema de coordenadas cartesiano, se define el vector de posición $\vec{r}$ como:
 \subsection{Movimiento translacional}
 \begin{equation}
 \vec{r }= [r_x,r_y,r_z]
 \end{equation}
-el vector de velocidad como
+El vector de velocidad $\vec{v}$ como:
 \begin{equation}
 \vec{v} = \frac{d}{dt}\vec{r}
 \end{equation}
-y el vector de aceleracion a como 
+Y el vector de aceleración $\vec{a}$ como:
 \begin{equation}
 \vec{a} = \frac{d}{dt}\vec{v}
 \end{equation}
-En la mecaninca newtoniana se define la cantidad de movimiento como el producto de la masa por la velocidad, \begin{equation}
+En la mecánica newtoniana se define la cantidad de movimiento como el producto de la masa por la velocidad: \begin{equation}
 \vec{P} = m\vec{v}
 \end{equation}
-el momento lineal obede la ley de consevacion, lo cual significa que el momento lineal de todo sistema cerrado permance constantes en el tiempo.\\
-La segunda ley de newton establece que la razon de cambio del momento lineal de un cuerpo es igual a la suma de las fuerzas  fuerzas aplicadas a este. para un objecto de masa constante esto resulta den la ecuacion
+El momento lineal obedece a la ley de conservación, lo cual significa que el momento lineal de todo sistema cerrado permanece constante en el tiempo. 
+
+La segunda ley de Newton establece que la razón de cambio del momento lineal de un cuerpo es igual a la suma de las fuerzas aplicadas a este. Para un objeto de masa constante, esto resulta en la ecuación:
 \begin{equation}
 \sum{\vec{F}} = \frac{d}{dt}\vec{P} = m\vec{a}
 \end{equation}
 \subsection{Movimiento rotacional}
-Describir la orientacion del objecto similar, sin embargo la rotacion del objecto introduce una serie de inconveniencias a la hora de calcular las derivadas.
-Momento lineal - Momento angular
-Fuerza -  Momento de torsion
-masa - Matriz de inercia
-
-
-Describir la orientacion es mas complejo, para eso necesitamos tener el claro los conceptos analogos
-\subsubsection{Momento de torsion}
-\todo[inline]{Se introduce la definicion de torque}
-Cuando se aplica una fuerza en algún punto de un cuerpo rígido, dicho cuerpo tiende a realizar un movimiento de rotación en torno a algún eje,  la propiedad de la fuerza aplicada para hacer girar al cuerpo se mide con una magnitud física que llamamos torque o momento de torsion. El momento de torsion es la capacidad de dicha fuerza para producir una rotacion al rededor de un punto.
+\subsubsection{Momento de torsión}
+%\todo[inline]{Se introduce la definición de torque}
+Cuando se aplica una fuerza en algún punto de un cuerpo rígido, dicho cuerpo tiende a realizar un movimiento de rotación en torno a algún eje, la propiedad de la fuerza aplicada para hacer girar al cuerpo se mide con una magnitud física denominada torque (momento de torsión). El momento de torsión es la capacidad de dicha fuerza para producir una rotación alrededor de un punto.
 
 \begin{equation}
 \vec{M}_o = \vec{r}_o \times \vec{F} 
 \end{equation}
 
 \subsubsection{Momento angular}
-El momento angular de un sistema de particulas respecto a un punto $o$ se define como:
+El momento angular de un sistema de partículas respecto a un punto $o$ se define como:
 \begin{equation}
 	\vec{H}_o = \sum{ \vec{r}_o \times \vec{P}}
 \end{equation}
-para un solido rigido tenemos
+Para un sólido rígido tenemos:
 \begin{equation}
 \label{eq:fisica:momento_angular_integral}
  \vec{H_o} = \int_m{\vec{r_o} \times \vec{v}dm} = \int_m{\vec{r_o} \times \vec{\omega} \times \vec{r_o} dm} 
 \end{equation}
-desarrollando la ecuacion \ref{eq:fisica:momento_angular_integral} para un sistema cartesiano tenemos que:
+Desarrollando la ecuación \ref{eq:fisica:momento_angular_integral} para un sistema cartesiano, tenemos que:
 \begin{equation}
 	H_G = (I_{xx}\omega_x - I_{xy}\omega_y - I_{xz}\omega_z)i + (- I_{yx}\omega_x + I_{yy}\omega_y - I_{yz}\omega_z)j + (- I_{zx}\omega_x + I_{zy}\omega_y + I_{zz}\omega_z)k
 \end{equation}
-donde los terminos $I_{xx}, I_{yy}, I_{zz}$ comunmente conocidos como momentos principales se definen como: 
+Donde los términos $I_{xx}, I_{yy}, I_{zz}$, comúnmente conocidos como momentos principales, se definen como:
 \begin{equation}
 	I_{xx} = \int_m (y^{'2} + z^{'2})dm, I_{yy} = \int_m (x^{'2} + z^{'2})dm, I_{zz} = \int_m (x^{'2} + y^{'2})dm,  
 \end{equation}
-y los terminos $I_{xy}, I_{xz} y I_{yz}$ conocidos como productos de inercia se definen como:
+Y los términos $I_{xy}, I_{xz} y I_{yz}$, conocidos como productos de inercia, se definen como:
 \begin{equation}
 	I_{xy} = I_{yx} = \int_m x^{'}y^{'}dm, I_{xz}=I_{zx}= \int_m x^{'} z^{'} dm, I_{yz}=I_{zy}= \int_m y^{'} z^{'} dm,     
 \end{equation}
-La ecuacion del momento angular puede ser expresada de forma matricial como
+La ecuación del momento angular puede ser expresada de forma matricial como:
 \begin{equation}
 	\begin{pmatrix}
 	H_{Gx}\\
@@ -951,30 +944,32 @@ La ecuacion del momento angular puede ser expresada de forma matricial como
 	\omega_z
 	\end{pmatrix}
 \end{equation}
-o en su forma compacta como
+O bien, en su forma compacta como:
 \begin{equation}
 	\vec{H}_G = [I_G] \vec{\omega}
 \end{equation}
-donde a $[I_G]$ se le cononce como tensor de inercia, este refleja la distribución de masa de un cuerpo en rotación respecto a un eje de giro y es una medida de su inercia rotacional. El momento de inercia solo depende de la geometría del cuerpo y de la posición del eje de giro.
+Donde a $[I_G]$ se le cononce como tensor de inercia, este refleja la distribución de masa de un cuerpo en rotación respecto a un eje de giro y es una medida de su inercia rotacional. El momento de inercia solo depende de la geometría del cuerpo y de la posición del eje de giro.
 
-La ecuacion que a menos que la velocidad anguar $\omega$ sea un un eigen vector de la matriz de inercia, el momento augular y la velocidad angular no estaran en la misma direccion. Ademas debido a que los momentos de inercia dependen de la distribucion de la masa con respecto a los ejes coordenados si el objeto rota.
+A menos que la velocidad angular $\omega$ sea un eigen vector de la matriz de inercia, el momento angular y la velocidad angular no estarán en la misma dirección. Además que, los momentos de inercia dependen de la distribución de la masa con respecto a los ejes coordenados si el objeto rota.
 
-El momento angular de un sistema de particulas se conseva si ningun torque externo es aplicado, o dicho de otra forma la razon de cambio del momento angular de un cuerpo es la suma de los momentos de torsion aplicados a este.
+El momento angular de un sistema de partículas se conseva si ningún torque externo es aplicado, esto es, la razón de cambio del momento angular de un cuerpo es la suma de los momentos de torsión aplicados sobre este.
 
 \begin{equation}
 	\sum{\vec{M}} = \dot{\vec{H}} = \dot{[I]}\vec{\omega} + [I]\dot{\vec{\omega}}
+	\label{eq:derivada-del-momento-angular}
 \end{equation}
-A diferencia del la segunda ley de newton, donde la masa permanece constante, los momentos de la matriz de inercia varian segun la posicion y orientacion del objeto, y como ya se ha mencionado, el problema reside en tener que recalcular estos momentos, por lo que comunmente se opta por cambiar aun sistema de referencia que se mueva con el objeto.
+A diferencia de la segunda ley de Newton, donde la masa permanece constante, los momentos de la matriz de inercia varían según la posición y orientación del objeto. Como ya se ha mencionado, el problema reside en tener que recalcular estos momentos, por lo que comúnmente se opta por cambiar a un sistema de referencia que se mueva con el objeto.
 
-Calcular la derivada de un vector $\vec{V}$ en un marco de referencia $xyz$ que gira con una velocidad angular $\vec{\Omega}$ requiere la aplicacion del teorema de coreolis
+Para calcular la derivada de un vector $\vec{V}$ en un marco de referencia $xyz$ que gira con una velocidad angular $\vec{\Omega}$, se requiere aplicar el teorema de Coriolis.
 \begin{equation}
 	\dot{\vec{V}} = (\dot{\vec{V}})_{xyz}  + \vec{\Omega} \times (\vec{V})
 \end{equation}
-gracias a esto podemos considerar a $[I]$ como constante y la ecuacion ?? se convierte en
+Gracias a esto, podemos considerar a $[I]$ como constante y por ende, la ecuación \ref{eq:derivada-del-momento-angular} se convierte en:
 \begin{equation}
 	\sum{\vec{M}} = [I] \dot{\vec{\omega}} + \vec{\Omega} \times \vec{H}
+	\label{eq:derivada-inercia-coriolis}
 \end{equation}
-Para el caso especial donde velocidad angular del objeto $\vec{\omega}$ es la misma que la velocidad angular del marco movil $\vec{\Omega}$, y si los ejes marco movil coinciden con los ejes principales del objeto, entonces podemos expandir la ecuacion ?? en la forma
+Para el caso especial donde la velocidad angular del objeto $\vec{\omega}$ es la misma que la velocidad angular del marco móvil $\vec{\Omega}$ y los ejes del marco móvil coinciden con los ejes principales del objeto, entonces podemos expandir la ecuación \ref{eq:derivada-inercia-coriolis} en la forma:
  
 \begin{equation} \label{eq:fisica:eq_euler_1}
 	M_x = I_{xx}\dot{\omega}_x - (I_{yy} - I_{zz}) \omega_y\omega_z
@@ -985,22 +980,20 @@ Para el caso especial donde velocidad angular del objeto $\vec{\omega}$ es la mi
 \begin{equation} \label{eq:fisica:eq_euler_3}
 	M_z = I_{zz}\dot{\omega}_z - (I_{xx} - I_{yy}) \omega_x\omega_y
 \end{equation} 
-este conjunto de ecuacion se conoce como las ecuaciones de euler, y nos proveen de un medio para calcular el movimiento de un cuerpo rigido en tres dimensions, sin embargo estas ecuciones presentan problemas para encotrar sus soluciones ya que estas poseen productos de $\omega$ y esto representa no linealidades. El otro problema consiste en definir la forma en la que se represetaran la rotacion del marco movil.
+Este conjunto de ecuaciones se les conoce como ecuaciones de Euler, y nos proveen de un medio para calcular el movimiento de un cuerpo rígido en tres dimensions. Sin embargo, estas ecuaciones presentan problemas para encontrar sus soluciones ya que poseen productos de $\omega$ y esto representa no linealidades. El otro problema consiste en definir la forma en la que se represetará la rotación del marco móvil.
 
-\subsubsection{Angulos de Euler}
-Para determinar la posicion del marco movil se utilizan un conjunto de rotaciones consecutivas, al conjunto de angulos que definen estas rotaciones se les conoce como angulos de euler.
-
-Exiten 12 secuencias distintas de rotaciones entre los que mas destacan las rotacion ZXZ conocidos como angulos de euler clasicos, y la rotacion ZXY conocidos como angulos de Tyat-Bryan, estos ultimos son usualmente usados para la navegacion.
+\subsubsection{Ángulos de Euler}
+Para determinar la posición del marco móvil se utilizan un conjunto de rotaciones consecutivas, al conjunto de ángulos que definen estas rotaciones se les conoce como ángulos de Euler. Existen 12 secuencias distintas de rotaciones entre las que más destacan la rotación ZXZ (ángulos de Euler clásicos), y la rotación ZXY (ángulos de Tyat-Bryan), estos últimos son usualmente usados para la navegación.
 
 \begin{figure}[htb]
 \begin{center}
 \centering
 	\includegraphics[width=10cm, height=4cm]{images/Capitulo_1/secuencia_angulos_euler}
-	\caption{\textit{Secuencia de rotaciones ZYX}}
+	\caption{\textit{Secuencia de rotaciones ZYX.}}
 \end{center}
 \end{figure}
 
-Usando matrices de rotaciones de magnitud $\psi$,$\theta$ y $\phi$  para representar la rotaciones Z,Y,X respectivamente, terminanos con la transformacion $T$.
+Usando las matrices de rotaciones de magnitud $\psi$,$\theta$ y $\phi$ para representar la rotaciones Z,Y,X respectivamente, obtenemos la transformación $T$.
 \begin{equation}
 	T_1^B (\phi,\theta,\psi)= \begin{pmatrix}
 	1 & 0 & 0\\
@@ -1016,19 +1009,19 @@ Usando matrices de rotaciones de magnitud $\psi$,$\theta$ y $\phi$  para represe
 	0 & 0 & 1
 	\end{pmatrix}			
 \end{equation}
-o en su forma compacta
+De forma compacta:
 \begin{equation}
 	T_1^B (\phi,\theta,\psi)= {T^B_2} (\phi) {T_1}^2 (\theta) {T_l}^1 (\psi) 	
 \end{equation}
-lo que se busca es encontrar una relacion entre la velocidad angular del marco movil
+Lo que se busca es encontrar una relación entre la velocidad angular del marco móvil
 \begin{equation}
 	\Omega_B = \begin{pmatrix}
-	\Omega_x\\
-	\Omega_y\\
+	\Omega_x\\  
+	\Omega_y\\  
 	\Omega_z
 	\end{pmatrix}_B
 \end{equation}
-y el conjunto de angulos de euler
+y el conjunto de ángulos de Euler.
 \begin{equation}
 	\Theta = \begin{pmatrix}
 	\phi\\
@@ -1036,7 +1029,7 @@ y el conjunto de angulos de euler
 	\psi
 	\end{pmatrix}
 \end{equation}
-Debido a que cada rotacion ocurre sobre su propio eje es necesario representar las velocidades angulares como
+Debido a que cada rotación ocurre sobre su propio eje es necesario representar las velocidades angulares como:
 %%tercera parte
 \begin{equation}
 	\begin{pmatrix}
@@ -1056,8 +1049,9 @@ Debido a que cada rotacion ocurre sobre su propio eje es necesario representar l
 	0\\
 	\dot{\psi}
 	\end{pmatrix}
+	\label{eq:velocidad-angular-euler}
 \end{equation}
-Debido a como se definen la rotaciones, la direccion del vector $phi$ siempre coincide con el eje $x$, si expandimos la ecuacion ?? reagrupamos terminos obtenemos la matriz de transformacion $Q^B$
+A causa de cómo están definidas la rotaciones, la dirección del vector $\vec{\phi}$ siempre coincide con el eje $x$, si expandimos la ecuación \ref{eq:velocidad-angular-euler} y reagrupamos términos obtenemos la matriz de transformación $Q^B$:
 
 \begin{equation}
 	\begin{pmatrix}
@@ -1074,8 +1068,7 @@ Debido a como se definen la rotaciones, la direccion del vector $phi$ siempre co
 	\dot{\psi}
 	\end{pmatrix} = {Q^B} \Theta
 \end{equation}
-finalmente se calcula la transformada inversa, teganse en cuenta que $[(Q)^{-1} \neq (Q)^T]$
-
+Finalmente se calcula la transformada inversa (debemos tener en cuenta que $[(Q)^{-1} \neq (Q)^T]$):
 \begin{equation}
 	\begin{pmatrix}
 	\dot{\phi}\\
@@ -1091,12 +1084,12 @@ finalmente se calcula la transformada inversa, teganse en cuenta que $[(Q)^{-1} 
 	\Omega_z
 	\end{pmatrix} = (Q^B)^{-1} \Omega_B
 \end{equation}
-Notese que matriz ${Q_B^l}$ se indetermina para valores de $\theta = \pm\pi/2$, para todos los juegos de angulos de euler existen puntos donde la matriz inversa se indetermina, por eso es importante la correcta seleccion del juego de angulos.
+Nótese que matriz ${Q_B^l}$ se indetermina para valores de $\theta = \pm\pi/2$. Para todos los juegos de ángulos de Euler existen puntos donde la matriz inversa se indetermina, por eso es importante la correcta selección del juego de ángulos.
 
 \pagebreak
 \section{Control}
-\subsection{Linearizacion}
-Cuando modelelamos sistemas es comun la aparicion de sistemas no lineales, y encotramos el problema de que toda la teoria presentada sobre control esta centrada en sistemas lineales, en lugar de desarrollar una teoria separada para su manejo, se presenta un metodo para aproximar un sistema no lineal en uno lineal.
+\subsection{Linearización}
+Cuando modelamos sistemas, es común la aparición de sistemas no lineales, y encotramos el problema de que toda la teoría presentada sobre el control esta centrada en sistemas lineales. En lugar de desarrollar una teoría separada para su manejo, se presenta un método para aproximar un sistema no lineal en uno lineal.
 \begin{equation}
 	\label{eq:control:seriesdetaylor}
 	f(x) = f(x_0) + f'(x_0)x +\frac{ f''(x_0)}{2!}x^2 ... 
@@ -1105,36 +1098,36 @@ Cuando modelelamos sistemas es comun la aparicion de sistemas no lineales, y enc
 	\label{eq:control:seriesdetaylor-approx}
 	f(x) \approx f(x_0) + f'(x_0)x 
 \end{equation}
-Consideremos la expansion en series de taylor \ref{eq:control:seriesdetaylor}, entre mas terminos usemos en la expansion mas se aproximara a la funcion original, sin embargo, los primeros dos terminos son suficientes con la condicion de que no nos alejemos demasiado del punto $x_0$, tambien tiene que tenerse en cuenta que el termino $f(x_0)$ rompe con el principio de homogeneidad por lo que a \ref{eq:control:seriesdetaylor-approx} tampoco se le puede considerar un funcion lineal.
+Considérese la expansión en series de Taylor (\ref{eq:control:seriesdetaylor}). Entre más términos usemos en la expansión más se aproximará a la función original, sin embargo, los primeros dos términos son suficientes con la condición de que no nos alejemos demasiado del punto $x_0$. También tiene que tenerse en cuenta que el término $f(x_0)$ rompe con el principio de homogeneidad, por lo que a \ref{eq:control:seriesdetaylor-approx} tampoco se le puede considerar una función lineal.
 
 \begin{equation}
 	\label{eq:control:nolineal}
 	\dot{x} =  f(x,u)
 \end{equation}
-Consideremos el sistema no lineal \ref{eq:control:nolineal} donde $f$ es un mapeo de $R^{n} \times R^{m} \to R^{n}$. En caso que la funcion $f$ evaluara cero el sistema  permaneceria sin cambios.Entonces se define un punto de equilibrio como un conjunto de valores $\bar{x}$, $\bar{u}$ donde se cumple que:
+Considérese el sistema no lineal \ref{eq:control:nolineal}, donde $f$ es un mapeo de $R^{n} \times R^{m} \to R^{n}$. En caso que la función $f$ evaluara cero, el sistema  permanecería sin cambios. Entonces se define un punto de equilibrio como un conjunto de valores $\bar{x}$, $\bar{u}$, donde se cumple que:
 \begin{equation}
 	f(\bar{x},\bar{u}) = 0_n
 \end{equation}
-Ahora que se tiene un punto de operacion, se miden las desviaciones de $x$ y $u$, estas seran las nuevas entradas del sistema, entonces se definen las variables de desviacion:
+Ahora que se tiene un punto de operación, se miden las desviaciones de $x$ y $u$, estas serán las nuevas entradas del sistema. Luego entonces se definen las variables de desviación:
 \begin{equation}
 \begin{aligned}
 	\delta_x(t) := x(t) - \bar{x}\\
 	\delta_u(t) := u(t) - \bar{u}
 \end{aligned}
 \end{equation}
-Realizando el cambio de variable, y aplicando la aproximacion \ref{eq:control:seriesdetaylor-approx} se tiene la nueva ecuacion en variables de estado:
+Realizando el cambio de variable, y aplicando la aproximación (\ref{eq:control:seriesdetaylor-approx}), se tiene la nueva ecuación en variables de estado:
 \begin{equation}
 	\dot{\delta_x} = A \delta_x  + B \delta_u
 \end{equation}
-Notece que debido al orden multivariable del sistema, lo que en la ecuacion \ref{eq:control:seriesdetaylor-approx} es una derivada simple, en la ecuacion  \ref{eq:control:jacobiano} son jacobianos o matrices con derivadas parciales.
+Nótese que debido al orden multivariable del sistema, lo que en la ecuación \ref{eq:control:seriesdetaylor-approx} es una derivada simple, en la ecuación \ref{eq:control:jacobiano} son jacobianos o matrices con derivadas parciales.
 \begin{equation}
 \label{eq:control:jacobiano}
 	A := \frac{\partial f}{\partial x}\biggr\rvert_{\substack{x =\bar{x} \\ u = \bar{u}}}\ \ \ \ \ \ \ \ B := \frac{\partial f}{\partial u}\biggr\rvert_{\substack{x =\bar{x} \\ u = \bar{u}}}
 \end{equation}
 
 \subsection{Controlabilidad}
-Se dice que un sistema es controlabe, si se puede trasferir desde cualquier estado inicial $x(t_0)$ cualquier otro estado mediante un vector de control sin restricciones, en un intevalo de tiempo finito.\\
-Para un sistema de la forma
+Se dice que un sistema es controlable, si se puede trasferir desde cualquier estado inicial $x(t_0)$ cualquier otro estado mediante un vector de control sin restricciones, en un intevalo de tiempo finito.\\
+Para un sistema de la forma:
 \begin{equation}
 	\label{eq:control:sistema-lti}
 	\dot{x} = Ax + Bu
