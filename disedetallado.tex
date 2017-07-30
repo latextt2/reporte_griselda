@@ -692,6 +692,22 @@ Este sensor presenta ventajas como:
 
 Para el sensor se utilizó un diseño similar al presentado por [14...], con la diferencia de que el circuito de acondicionamiento se encuentra embebido dentro de la  carcasa del electrodo, esto con el fin de eliminar los efectos de la capacitancia parásita producidos e introducidos por el cable coaxial, además dado que la carcasa actúa como blindaje se previenen interferencias externa de tipo eléctrico.
 
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+     \centering
+        \includegraphics[width=.5\textwidth]{images/Capitulo_3/Sensor-ilustrativo-2}
+        \caption{Sensor sin blindaje activo.}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.45\textwidth}
+     \centering
+        \includegraphics[width=.5\textwidth]{images/Capitulo_3/Sensor-ilustrativo-1}
+        \caption{Sensor con blindaje activo.}
+    \end{subfigure}
+\end{figure}
+
 \subsection{Electrodos}
 
 El electrodo consiste en una placa frontal ($S_1$), un conductor cilíndrico externo que actúa como blindaje pasivo del sistema ($S_3$) y un conductor cilíndrico interno ($S_2$) que actúa como blindaje activo, el cual reduce los efectos de la capacitancia parásita dentro del electrodo. Finalmente un conductor recubierto en el centro conecta el área sensitiva de la placa frontal con el circuito de acondicionamiento.
@@ -738,7 +754,6 @@ C = \frac{\epsilon A}{d}
 
 Suponiendo un objetivo de sensado con superficie plana y un área total constante $A_t$ el valor de $\alpha$ que maximiza la capacitancia del sensor es igual a $1$, en otras palabras, áreas iguales entre la placa frontal y el anillo exterior [referencia paper texas instruments].
 
-
 Sin embargo el rotor es un objetivo con una superficie curva por lo que hay que tener en cuenta los efectos que pueda tener en la sensitividad del sensor. En la figura [curvas desfasadas...] se puede observar que bajo diferentes curvaturas el valor óptimo de $\alpha$ se desfasa. 
 
 [insertar figura de curvas desfasadas]
@@ -775,23 +790,35 @@ Finalmente el circuito queda dentro de una caja metálica a fin de operar como ja
 \newpage
 
 \section{Collarín de levitación}
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_cl}
-    \caption{Collarín de levitación}
-\end{figure}
-\
+
 Como se mencionó anteriormente, con el propósito de lograr la levitación del eje sin importar el material del que esté fabricado, se propuso el uso de un collarín que sostenga el eje dentro del rodamiento y que cuente con una sección de material ferromagnético, de manera que sea esta la que interactúe con los electroimanes de los rodamientos activos y con el imán permanente. 
 
-Este collarín se compone principalmente de cuatro partes: el cuerpo principal, el anillo ferromagnético para el EIR, el disco posterior y el disco ferromagnético para el EIA. 
+Este collarín se compone principalmente de cuatro partes: el cuerpo principal, el anillo ferromagnético para el RMR (núcleo radial) y el MCCE (núcleo pasivo), el disco de detección y el disco ferromagnético para el RMA (núcleo axial). 
 
-El cuerpo principal se usa como medio de acople entre el collarín y el eje, además de servir para sostener el resto de las partes. Sin embargo, el cuerpo del collarín cuenta con algunas restricciones en cuanto al material del que esté fabricado:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_cl}
+    \caption{Diagrama funcional del Collarín de levitación.}
+\end{figure}
+
+\subsection{Material del anillo y disco ferromagético}
+
+Como se realizó en la sección \ref{sec:seleccion-somaloy} se selecciona el material Somaloy 3P [hoja de datos en anexo D] para formar el anillo y núcleo ferromagnéticos. Este material posee las siguientes características: 
+
+\begin{itemize}
+\item Punto de saturación: $1.42 - 1.63 T$
+\item Permeabilidad relativa: $\mu_r = 950$
+\end{itemize}
+
+\subsection{Material del cuerpo principal}
+
+El cuerpo principal se usa como medio de acople entre el collarín y el eje, además de servir como soporte para el resto de los componentes. Sin embargo, el cuerpo del collarín cuenta con algunas restricciones en cuanto al material del que esté fabricado:
 
 \begin{itemize}
 \item El material no puede ser metálico para evitar las corrientes parásitas (Corrientes de Foucault).
 \item Debe ser lo suficientemente rígido para evitar deformarse por las fuerzas que actúen sobre él. 
-\item Debe ser lo suficientemente liviano para no superar el peso máximo que debe tener para lograr la levitación, no excediendo la fuerza máxima que puede generar los electroimanes y el imán permanente.
-\item Preferir materiales asequibles.   
+\item Debe ser lo suficientemente liviano para no exceder la fuerza máxima que puede generar los electroimanes y el imán permanente.  
+\item Además debe contar con una permitividad eléctrica ($\epsilon$) alta para mejorar su detectabilidad antes el SDC. 
 \end{itemize}
 
 Una de las mejores alternativas que tenemos y que pueden cumplir con estas características son los polímeros. Los plásticos en ingeniería han tenido una gran aceptación debido a sus características específicas. Poseen buenas propiedades mecánicas como una gran resistencia al impacto y a la fatiga, bajo coeficiente de fricción, resistencia al desgaste y al ataque por sustancias químicas, su bajo costo en comparación con la mayoría de los metales además de ser más livianos y más fáciles de maquinar. 
@@ -807,14 +834,14 @@ Para nuestro caso compararemos dos propiedades relacionadas a las restricciones 
 \item Densidad. 
 \end{itemize}
 
-Como sabemos, el Módulo de Elasticidad, también llamado Módulo de Young, es un parámetro característico de un material que indica la relación que existe entre la fatiga unitaria y la correspondiente deformación unitaria en un material sometido a un esfuerzo y que está por debajo del límite de elasticidad del material. El módulo de Young indica la rigidez del material, es decir, la oposición de éste a ser deformado. Cuanto más rígido sea el material, mayor es su módulo de elasticidad. 
+Como sabemos, el Módulo de Elasticidad, también llamado Módulo de Young, es un parámetro característico de un material que indica la relación que existe entre la tensión y la correspondiente deformación unitaria en un material sometido a un esfuerzo, y que está por debajo del límite de elasticidad del material. El módulo de Young indica la rigidez del material, es decir, la oposición de éste a ser deformado. Cuanto más rígido sea el material, mayor es su módulo de elasticidad. 
 
-Para el análisis del material con el software CES EduPack compararemos únicamente polímeros relacionando el Módulo de Young y la Densidad, obteniendo un total de 738 materiales disponibles:
+Para el análisis del material con el software CES EduPack compararemos únicamente polímeros relacionando el Módulo de Young y la densidad, obteniendo un total de 738 materiales disponibles:
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\textwidth]{images/Capitulo_3/Material1}
-    \caption{Diagrama total de materiales (Modulo de Young vs. Densidad)}
+    \caption{Diagrama total de materiales (Modulo de Young vs. Densidad).}
 \end{figure}
 
 Para poder reducir el número de materiales desplegados y facilitar la selección podemos definir algunos limites dentro de los parámetros que se establecieron. En este caso nos basaremos en los valores de densidad y módulo de Young de las poliamidas que, como ya vimos, son uno de los plásticos de ingeniería más utilizados, principalmente para la fabricación de componentes mecánicos como rodamientos y engranes. 
@@ -839,8 +866,10 @@ Esto nos ayuda a establecer un parámetro de selección a falta de contar con dato
 \end{figure}
 
 Como podemos notar, las restricciones en cuanto a la familia de materiales y los valores de densidad y módulo de Young redujeron de manera significativa la cantidad de materiales de selección, tratándose en su mayoría de ABS, PET y Polipropilenos. 
-El siguiente parámetro que se consideró fue el costo promedio del material, que como se estableció en las especificaciones se prefiere optar por materiales más asequibles. Analizando el precio estimado de las poliamidas dentro de la biblioteca de materiales del software, se estableció un costo promedio de \$50.00 MXN/Kg, considerando este como el límite máximo. 
-Con este último parámetro se obtuvo el siguiente diagrama, con un total de 97 materiales de selección posibles de los 738 que se tenían originalmente: 
+
+El siguiente parámetro que se consideró fue la permitividad eléctrica del material, que como se estableció en las especificaciones, se prefiere optar por materiales con un valor $\epsilon$ mayor. Se definió una permitividad relativa mínima de $3.5$, el cual corresponde al valor de la permitividad relativa del Nylon [...]. 
+
+Con este último parámetro se obtuvo el siguiente diagrama, con un total de 91 materiales de selección posibles de los 738 que se tenían originalmente: 
 
 \begin{figure}[h!]
     \centering
@@ -848,7 +877,7 @@ Con este último parámetro se obtuvo el siguiente diagrama, con un total de 97 ma
     \caption{Límite máximo para el costo del material.}
 \end{figure}
 
-Al consultar individualmente las propiedades de los materiales restantes dentro de la biblioteca se consiguió encontrar un material que puede utilizarse para la fabricación del collarín de levitación debido a sus propiedades y a las aplicaciones para las que normalmente se utiliza. Este material es el Polioximetileno (POM), también conocido como Acetal:
+Al consultar individualmente las propiedades de los materiales restantes se consiguió encontrar un material que puede utilizarse para la fabricación del collarín de levitación, debido a sus propiedades y a las aplicaciones para las que normalmente se utiliza. Este material es el Polioximetileno (POM), también conocido como Acetal [véase anexo E]:
 
 \begin{figure}[h!]
     \centering
@@ -856,35 +885,23 @@ Al consultar individualmente las propiedades de los materiales restantes dentro 
     \caption{Identificación del material Acetal (POM).}
 \end{figure}
 
-\newpage
-
-El Acetal se caracteriza por su bajo coeficiente de fricción, su resistencia al desgaste y buena resistencia a la abrasión, así como facilidad de maquinado. Tiene alta resistencia a impactos repetidos y a la humedad, provee alta resistencia y rigidez en combinación con su excelente estabilidad dimensional y elevado módulo de elasticidad.
-Se utiliza principalmente para la fabricación de engranes, cojinetes, dispositivos de sujeción, ruedas, rodillos, soportes estructurales, etc.
-De manera ilustrativa, en la siguiente tabla se muestran algunas características del Acetal en comparación con el Nylamid:
-
-\begin{table}[h!]
-\centering
-\caption{Propiedades Acetal vs. Nylimid}
-\label{my-label}
-\begin{tabular}{|l|c|c|ll}
-\cline{1-3}
-\textbf{Propiedad} & \multicolumn{1}{l|}{\textbf{Acetal (POM)}} & \multicolumn{1}{l|}{\textbf{Nylamid (PA Nylon Tipo 6)}} &  &  \\ \cline{1-3}
-Densidad           & 1.39 - 1.41 $e^-3 Kg/m^3$                  & 1.14 - 1.16 $e^-3 Kg/m^3$                               &  &  \\ \cline{1-3}
-Modulo de Young    & 2.6 - 3.2 GPa                              & 1.58 - 1.97 GPa                                         &  &  \\ \cline{1-3}
-Costo              & 32.3 - 35.4 MXN/Kg                         & 59.8 - 65.7 MXN/Kg                                      &  &  \\ \cline{1-3}
-\end{tabular}
-\end{table}
+El Acetal se caracteriza por su bajo coeficiente de fricción, su resistencia al desgaste y buena resistencia a la abrasión, así como facilidad de maquinado. Tiene alta resistencia a impactos y a la humedad, provee alta resistencia y rigidez en combinación con su excelente estabilidad dimensional y elevado módulo de elasticidad.
+Se utiliza principalmente para la fabricación de engranes, cojinetes, dispositivos de sujeción, ruedas, rodillos, soportes estructurales, etc [...].
 
 Debido a sus características y aplicaciones se consideró el Acetal (POM) como el material del que se constituiría el collarín de levitación ya que cumple con las propiedades necesarias para cubrir las especificaciones que se plantearon inicialmente. 
-La segunda pieza que se debe considerar es el disco posterior. Este disco debe su forma a que se utiliza como superficie para medir la posición del rotor en la dirección axial con ayuda del sensor acoplado al EIA. A modo de simplificación se optó porque dicho disco se componga del mismo material que el cuerpo principal del collarín [Acetal (POM)]. Este a su vez contiene en su centro un disco de material ferromagnético para actuar con el EIA.  
+
+La segunda pieza que se debe considerar es el disco posterior. Este disco debe su forma a que se utiliza como superficie para medir la posición del rotor en la dirección axial con ayuda del sensor acoplado al RMA. A modo de simplificación se optó porque dicho disco se componga del mismo material que el cuerpo principal del collarín [Acetal (POM)].
+
+El ensamble final de los componentes descritos anteriormente se muestran en la figura \ref{fig:collarin-ensamble}.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/funda_asm}
-    \caption{Collarín de levitación.}
+    \caption{Ensamble final del collarín de levitación.}
+    \label{fig:collarin-ensamble}
 \end{figure}
 
-
+\newpage
 
 \section{Controlador}
 \begin{figure}[h]
