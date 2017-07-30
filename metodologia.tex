@@ -465,7 +465,7 @@ Teniendo en consideración todo lo anterior podemos resumir el proceso de diseño 
 \end{enumerate}
 
 \newpage
-\subsection{Efecto marginal (Fringing)}
+\subsection{Efecto marginal (Fringing)} \label{sec:flujo-marginal}
 
 Calcular la reluctancia de un componente inductivo permite determinar de manera rápida y directa la inductancia y flujo magnético, haciendo posible evitar la saturaci\'on del núcleo al dise\~nar un sistema de electroimanes.
 Existen diferentes métodos para calcular la reluctancia del entrehierro. En un modelo ideal con una distribución de densidad de flujo homogénea y sin flujo marginal, la reluctancia del entrehierro se puede calcular como:  
@@ -1302,9 +1302,66 @@ Su kis vakries oriouies deseadis d eka natruz $A-BK$ es decir os poslos en lazo 
 \end{equation}
 
 \subsection{Servocontrol discreto}
-\todo[inline]{se explica la diferencia principal entre el servocontrol discreto y la diferncia y la relacion integrador acumulador}.
 
-\todo[inline]{se derivan las formulas para el servocontrolador discreto}.
+Las entradas de referencia consideradas pueden incluir pasos, rampas y otras señales discretas  persistentes, tales como sinusoides. Para una entrada escalonada, sabemos que se pueden obtener errores cero de seguimiento en estado cero  Esta idea se formaliza aquí mediante la introducción de un modelo interno de la referencia de entrada en el compensador, cuando este contiene un integrador. 
+Considerando un modelo:
+
+\begin{equation}
+	x(k + 1) = Ax(k) + Bu(k) + \Gamma\omega
+\end{equation}
+
+\begin{equation}
+	y(k) = Cx(k) + E\omega
+\end{equation}
+
+Donde $\omega$ es una  constante de perturbacion. El  itegrador $z(k + 1) = z(k) + r -y(k)$ al agregarlo al modelo anterior obtenemos:
+
+\begin{equation}
+	\begin{pmatrix}
+		x(k + 1)\\
+		z(k + 1)
+	\end{pmatrix} = A \begin{pmatrix}
+	x(k)\\
+	z(k)
+	\end{pmatrix} + Bu(k) + \begin{pmatrix}
+	\Gamma \\
+	-E
+	\end{pmatrix} \omega + \begin{pmatrix}
+	0 \\
+	I_m
+	\end{pmatrix}r
+\end{equation}
+donde:
+\begin{equation}
+	A = \begin{pmatrix}
+	A & 0\\
+	-C & I_m
+	\end{pmatrix} \hspace{2cm},\hspace{2cm} B = \begin{pmatrix}
+	B\\
+	0
+	\end{pmatrix}
+\end{equation}
+
+Designando $ F = [F_1 F_2]$ tal que $|\lambda(A + BF)| < 1$ \\
+Lema: $(A,B)$ es controlable(respectivamente estabilizables) si solo si:
+
+\begin{itemize}
+\item $(A,B)$ es controlable y respectivamente establizable y
+\item el rago de $\begin{pmatrix} (I_n - A) & A\\C 0 \end{pmatrix} = n + m$
+\end{itemize}
+
+\begin{equation}
+	u(k) = F_1x(k) + F_2z(k)
+\end{equation}
+
+Es una salida retroalimentada asumiendo que $(A,C)$ es detectable designando a un observador que estime $x$ por $\hat{x}$ y tome:
+
+\begin{equation}
+	u(k) = F_1\hat{x}(k) + F_2z(k)
+\end{equation}
+
+
+
 
 \subsection{Control calendarizado}
 Uno de los problemas que surgen a partir de tratar de controlar un sistema no lineal a partir de una aproximacion linearizada, es que cuando nos alejamos del punto de equilibro la diferencia entre el sistema no lineal y el linearizado puede volverse significativa, hasta el punto de que el sistema de control/observador se vuelva inefectivo.
@@ -1317,10 +1374,28 @@ Para asegurar la estabildad del sistema, este debe de ser controlable y observab
 
 
 \subsection{Discretizacion de controladores}
-\todo[inline]{Se explican la necesidad de discretizar un controlador}
-\todo[inline]{Se explica el procedimiento para generar un sistema de control discreto}
-\todo[inline]{diagrama}
-\todo[inline]{formulas}
+
+La discritización (o digitalizacion) de controladores continuos es basicamente emplear metodos de discretizacion para el procesamiento digital de señales. Existen varion metodos para la discretizacion controladores continuos, en este caso particular se utiliza el metodo de la transformada bilinear (trapezoidal, o tustin).
+
+Este método, desarrollado por el profesor Arnold Tustin, es una técnica de mapeo de polos y ceros de una función de tiempo continuo para un sistema de desplazamiento invariante discreto, describe $H(z)$ de un sistema LTI, descrito por un $H (s)$ (pasa del plano  $s$ al plano $z$). La transformada bilineal se define como :
+%\arrowvert_    \bracevert_ 
+\begin{equation}
+	H(z) = H(s) \arrowvert_{s = \frac{2}{t}(\frac{1 - z^{-1}}{1 + z^{-1}})} 
+\end{equation}   
+
+Toma la funcion $H(s)$ y todas sus variables acompañados por $s$ y sustituye los terminos equivalentes en $z$. Lo que esto implica que si el sistema es controlable y es estable al hacer la tranformacion garantiza la controlabilidad y la estabilidad en $z$.
+
+
+\begin{figure}[htb]
+\centering
+	\includegraphics[width=0.75\textwidth]{images/Capitulo_1/mapeo_s_z}
+	\caption{\textit{Tranformacion de bilineal.}}
+\end{figure}
+
+
+
+
+
 \subsection{El observador de Kalman}
 \subsubsection{Variables aleatorias}
 Una variable aleatoria es una funcion que  asigna eventos posibles, cuyos valores se miden como resultado de un eperimento aleatorio. Los experimentos aleatorios son aquellos que, desarrollados bajo las mismas condiciones, puden ofrecer resultados diferentes, por ejemplo arrojar un moneda al aire o medir una temperatura. No se sabe que valor adoptara la variable hasta que sea determinada o medida, pero si se puede conocer como se distribuyen las probabilidad vinculadas a los valores posibles. Si la variable pude tomar cualquier valor en el intervalo de observacion se dice que la misma es una variable aleatoria continua, de lo contrario, si posee un conjunto numerable de valores se considera discreta.
@@ -1361,9 +1436,7 @@ x = x * tu + w
 
 
 \subsubsection{El filtro de Kalman}
-\todo[inline]{Se muestran las formulas del filtro de kalman}
-\todo[inline]{explica el filtro de kalman desde la perspectica de un observador de estados}
-\todo[inline]{se explica la perspectiva del filtro de kalman desde la perspectiva de un estimador bayesiano}
+
 
 El filtro de Kalman es un algoritmo que se basa en el modelo de espacio de estados de un sistema para estimar el estado futuro y la salida futura realizando un filtrado optimo (El filtro de Kalman es \'opitmo respecto a casi cualquier criterio  que tenga sentido) a la se\~nal de salida, y dependiendo del retraso de las muestras que se le ingresan puede cumplir la función de estimador de parámetros o únicamente de filtro. Pero en ambos casos elimina ruido, estas ecuaciones son ampliamente utilizadas ya que incluyen probabilidades estadísticas puesto que toma en cuenta la aleatoriedad tanto de la señal como del ruido. Hace uso del conocimiento del sistema y de la dinámica de los  instrumentos de medición, describe estadisticamente los errores de la medic\'ion y la incertidumbre de los modelos dinamicos. 
 A diferencia de otros tipos de filtros este no requiere de una frecuencia de corte específica debido a que se basa en la característica del ruido permitiendo de esta manera filtrar en todo el espectro de frecuencias. 
