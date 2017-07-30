@@ -1143,7 +1143,7 @@ Se define la matriz de controlabilidad asociada $M_c$ como:
 \end{equation}
 El sistema es de estado completamente controlable sí y solo sí la matriz $M_c$ de $n \times nr$ tiene rango $n$, o sea, que contenga n vectores columna linealmente independientes.
 
-\subsection{Observabilidad}
+\subsection{Observabilidad} \label{sec:observavilidad}
 Para un sistema descrito por las ecuaciones \ref{eq:control:sistema-lti} y \ref{eq:control:salida}, se dice que es completamente observable si el estado $x(t_0)$ se puede determinar a partir de las observaciones de $y(t)$ durante un intervalo de tiempo finito $t_0 < t < t_1$. Por tanto, el sistema es completamente obsevable si todas la transiciones del estado afectan eventualmente a todos los elementos del vector de salida. El concepto de observabilidad es útil al resolver el problema de reconstruir variables de estado no medibles a partir de variables que sí lo son.\\
 Se define la matriz de observabilidad $M_o$ como:
 \begin{equation}
@@ -1194,52 +1194,45 @@ Un observador de estado estima las variables de estado basándose en las medicion
 \centering
 	\includegraphics[height=4cm]{images/Capitulo_1/observador_estados}
 	\caption{\textit{Observador de estados.}}
+	\label{fig:control:diagrama-observador-estados}
 \end{center}
 \end{figure}
 
-
 En el análisis de los observadores de estado que se presenta a continuación, se utilizará la notación $\tilde{x}$ para designar el vector de estado observado. En muchos casos prácticos, el vector de estado observado $\tilde{x}$ se usa en la realimentación del estado para generar el vector de control deseado.
 
-Observador de estado. Un observador de estado estima las variables de estado basándose en las mediciones de las variables de salida y de control. Por ende, el concepto de observabilidad analiza en ref?? juega un papel importante. Como se verá más adelante, los observadores de estado pueden diseñarse sí y solo sí se satisface la condición de observabilidad.
+Observador de estado. Un observador de estado estima las variables de estado basándose en las mediciones de las variables de salida y de control. Por ende, el concepto de observabilidad analizado en \ref{sec:observavilidad} juega un papel importante. Como se verá más adelante, los observadores de estado pueden diseñarse sí y solo sí se satisface la condición de observabilidad.
 
-En el analsis que sisgue de los observadores de estado, se tulizara la notacion $\tilde{x}$ para desigar el vector de estado obseravdo. En muchos casos practicos, el vector de estado obsevado $\tilde{x}$ se usa en la realimentacion del estado para generar el vector de control desseado.
-El observadoro es un subsistema para reconstruir el vector de estado de la planada. El modelo matematico del observador es basicamente el mismo que el de la planta, salvo que se inluye un termino adicional que contiene el error de estimacion para compsensar las imprecisiones en las matrices Ay B y la falta del erroe icinial. El error de estimacion o erroe deobsevacion la diferencia en tres la salida mediad y la salida estimada el error inicial es la diferencial entre el estado inicial y el estado esmitado iniial. De esta forma, se define el modelo matmatico el observador como
+En el análisis de los observadores de estado que a continuación se presenta, se utilizará la notación $\tilde{x}$ para designar el vector de estado observado. En muchos casos prácticos, el vector de estado observado $\tilde{x}$ se usa en la realimentación del estado para generar el vector de control deseado.
+
+El observador es un subsistema para reconstruir el vector de estado de la planta. El modelo matemático del observador es, básicamente, el mismo que el de la planta salvo que se incluye un término adicional que contiene el error de estimación para compensar las imprecisiones en las matrices A y B, y la falta del error inicial. El error de estimación (error de observación) consiste en la diferencia entre la salida media y la salida estimada, mientras que el error inicial es la diferencia entre el estado inicial y el estado estimado inicial. De esta forma, se define el modelo matemático del observador como:
 
 \begin{equation}
 	\dot{\tilde{x}} = A\tilde{x} + Bu + K_e(y - C\tilde{x}) = (A-K_eC)\tilde{x}+Bu+K_ey
+	\label{eq:control:sistema-lti-tilde}
 \end{equation}
 
-donde $\tilde{x}$ es el estado estimado , $C \tilde{x}$ es la salida estimada. Las entradas al bosevador son la salida y y la entrada de control  u. La amtriz Ko, que se llama matriz de gananacia del observador, es una matriz de ponderacion al termino de correcion que involucra la diferencia tnre la salida mediada y yla salida estimada  $C \tilde{x}$. Este termino correige de forma continua la salida del modello y mejora el omportamiento del observador. La figuar muetra el diagrama de bloques del observador de estaod de orden completo del sistema.
+Donde $\tilde{x}$ es el estado estimado y $C \tilde{x}$ es la salida estimada. Las entradas al observador son la salida y la entrada de control $u$. La matriz $K_o$, que se llama matriz de gananacia del observador, es una matriz de ponderación al término de corrección que involucra la diferencia entre la salida media y la salida estimada  $C \tilde{x}$. Este término corrige de forma continua la salida del modelo y mejora el comportamiento del observador. La figura \ref{fig:control:diagrama-observador-estados} muestra el diagrama de bloques del observador de estados de orden completo del sistema.
 
-Para obetener la ecuacion de error del observador, resta la ecuacion ?? de la ecuacion y se obtiene,
+Para obtener la ecuación de error del observador se resta la ecuación \ref{eq:control:sistema-lti-tilde} de la ecuación \ref{eq:control:sistema-lti} y se obtiene:
 
 \begin{equation}
 	\dot{x} - \dot{\tilde{x}} = Ax - A\tilde{x} - K_e(Cx-C\tilde{x}) = (A - K_eC)(x - \dot{\tilde{x}})
 \end{equation}
-se define la diferencia entre $x$ y $\tilde{x}$ como el vector de error $e$, o bien
+Se define la diferencia entre $x$ y $\tilde{x}$ como el vector de error $e$, o bien:
 \begin{equation}
 	e = x -\tilde{x}
 \end{equation}
-haciendo el cambio e variable la ecuacion se convierte en 
+Haciendo el cambio de variable, la ecuación se convierte en:
 \begin{equation}
 	\dot{e} = (A - K_eC)e
 \end{equation}
 
 \subsection{Control integral continuo}
-\todo[inline]{Se explican las limitacion del control retroalimentado}
-\todo[inline]{Se se explica la idea del servocontrol}
-\todo[inline]{formulas}
+%\todo[inline]{Se explican las limitacion del control retroalimentado}
+%\todo[inline]{Se se explica la idea del servocontrol}
+%\todo[inline]{formulas}
 
-\begin{figure}[htb]
-\begin{center}
-\centering
-	\includegraphics[height=4cm]{images/Capitulo_1/control_integral}
-	\caption{\textit{Esquema de control integral}}
-	\label{fig:control:esquema-de-control-integral}
-\end{center}
-\end{figure}
-
-El principio basico de un servosistema es insertar un integrador en el camino directo entre el comparador de error y la planta tal y como se muestra en la figura \ref{fig:control:esquema-de-control-integral}. A paritr del diagrama se obtiene
+El principio básico de un servosistema es insertar un integrador en el camino directo entre el comparador de error y la planta, tal y como se muestra en la figura \ref{fig:control:esquema-de-control-integral}. A partir del diagrama se obtiene:
 
 \begin{equation}
 	\dot{x} = Ax + Bu
@@ -1254,14 +1247,16 @@ El principio basico de un servosistema es insertar un integrador en el camino di
 	\dot{\xi} =  r - y = r - Cx
 \end{equation}
 
-se suponde que la planta obtenida es de estado completamente controlabe. La funcion de transferencia se obtiene mediante
+\begin{figure}[htb]
+\begin{center}
+\centering
+	\includegraphics[height=4cm]{images/Capitulo_1/control_integral}
+	\caption{\textit{Esquema de control integral.}}
+	\label{fig:control:esquema-de-control-integral}
+\end{center}
+\end{figure}
 
-
-se diseñara un sistemas asintoticamente estables tal que tiendan respectivamente a valores contantes. Asi en estado estacionaro $\xi (t) = 0$  se obtiene $y( \infty )  = r$
-
-Su kis vakries oriouies deseadis d eka natruz $A-BK$ es decir os poslos en lazo cerrado deseados sepe eficican $\mu$  ... entonces la matriz de ganancias de realimentacion del estado $K$ y la constante de ganancia integra1 puede determinase mediantes el metodo de asigancion de polos, a condicion de que el sistema definido por la ecuacion sea completamente controlable
-
-
+Se supone que la planta obtenida es de estado completamente controlable. La función de transferencia se obtiene mediante:
 \begin{equation}
 	\begin{pmatrix}
 	\dot{x}\\
@@ -1277,6 +1272,8 @@ Su kis vakries oriouies deseadis d eka natruz $A-BK$ es decir os poslos en lazo 
 	0
 	\end{pmatrix}u_e(t)
 \end{equation}
+Se diseñará un sistema asintóticamente estable tal que se tienda respectivamente a valores constantes. Así, en estado estacionario $\xi (t) = 0$ se obtiene $y( \infty ) = r$:
+
 \begin{equation}
 	u_e(t) = - Kx_e(t) + K_i\xi_e(t)
 \end{equation}
@@ -1284,7 +1281,7 @@ Su kis vakries oriouies deseadis d eka natruz $A-BK$ es decir os poslos en lazo 
 	e(t) = \begin{pmatrix}
 	x_e(t)\\
 	\xi_e(t)
-	\end{pmatrix} = (n + 1) - vector
+	\end{pmatrix}
 \end{equation}
 \begin{equation}
 	\dot{e} = [K|-K_i]
@@ -1300,9 +1297,11 @@ Su kis vakries oriouies deseadis d eka natruz $A-BK$ es decir os poslos en lazo 
 	\end{pmatrix}
 \end{equation}
 
+Si los valores propios deseados de la matriz $\hat{A}-\hat{B}\hat{K}$ (los polos en lazo cerrado deseados $\mu$) son estables, entonces la matriz de ganancias de realimentación del estado $K$ y la constante de ganancia integral $K_i$ pueden determinarse mediante el método de asiganción de polos BIBLIO Kautsky, a condición de que el sistema definido por la ecuación sea completamente controlable.
+
 \subsection{Servocontrol discreto}
 
-Las entradas de referencia consideradas pueden incluir pasos, rampas y otras señales discretas  persistentes, tales como sinusoides. Para una entrada escalonada, sabemos que se pueden obtener errores cero de seguimiento en estado cero  Esta idea se formaliza aquí mediante la introducción de un modelo interno de la referencia de entrada en el compensador, cuando este contiene un integrador. 
+Las entradas de referencia consideradas pueden incluir pasos, rampas y otras señales discretas  persistentes, tales como sinusoides. Para una entrada escalonada, sabemos que se pueden obtener errores cero de seguimiento en estado cero. Esta idea se formaliza aquí mediante la introducción de un modelo interno de la referencia de entrada en el compensador, cuando este contiene un integrador. 
 Considerando un modelo:
 
 \begin{equation}
@@ -1313,7 +1312,7 @@ Considerando un modelo:
 	y(k) = Cx(k) + E\omega
 \end{equation}
 
-Donde $\omega$ es una  constante de perturbacion. El  itegrador $z(k + 1) = z(k) + r -y(k)$ al agregarlo al modelo anterior obtenemos:
+Donde $\omega$ es una constante de perturbación. El integrador $z(k + 1) = z(k) + r -y(k)$ al ser agregado al modelo anterior permite obtener:
 
 \begin{equation}
 	\begin{pmatrix}
@@ -1330,7 +1329,7 @@ Donde $\omega$ es una  constante de perturbacion. El  itegrador $z(k + 1) = z(k)
 	I_m
 	\end{pmatrix}r
 \end{equation}
-donde:
+Donde:
 \begin{equation}
 	A = \begin{pmatrix}
 	A & 0\\
@@ -1341,28 +1340,30 @@ donde:
 	\end{pmatrix}
 \end{equation}
 
-Designando $ F = [F_1 F_2]$ tal que $|\lambda(A + BF)| < 1$ \\
-Lema: $(A,B)$ es controlable(respectivamente estabilizables) si solo si:
+Designamos $ F = [F_1\hspace{0.5cm}F_2]$ tal que $|\lambda(A + BF)| < 1$ \\
+
+Lema: $(A,B)$ es controlable(respectivamente estabilizables) sí y solo sí:
 
 \begin{itemize}
-\item $(A,B)$ es controlable y respectivamente establizable y
-\item el rago de $\begin{pmatrix} (I_n - A) & A\\C 0 \end{pmatrix} = n + m$
+\item $(A,B)$ es controlable y respectivamente establizable, y
+\item el rago de $\begin{pmatrix} (I_n - A) & A\\C&0 \end{pmatrix} = n + m$
 \end{itemize}
+
+Una vez asignado $F_1$ y $F_2$, se tiene:
 
 \begin{equation}
 	u(k) = F_1x(k) + F_2z(k)
 \end{equation}
 
-Es una salida retroalimentada asumiendo que $(A,C)$ es detectable designando a un observador que estime $x$ por $\hat{x}$ y tome:
+Para una salida retroalimentada, asumimos que $(A,C)$ es detectable y designamos un observador que estime $x$ mediante $\hat{x}$, se obtiene:
 
 \begin{equation}
 	u(k) = F_1\hat{x}(k) + F_2z(k)
 \end{equation}
 
-
-
-
 \subsection{Control calendarizado}
+\todo[inline]{Manuel redactara esto}
+
 Uno de los problemas que surgen a partir de tratar de controlar un sistema no lineal a partir de una aproximacion linearizada, es que cuando nos alejamos del punto de equilibro la diferencia entre el sistema no lineal y el linearizado puede volverse significativa, hasta el punto de que el sistema de control/observador se vuelva inefectivo.
 
 Para resolver este problema existen diferentes soluciones, entre las que encotramos el  control calendarizado interpolante, este esquema consiste linearizar en diferentes puntos de equilibro dentro del espacio de operacion del sistema, esto incluye el calculo de las matrices $A,B,C$ y las matrices de ganancia de controlador y observador $K,Ki,Ko$. Ahora dependiendo del estado del sistema(punto de operacion), recalculamos para ese punto.
@@ -1371,87 +1372,85 @@ En lugar de cambiar el conjunto de matrices mas cercano se interpola para tener 
 Para asegurar la estabildad del sistema, este debe de ser controlable y observable en toda la region de operacion.
 \todo[inline]{parametrizacion el contrlador}
 
+\subsection{Discretización de controladores}
 
-\subsection{Discretizacion de controladores}
+La discretización (digitalización) de controladores continuos es básicamente emplear métodos de discretización para el procesamiento digital de señales. Existen varios métodos para la discretización de controladores continuos, en este caso en particular se utiliza el método de la transformada bilinear (también denominada trapezoidal o de Tustin).
 
-La discritización (o digitalizacion) de controladores continuos es basicamente emplear metodos de discretizacion para el procesamiento digital de señales. Existen varion metodos para la discretizacion controladores continuos, en este caso particular se utiliza el metodo de la transformada bilinear (trapezoidal, o tustin).
-
-Este método, desarrollado por el profesor Arnold Tustin, es una técnica de mapeo de polos y ceros de una función de tiempo continuo para un sistema de desplazamiento invariante discreto, describe $H(z)$ de un sistema LTI, descrito por un $H (s)$ (pasa del plano  $s$ al plano $z$). La transformada bilineal se define como :
+Este método fue desarrollado por el profesor Arnold Tustin y es una técnica de mapeo de polos y ceros de una función de tiempo continuo para un sistema de desplazamiento invariante discreto. Describe $H(z)$ de un sistema LTI, descrito por un $H (s)$ (pasa del plano  $s$ al plano $z$). La transformada bilineal se define como:
 %\arrowvert_    \bracevert_ 
 \begin{equation}
-	H(z) = H(s) \arrowvert_{s = \frac{2}{t}(\frac{1 - z^{-1}}{1 + z^{-1}})} 
+	H(z) = H(s) \biggr\rvert_{s = \frac{2}{t}(\frac{1 - z^{-1}}{1 + z^{-1}})} 
 \end{equation}   
 
-Toma la funcion $H(s)$ y todas sus variables acompañados por $s$ y sustituye los terminos equivalentes en $z$. Lo que esto implica que si el sistema es controlable y es estable al hacer la tranformacion garantiza la controlabilidad y la estabilidad en $z$.
-
+Toma la función $H(s)$ y todas sus variables acompañados por $s$ y sustituye los términos equivalentes en $z$. Lo que esto implica que si el sistema es controlable y es estable, al hacer la tranformación se garantiza la controlabilidad y la estabilidad en $z$.
 
 \begin{figure}[htb]
 \centering
-	\includegraphics[width=0.75\textwidth]{images/Capitulo_1/mapeo_s_z}
-	\caption{\textit{Tranformacion de bilineal.}}
+	\includegraphics[width=0.5\textwidth]{images/Capitulo_1/mapeo_s_z}
+	\caption{\textit{Tranformación de bilineal.}}
 \end{figure}
-
-
-
-
 
 \subsection{El observador de Kalman}
 \subsubsection{Variables aleatorias}
-Una variable aleatoria es una funcion que  asigna eventos posibles, cuyos valores se miden como resultado de un eperimento aleatorio. Los experimentos aleatorios son aquellos que, desarrollados bajo las mismas condiciones, puden ofrecer resultados diferentes, por ejemplo arrojar un moneda al aire o medir una temperatura. No se sabe que valor adoptara la variable hasta que sea determinada o medida, pero si se puede conocer como se distribuyen las probabilidad vinculadas a los valores posibles. Si la variable pude tomar cualquier valor en el intervalo de observacion se dice que la misma es una variable aleatoria continua, de lo contrario, si posee un conjunto numerable de valores se considera discreta.
+Una variable aleatoria es una función que  asigna eventos posibles, cuyos valores se miden como resultado de un experimento aleatorio. Los experimentos aleatorios son aquellos que, desarrollados bajo las mismas condiciones, pueden ofrecer resultados diferentes, por ejemplo arrojar una moneda al aire o medir una temperatura. No se sabe que valor adoptará la variable hasta que sea determinada o medida, pero si se puede conocer como se distribuyen las probabilidades vinculadas a los valores posibles. Si la variable puede tomar cualquier valor en el intervalo de observación, se dice que la misma es una variable aleatoria continua. De lo contrario, si posee un conjunto numerable de valores se considera discreta.
 \subsubsection{Distribuciones de probabildad}
-Comenzamos discutiendo el caso discreto por ser al que estamos mas acostumbrados, despues extenderemos la nocion a el caso continuo que sera el que usaremos. 
-Se conoce como distribucion de probabilidad a una funcion $f(x)$ que asigna una probabilidad a cada valor/evento $X$ perteneciente a la variable aleatoria $x$. Una distribucion de probabildad debe cumplir que:\\
+Comenzaremos discutiendo el caso discreto por ser al que estamos más acostumbrados, después extenderemos la noción al caso continuo que será el que se aplicará al proyecto. 
+Se conoce como distribución de probabilidad a una función $f(x)$ que asigna una probabilidad a cada valor/evento $X$ perteneciente a la variable aleatoria $x$. Una distribución de probabildad debe cumplir:\\
 
-Ejemplo: lanzar una dado
+I.E. lanzar una dado.
 $$
 	f(x) =\{ 1/6,\ x = 1,2,3,4,5,6 \}
 $$
 
-Para el caso continuo, debido a la infinidad de valores que puede tomar la variable aleatoria, se usa el concepto de densidad de probabilidad. La funcion f(x) es una funcion de densidad de probabildad para la variable aleatoria comtinua X, si y solo si
+Para el caso continuo, debido a la infinidad de valores que puede tomar la variable aleatoria, se usa el concepto de densidad de probabilidad. La función $f(x)$ es una función de densidad de probabildad para la variable aleatoria continua $X$, sí y solo sí:
 \begin{enumerate}
 \item $f(x) \geq 0 \ \forall\ x \epsilon R$
 \item $\int_{-\infty}^{\infty} f(x)dx  = 1$
 \item $P(a \leq x \leq b) = \int_{a}^{b} f(x)dx$ 
 \end{enumerate}
 
-\subsubsection{Procesos estocasticos}
-Un modelo es estocastico cuando contiene al menos una variable aleatorea. En un proceso estocastico no se puede saber con certeza el estado pasado pasado o futuro  del sistema, sin embargo podemos cuantificar la incertidumbre mediante variables aleatoreas y distribuciones de probabilidad, el modelo de un sistema estocastico nos permite calcular la probabildad de cierta salida del sistema pero no valores en concreto.
+\subsubsection{Procesos estocásticos}
+Un modelo es estocástico cuando contiene al menos una variable aleatoria. En un proceso estocástico no se puede saber con certeza el estado pasado o futuro  del sistema, sin embargo podemos cuantificar la incertidumbre mediante variables aleatorias y distribuciones de probabilidad. El modelo de un sistema estocástico nos permite calcular la probabildad de cierta salida del sistema pero no valores en concreto.
 
-En el caso del filtro de kalman nos interesan los sistemas lineales discretos, que podrian verse como la version estocastica del sistema LTI discreto, estos sistemas son de la forma
-
-Donde w es la variable estocastica que modela ruido del proceso, y v es la variable aleatoria que modela el ruido en la medicion.
-
-Para aclarar concepto podemos usar como ejemplo un robot que trata de determinar su posicion representada mediantes la variable $x$, si sabemos con cierta certeza que estamos en una posicion representado mediante la distribucion $x$ y sabemos que las llantas giran a un velocidad u entonces podemos predecir que ahora estamos otra posicion $x_{k+1}$. sin embargo debido a que imperfecciones en el camino, las llantas, del robot, arrastre del aire,  y demas es posible que no tengas un movimiento exacto de tu, esta incertidumbre queda cuantificada en el ruido de proceso w. si suponemos que ambas distribucion son gausianas entonces tenemos que la nueva distrubion $x_t$ tiene la forma fig??, como se puede ver esta distribucion tiene una mayor varianza, o sea tenemos menos certeza sobre los posicion del robot antes de realizar el movimiento.
+En el caso del filtro de Kalman nos interesan los sistemas lineales discretos, que podrían verse como la versión estocástica del sistema LTI discreto, estos sistemas son de la forma:
 
 \begin{equation}
 x = x * tu + w
 \end{equation}
 
-\todo[inline]{Se hablad sobre conceptos de probabildiad, como el valor esperado, la correlacion, la varianza}
+Donde $w$ es la variable estocástica que modela el ruido del proceso, y $u$ es la variable aleatoria que modela el ruido en la medición.
 
+I. e. un robot que trata de determinar su posición representada mediante la variable $x$. Si sabemos con cierta certeza que estamos en una posición representada mediante la distribución $x$ y sabemos que las llantas giran a un velocidad $u$, entonces podemos predecir que ahora estamos otra posición $x_{k+1}$. Pero debido a que el sistema no es ideal (existen imperfecciones en el camino, las llantas del robot, el arrastre del aire, entre otros factores), es posible que durante el desplazamiento existan variaciones imprevistas que afecten la trayectoria esperada en un princio del robot. Esta incertidumbre queda cuantificada en el ruido del proceso $w$. Si suponemos que ambas distribuciones son gaussianas, entonces tenemos que la nueva distribución $x_t$ tiene la forma de la figura \ref{fig:distribucion-gaussiana}.
 
-\todo[inline]{Se describe la ley de bayes}
-\todo[inline]{la ley de probabilidad total}
+\begin{figure}[htb]
+\centering
+	\includegraphics[width=0.5\textwidth]{images/Capitulo_1/gaussiana_distribucion}
+	\caption{\textit{Distribución probabilística gaussiana.}}
+	\label{fig:distribucion-gaussiana}
+\end{figure}
 
+Esta distribución tiene una mayor varianza, o sea, se tiene menos certeza sobre la posición del robot antes de realizar el movimiento.
 
+%\todo[inline]{Se hablad sobre conceptos de probabildiad, como el valor esperado, la correlacion, la varianza}
+%\todo[inline]{Se describe la ley de bayes}
+%\todo[inline]{la ley de probabilidad total}
 \subsubsection{El filtro de Kalman}
 
+El filtro de Kalman es un algoritmo que se basa en el modelo de espacio de estados de un sistema para estimar el estado futuro y la salida futura realizando un filtrado óptimo (el filtro de Kalman es \'optimo respecto a casi cualquier criterio  que tenga sentido) a la se\~nal de salida, y dependiendo del retraso de las muestras que se le ingresan puede cumplir la función de estimador de parámetros o únicamente de filtro, pero en ambos casos elimina ruido. Estas ecuaciones son ampliamente utilizadas ya que incluyen probabilidades estadísticas, esto debido a que se toma en cuenta la aleatoriedad tanto de la señal como del ruido. Asimismo, hace uso del conocimiento del sistema y de la dinámica de los  instrumentos de medición, describe estadísticamente los errores de la medic\'ion y la incertidumbre de los modelos dinámicos. 
+A diferencia de otros tipos de filtros, este no requiere de una frecuencia de corte específica debido a que se basa en la característica del ruido, permitiendo de esta manera filtrar en todo el espectro de frecuencias. 
+El filtro de Kalman es esencialmente una serie de ecuaciones matemáticas que implementan un estimador tipo predictor $-$ corrector que es óptimo en el sentido que minimiza el error estimado de la covarianza cuando algunas condiciones son dadas. La covarianza es un valor que indica el grado de variación conjunta de dos variables aleatorias respecto a sus medias. Es el dato básico para determinar si existe una dependencia entre ambas variables y además es el dato necesario para estimar otros par\'ametros b\'asicos. A continuaci\'on se muestra el algoritmo reiterativo  desarrollado por Rodolf Kalman.% cabe destacar que este algoritmo re$-$iterativo eventualmente converge a un error minimo entre el valor real de la variable y el valor predicido:
 
-El filtro de Kalman es un algoritmo que se basa en el modelo de espacio de estados de un sistema para estimar el estado futuro y la salida futura realizando un filtrado optimo (El filtro de Kalman es \'opitmo respecto a casi cualquier criterio  que tenga sentido) a la se\~nal de salida, y dependiendo del retraso de las muestras que se le ingresan puede cumplir la función de estimador de parámetros o únicamente de filtro. Pero en ambos casos elimina ruido, estas ecuaciones son ampliamente utilizadas ya que incluyen probabilidades estadísticas puesto que toma en cuenta la aleatoriedad tanto de la señal como del ruido. Hace uso del conocimiento del sistema y de la dinámica de los  instrumentos de medición, describe estadisticamente los errores de la medic\'ion y la incertidumbre de los modelos dinamicos. 
-A diferencia de otros tipos de filtros este no requiere de una frecuencia de corte específica debido a que se basa en la característica del ruido permitiendo de esta manera filtrar en todo el espectro de frecuencias. 
-El filtro de Kalman es esencialmente una serie de ecuaciones matemáticas que implementan un estimador tipo predictor $-$ corrector que es óptimo en el sentido que minimiza el error estimado de la covarianza(la covarianza es un valor que indica el grado de variación conjunta de dos variables aleatorias respecto a sus medias. Es el dato básico para determinar si existe una dependencia entre ambas variables y además es el dato necesario para estimar otros par\'ametros b\'asicos), cuando algunas condiciones son dadas. A continuaci\'on se muestra el algoritmo reiterativo  desarrollado por Rodolf Kalman% cabe destacar que este algoritmo re$-$iterativo eventualmente converge a un error minimo entre el valor real de la variable y el valor predicido:
-
-Se inicia con una estimaci\'on previa a la mediaci\'on con su respectiva error de covarianza, y esta es tomda en cuenta en el calculo de la ganacia de kalman: 
+Se inicia con una estimaci\'on previa a la mediaci\'on con su respectivo error de covarianza, y esta es tomada en cuenta en el cálculo de la ganacia de Kalman: 
 \begin{equation}
 	K_k = P^-_k H^T (H_k P^-_k H^T_k +R_k)^{-1}
 \end{equation}
 
-Se act\'ualiza la estimaci\'on con la medici\'on y se optiene un resulado:
+Se actualiza la estimaci\'on con la medici\'on y se obtiene un resultado:
 \begin{equation}
 	\hat{X_k} = \hat{X}^-_k + K_k (Z_k - H_k \hat{X}^-_k)
 \end{equation}
 
-Se calcular la covarianza del error para la estimación actualizada:
+Se calcula la covarianza del error para la estimación actualizada:
 
 \begin{equation}
 	P_k = (l - K_k H_k) P^-_k
@@ -1467,7 +1466,7 @@ Teniendo la estimaci\'on actualizada, se hace la nueva proyeccci\'on a futuro:
 	P^-_{k+1} = \phi_k P_k \phi^T_k + Q_k
 \end{equation}
 
-La nueva proyecci\'on pasa  a hacer la estimacion actual repitiendo el proceso, en esencia el filtro kalman realiza la predici\'on y al final lo corrige. 
+Y así, la nueva proyecci\'on pasa  a hacer la estimación actual repitiendo el proceso, en esencia el filtro Kalman realiza la predicci\'on y al final lo corrige. 
 \newpage
 
 \section{Diseño de ingeniería }
