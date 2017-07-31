@@ -267,9 +267,14 @@ A este modo de operación se le conoce como rectificación síncrona. Esto no se pu
 
 Podemos definir ahora dos estados de operación del puente H, un modo de accionamiento, donde se incrementa o decrementa la corriente en la bobina ($t_{fast}$ de la figura \ref{fig:carga-descarga-rapida}), y un modo de recirculación, donde la corriente se mantiene a un nivel casi constante, y donde solo están presentes la pérdidas resistivas causadas por $R_{ESR}$ y $R_{on}$ ($t_{slow}$ de la figura \ref{fig:carga-descarga-rapida}).
 
-Estos modos de operación puede implementarse usando el circuto de la figura [...], donde el arreglo de comparadores y flip flops permite controlar la corriente con una precisión del $n\%$.
+Estos modos de operación puede implementarse usando el circuto de la figura \ref{fig:circuito-control-corriente}, donde el arreglo de comparadores y flip flops permite controlar la corriente.
 
-[insertar figura circuito de activacion]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/Capitulo_3/circuito-control-corriente}
+    \caption{Circuito de control de la corriente.}
+    \label{fig:circuito-control-corriente}
+\end{figure}
 
 Como ya se ha mencionado, la razón de cambio en la corriente de un inductor está limitada por su inductancia. Esto implica que si tratamos de generar  una señal senoidal, la frecuencia máxima $F_{max}$ que podríamos producir sin distorsionarla sería:
 
@@ -756,7 +761,11 @@ Suponiendo un objetivo de sensado con superficie plana y un área total constante
 
 Sin embargo el rotor es un objetivo con una superficie curva por lo que hay que tener en cuenta los efectos que pueda tener en la sensitividad del sensor. En la figura [curvas desfasadas...] se puede observar que bajo diferentes curvaturas el valor óptimo de $\alpha$ se desfasa. 
 
-[insertar figura de curvas desfasadas]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/grafica_desfasamiento_capacitancia}
+    \caption{Desfasamiento de punto óptimo en sensor capacitivo.}
+\end{figure}
 
 Entonces para calcular el punto óptimo es necesario realizar un conjunto de simulaciones variando $\alpha$, contemplando la curvatura real del rotor. Esto se realiza mediante un script de \textbf{Matlab} capaz de generar diferentes configuraciones del electrodo y ejecutar una simulación en FEMM para calcular la capacitancia dentro de cada configuración. Este conjunto de datos es recolectado y graficado para determinar el punto óptimo como se muestra en la figura [punto optimo de alpha...].
 
