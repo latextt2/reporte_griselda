@@ -1185,7 +1185,7 @@ Esta nueva ecuación tiene una dinámica establecida por los polos de la matriz $\
 
 Exiten varios métodos para calcular la matriz $K$ entre los que destacan el método de Kalman y el método de Ackerman. Para el caso de sistemas con una sola entrada existen soluciones únicas para esta matriz, sin embargo, para sistemas con múltiples entradas existen infinita cantidad de soluciones. Por tanto, el método de Kalman y Ackerman no funcionan para estos últimos.
 
-Debido a las infinitas soluciones, se necesitan restricciones adicionales para obtener soluciones concretas. Un método que resulta robusto es el desarrollado por Kautsky et al. en 1985, donde se minimiza la sensitivdad del sistema a las perturbaciones. Este método es el que implementa el comando 'place' de Matlab.
+Debido a las infinitas soluciones, se necesitan restricciones adicionales para obtener soluciones concretas. Un método que resulta robusto es el desarrollado en \cite{cite_s9_2017_Kautsky}, donde se minimiza la sensitivdad del sistema a las perturbaciones. Este método es el que implementa el comando 'place' de Matlab.
 \subsubsection{Observador de estados}
 Un observador de estado estima las variables de estado basándose en las mediciones de las variables de salida y de control. El concepto de obsevabilidad juega un papel importante.
 
@@ -1297,7 +1297,7 @@ Se diseñará un sistema asintóticamente estable tal que se tienda respectivamente
 	\end{pmatrix}
 \end{equation}
 
-Si los valores propios deseados de la matriz $\hat{A}-\hat{B}\hat{K}$ (los polos en lazo cerrado deseados $\mu$) son estables, entonces la matriz de ganancias de realimentación del estado $K$ y la constante de ganancia integral $K_i$ pueden determinarse mediante el método de asiganción de polos BIBLIO Kautsky, a condición de que el sistema definido por la ecuación sea completamente controlable.
+Si los valores propios deseados de la matriz $\hat{A}-\hat{B}\hat{K}$ (los polos en lazo cerrado deseados $\mu$) son estables, entonces la matriz de ganancias de realimentación del estado $K$ y la constante de ganancia integral $K_i$ pueden determinarse mediante el método de asiganción de polos \cite{cite_s9_2017_Kautsky}, a condición de que el sistema definido por la ecuación sea completamente controlable.
 
 \subsection{Servocontrol discreto}
 
