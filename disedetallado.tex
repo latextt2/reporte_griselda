@@ -63,7 +63,7 @@ P = 2 (\frac{R F_r}{K_e} ) \label{eq:cosumo-electroiman-caso-especial}
 
 Para que el rodamiento axial pueda ejercer fuerzas en cualquier dirección del plano YZ es necesario un mínimo de 3 polos. Sin embargo, incrementar el número de polos reduce el consumo en las regiones intermedias (ecuación \ref{eq:cosumo-electroiman-caso-especial}), ya que no estamos utilizando corriente para generar componentes de fuerza que terminarán por cancelarse mutuamente.
 
-En [paper número de polos]  se estudia de manera más detallada los efectos de variar el número de polos en un RMR, se concluye que utilizar 6 polos minimiza el diámetro exterior para una capacidad dada.
+En \cite{cite_s13_2017_matsuda2007_polos} se estudia de manera más detallada los efectos de variar el número de polos en un RMR, se concluye que utilizar 6 polos minimiza el diámetro exterior para una capacidad dada.
 
 \newpage
 
@@ -105,7 +105,7 @@ Al tratarse de un rodamiento con fines demostrativos, se propuso esa fuerza para
 
 El problema de seleccionar una distancia de operación recae en que una distancia muy grande requiere una mayor inducción magnética para generar una fuerza determinada, mientras que con una distancia pequeña es más fácil generar la misma fuerza con la desventaja de que se alcanza el punto de saturación con mayor rapidez. Además, si la distancia es muy pequeña hay poco espacio para estabilizarlo. 
  
-En la literatura podemos identificar rangos de operación de entre [...] [referencia] por lo que se optó por trabajar con un rango de:
+En la literatura podemos identificar una distancia de operación mínima de $0.5 mm$ \citep{cite_s11_2017_Magnetic_Bearings_design} por lo que se optó por trabajar con un rango de:
 
 $$y_{max} = 0.75[mm]$$
 $$y_{min} = 0.25[mm]$$
@@ -491,7 +491,7 @@ Para el diseño del imán tenemos el siguiente proceso:
 
 Entre las diferentes composiciones de imanes permanentes destaca el Neodimio-Hierro-Boro comúnmente conocidos como imanes de neodimio. Los valores más altos $H_c$ y  $B_r$ son alcanzados por los imanes de grado $N52$, con valores de $B_r = 1400mT$ y $H_c=796kA/m$ [véase anexo B]. 
 
-Siguiendo el procedimiento anterior para generar una fuerza $F_{min}$ de al menos $50 N$ resultó en un imán cúbico de 10 mm por lado [...].
+Siguiendo el procedimiento anterior para generar una fuerza $F_{min}$ de al menos $50 N$ resultó en un imán cúbico de 10 mm por lado \cite{cite_s21_2017_first4magnets}.
 
 Así pues el conjunto Imán Permanente - Núcleo Ferromagnético queda representado por la figura \ref{fig:conjunto-ip-nucleo}.
 
@@ -524,12 +524,12 @@ Para generar dicho desplazamiento se utiliza un mecanismo tornillo-tuerca, conoc
 \begin{figure}[H]
 \centering
 	\includegraphics[scale=.5]{images/Capitulo_3/Tornillo}
-	\caption{\textit{Mecanismo Tornillo Tuerca [...].}}
+	\caption{\textit{Mecanismo Tornillo Tuerca \citep{cite_17}}}
 \end{figure}
 
 Este mecanismo se puede plantear de dos formas: un tornillo de posición fija que al girar provoca el desplazamiento de la tuerca, o una tuerca fija que produce el desplazamiento del tornillo cuando este gira. En este caso, utilizaremos el tornillo de posición fija y la tuerca consistirá en la base del imán permanente. 
 Este tipo de mecanismos son utilizados en diferentes aplicaciones y son ideales como mecanismos de desplazamiento, debido en parte a su gran precisión y al reducido espacio que requieren. 
-El avance depende de dos factores [18 ...]:
+El avance depende de dos factores \citep{cite_18} :
 
 \begin{itemize}
 \item La velocidad de giro del elemento motriz.
@@ -553,12 +553,12 @@ Con el fin de reducir la fuerza producida por el imán permanente hasta un valor 
 \begin{figure}[H]
 \centering
 		\includegraphics[width=0.5\textwidth]{images/Capitulo_3/Rosca}
-		\caption{\textit{Especificaciones de la rosca M 2 x 0.4 [...].}}
+		\caption{\textit{Especificaciones de la rosca M 2 x 0.4 \citep{cite_19}.}}
 \end{figure}
 
 \subsubsection{Motorreductor} \label{sec:Motorreductor}
 
-Para el motorreductor se seleccionó el modelo \textbf{LP 6V 1000:1} de Pololu [...]. Este motorreductor miniatura de alto par tiene una caja de cambios de $1000: 1$, por lo que es una gran opción para aplicaciones que requieren un control preciso a velocidades muy bajas. Estas unidades tienen un eje de salida en forma de D de $3 mm$ de diámetro.
+Para el motorreductor se seleccionó el modelo \textbf{LP 6V 1000:1} de Pololu \cite{cite_s19_2017_polulu}. Este motorreductor miniatura de alto par tiene una caja de cambios de $1000: 1$, por lo que es una gran opción para aplicaciones que requieren un control preciso a velocidades muy bajas. Estas unidades tienen un eje de salida en forma de D de $3 mm$ de diámetro.
 
 Este motorreductor posee unas especificaciones clave de $14 RPM @ 6 V$ y $40 mA$ al vacío, $5 kg-cm$ de par y $0.36 A$ en bloqueo.
 
@@ -581,7 +581,7 @@ Finalmente el ensamble del MCCE queda ilustrado en la figura \ref{fig:configurac
 
 \subsection{Accionamiento}
 
-Como se indica en la sección \ref{sec:Motorreductor}, la corriente máxima que demanda el motor es de $360 mA$. Como queremos mover el motor en ambas direcciones es necesario un circuito de puente H para su accionamiento. Para ello se seleccionó el circuito integrado L293. 
+Como se indica en la sección \ref{sec:Motorreductor}, la corriente máxima que demanda el motor es de $360 mA$. Como queremos mover el motor en ambas direcciones es necesario un circuito de puente H para su accionamiento. Para ello se seleccionó el circuito integrado L293 \cite{cite_s18_2017_l293}. 
 
 Este controlador de motor cuenta con dos puentes H que se pueden utilizar para el control bidireccional de dos motores de corriente continua o para controlar un solo motor de pasos. Funciona a partir de $4.5$ a $36 V$ y puede entregar una corriente pico de $1 A$ por canal. La conexión de este circuito integrado se muestra en la figura \ref{fig:puente-h-l293}.
 
@@ -690,7 +690,7 @@ Este sensor presenta ventajas como:
 	\item Rápida respuesta.
 \end{enumerate}
 
-Para el sensor se utilizó un diseño similar al presentado por [14...], con la diferencia de que el circuito de acondicionamiento se encuentra embebido dentro de la  carcasa del electrodo, esto con el fin de eliminar los efectos de la capacitancia parásita producidos e introducidos por el cable coaxial, además dado que la carcasa actúa como blindaje se previenen interferencias externa de tipo eléctrico.
+Para el sensor se utilizó un diseño similar al presentado en \citep{cite_14}, con la diferencia de que el circuito de acondicionamiento se encuentra embebido dentro de la  carcasa del electrodo, esto con el fin de eliminar los efectos de la capacitancia parásita producidos e introducidos por el cable coaxial, además dado que la carcasa actúa como blindaje se previenen interferencias externa de tipo eléctrico.
 
 \begin{figure}[htb]
     \centering
@@ -752,7 +752,7 @@ C = \frac{\epsilon A}{d}
 \label{eq:capacitor-placas-paralelas}
 \end{equation} 
 
-Suponiendo un objetivo de sensado con superficie plana y un área total constante $A_t$ el valor de $\alpha$ que maximiza la capacitancia del sensor es igual a $1$, en otras palabras, áreas iguales entre la placa frontal y el anillo exterior [referencia paper texas instruments].
+Suponiendo un objetivo de sensado con superficie plana y un área total constante $A_t$ el valor de $\alpha$ que maximiza la capacitancia del sensor es igual a $1$, en otras palabras, áreas iguales entre la placa frontal y el anillo exterior \cite{cite_s15_2017_snoa928}.
 
 Sin embargo el rotor es un objetivo con una superficie curva por lo que hay que tener en cuenta los efectos que pueda tener en la sensitividad del sensor. En la figura [curvas desfasadas...] se puede observar que bajo diferentes curvaturas el valor óptimo de $\alpha$ se desfasa. 
 
@@ -867,7 +867,7 @@ Esto nos ayuda a establecer un parámetro de selección a falta de contar con dato
 
 Como podemos notar, las restricciones en cuanto a la familia de materiales y los valores de densidad y módulo de Young redujeron de manera significativa la cantidad de materiales de selección, tratándose en su mayoría de ABS, PET y Polipropilenos. 
 
-El siguiente parámetro que se consideró fue la permitividad eléctrica del material, que como se estableció en las especificaciones, se prefiere optar por materiales con un valor $\epsilon$ mayor. Se definió una permitividad relativa mínima de $3.5$, el cual corresponde al valor de la permitividad relativa del Nylon [...]. 
+El siguiente parámetro que se consideró fue la permitividad eléctrica del material, que como se estableció en las especificaciones, se prefiere optar por materiales con un valor $\epsilon$ mayor. Se definió una permitividad relativa mínima de $3.5$, el cual corresponde al valor de la permitividad relativa del Nylon \cite{cite_s20_2017_goodfellow}. 
 
 Con este último parámetro se obtuvo el siguiente diagrama, con un total de 91 materiales de selección posibles de los 738 que se tenían originalmente: 
 
@@ -886,7 +886,7 @@ Al consultar individualmente las propiedades de los materiales restantes se cons
 \end{figure}
 
 El Acetal se caracteriza por su bajo coeficiente de fricción, su resistencia al desgaste y buena resistencia a la abrasión, así como facilidad de maquinado. Tiene alta resistencia a impactos y a la humedad, provee alta resistencia y rigidez en combinación con su excelente estabilidad dimensional y elevado módulo de elasticidad.
-Se utiliza principalmente para la fabricación de engranes, cojinetes, dispositivos de sujeción, ruedas, rodillos, soportes estructurales, etc [...].
+Se utiliza principalmente para la fabricación de engranes, cojinetes, dispositivos de sujeción, ruedas, rodillos, soportes estructurales, etc \citep{cite_s17_2017_prospector_acetal}.
 
 Debido a sus características y aplicaciones se consideró el Acetal (POM) como el material del que se constituiría el collarín de levitación ya que cumple con las propiedades necesarias para cubrir las especificaciones que se plantearon inicialmente. 
 
