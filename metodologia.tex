@@ -897,6 +897,7 @@ La segunda ley de Newton establece que la razón de cambio del momento lineal de 
 \begin{equation}
 \sum{\vec{F}} = \frac{d}{dt}\vec{P} = m\vec{a}
 \end{equation}
+
 \subsection{Movimiento rotacional}
 \subsubsection{Momento de torsión}
 %\todo[inline]{Se introduce la definición de torque}
@@ -944,15 +945,17 @@ La ecuación del momento angular puede ser expresada de forma matricial como:
 	\omega_z
 	\end{pmatrix}
 \end{equation}
+
 O bien, en su forma compacta como:
+
 \begin{equation}
 	\vec{H}_G = [I_G] \vec{\omega}
 \end{equation}
-Donde a $[I_G]$ se le cononce como tensor de inercia, este refleja la distribución de masa de un cuerpo en rotación respecto a un eje de giro y es una medida de su inercia rotacional. El momento de inercia solo depende de la geometría del cuerpo y de la posición del eje de giro.
+Donde a $[I_G]$ se le conoce como tensor de inercia, este refleja la distribución de masa de un cuerpo en rotación respecto a un eje de giro y es una medida de su inercia rotacional. El momento de inercia solo depende de la geometría del cuerpo y de la posición del eje de giro.
 
 A menos que la velocidad angular $\omega$ sea un eigen vector de la matriz de inercia, el momento angular y la velocidad angular no estarán en la misma dirección. Además que, los momentos de inercia dependen de la distribución de la masa con respecto a los ejes coordenados si el objeto rota.
 
-El momento angular de un sistema de partículas se conseva si ningún torque externo es aplicado, esto es, la razón de cambio del momento angular de un cuerpo es la suma de los momentos de torsión aplicados sobre este.
+El momento angular de un sistema de partículas se conserva si ningún par externo es aplicado, esto es, la razón de cambio del momento angular de un cuerpo es la suma de los momentos de torsión aplicados sobre este.
 
 \begin{equation}
 	\sum{\vec{M}} = \dot{\vec{H}} = \dot{[I]}\vec{\omega} + [I]\dot{\vec{\omega}}
@@ -982,7 +985,7 @@ Para el caso especial donde la velocidad angular del objeto $\vec{\omega}$ es la
 \end{equation} 
 Este conjunto de ecuaciones se les conoce como ecuaciones de Euler, y nos proveen de un medio para calcular el movimiento de un cuerpo rígido en tres dimensions. Sin embargo, estas ecuaciones presentan problemas para encontrar sus soluciones ya que poseen productos de $\omega$ y esto representa no linealidades. El otro problema consiste en definir la forma en la que se represetará la rotación del marco móvil.
 
-\subsubsection{Ángulos de Euler}
+\subsubsection{Ángulos de Euler} \label{sec:angulos-euler}
 Para determinar la posición del marco móvil se utilizan un conjunto de rotaciones consecutivas, al conjunto de ángulos que definen estas rotaciones se les conoce como ángulos de Euler. Existen 12 secuencias distintas de rotaciones entre las que más destacan la rotación ZXZ (ángulos de Euler clásicos), y la rotación ZXY (ángulos de Tyat-Bryan), estos últimos son usualmente usados para la navegación.
 
 \begin{figure}[htb]
@@ -1007,7 +1010,8 @@ Usando las matrices de rotaciones de magnitud $\psi$,$\theta$ y $\phi$ para repr
 	cos(\psi) & sin(\psi) & 0\\
 	-sin(\psi) & cos(\psi) & 0\\
 	0 & 0 & 1
-	\end{pmatrix}			
+	\end{pmatrix}
+	\label{eq:matrices-angulos-euler}			
 \end{equation}
 De forma compacta:
 \begin{equation}
@@ -1084,12 +1088,15 @@ Finalmente se calcula la transformada inversa (debemos tener en cuenta que $[(Q)
 	\Omega_z
 	\end{pmatrix} = (Q^B)^{-1} \Omega_B
 \end{equation}
+
 Nótese que matriz ${Q_B^l}$ se indetermina para valores de $\theta = \pm\pi/2$. Para todos los juegos de ángulos de Euler existen puntos donde la matriz inversa se indetermina, por eso es importante la correcta selección del juego de ángulos.
 
 \pagebreak
-\section{Control}
-\subsection{Linearización}
-Cuando modelamos sistemas, es común la aparición de sistemas no lineales, y encotramos el problema de que toda la teoría presentada sobre el control esta centrada en sistemas lineales. En lugar de desarrollar una teoría separada para su manejo, se presenta un método para aproximar un sistema no lineal en uno lineal.
+\section{Control} \label{sec:control}
+
+\subsection{Linealización}
+
+Cuando modelamos sistemas, es común la aparición de sistemas no lineales, y encontramos el problema de que toda la teoría presentada sobre el control esta centrada en sistemas lineales. En lugar de desarrollar una teoría separada para su manejo, se presenta un método para aproximar un sistema no lineal en uno lineal.
 \begin{equation}
 	\label{eq:control:seriesdetaylor}
 	f(x) = f(x_0) + f'(x_0)x +\frac{ f''(x_0)}{2!}x^2 ... 

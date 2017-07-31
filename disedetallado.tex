@@ -917,7 +917,7 @@ El procedimiento realizado a continuación consiste en obtener un modelo dinámico
 
 \newpage
 
-\subsection{Modelo dinámico del eje}
+\subsection{Modelo dinámico del eje} \label{sec:modelo-dinamico}
 
 El primer paso consiste en obtener el modelo dinámico del sistema. En la figura \ref{fig:diagrama-cl-eje} podemos observar las fuerzas que actúan sobre el eje $F_a$, $F_r$, $F_p$ correspondientes al EIA, EIR e IP respectivamente. 
 
@@ -1000,29 +1000,33 @@ Debido a que el conjunto eje-collarín posee simetría radial respecto al eje $X$,
 	\label{eq:matriz-inercia-reducida}
 \end{equation}
 
-\begin{figure}[htb]
+Como indica la sección \ref{sec:angulos-euler} es necesario definir un marco de referencia móvil para establecer las ecuaciones dinámica. Como el cuerpo es axisimétrico solo son necesarias dos rotaciones para describir su orientación, siempre y cuando permitamos la libre rotación (spin) dentro de este nuevo marco de referencia. Estas corresponden a las primeras dos rotaciones extrínsecas Tait-Bryan $z-y-x$ como se muestra en la figura \ref{fig:angulos-tb-2}. 
+
+\begin{figure}[H]
 \begin{center}
 \centering
 \includegraphics[width=8cm]{images/Capitulo_2/angulos_euler_rotor}
-\caption{Posicion angular del rotor}
-\label{fig:control:inercia-rmh}
+\caption{Marco de referencia móvil.}
+\label{fig:angulos-tb-2}
 \end{center}
 \end{figure}
 
+Podemos definir este nuevo maco de referencia como la transformación $T_O^B$ como se muestra en la ecuación:
+
 \begin{equation}
 	T_O^B (\theta,\psi)= {T_A}^B (\theta) {T_A}^O (\psi) 	
+	\label{eq:transformada-marco-movil}
 \end{equation}
 
+Donde las matrices de rotación ${T_A}^B (\theta)$ y ${T_A}^O (\psi)$ están definidas en la ecuación \ref{eq:matrices-angulos-euler}, y como el eje gira dentro del eje $X$ del marco de referencia móvil con una velocidad $\omega_\phi$, la velocidad angular $\omega$ del eje estará descrita por:
 
-permitimos la libre rotacion dentro del eje x del marco de referencia movil
-la velocidad angular es xx, entonces se tiene que
 \begin{equation}
-  \omega = \omega_\phi +
-   \Omega
+  \omega = \omega_\phi + \Omega
 \end{equation}
-calcular el producto cruz requiere que ambos vectores esten en el mismo marco de referencia asi que transformamos los vectores de fuerza al marco movil usando la transforamcion $T^{B}_O$
 
+Donde $\Omega$ es la velocidad angular del marco de referencia móvil. Calcular el producto cruz de la ecuación \ref{eq:derivada-inercia-coriolis} requiere que ambos vectores estén en el mismo marco de referencia. Por lo que es necesario transformar los vectores de fuerza al marco móvil mediante la matriz de transformación $T^{B}_O$.
 
+La ecuación \ref{eq:angulos-intrinsecos-marco-movil} relaciona la variación de los ángulos intrínsecos $\phi$ y $\theta$ con la velocidad angular del marco de referencia móvil respecto al marco fijo $\Omega$. 
 
 \begin{equation}
 	\begin{pmatrix}
@@ -1036,15 +1040,78 @@ calcular el producto cruz requiere que ambos vectores esten en el mismo marco de
 	\Omega_y\\
 	\Omega_z
 	\end{pmatrix}
+	\label{eq:angulos-intrinsecos-marco-movil}
 \end{equation}
+
+Sustituyendo los términos descritos en la sección \ref{sec:modelo-dinamico} en la ecuación \ref{eq:derivada-inercia-coriolis} se obtiene el sistema de ecuaciones [sistema de ecuaciones]. 
+
+[instertar ecuacion espacio de estados del sistema] 
+
+Estas ecuaciones se introducen dentro del modelo de \textbf{Simulink} mostrado en la figura [modelo simulink] para realizar la simulación.   
+
+[figura Simulink]
 
 \subsection{Linealización}
 
-\subsection{Controlador retroalimentado}
+Podemos observar que este sistema de ecuaciones es no lineal, así que tenemos que linealizarlo para convertirlo en la forma canónica de espacio de estados, y aplicar las técnicas de control descritas en la sección \ref{sec:control} mediante las formulas \ref{eq:control:jacobiano}. 
 
-\subsection{Controlador integral}
+Lo que resulta en el sistema descrito por las matrices:
 
-\subsection{Observador simple}
+[insertar matrices sin evaluar]  
 
-\subsection{Observador kalman}
+\subsection{Controlador}
+
+Con el fin de estabilizar el sistema descrito en la ecuación [sistema linealizado] utilizamos el esquema de control retroalimentado presentado en la sección [control retroalimentado]. 
+
+Se selecciona un conjunto de polos para el nuevo sistema y se utiliza el script de \textbf{Matlab}[anexo] para calcular las ganancias del controlador $K$. Este esquema de control es implementado en el modelo de \textbf{Simulink} mostrado en la figura [...]. 
+
+[insertar esquema de control retroalimentado]
+
+El esquema de control mostrado anteriormente es capaz de estabilizar el sistema pero no puede alcanzar un error de estado estable igual a $0$, por lo que se agrega un integrador y un vector de ganancias con el fin de producir un nuevo esquema como el mostrado en la sección [...]. Este nuevo vector de ganancias es calculado por el script [...] y su modelo de Simulink es el que se muestra en la figura [...].
+
+[insertar modelo simulink]
+
+\subsection{Observador}
+
+Para realizar control en espacio de estados es necesario retroalimentar el estado completo del sistema. En el caso del sistema descrito en [...] no se puede medir de manera directa todo los parámetros del vector de estados por lo que es necesario un observador de estados como es descrito en la sección [ref observador de estados]. 
+
+Las ganancias del observador de estados $K_o$ son calculadas mediante el script [...]. El modelo de \textbf{Simulink} correspondiente a este observador es mostrado en la figura [...].
+
+[figura modelo Simulink]
+
+\subsection{Control calendarizado}
+
+para que: compensar los efectos de las no linealidades
+
+como: el script linealiza en varios valores de Omega y recalcula las ganancias y todas las matrices que resultan de esto son guardadas en una matriz de tres dimensiones que será usada para la simulación 
+
+\subsection{Discretización}
+
+como los controladores suelen ser implementados en un sistema digital es necesario contar con una discretizacion de los controladores presentados anteriormente
+
+como se indica en la seccion [] para emular un controlador-observador es necesario transformar los polos que definen la respuesta del sistema en lazo cerrado mediante la aproximación de Tustin expresada en la ecuación [ecuacion de tustin] 
+
+para el calculo de las ganancias del controlador discreto es necesario primero discretizar el sistema continuo y con el nuevo conjunto de polos discretos aplicamos la técnica de ubicación de polos usada en la sección [...] 
+
+el sistema queda implementado en el modelo de \textbf{Simulink} mostrado en la figura [...]
+
+\subsection{Observador de Kalman}
+
+el ruido puede afectar la estabilidad de un sistema controlado 
+
+el observador de kalman permite mejorar la calidad de nuestras mediciones gracias a que incorpora informacion sobre la dinamica del sistema 
+
+a partir del sistema discretizado se implementan las formulas de observador de kalman descritas en la seccion []
+
+ademas agrega la ventaja de que integra la informacion de los tres sensores del rodamiento magnetico sin mayor problema 
+
+las ganancias del observador de kalman a diferencia de las ganancias del observador clasico son calculadas en linea y de manera iterativa 
+
+el algoritmo queda implementado en el modelo de \textbf{Simulink} mostrado en la figura [...]
+
+[insertar modelo de simulink]
+
+
+
+
 
