@@ -1081,37 +1081,30 @@ Las ganancias del observador de estados $K_o$ son calculadas mediante el script 
 
 \subsection{Control calendarizado}
 
-para que: compensar los efectos de las no linealidades
+Con el fin de compensar los efectos de las no linealidades provocadas por la precisión del eje utilizamos el método de control calendarizado descrito en la sección [...], en donde linealizamos en diferentes valores de $\Omega$ para obtener el conjunto de matrices de transición $A$, $B$, $C$ y el conjunto de ganancias $K$ y $K_o$ para el observador de estados. Estos cálculos son realizados por el script [...] y el conjunto de matrices es interpolado durante la simulación del modelo de \textbf{Simulink} mostrado en la figura [...]. 
 
-como: el script linealiza en varios valores de Omega y recalcula las ganancias y todas las matrices que resultan de esto son guardadas en una matriz de tres dimensiones que será usada para la simulación 
+[insertar modelo simulink]
 
 \subsection{Discretización}
 
-como los controladores suelen ser implementados en un sistema digital es necesario contar con una discretizacion de los controladores presentados anteriormente
+Debido a que los controladores suelen ser implementados en un sistema digital, es necesario contar con una versión discreta de los controladores presentados anteriormente.  
 
-como se indica en la seccion [] para emular un controlador-observador es necesario transformar los polos que definen la respuesta del sistema en lazo cerrado mediante la aproximación de Tustin expresada en la ecuación [ecuacion de tustin] 
+Como se indica en la sección [...], para emular un sistema controlador-observador es necesario transformar los polos que definen la respuesta del sistema del dominio de Laplace al dominio de $Z$. Esto se realiza mediante la transformación de Tustin expresada en la ecuación [ecuacion de tustin].
 
-para el calculo de las ganancias del controlador discreto es necesario primero discretizar el sistema continuo y con el nuevo conjunto de polos discretos aplicamos la técnica de ubicación de polos usada en la sección [...] 
+Para el calculo de las ganancias del controlador discreto, es necesario discretizar el sistema continuo y, con el nuevo conjunto de polos discretos, aplicar las técnicas de ubicación de polos descritas en la sección [...]. 
 
-el sistema queda implementado en el modelo de \textbf{Simulink} mostrado en la figura [...]
-
-\subsection{Observador de Kalman}
-
-el ruido puede afectar la estabilidad de un sistema controlado 
-
-el observador de kalman permite mejorar la calidad de nuestras mediciones gracias a que incorpora informacion sobre la dinamica del sistema 
-
-a partir del sistema discretizado se implementan las formulas de observador de kalman descritas en la seccion []
-
-ademas agrega la ventaja de que integra la informacion de los tres sensores del rodamiento magnetico sin mayor problema 
-
-las ganancias del observador de kalman a diferencia de las ganancias del observador clasico son calculadas en linea y de manera iterativa 
-
-el algoritmo queda implementado en el modelo de \textbf{Simulink} mostrado en la figura [...]
+El sistema queda implementado en el modelo de \textbf{Simulink} mostrado en la figura [...]. Cabe resaltar que lo que era un integrador en el sistema continuo ahora es un acumulador en lugar de un retardo unitario ($Z^{-1}$).  
 
 [insertar modelo de simulink]
 
+\subsection{Observador de Kalman}
 
+Si el ruido en los sensores alcanza niveles excesivos la estabilidad del controlador podría verse comprometida, por motivos de seguridad s necesario contar con un sistema más robusto en cuanto a inmunidad al ruido. Esto puede alcanzarse mediante el filtro de Kalman. 
+ 
+El filtro de Kalman es un observador en tiempo discreto que permite mejorar la calidad de nuestras mediciones gracias a que incorpora información sobre la dinámica del sistema y los niveles de ruido (covarianza) presente en las mediciones de los sensores. En el caso del rodamiento magnético se añade la ventaja de que integra la información redundante de los tres sensores de posición radial. 
 
+A partir del sistema discretizado se aplican las formulas del filtro de Kalman descritas en la sección [...]. Cabe resaltar que las ganancias del filtro de Kalman son calculadas en linea y de manera iterativa, a diferencia de las ganancias del observador clásico. 
 
+El filtro queda implementado en el modelo de \textbf{Simulink} mostrado en la figura [...]. 
 
+[insertar modelo de simulink]
