@@ -40,9 +40,9 @@ A pesar de que la mayoría de los usos que se le dan a los rodamientos magnéticos
 \subsection*{Investigación y Desarrollo de Rodamientos Magnéticos}
 
 Pese a las múltiples ventajas que presentan, los rodamientos magnéticos no están exentos de algunos problemas que pueden dificultar su desarrollo e implementación en los sistemas industriales, entre los que podemos destacar el alto consumo energético que generan.\par
-Ante este problema se hicieron varias investigaciones cuyas soluciones pueden clasificarse en dos tipos: el diseño de algoritmos para minimizar las corrientes en los electroimánes y el uso de imanes permanentes para proveer un campo magnético base para la levitación.\par
+Ante este problema se hicieron varias investigaciones cuyas soluciones pueden clasificarse en dos tipos: el diseño de algoritmos para minimizar las corrientes en los electroimanes y el uso de imanes permanentes para proveer un campo magnético base para la levitación.\par
 La investigación realizada en \cite{cite_5} se trata de una validación experimental en donde primero se diseña y construye un prototipo de pruebas que emula el comportamiento de un rodamiento magnético activo de un grado de libertad, y segundo se realizaron pruebas para evaluar el desempeño del controlador inteligente en comparación con un controlador estándar de polarización fija.\par
-Este equipo consiste en un eje rígido capaz de balancearse libremente sobre un punto de apoyo colocado debajo de su centro de masa. La posición angular de este eje es controlada mediante electroimánes fijados a los extremos de este. A pesar su simplicidad este equipo incorpora todas las no linealidades típicas de un rodamiento magnético activo, y la dinámica del sistema es ideal para evaluar el desempeño de los controladores.\par
+Este equipo consiste en un eje rígido capaz de balancearse libremente sobre un punto de apoyo colocado debajo de su centro de masa. La posición angular de este eje es controlada mediante electroimanes fijados a los extremos de este. A pesar su simplicidad este equipo incorpora todas las no linealidades típicas de un rodamiento magnético activo, y la dinámica del sistema es ideal para evaluar el desempeño de los controladores.\par
 En \cite{cite_6} una estrategia de control de corriente de polarización variable es presentada con el fin de minimizar la energía consumida sin alterar el desempeño dinámico del sistema. El modelado parte de un RMA de 2 polos sobre el cual se propone un controlador lineal y un observador de estados para la estimación de estados. Una vez obtenido el modelo del sistema se calcula de manera analítica la corriente óptima para la estabilización del sistema y obtener el controlador.\par
 Como resultado este controlador propuesto fue capaz de reducir el consumo en un 73\%, se estabilizó la posición de rotor en el centro del rodamiento con un error de estado estable nulo y se presentaron vibraciones 60\% menores comparadas con un controlador de polarización fija.
 
@@ -84,14 +84,14 @@ Todos estos beneficios implican una reducción significativa de los costos inhere
 
 A pesar de las múltiples ventajas que ofrece este tipo de sistemas, no se ha logrado ampliar su uso dentro de la industria debido principalmente a que presentan otro tipo de desventajas que no se encuentran en los cojinetes y rodamientos, como su accesibilidad limitada, un precio más elevado, la necesidad de contar con un sistema de control y la posibilidad de fallas en el sistema eléctrico, además de que en el caso de los rodamientos magnéticos activos el consumo eléctrico suele ser elevado.
 
-Es por eso que en este sentido se optó por el desarrollo de rodamientos magnéticos de funcionamiento híbrido, ya que al utilizar un campo base otorgado por los imanes permanentes, el consumo eléctrico de los electroimánes es menor. Este proyecto tendrá como finalidad desarrollar un sistema que pueda brindar una alternativa a los rodamientos magnéticos tradicionales en proyectos relacionados con el desarrollo de maquinaria y equipo industrial.
+Es por eso que en este sentido se optó por el desarrollo de rodamientos magnéticos de funcionamiento híbrido, ya que al utilizar un campo base otorgado por los imanes permanentes, el consumo eléctrico de los electroimanes es menor. Este proyecto tendrá como finalidad desarrollar un sistema que pueda brindar una alternativa a los rodamientos magnéticos tradicionales en proyectos relacionados con el desarrollo de maquinaria y equipo industrial.
 
 \newpage
 
 \section*{Descripción de los Capítulos}
 \subsubsection{Capítulo 1: Marco Teórico}
 
-Este capítulo tiene como finalidad describir los conocimientos fundamentales aplicados al proyecto durante el desarrollo del mismo. Entre los más importantes está la comprehensión de los fenómenos de electricidad y magnetismo, el control de sistemas lineales y discretos, los filtros de Kalman entre otros. Asimismo, refuerza y repasa los conocimientos sobre electrónica y conceptos de diseño mecatrónico (PDS y análisis funcionales) para permitir una mejor vinculación entre los elementos matemáticos de control y el fenómeno de levitación magnética.
+Este capítulo tiene como finalidad describir los conocimientos fundamentales aplicados al proyecto durante el desarrollo del mismo. Entre los más importantes están la comprehensión de los fenómenos de electricidad y magnetismo, el control de sistemas lineales y discretos, los filtros de Kalman, entre otros. Asimismo, refuerza y repasa los conocimientos sobre electrónica y conceptos de diseño mecatrónico (PDS y análisis funcionales) para permitir una mejor vinculación entre los elementos matemáticos de control y el fenómeno de levitación magnética.
 
 \subsubsection{Capítulo 2: Dise\~no Conceptual}
 
@@ -103,5 +103,5 @@ A lo largo de este capítulo se describe el desarrollo de cada área funcional a d
 
 \subsubsection{Capítulo 4: Validaci\'on y An\'alisis de Resultados}
 
-Este capítulo tiene la finalidad de integrar todas la áreas funcionales y ver su comportamiento a través de simulaciones específicas, donde se muestra el funcionamiento en conjunto de los elementos previamente seleccionados en el capítulo 3, así como la respuesta ante ciertas perturbaciones que podrían suscitarse en el área de aplicación donde se sitúe dicho prototipo. De igual forma, se muestran los alcances de este protitipo bajo ciertos parámetros de funcionamiento.
+Este capítulo tiene la finalidad de integrar todas la áreas funcionales y ver su comportamiento a través de simulaciones específicas, donde se muestra el funcionamiento en conjunto de los elementos previamente seleccionados en el capítulo 3, así como la respuesta ante ciertas perturbaciones que podrían suscitarse en el área de aplicación donde se sitúe dicho prototipo. De igual forma, se muestran los alcances de este prototipo bajo ciertos parámetros de funcionamiento.
 
