@@ -31,7 +31,7 @@ La ley de Biot-Savart nos permite calcular la intensidad del campo magnético H g
 
 El campo circula alrededor de un conductor simple en la dirección dada por la regla de la mano derecha:
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center}
 \centering
 	\includegraphics[width=6cm, height=4cm]{images/Capitulo_1/Campo_magnetico_en_un_conductor_sencillo}
@@ -64,13 +64,15 @@ Siempre que un campo magnético está presente, existirá un flujo magnético $ \phi
 
 El Weber es la unidad para medir la cantidad de flujo que, al ser reducido uniformemente a cero en un segundo, produce una f.e.m. de un Volt a través de una vuelta de conductor en la que atraviesa tal flujo.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center}
 \centering
 	\includegraphics[width=6cm, height=4cm]{images/Capitulo_1/Flujo_magnetico}
 	\caption{\textit{Flujo magnético.}}
 \end{center}
 \end{figure}
+
+\newpage
 
 \section{Materiales magnéticos}
 \subsection{Magnetización}
@@ -81,7 +83,7 @@ Sin embargo, para otros medios (particularmente materiales ferromagnéticos), $B$
 
 Ahora consideramos los efectos que un material tiene sobre la inducción magnética $B$ cuando un campo magnetizante pasa a través de él. Estos están representados por la magnetización, que puede ser incrementada en los materiales ferromagnéticos o reducida como es en el caso de los diamagnéticos. La permeabilidad relativa del material indica como varía el comportamiento de la inducción en el material con respecto a la inducción en el vacío.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center}
 \centering
 	\includegraphics[width=6cm, height=4cm]{images/Capitulo_1/Dipolo_magnetico_de_un_atomo}
@@ -105,7 +107,7 @@ A partir de la relación entre el momento magnético $m$ y el flujo se puede llega
 
 En este caso ninguna corriente externa está presente para un campo magnetizante por $B = \mu_0 M$. Podemos ver que la magnetización $M$ y el campo magnetizante $H$ contribuyen a la densidad de flujo en maneras similares. Tanto la magnetización como el campo magnético están presentes por lo que sus contribuciones pueden ser sumadas.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center}
 \centering
 	\includegraphics[width=10cm, height=4cm]{images/Capitulo_1/Dominios_magneticos_de_un_material}
@@ -153,7 +155,7 @@ El segundo grupo de materiales para los que $X$ es pequeña y positiva son los ma
 
 A temperatura constante y valores de campo $H$ relativamente bajos, la susceptibilidad de los materiales diamagnéticos y paramagnéticos es constante.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center}
 \centering
 	\includegraphics[width=11cm, height=6cm]{images/Capitulo_1/Curva_de_magnetizacion}
@@ -162,8 +164,6 @@ A temperatura constante y valores de campo $H$ relativamente bajos, la susceptib
 \end{figure}
 
 Los materiales magnéticos más prominentes son los ferromagnéticos al poseer una susceptibilidad positiva y mucho mayor a 1, cuyos valores típicos de $X$ varían entre las 50 hasta  las 10000. Ejemplos de estos materiales son el hierro, el cobalto, el níquel, los metales raros y sus aleaciones.
-
-\newpage
 
 \subsection{Saturación}
 
@@ -176,15 +176,13 @@ Por lo general, esta relación B-H no es constante, por lo que es de gran utilida
 
 % Electrónica general: equipos electrónicos de consumo, Pablo Alcalde San Miguel, Editorial Paraninfo, 2° Edicion. 
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center}
 \centering
 	\includegraphics[width=11cm, height=6cm]{images/Capitulo_1/Curva_de_magnetizacion_de_un_material_ferromagnetico}
 	\caption{\textit{Curva de magnetización de un material ferromagnético.}}
 \end{center}
 \end{figure}
-
-\newpage
 
 \subsection{Histéresis}
 
@@ -196,7 +194,7 @@ El área de la curva de histéresis corresponde a la pérdida de energía por unidad
  
 %Fundamentos de electromagnetismo para ingeniería. David K. Cheng. Editorial Pearson Educación.   
 
-\begin{figure}[h!]
+\begin{figure}[H]
 \begin{center}
 \centering
 	\includegraphics[width=11cm, height=7cm]{images/Capitulo_1/Curva_de_histeresis}
@@ -284,7 +282,7 @@ Y finalmente la relación entre estas, también conocida como ley de Hopkins:
 	\phi = \frac{\eta}{R}
 \end{equation}
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center}
 \centering
 	\includegraphics[width=11cm, height=7cm]{images/Capitulo_1/Elementos_de_un_circuito_magnetico}
@@ -292,11 +290,9 @@ Y finalmente la relación entre estas, también conocida como ley de Hopkins:
 \end{center}
 \end{figure}
 
-\newpage
-
 A partir de estas ecuaciones es posible el sencillo cálculo del flujo a través de elementos con diferentes longitudes medias, materiales y secciones transversales, mediante las técnicas de análisis de circuitos eléctricos y la relación entre los circuitos magnéticos y los circuitos eléctricos:
 
-\begin{table}
+\begin{table}[H]
 \centering
 \begin{tabular}{|c|c|c|c|}
 \hline 
@@ -310,34 +306,36 @@ $\phi$ & Flujo magnético & $I$ & Corriente eléctrica \\
 \hline
 \end{tabular} 
 \end{table}
+
 \newpage
 
 \section{Electroimanes}
 
-
 \subsection{Modelado}
 
 Para diseñar un electroimán se requiere de un modelo que relacione la geometría del núcleo con la fuerza máxima que este puede ejercer. La fuerza esta determinada por:
+
 \begin{equation}
 	F =  \frac{(NI)^2}{2} \frac{d}{dy}(\mathcal{R}^{-1})
 	\label{eq:electroiman:formula-general-fuerza}
 \end{equation}
-por lo que el problema de calcular la fuerza se reduce a calcular la reluctancia del circuito magnético que conforma el electroimán. 
+
+Por lo que el problema de calcular la fuerza se reduce a calcular la reluctancia del circuito magnético que conforma el electroimán. 
 
 %Procederemos a analizar los núcleos de geometría \ref{fig:geometria-radial} y \ref{fig:geometria-axial} correspondientes a los electroimanes radial y axial respectivamente.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_2/geometria_nucleo_radial}
-        \caption{Geometría}
+        \caption{Geometría.}
         \label{fig:geometria-radial}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
       %(or a blank line to force the subfigure onto a new line)
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_2/modelo_reluctancias_eir}
-        \caption{Modelo de reluctancias}
+        \caption{Modelo de reluctancias.}
         \label{fig:modelo-reluctancias-radial}
     \end{subfigure}
     \caption{Electroimán radial}
@@ -377,21 +375,21 @@ Si reescribimos la ecuación \ref{eq:electroiman:fuerza-ideal} ahora sin ignorar 
 
 Rehaciendo los cálculos bajo las condiciones anteriores, se llega a una diferencia de tan solo n\% con respecto a la simulación de elemento finito. 
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_2/geometria_nucleo_axial}
-        \caption{Geometría}
+        \caption{Geometría.}
         \label{fig:geom-axial}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
       %(or a blank line to force the subfigure onto a new line)
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_2/modelo_reluctancias_eia}
-        \caption{Modelo de reluctancias}
+        \caption{Modelo de reluctancias.}
         \label{fig:modelo-axial}
     \end{subfigure}
-    \caption{Electroimán axial}
+    \caption{Electroimán axial.}
 \end{figure}
 
 Repitiendo el análisis para el electroimán axial con geometría \ref{fig:geom-axial},  obtenemos el modelo de reluctancias de la figura \ref{fig:modelo-axial} al igual que en el electroimán radial la fuerza y la reluctancia quedan determinadas por las ecuaciones \ref{eq:electroiman:reluctancia-total}, con la diferencia de que el área corresponde a una sección transversal circular. 
@@ -464,7 +462,6 @@ Teniendo en consideración todo lo anterior podemos resumir el proceso de diseño 
 \item Realizar una simulación FEM para validar. 
 \end{enumerate}
 
-\newpage
 \subsection{Efecto marginal (Fringing)} \label{sec:flujo-marginal}
 
 Calcular la reluctancia de un componente inductivo permite determinar de manera rápida y directa la inductancia y flujo magnético, haciendo posible evitar la saturaci\'on del núcleo al dise\~nar un sistema de electroimanes.
@@ -477,13 +474,13 @@ Existen diferentes métodos para calcular la reluctancia del entrehierro. En un m
 
 Donde $l_g$ y $A_g$ son la longitud y sección transversal del entrehierro respectivamente, y $\mu_0$ es la permeabilidad del espacio libre. La ecuación \ref{eq:marginal:reluctancia-ideal} s\'olo aplica cuando el flujo marginal es pequeño comparado con el flujo total, como cuando la longitud del entrehierro es muy pequeña comparada con su sección transversal. 
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_flujo_maginal}
     \caption{Diagrama de flujo marginal.}
 \end{figure}
 
-Se conocen dos enfoques para la consideración en el flujo marginal para calcular la reluctancia del entrehierro: \\
+Se conocen dos enfoques para la consideración en el flujo marginal para calcular la reluctancia del entrehierro: 
 
 \begin{enumerate}
 \item El enfoque del Método de la Transformación Conformal Schwarz-Christoffel:	se basa en la analogía capacitancia-reluctancia para calcular la reluctancia del entehierro. Sin embargo, este enfoque nos conduce a una solución relativamente compleja y difícil de manejar. 
@@ -504,11 +501,11 @@ Este método surge a partir de aplicar la transformación Schwarz-Christoffel al s
 	R^\prime_{basic} = \frac{1}{\mu_0[\frac{\omega}{2l} + \frac{2}{\pi}(1 +ln\frac{\pi h}{4l})]} 
 \end{equation}
 
-%Inserte imagen (figura 3 del paper)
+[Inserte imagen (figura 3 del paper)]
 
 La figura [1...] se toma como base para calcular estructuras de entrehierro más complejas. La figura [4 paper] muestra cómo se pueden alcanzar diferentes geometrías a partir del modelo básico, además de establecer los valores de $\omega$ y $l$. El valor $h$ representa la distancia desde el borde del entrehierro a la siguiente esquina del n\'ucleo.
 
-%Inserte imagen (figura 4 del paper)
+[Inserte imagen (figura 4 del paper)]
 
 Con el fin de considerar la tridimensionalidad del entrehierro, se introduce un factor de corrección que describe en qué medida disminuye la reluctancia del entrehierro debido al flujo marginal comparado con la reluctancia ideal. 
 El factor de corrección que considera los efectos en la dirección $x$ se obtiene calculando la reluctancia planar $R^\prime_{basic}$ y dividiéndola entre la reluctancia planar ideal (visto desde el plano $xz$):
@@ -555,7 +552,7 @@ El calibre de los conductores depende únicamente de la intensidad de corriente e
 
 Existen tablas que relacionan un calibre AWG con la corriente máxima que soporta el elemento conductor dependiendo del material del que esté hecho. Los materiales más usados son el aluminio y el cobre recocido, pero debido a que posee una mejor conductividad eléctrica se selecciona el cobre. A continuación se muestra la tabla AWG para cobre esmaltado: 
 
-\begin{table}
+\begin{table}[H]
 \centering
 \begin{tabular}{|c|l|c|c|c|c|}
 \hline 
@@ -576,21 +573,21 @@ El área del embobinado del electroimán depende directamente del número de vuelta
 
 Existen dos configuraciones para el embobinado: la lineal y la hexagonal, cada una con su propio factor de empaquetamiento. Como se observa en la figura \ref{fig:paq-bobina}, la configuración hexagonal aprovecha al máximo el área del embobinado al  dejar menos cavidades entre los conductores. Además, la construcción en esta configuración es más sencilla de realizar.   
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_2/empaquetamiento_cobre_1}
-        \caption{Configuraci\'on Lineal}
+        \caption{Configuraci\'on Lineal.}
         \label{fig:empaq-lineal}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
       %(or a blank line to force the subfigure onto a new line)
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_2/empaquetamiento_cobre_2}
-        \caption{Configuraci\'on Hexagonal}
+        \caption{Configuraci\'on Hexagonal.}
         \label{fig:empaq-hex}
     \end{subfigure}
-    \caption{Configuraciones de empaquetamiento\cite{cite_c2_2017}}\label{fig:paq-bobina}
+    \caption{Configuraciones de empaquetamiento\cite{cite_c2_2017}.}\label{fig:paq-bobina}
 \end{figure}
 
 Para calcular el área de la sección transversal de la bobina se utiliza la siguiente ecuación:
@@ -606,25 +603,27 @@ Para calcular el área de la sección transversal de la bobina se utiliza la sigui
 	\item $K$ = Factor de empaquetamiento  de la bobina  dada por 0.90\cite{cite_c2_2017} 
 \end{itemize}
 
+\newpage
+
 \section{Imanes permanentes}
 \subsection{Análisis del imán permanente}
 
 Proponiendo un imán permanente y guía de flujo magnético con la siguiente geometría:
 
-\begin{figure}[htb]
-\begin{center}
-\centering	
-	\includegraphics[width=5cm, height=5cm]{images/Capitulo_1/Circuito_magnetico_de_iman_permanente}
-	\caption{\textit{Circuito Magnético de imán permanente.}}
-\end{center}
-\end{figure}
-
-\begin{figure}[htb]
-\begin{center}
-\centering
-	\includegraphics[width=5cm, height=5cm]{images/Capitulo_1/Geometria_de_iman_y_ferrita_guia}
-	\caption{\textit{Geometría de imán y ferrita guía.}}
-\end{center}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+        \includegraphics[width=5cm, height=5cm]{images/Capitulo_1/Circuito_magnetico_de_iman_permanente}
+        \caption{Circuito Magnético de imán permanente.}
+    \end{subfigure}
+    ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.3\textwidth}
+        \includegraphics[width=5cm, height=5cm]{images/Capitulo_1/Geometria_de_iman_y_ferrita_guia}
+        \caption{Geometría de imán y ferrita guía.}
+        \label{fig:empaq-hex}
+    \end{subfigure}
+    \caption{Geometría de un conjunto imán permanente-núcleo ferromagnético.}\label{fig:paq-bobina}
 \end{figure}
 
 Asumiendo que el plato tiene una permeabilidad relativa infinita y que el imán posee una curva de desmagnetización lineal de la forma:
@@ -674,6 +673,7 @@ Donde son:\\
 	$\mu_m$: La permeabilidad magnética del imán permanente definida como  $\frac{B_r}{H_c}$\\
 	$g$: La distancia de entrehierro\\
 
+\newpage
 
 \section{Sensores de desplazamiento}
 
@@ -711,7 +711,7 @@ C=F(d,A,\varepsilon_r)
 Un sensor de proximidad es un transductor que es capaz de detectar la presencia de un objeto sin contacto físico. Normalmente un sensor de proximidad emite algún campo electromagnético o electrostático, o un haz de radiación electromagnética (radiación infrarroja) y detecta cualquier cambio en el campo o señal de retorno.\\ 
 Los sensores de proximidad capacitivos consisten en un oscilador cuya frecuencia está determinada por la capacitancia del circuito al cual los electrodos están conectados. Cuando un conductor aterrizado o un material con una alta permeabilidad eléctrica se acercan al electrodo, la capacitancia cambia la frecuencia del oscilador. Este cambio es detectado y enviado a la unidad de control. El objeto detectado se le refiere comúnmente como objetivo. El campo eléctrico distribuido alrededor del capacitor experimenta un cambio que es detectado por la unidad de control.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center}
 \centering	
 	\includegraphics[width=5cm, height=5cm]{images/Capitulo_1/Interaccion_del_campo_electrico_en_un_capacitor_aire}
@@ -719,7 +719,7 @@ Los sensores de proximidad capacitivos consisten en un oscilador cuya frecuencia
 \end{center}
 \end{figure}
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center}
 \centering
 	\includegraphics[width=5cm, height=5cm]{images/Capitulo_1/Interaccion_del_campo_electrico_en_un_capacitor_aire_dielectrico}
@@ -730,7 +730,7 @@ Los sensores de proximidad capacitivos consisten en un oscilador cuya frecuencia
 La distancia máxima que el sensor de proximidad es capaz de detectar es conocido como rango nominal. Algunos sensores tienen ajustes del rango nominal o maneras de reportar una detección graduada de la distancia, un sensor de proximidad ajustado a un rango muy limitado es comúnmente referido como un sensor táctil. Los sensores capacitivos usualmente tienen el doble de rango los sensores inductivos.
 
 \subsubsection{Suceptibilidad a capacitancias parásitas}
-Los electrodos del sensor poseen capacitancias en el rango de fracción de picofaradios y conectar esas señales a un cable coaxial de 60pF por metro podría obscurecer totalmente la señal. Sin embargo, con el blindaje correcto al igual que cualquier otra capacitancia parásita, es posible eliminar en mayor medida los efectos  del ruido.
+Los electrodos del sensor poseen capacitancias en el rango de fracción de picofaradios y conectar esas señales a un cable coaxial de $60 pF$ por metro podría obscurecer totalmente la señal. Sin embargo, con el blindaje correcto al igual que cualquier otra capacitancia parásita, es posible eliminar en mayor medida los efectos  del ruido.
 
 \subsubsection{Susceptibilidad al ruido}
 Un peligro para los circuitos osciladores es que la frecuencia variaría de manera intermitente en el caso de existiría interferencia cruzada causada por circuitos adyacentes. Estos problemas pueden ser resueltos mediante un blindaje, una correcta disposición de pistas e integrados en el circuito y el uso de capacitores de "bypass" en las fuentes de alimentación.
@@ -739,7 +739,6 @@ Un peligro para los circuitos osciladores es que la frecuencia variaría de maner
 La capacitancia depende del entrehierro o distancia entre los electrodos conductivos. Esta distancia puede incrementar o decrementar dependiendo de las condiciones ambientales, y del material que podrían generar mediciones poco exactas, por ejemplo suciedad en la superficie del sensor.
 
 \newpage
-
 
 \section{Sistemas dinámicos}
 \subsection{Sistemas}
@@ -871,6 +870,8 @@ La transformada $Z$ definida por la ecuación anterior se denomina unilateral, ya
 
 Al igual que en el caso continuo, un sistema discreto es estable si se presenta un cambio pequeño en las entradas, un sistema estable presentará modificaciones pequeñas en su respuesta. La estabilidad se puede determinar a partir de la localizacion de los polos de lazo cerrado en el plano z. EL sistema es estable si los polos de las raíces de la ecuación característica quedan localizadas dentro del círculo unitario en el plano Z. Por el contrario, si un par de polos conjugados complejos están fuera el círculo unitario o polos múltiples el sistema es inestable, pero si al menos un polo  está ubicado en $z=1$ o $z = -1$, el sistema es marginalmente estable.
 
+\newpage
+
 \section{Dinámica}
 \subsection{Movimiento translacional}
 Para modelar el comportamiento de los cuerpos en movimiento es necesario aplicar las ecuaciones de la mecánica clásica. Un cuerpo rígido ubicado en el espacio posee 6 grados de libertad (cantidad mínima de parámetros necesarios para describir su configuración), la posición espacial de su centro de masa, y su orientación. La segunda ley de Newton nos permite calcular la traslación del objeto, mientras que las ecuaciones de Euler nos permiten calcular su orientación.
@@ -988,7 +989,7 @@ Este conjunto de ecuaciones se les conoce como ecuaciones de Euler, y nos provee
 \subsubsection{Ángulos de Euler} \label{sec:angulos-euler}
 Para determinar la posición del marco móvil se utilizan un conjunto de rotaciones consecutivas, al conjunto de ángulos que definen estas rotaciones se les conoce como ángulos de Euler. Existen 12 secuencias distintas de rotaciones entre las que más destacan la rotación ZXZ (ángulos de Euler clásicos), y la rotación ZXY (ángulos de Tyat-Bryan), estos últimos son usualmente usados para la navegación.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center}
 \centering
 	\includegraphics[width=10cm, height=4cm]{images/Capitulo_1/secuencia_angulos_euler}
@@ -1091,7 +1092,8 @@ Finalmente se calcula la transformada inversa (debemos tener en cuenta que $[(Q)
 
 Nótese que matriz ${Q_B^l}$ se indetermina para valores de $\theta = \pm\pi/2$. Para todos los juegos de ángulos de Euler existen puntos donde la matriz inversa se indetermina, por eso es importante la correcta selección del juego de ángulos.
 
-\pagebreak
+\newpage
+
 \section{Control} \label{sec:control}
 
 \subsection{Linealización}
@@ -1173,7 +1175,8 @@ La técnica de diseño empieza con la determinación de los polos en lazo cerrado d
 En lugar de especificar sólo los polos dominantes en lazo cerrado (enfoque del diseño por convención), en el enfoque actual de asignación de polos, se especifican todos los polos en lazo cerrado. Sin embargo, hay un costo asociado con colocar todo los polos en lazo cerrado, porque hacerlo requiere tener buenas medidas de todas las variables, o bien incluir un obsevador de estado en el sistema. También existe un requisito por parte del sistema para que los polos en lazo cerrado se puedan situar en posiciones elegidas de forma arbitraria. La exigencia es que el sistema sea de estado completamente controlable.
 \subsubsection{Controlador de estados}
 Consideremos el esquema de control de la figura \ref{fig:control:control-retroalimentado}, en este esquema de control conocida como retrolimentación de estado completo, se usa como entrada el producto de vector de estados $x$ y la matriz de ganancias $K$ de manera que:
-\begin{figure}[htb]
+
+\begin{figure}[H]
 \begin{center}
 \centering
 	\includegraphics[height=4cm]{images/Capitulo_1/control_retroalimentado}
@@ -1181,22 +1184,28 @@ Consideremos el esquema de control de la figura \ref{fig:control:control-retroal
 	\label{fig:control:control-retroalimentado}
 \end{center}
 \end{figure}
+
 \begin{equation}
 	u = -Kx
 \end{equation}
+
 Sustituyendo esta nueva entrada en la ecuación \ref{eq:control:sistema-lti} obtenemos:
+
 \begin{equation}
 	\dot{x} = (A- BK)x = \tilde{A}x
 \end{equation}
+
 Esta nueva ecuación tiene una dinámica establecida por los polos de la matriz $\tilde{A}$. Luego entonces con la correcta selección de la matriz $K$ podemos cambiar de manera arbitraria la dinámica del sistema, siempre y cuando, este sea completamente controlable.
 
 Exiten varios métodos para calcular la matriz $K$ entre los que destacan el método de Kalman y el método de Ackerman. Para el caso de sistemas con una sola entrada existen soluciones únicas para esta matriz, sin embargo, para sistemas con múltiples entradas existen infinita cantidad de soluciones. Por tanto, el método de Kalman y Ackerman no funcionan para estos últimos.
 
 Debido a las infinitas soluciones, se necesitan restricciones adicionales para obtener soluciones concretas. Un método que resulta robusto es el desarrollado en \cite{cite_s9_2017_Kautsky}, donde se minimiza la sensitivdad del sistema a las perturbaciones. Este método es el que implementa el comando 'place' de Matlab.
-\subsubsection{Observador de estados}
-Un observador de estado estima las variables de estado basándose en las mediciones de las variables de salida y de control. El concepto de obsevabilidad juega un papel importante.
 
-\begin{figure}[htb]
+\subsubsection{Observador de estados}
+
+Un observador de estado estima las variables de estado basándose en las mediciones de las variables de salida y de control. El concepto de observabilidad juega un papel importante.
+
+\begin{figure}[H]
 \begin{center}
 \centering
 	\includegraphics[height=4cm]{images/Capitulo_1/observador_estados}
@@ -1254,7 +1263,7 @@ El principio básico de un servosistema es insertar un integrador en el camino di
 	\dot{\xi} =  r - y = r - Cx
 \end{equation}
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center}
 \centering
 	\includegraphics[height=4cm]{images/Capitulo_1/control_integral}
@@ -1387,7 +1396,7 @@ Este método fue desarrollado por el profesor Arnold Tustin y es una técnica de m
 
 Toma la función $H(s)$ y todas sus variables acompañados por $s$ y sustituye los términos equivalentes en $z$. Lo que esto implica que si el sistema es controlable y es estable, al hacer la tranformación se garantiza la controlabilidad y la estabilidad en $z$.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \centering
 	\includegraphics[width=0.5\textwidth]{images/Capitulo_1/mapeo_s_z}
 	\caption{\textit{Tranformación de bilineal.}}
@@ -1425,10 +1434,10 @@ Donde $w$ es la variable estocástica que modela el ruido del proceso, y $u$ es l
 
 I. e. un robot que trata de determinar su posición representada mediante la variable $x$. Si sabemos con cierta certeza que estamos en una posición representada mediante la distribución $x$ y sabemos que las llantas giran a un velocidad $u$, entonces podemos predecir que ahora estamos otra posición $x_{k+1}$. Pero debido a que el sistema no es ideal (existen imperfecciones en el camino, las llantas del robot, el arrastre del aire, entre otros factores), es posible que durante el desplazamiento existan variaciones imprevistas que afecten la trayectoria esperada en un princio del robot. Esta incertidumbre queda cuantificada en el ruido del proceso $w$. Si suponemos que ambas distribuciones son gaussianas, entonces tenemos que la nueva distribución $x_t$ tiene la forma de la figura \ref{fig:distribucion-gaussiana}.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \centering
 	\includegraphics[width=0.5\textwidth]{images/Capitulo_1/gaussiana_distribucion}
-	\caption{\textit{Distribución probabilística gaussiana.}}
+	\caption{\textit{Distribución probabilística gaussiana \cite{cite_s10_2017_PROBABILISTIC_gaussiana}.}}
 	\label{fig:distribucion-gaussiana}
 \end{figure}
 
@@ -1470,9 +1479,10 @@ Teniendo la estimaci\'on actualizada, se hace la nueva proyeccci\'on a futuro:
 \end{equation}
 
 Y así, la nueva proyecci\'on pasa  a hacer la estimación actual repitiendo el proceso, en esencia el filtro Kalman realiza la predicci\'on y al final lo corrige. 
+
 \newpage
 
-\section{Diseño de ingeniería }
+\section{Diseño de ingeniería}
 
 Comúnmente se asocia el diseño a una actividad relacionada con la estética de los objetos o una mejora en la apariencia de algún producto. Sin embargo, en ingeniería implica una serie de conocimientos, métodos y herramientas más complejos para llevar a cabo esta actividad, entre los que podemos destacar \cite{cite_1_2017}:
 
@@ -1489,8 +1499,6 @@ Comúnmente se asocia el diseño a una actividad relacionada con la estética de lo
 Podemos definir el diseño de ingeniería como toda actividad necesaria para definir soluciones a problemas específicos que no se han podido resolver con anterioridad, o nuevas soluciones a problemas resueltos de formas alternas, donde el ingeniero aplica conocimientos científicos y técnicos para asegurar que el producto satisfaga los requerimientos y necesidades del mercado, cumpliendo con las especificaciones de manufactura y ensamble en los tiempos y costos establecidos. Este proceso de diseño no se da por terminado hasta que el producto cumpla de manera formal con los estándares de calidad, fiabilidad y con los costos y rendimiento esperados \cite{cite_1_2017}. 
 
 El diseño de ingeniería es un proceso secuencial e iterativo, donde en cada una de sus etapas se considera la información y el conocimiento adquirido a lo largo del proceso de diseño. De acuerdo con Robert Norton, este proceso puede dividirse en diez etapas \cite{cite_2_2017}:
-
-\newpage
 
 \begin{enumerate}
 \item Identificación de la necesidad: definir las necesidades y características principales del producto.
@@ -1510,35 +1518,29 @@ El diseño mecatrónico trabaja sobre un enfoque concurrente, lo que implica la pa
 
 En el diseño de un producto mecatrónico, es necesario que el conocimiento y la información requerida se coordinen entre los diferentes grupos de trabajo, lo que se conoce como ingeniería concurrente. La ingeniería concurrente es un enfoque de diseño en el que el diseño y la fabricación de un producto se fusionan. Esto fue influenciado en parte por el reconocimiento de que muchos de los altos costos en la fabricación se deciden en la etapa de diseño. 
 
-\newpage
-
 Sin embargo, el diseño mecatrónico se refiere no sólo a la manufactura de productos en sí, sino también al mantenimiento de los mismos dentro de un área denominada diseño del ciclo de vida del producto. 
 
 El \textit{ciclo de vida} reúne toda una serie de actividades que van desde la integración del diseño, ingeniería y fabricación, logística, almacenamiento y distribución, clientes y proveedores, ventas, actividades de marketing y la administración financiera y de control.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \centering
-	\includegraphics[width=\textwidth]{images/Capitulo_1/Ciclo_Vida}
+	\includegraphics[width=.85\textwidth]{images/Capitulo_1/Ciclo_Vida}
 	\caption{\textit{Diagrama del ciclo de vida de un producto \cite{cite_1_2017}.}}
 \end{figure}
 
-\newpage
-
 El proceso de diseño mecatrónico puede simplificarse en tres fases: modelado y simulación, creación del prototipo y desarrollo del ciclo de vida \cite{cite_3_2017}. 
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \centering
-	\includegraphics[width=\textwidth]{images/Capitulo_1/Disen_mecatronico}
+	\includegraphics[width=.85\textwidth]{images/Capitulo_1/Disen_mecatronico}
 	\caption{\textit{Fases del diseño mecatrónico \cite{cite_1_2017}.}}
 \end{figure}
 
 Debido a su modularidad, los sistemas mecatrónicos son adecuados para aplicaciones que requieren reconfiguraciones. Dichos productos pueden ser reconfigurados durante la fase de diseño mediante la sustitución de varios módulos del subsistema o durante el ciclo de vida útil de los productos.
 
-\newpage
-
 A continuación, se presenta un diagrama más detallado del proceso de diseño mecatrónico, donde se muestran además algunas de las herramientas y métodos que se utilizan durante cada una de las etapas:
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \centering
 	\includegraphics[width=\textwidth]{images/Capitulo_1/Mecatronico}
 	\caption{\textit{Diagrama extendido del proceso de diseño mecatrónico \cite{cite_1_2017}.}}
@@ -1558,7 +1560,7 @@ En resumen, es un documento técnico para el equipo de diseño que describe qué es
 
 Este documento permanece en constante evolución a lo largo del desarrollo del proyecto, esto gracias a la información adquirida a través de las etapas del proceso de diseño, a las recomendaciones o especificaciones del cliente y a las modificaciones que los diseñadores consideren necesarias. Los elementos del PDS dependen del problema de diseño a resolver, por lo que no existe un formato específico para documentar dichas especificaciones. Sin embargo, deben considerarse ciertas características para elaborar el PDS, las cuales se presentan en la siguiente tabla \cite{cite_4_2017}: 
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \centering
 	\includegraphics[width=\textwidth]{images/Capitulo_1/PDS}
 	\caption{\textit{Características del PDS.}}
@@ -1571,7 +1573,7 @@ El diseño conceptual forma parte del área de proceso creativo del diseño mecatró
 El diseño conceptual se caracteriza por un alto nivel de abstracción, se ocupa de las propiedades, atributos y funciones principales del producto, y no de dimensiones, materiales y otras características más específicas, ya que éstas se determinan en el diseño detallado. 
 
 Emplea información adquirida de diversas herramientas y métodos a lo largo de todo el proceso, el cual evoluciona de manera constante, más que en cualquier otra etapa del desarrollo de producto, desde la investigación previa, estudio de mercado, el análisis del ciclo de vida, planteamiento del problema, la generación de ideas por medio de bocetos o esquemas, hasta obtener el concepto de diseño del producto, como modelos en 3D o prototipos rápidos. 
-Una de las herramientas de las que se vale el diseño conceptual para obtener más información es el \textit{análisis funcional}.
+Una de las herramientas de las que se vale el diseño conceptual para obtener más información es el análisis funcional.
 
 \subsubsection{Análisis funcional en ingeniería}
 El análisis funcional, en ingeniería, tiene como objetivo identificar las funciones o prestaciones que el producto debe respetar para cumplir con las necesidades y especificaciones del cliente y traducirlas en requerimientos de diseño. Esto presenta múltiples ventajas \cite{cite_5_2017}:
@@ -1605,7 +1607,7 @@ Para realizar un diagrama de funciones se pueden seguir los siguientes procedimi
 \begin{figure}[H]
 \centering
 	\includegraphics[scale=.5]{images/Capitulo_1/Funciones1}
-	\caption{\textit{Diagrama del modelo de "Caja Negra".}}
+	\caption{\textit{Diagrama del modelo de Caja Negra.}}
 \end{figure}
   
 \item Líneas de seguimiento: se trazan las líneas de entrada y salida a través del sistema a medida que se van transformado o se van descomponiendo en subfunciones. 

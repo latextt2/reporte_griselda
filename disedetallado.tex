@@ -514,7 +514,7 @@ Así como se hizo en la sección \ref{sec:simulacion-fem-electroiman}, podemos val
 \begin{figure}[h]
 \begin{center}
 \centering
-\missingfigure[figwidth=8cm]{Fuerza del iman pasivo}
+\includegraphics[width=0.8\textwidth]{images/Capitulo_3/fuerza_iman_permanente}
 \caption{Curva característica del imán permanente.}
 \label{fig:iman-permanente-curva}
 \end{center}
@@ -528,7 +528,7 @@ Para generar dicho desplazamiento se utiliza un mecanismo tornillo-tuerca, conoc
 
 \begin{figure}[H]
 \centering
-	\includegraphics[scale=.5]{images/Capitulo_3/Tornillo}
+	\includegraphics[scale=.3]{images/Capitulo_3/Tornillo}
 	\caption{\textit{Mecanismo Tornillo Tuerca \citep{cite_17}}}
 \end{figure}
 
@@ -759,19 +759,32 @@ C = \frac{\epsilon A}{d}
 
 Suponiendo un objetivo de sensado con superficie plana y un área total constante $A_t$ el valor de $\alpha$ que maximiza la capacitancia del sensor es igual a $1$, en otras palabras, áreas iguales entre la placa frontal y el anillo exterior \cite{cite_s15_2017_snoa928}.
 
-Sin embargo el rotor es un objetivo con una superficie curva por lo que hay que tener en cuenta los efectos que pueda tener en la sensitividad del sensor. En la figura [curvas desfasadas...] se puede observar que bajo diferentes curvaturas el valor óptimo de $\alpha$ se desfasa. 
+Sin embargo el rotor es un objetivo con una superficie curva por lo que hay que tener en cuenta los efectos que pueda tener en la sensitividad del sensor. En la figura \ref{fig:grafica_desfasamiento_capacitancia} se puede observar que bajo diferentes curvaturas el valor óptimo de $\alpha$ se desfasa. 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/grafica_desfasamiento_capacitancia}
-    \caption{Desfasamiento de punto óptimo en sensor capacitivo.}
+    \caption{Desfasamiento de punto óptimo en el SDC.}
+    \label{fig:grafica_desfasamiento_capacitancia}
 \end{figure}
 
-Entonces para calcular el punto óptimo es necesario realizar un conjunto de simulaciones variando $\alpha$, contemplando la curvatura real del rotor. Esto se realiza mediante un script de \textbf{Matlab} capaz de generar diferentes configuraciones del electrodo y ejecutar una simulación en FEMM para calcular la capacitancia dentro de cada configuración. Este conjunto de datos es recolectado y graficado para determinar el punto óptimo como se muestra en la figura [punto optimo de alpha...].
+Entonces para calcular el punto óptimo es necesario realizar un conjunto de simulaciones variando $\alpha$, contemplando la curvatura real del rotor. Esto se realiza mediante un script de \textbf{Matlab} capaz de generar diferentes configuraciones del electrodo y ejecutar una simulación en FEMM para calcular la capacitancia dentro de cada configuración. Este conjunto de datos es recolectado y graficado para determinar el punto óptimo como se muestra en la figura \ref{fig:grafica_capacitancia_optima}.
 
-Finalmente se ejecuta otro script que varía la distancia entre el objetivo y el sensor para obtener la curva característica mostrada en la figura [curva caracterisitica...]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/grafica_capacitancia_optima}
+    \caption{Configuración óptima del SDC.}
+    \label{fig:grafica_capacitancia_optima}
+\end{figure}
 
-[insertar figura de curva caracteristica]
+Finalmente se ejecuta otro script que varía la distancia entre el objetivo y el sensor para obtener la curva característica mostrada en la figura \ref{fig:sensor_caracterizacion_final_radial}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/sensor_caracterizacion_final_radial}
+    \caption{Curva característica del SDC.}
+    \label{fig:sensor_caracterizacion_final_radial}
+\end{figure}
 
 \subsection{Circuito de acondicionamiento}
 
