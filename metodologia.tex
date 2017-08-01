@@ -373,8 +373,6 @@ Si reescribimos la ecuación \ref{eq:electroiman:fuerza-ideal} ahora sin ignorar 
 	\label{eq:electroiman:fuerza-real}
 \end{equation}
 
-Rehaciendo los cálculos bajo las condiciones anteriores, se llega a una diferencia de tan solo n\% con respecto a la simulación de elemento finito. 
-
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
@@ -394,13 +392,13 @@ Rehaciendo los cálculos bajo las condiciones anteriores, se llega a una diferenc
 
 Repitiendo el análisis para el electroimán axial con geometría \ref{fig:geom-axial},  obtenemos el modelo de reluctancias de la figura \ref{fig:modelo-axial} al igual que en el electroimán radial la fuerza y la reluctancia quedan determinadas por las ecuaciones \ref{eq:electroiman:reluctancia-total}, con la diferencia de que el área corresponde a una sección transversal circular. 
 
-Si comparamos los resultados de estas ecuaciones con la simulación de elemento finito podemos observar un error de n\% en la fuerza ejercida. Esta es una gran desviación comparada con los resultados del electroimán radial.
+Si comparamos los resultados de estas ecuaciones con la simulación de elemento finito podemos observar un porcentaje de error en la fuerza ejercida. Esto representa una gran desviación comparada con los resultados del electroimán radial.
 
 %Para un electroimán axisimétrico donde la geometría cumple condiciones de xx, xx. calculamos una fuerza xx N, sin embargo la simulación FEM nos arroja un valor de xx.
 
 Si analizamos los resultados de la simulación podemos observar que las líneas del flujo magnético se curvan de manera significativa en los extremos del imán. A esta distorsión en el campo magnético debido a las discontinuidades del medio se le conoce como flujo marginal.
 
-Entonces para el correcto modelado del electroimán necesitamos incluir los efectos del flujo marginal. En \cite{cite_s8_2017_paper} se presenta un nuevo método para modelar la reluctancia de un entrehierro. Usando este nuevo modelo los resultados de la simulación se acercan en un n\%.   
+Entonces para el correcto modelado del electroimán necesitamos incluir los efectos del flujo marginal. En \cite{cite_s8_2017_paper} se presenta un nuevo método para modelar la reluctancia de un entrehierro.    
 
 \subsection{Proceso de diseño} \label{sec:diseno-elec}
 
@@ -1415,7 +1413,7 @@ Toma la función $H(s)$ y todas sus variables acompañados por $s$ y sustituye los
 \begin{figure}[H]
 \centering
 	\includegraphics[width=0.5\textwidth]{images/Capitulo_1/mapeo_s_z}
-	\caption{\textit{Tranformación de bilineal.}}
+	\caption{\textit{Tranformación bilineal.}}
 \end{figure}
 
 \subsection{El observador de Kalman}
