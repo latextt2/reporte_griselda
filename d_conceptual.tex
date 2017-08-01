@@ -48,10 +48,12 @@ Con base en estos principios, se realizó la descomposición del rodamiento magnét
 
 \begin{itemize}
 %\begin{enumerate}[(a)]
-\item Rodamiento magnético activo radial: genera el campo magnético para las cargas radiales por medio de electroimanes. 
-\item Rodamiento magnético activo axial: genera el campo magnético para las cargas axiales por medio de electroimanes.
-\item Arreglo de sensores de desplazamiento: miden la posición del rotor para realizar las correcciones necesarias para estabilizarlo. 
-\item Módulo de compensación de cargas estáticas: provee un campo magnético base de levitación por medio de un imán permanente. 
+\item Rodamiento magnético radial (\textbf{RMR}): genera el campo magnético para las cargas radiales por medio de electroimanes. 
+\item Rodamiento magnético axial (\textbf{RMA}): genera el campo magnético para las cargas axiales por medio de electroimanes.
+\item Sensores de desplazamiento capacitivo (\textbf{SDC}): miden la posición del rotor para realizar las correcciones necesarias para estabilizarlo. 
+\item Módulo de compensación de cargas estáticas (\textbf{MCCE}): provee un campo magnético base de levitación por medio de un imán permanente.
+\item Collarín de levitación (\textbf{CL}): se trata de un cuerpo cilíndrico con una sección de material ferromagnético que sostiene al eje dentro del rodamiento.   
+\item Controlador: se encarga de realizar las correcciones y ajustes necesarios para estabilizar el eje de acuerdo a las mediciones realizadas por los sensores. 
 \end{itemize}
 
 Cada uno de estos módulos cumple con una función específica, por lo que cuentan con características y requerimientos de operación particulares que hace posible que puedan diseñarse individualmente, pero al mismo tiempo son capaces de trabajar en conjunto y cumplir con la función principal del rodamiento magnético híbrido. 
@@ -65,10 +67,6 @@ A continuación se muestra el diagrama por áreas funcionales del rodamiento magné
 	\includegraphics[width=\textwidth]{images/Capitulo_2/diagrama_funcional_completo}
 	\caption{\textit{Diagrama Funcional.}}
 \end{figure}
-
-Del diagrama de áreas funcionales podemos reconocer que el sistema cuenta con 2 entradas que determinan el funcionamiento y el comportamiento del mismo: el suministro de energía eléctrica y las perturbaciones que llegan al sistema. Este diagrama se divide en 3 secciones principales: la primera sección lo componen los módulos que generan los campos magnéticos de levitación, los cuales deben variar de acuerdo a lo que indique el controlador. Este se encuentra dominado por el monitoreo del módulo de sensores y la interfaz de usuario, la cual además muestra información sobre la posición del rotor. 
-
-La tercera sección incluye el convertidor de energía que alimenta todos los sistemas eléctricos, incluyendo el módulo de seguridad, gestado a través de la información que provea el controlador, ya que este sólo actúa con el corte del suministro eléctrico o por alguna falla detectada por el controlador. 
 
 \newpage
 
