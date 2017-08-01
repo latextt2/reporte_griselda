@@ -3,18 +3,20 @@
 
 El Rodamiento Magnético Radial (RMR) consiste en un conjunto de electroimanes colocados en una circunferencia, de manera que sus campos magnéticos puedan ejercer una fuerza arbitraria en su plano de acción. Para controlar la fuerza que cada electroimán ejerce se tiene un circuito de accionamiento, que alimenta las bobinas del electroimán con la corriente necesaria.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_rmr}
     \caption{Diagrama funcional del rodamiento magnético radial.}
 \end{figure}
+
+\newpage
 
 \subsection{Número de polos} \label{sec:numero-polos}
 
 Antes de diseñar los electroimanes es necesario determinar en número de polos que conformarán el EIR.
 Suponiendo que tenemos $N$ polos, la distancia angular $\alpha$ entre ellos será de $360/N$ (fig. \ref{fig:rmr:diagrama-de-polos}). El EIR debe ser capaz de generar una fuerza arbitraria $F_r$ dentro del plano $YZ$. Teniendo en cuenta que los electroimanes sólo son capaces de ejercer fuerzas de atracción sobre los materiales ferromagnéticos. La fuerza $F_r$ deberá ser proporcionada únicamente por las fuerzas de los electroimanes adyacentes $F_1$ y $F_2$ (fig. \ref{fig:rmr:diagrama-de-fuerzas}).  
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_3/diagrama_polos}
@@ -64,8 +66,6 @@ P = 2 (\frac{R F_r}{K_e} ) \label{eq:cosumo-electroiman-caso-especial}
 Para que el rodamiento axial pueda ejercer fuerzas en cualquier dirección del plano YZ es necesario un mínimo de 3 polos. Sin embargo, incrementar el número de polos reduce el consumo en las regiones intermedias (ecuación \ref{eq:cosumo-electroiman-caso-especial}), ya que no estamos utilizando corriente para generar componentes de fuerza que terminarán por cancelarse mutuamente.
 
 En \cite{cite_s13_2017_matsuda2007_polos} se estudia de manera más detallada los efectos de variar el número de polos en un RMR, se concluye que utilizar 6 polos minimiza el diámetro exterior para una capacidad dada.
-
-\newpage
 
 \subsection{Electroimán}
 
@@ -162,7 +162,7 @@ Con el fin de validar los cálculos y comprobar que el núcleo no alcance su punto
     \caption{Simulación del electroimán radial en FEMM.}
     \label{fig:simulacion-femm-radial}
 \end{figure}
-En la figura \ref{fig:simulacion-femm-radial} se puede observar que el valor máximo de inducción magnética es de $0.917 T$ lo cuál está por debajo del punto de saturación del material. 
+En la figura \ref{fig:simulacion-femm-radial} se puede observar que el valor máximo de inducción magnética es de $0.917 T$ lo cuál está por debajo del punto de saturación del material.
 
 Existe una diferencia entre el modelo ideal y la simulación. Esta diferencia se debe a los efectos de la reluctancia del núcleo. Un modelo que incluya la reluctancia del núcleo se acerca más al modelo real tal y como se muestra en la figura \ref{fig:curva-fuerza-rmr}.
 \begin{figure}[H]
@@ -171,8 +171,6 @@ Existe una diferencia entre el modelo ideal y la simulación. Esta diferencia se 
     \caption{Curva Fuerza - Distancia del RMR.}
     \label{fig:curva-fuerza-rmr}
 \end{figure}
-
-\newpage
 
 \subsection{Electrónica de accionamiento}
 
@@ -201,7 +199,7 @@ Donde $V_{th}$, conocido como voltaje de treshhold, es el voltaje mínimo para ac
 
 Cuando se trata de conmutar una carga inductiva se generan picos de voltaje, pues la corriente que circula por un inductor no puede cambiar de manera instantánea o discontinua. Es por eso que se necesita de un diodo para proveer un camino por el que la corriente logre recircular y disminuir de manera controlada.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_3/MOSFET_2}
@@ -229,7 +227,7 @@ La razón de cambio en la corriente en un inductor depende del voltaje aplicado e
 
 El problema es que el incremento y decremento de la corriente actúan de forma asimétrica (fig. \ref{fig:carga-descarga-inductor-simple}), entonces para obtener cargas y descargas simétricas será necesario aplicar un voltaje de $-V_{cc}$ durante el ciclo de descarga. Para eso es necesaria una configuración como la mostrada en la figura \ref{fig:puente-h}.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_3/Puente_H}
@@ -292,7 +290,7 @@ f_{max} = \frac{L}{2 \pi V A}
 
 Podemos ver que la frecuencia máxima de la señal de salida depende de la amplitud de la misma. Esta condición  conocida como "slew rate limiting" es un fenómeno común en los amplificadores y basta con conocer los limites de operación del dispositivo para evitar esta situación.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_2/fb_linearization}
@@ -342,6 +340,8 @@ El Rodamiento Magnético Axial (RMA) sirve para ejercer fuerzas de atracción alin
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_rma}
     \caption{Rodamiento magnético axial.}
 \end{figure}
+
+\newpage
 
 \subsection{Electroimán}
 
@@ -424,11 +424,13 @@ Ante los problemas del alto consumo de corriente en los rodamientos magnéticos a
 
 El MCCE consiste en un imán permanente cuya distancia al collarín de levitación es variada mediante un servomecanismo de retracción. De esta manera, se puede ejercer una fuerza cuasiconstante con un mínimo consumo energético. Este se conforma de: imán permanente, núcleo ferromagnético, mecanismo de retracción, motor y un circuito de accionamiento. El imán permanente magnetiza todo el circuito, el núcleo guía el flujo magnético y maximiza la fuerza que el imán permanente puede ejercer. El mecanismo de retracción convierte el movimiento de rotación del motor en movimiento lineal para el imán permanente, y el circuito de accionamiento se encarga de controlar el motor. 
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_mcce}
     \caption{Módulo de compensación para cargas estáticas.}
 \end{figure}
+
+\newpage
 
 \subsection{Análisis de consumo energético} 
 
@@ -452,7 +454,7 @@ El problema consiste en decidir de antemano el valor de la carga estática para i
 
 Es posible variar la fuerza que ejerce un imán permanente variando la distancia entre este y el objetivo. Si usamos un imán capaz de ejercer un fuerza $F_ip$ mucho más grande de la requerida y la montamos sobre una plataforma móvil (mecanismo de retracción), podríamos ajustar la fuerza hasta llevar las pérdidas a $0$.  
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=\textwidth]{images/Capitulo_2/iman_permanente}
@@ -511,7 +513,7 @@ Así pues el conjunto Imán Permanente - Núcleo Ferromagnético queda representado 
 
 Así como se hizo en la sección \ref{sec:simulacion-fem-electroiman}, podemos validar nuestro modelo mediante una simulación FEM, lo que resulta en la siguiente curva característica de la figura \ref{fig:iman-permanente-curva}.
 
-\begin{figure}[h]
+\begin{figure}[H]
 \begin{center}
 \centering
 \includegraphics[width=0.8\textwidth]{images/Capitulo_3/fuerza_iman_permanente}
@@ -561,6 +563,29 @@ Con el fin de reducir la fuerza producida por el imán permanente hasta un valor 
 		\caption{\textit{Especificaciones de la rosca M 2 x 0.4 \citep{cite_19}.}}
 \end{figure}
 
+Especificaciones \citep{cite_19}:
+
+\begin{itemize}
+\item Diámetro nominal: $D$ = $d$ = $2 mm$
+\item Paso: $P$ = $0.4 mm$
+\item Altura: $H$ = $\frac{raiz*3}{2}$*$P$ = 0.866025*$P$ = $0.35 mm$
+\item Profundidad portante de flancos: $H1$ = ($D$ - $D_1$)/2 = 5/8*$H$ = 0.541266*$P$ = $0.22 mm$
+\item Profundidad de rosca: $h_3$ = ($d$ - $d_3$)/2 = 17/24*$H$ = 0.613435*$P$ = $0.25 mm$
+\item Diámetro de francos: $D2$ = $d_2$ = $d$ - 3/4*$H$ = $d$ - 0.649519*$P$ = $1.74 mm$
+\item Radio fondo de rosca: $R$ = $H$/6 = 0.144338*$P$ = $0.058 mm$
+\end{itemize}
+
+Rosca Interior (Tuerca):
+\begin{itemize}
+\item $D_1$ = $d_2$ - 2*($H$/2 - $H$/4) = d - 2*$H_1$ = $d$ - 1.082532*$P$ = $1.57 mm$
+\end{itemize}
+
+Rosca Exterior (Tornillo):
+\begin{itemize}
+\item Diámetro del núcleo: $d_3$ = $d_2$ - 2*($H$/2 - $H$/6) = $d$ - 1.226869*$P$ = $1.51 mm$
+\item Diámetro del núcleo: $d_3$ = $d_1$ - $H$/6 = $1.51 mm$ (según la norma DIN ISO 724)
+\end{itemize}
+
 \subsubsection{Motorreductor} \label{sec:Motorreductor}
 
 Para el motorreductor se seleccionó el modelo \textbf{LP 6V 1000:1} de Pololu \cite{cite_s19_2017_polulu}. Este motorreductor miniatura de alto par tiene una caja de cambios de $1000: 1$, por lo que es una gran opción para aplicaciones que requieren un control preciso a velocidades muy bajas. Estas unidades tienen un eje de salida en forma de D de $3 mm$ de diámetro.
@@ -574,10 +599,12 @@ Estos motores están diseñados para poder operar a $6 V$, aunque en general, esto
         \includegraphics[width=0.3\textwidth]{images/Capitulo_3/motoreductor}
         \caption{Motorreductor.}
     \end{figure}
+    
+\newpage
 
 Finalmente el ensamble del MCCE queda ilustrado en la figura \ref{fig:configuracion-final-MCCE}.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{images/Capitulo_3/Mecanismo_ensamble}
     \caption{Configuración final MCCE.}
@@ -590,7 +617,7 @@ Como se indica en la sección \ref{sec:Motorreductor}, la corriente máxima que de
 
 Este controlador de motor cuenta con dos puentes H que se pueden utilizar para el control bidireccional de dos motores de corriente continua o para controlar un solo motor de pasos. Funciona a partir de $4.5$ a $36 V$ y puede entregar una corriente pico de $1 A$ por canal. La conexión de este circuito integrado se muestra en la figura \ref{fig:puente-h-l293}.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{images/Capitulo_3/CircuitoL293}
     \caption{Circuito Puente H L293.}
@@ -601,7 +628,7 @@ Este controlador de motor cuenta con dos puentes H que se pueden utilizar para e
 
 Para el modelado del MCCE comenzamos por establecer las ecuaciones \ref{eq:motor-MCCE-1}, \ref{eq:motor-MCCE-2} y \ref{eq:motor-MCCE-3} correspondientes al motor de DC, donde la entrada del sistema es el voltaje de alimentación $V{in}$ y como salidas tenemos el par de accionamiento $T_1$.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center}
 \centering
 \includegraphics[width=8cm]{images/Capitulo_2/modelo_electromecanico_mcce}
@@ -663,7 +690,7 @@ Y para el par de descenso tenemos:
 
 Todas estas ecuaciones se introducen en el modelo de \textbf{Simulink} que queda representado en la figura \ref{fig:modelo-simulink-mcce}.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center}
 \centering
 \includegraphics[width=\textwidth]{images/Capitulo_2/simulink_mcce}
@@ -680,7 +707,7 @@ El sensor de distancia capacitivo sirve para medir la posición del rotor dentro 
 
 El electrodo proyecta un campo eléctrico al frente de este y la interacción del rotor con este campo causa cambios en la capacitancia que son convertidos a una señal de frecuencia variable por el circuito de acondicionamiento.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.625\textwidth]{images/Capitulo_3/diagrama_funcional_sdc}
     \caption{Sensor de distancia capacitivo (SDC).}
@@ -697,7 +724,7 @@ Este sensor presenta ventajas como:
 
 Para el sensor se utilizó un diseño similar al presentado en \citep{cite_14}, con la diferencia de que el circuito de acondicionamiento se encuentra embebido dentro de la  carcasa del electrodo, esto con el fin de eliminar los efectos de la capacitancia parásita producidos e introducidos por el cable coaxial, además dado que la carcasa actúa como blindaje se previenen interferencias externa de tipo eléctrico.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
      \centering
@@ -712,6 +739,8 @@ Para el sensor se utilizó un diseño similar al presentado en \citep{cite_14}, co
         \caption{Sensor con blindaje activo.}
     \end{subfigure}
 \end{figure}
+
+\newpage
 
 \subsection{Electrodos}
 
@@ -823,6 +852,8 @@ Este collarín se compone principalmente de cuatro partes: el cuerpo principal, e
     \caption{Diagrama funcional del collarín de levitación.}
 \end{figure}
 
+\newpage
+
 \subsection{Material del anillo y disco ferromagético}
 
 Como se realizó en la sección \ref{sec:seleccion-somaloy}, se selecciona el material Somaloy 3P [hoja de datos en anexo D] para formar el anillo y núcleo ferromagnéticos. Este material posee las siguientes características: 
@@ -860,7 +891,7 @@ Como sabemos, el Módulo de Elasticidad, también llamado Módulo de Young, es un p
 
 Para el análisis del material con el software CES EduPack compararemos únicamente polímeros relacionando el Módulo de Young y la densidad, obteniendo un total de 738 materiales disponibles:
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{images/Capitulo_3/Material1}
     \caption{Diagrama total de materiales (Módulo de Young vs. Densidad).}
@@ -875,13 +906,13 @@ Esto nos ayuda a establecer un parámetro de selección a falta de contar con dato
 \item 1.4 $g/cm^3$ para la densidad. 
 \end{itemize}
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{images/Capitulo_3/Material2}
     \caption{Límite máximo para el módulo de Young.}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{images/Capitulo_3/Material3}
     \caption{Límite máximo para la densidad.}
@@ -893,7 +924,7 @@ El siguiente parámetro que se consideró fue la permitividad eléctrica del materi
 
 Con este último parámetro se obtuvo el siguiente diagrama, con un total de 91 materiales de selección posibles de los 738 que se tenían originalmente: 
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{images/Capitulo_3/Material4}
     \caption{Límite máximo para el costo del material.}
@@ -901,7 +932,7 @@ Con este último parámetro se obtuvo el siguiente diagrama, con un total de 91 ma
 
 Al consultar individualmente las propiedades de los materiales restantes se consiguió encontrar un material que puede utilizarse para la fabricación del collarín de levitación, debido a sus propiedades y a las aplicaciones para las que normalmente se utiliza. Este material es el Polioximetileno (POM), también conocido como Acetal [véase anexo E]:
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{images/Capitulo_3/Material5}
     \caption{Identificación del material Acetal (POM).}
@@ -916,7 +947,7 @@ La segunda pieza que se debe considerar es el disco posterior. Este disco debe s
 
 El ensamble final de los componentes descritos anteriormente se muestran en la figura \ref{fig:collarin-ensamble}.
 
-\begin{figure}[h!]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/funda_asm}
     \caption{Ensamble final del collarín de levitación.}
@@ -943,7 +974,7 @@ El procedimiento realizado a continuación consiste en obtener un modelo dinámico
 
 El primer paso consiste en obtener el modelo dinámico del sistema. En la figura \ref{fig:diagrama-cl-eje} podemos observar las fuerzas que actúan sobre el eje $F_a$, $F_r$, $F_p$ correspondientes al EIA, EIR e IP respectivamente. 
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center}
 \centering
 \includegraphics[width=\textwidth]{images/Capitulo_2/diagrama_cuerpo_libre_rotor}
@@ -991,7 +1022,7 @@ Si consideramos la acción conjunta de ambos EIA como una sola fuerza, entonces e
 
 Para establecer la ecuación de suma de momentos es necesario determinar la matriz de inercia para el eje representado por la figura \ref{fig:inercia-rotor-diagrama}. 
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center}
 \centering
 \includegraphics[width=12cm]{images/Capitulo_3/diagrama_momentos}
