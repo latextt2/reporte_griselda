@@ -285,7 +285,7 @@ Y finalmente la relación entre estas, también conocida como ley de Hopkins:
 \begin{figure}[H]
 \begin{center}
 \centering
-	\includegraphics[width=11cm, height=7cm]{images/Capitulo_1/Elementos_de_un_circuito_magnetico}
+	\includegraphics[width=.6\textwidth]{images/Capitulo_1/Elementos_de_un_circuito_magnetico}
 	\caption{\textit{Elementos de un circuito magnético.}}
 \end{center}
 \end{figure}
@@ -495,17 +495,27 @@ Esta aproximación carece de una derivación y explicación formal y sus resultados
 \end{enumerate}
 
 En [...] se presenta un método para modelar la reluctancia tomando en cuenta el flujo marginal, el cual considera el flujo en tres dimensiones, es fácil de manejar y cuenta con un alto grado de exactitud. 
-Este método surge a partir de aplicar la transformación Schwarz-Christoffel al sistema de la figura [1...] con el fin de calcular su reluctancia por unidad de longitud (reluctancia planar). Esta reluctancia queda determinada por: 
+Este método surge a partir de aplicar la transformación Schwarz-Christoffel al sistema de la figura \ref{fig:Geometria-basica-gap} con el fin de calcular su reluctancia por unidad de longitud (reluctancia planar). Esta reluctancia queda determinada por: 
 
 \begin{equation}
 	R^\prime_{basic} = \frac{1}{\mu_0[\frac{\omega}{2l} + \frac{2}{\pi}(1 +ln\frac{\pi h}{4l})]} 
 \end{equation}
 
-[Inserte imagen (figura 3 del paper)]
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/Capitulo_1/Geometria-basica-gap}
+    \caption{Geometría básica para el cálculo del entrehierro \cite{cite_s8_2017_paper}.}
+    \label{fig:Geometria-basica-gap}
+\end{figure}
 
-La figura [1...] se toma como base para calcular estructuras de entrehierro más complejas. La figura [4 paper] muestra cómo se pueden alcanzar diferentes geometrías a partir del modelo básico, además de establecer los valores de $\omega$ y $l$. El valor $h$ representa la distancia desde el borde del entrehierro a la siguiente esquina del n\'ucleo.
+La figura \ref{fig:Geometria-basica-gap} se toma como base para calcular estructuras de entrehierro más complejas. La figura \ref{fig:Geometrias-avanzadas-gap} muestra cómo se pueden alcanzar diferentes geometrías a partir del modelo básico, además de establecer los valores de $\omega$ y $l$. El valor $h$ representa la distancia desde el borde del entrehierro a la siguiente esquina del n\'ucleo.
 
-[Inserte imagen (figura 4 del paper)]
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.7]{images/Capitulo_1/Geometrias-avanzadas-gap}
+    \caption{Tipos de geometría planar del entrehierro \cite{cite_s8_2017_paper}.}
+    \label{fig:Geometrias-avanzadas-gap}
+\end{figure}
 
 Con el fin de considerar la tridimensionalidad del entrehierro, se introduce un factor de corrección que describe en qué medida disminuye la reluctancia del entrehierro debido al flujo marginal comparado con la reluctancia ideal. 
 El factor de corrección que considera los efectos en la dirección $x$ se obtiene calculando la reluctancia planar $R^\prime_{basic}$ y dividiéndola entre la reluctancia planar ideal (visto desde el plano $xz$):
@@ -520,7 +530,11 @@ De manera similar, también se puede deducir el factor de corrección en la direcc
 	\sigma_y = \frac{R^\prime}{\frac{a}{\mu_0b}}
 \end{equation}
 
-Inserte imagen (figura 5 del paper)
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/Capitulo_1/Gap-3D}
+    \caption{Geometría 3D del entrehierro \cite{cite_s8_2017_paper}.}
+\end{figure}
 
 El factor de corrección 3D se obtiene multiplicando los dos factores de franja $\sigma_x$  y $\sigma_y$:
 
@@ -545,6 +559,8 @@ Donde $l_g$ es la longitud del entrehierro, $r$ el radio del entrehierro, y $R^\
 \begin{equation}
 	R_g = \sigma_r \frac{l_g}{\mu_0 r^2 \pi}
 \end{equation}
+
+\newpage
 
 \subsection{Calculo de conductores} \label{sec:calc-conductores}
 
