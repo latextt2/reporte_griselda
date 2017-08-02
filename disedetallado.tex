@@ -958,9 +958,9 @@ El ensamble final de los componentes descritos anteriormente se muestran en la f
 
 \section{Controlador} \label{sec:Controlador-Capitulo-2}
 
-Un rodamiento magnético no estaría completo sin un sistema de control que se encarga de hacer las correcciones necesarias para mantener el eje en levitación. Este sistema de control consiste en un controlador retroalimentado en espacio de estados y un observador para determinar el estado del sistema. 
+Todos los rodamientos magnéticos deben poseer un sistema de control que ejecute las correcciones necesarias para mantener el eje en levitación. El sistema de control de nuestra propuesta consiste en un controlador retroalimentado en espacio de estados y un observador para determinar el estado del sistema. 
 
-El procedimiento realizado a continuación consiste en obtener un modelo dinámico del eje, linealizar la representación del sistema, especificar la respuesta deseada, calcular las ganancias del controlador-observador en modo continuo y discretizar el conjunto controlador-observador. Además mediante el control calendarizado se compensarán los efectos de controlar un sistema no lineal usando una aproximación linealizada. Finalmente se discuten los efectos que puede tener el ruido de los sensores y su solución mediante la implementación del observador de Kalman. 
+El procedimiento realizado a continuación permite obtener un modelo dinámico del eje, linealizar la representación del sistema, especificar la respuesta deseada, calcular las ganancias del controlador-observador en modo continuo y discretizar el conjunto controlador-observador. Además, mediante el control calendarizado se compensarán los efectos de controlar un sistema no lineal usando una aproximación linealizada. Finalmente se discuten los efectos que puede tener el ruido de los sensores y su solución mediante la implementación del observador de Kalman. 
 
 \begin{figure}[H]
     \centering
@@ -1096,7 +1096,7 @@ La ecuación \ref{eq:angulos-intrinsecos-marco-movil} relaciona la variación de l
 	\label{eq:angulos-intrinsecos-marco-movil}
 \end{equation}
 
-Sustituyendo los términos descritos en la sección \ref{sec:modelo-dinamico} en la ecuación \ref{eq:derivada-inercia-coriolis} se obtiene el sistema de ecuaciones \textbf{[sistema de ecuaciones]}. 
+Sustituyendo los términos descritos en la sección \ref{sec:modelo-dinamico}, en la ecuación \ref{eq:derivada-inercia-coriolis} se obtiene el sistema de ecuaciones \textbf{[sistema de ecuaciones]}. 
 
 \textbf{[instertar ecuacion espacio de estados del sistema]} 
 
