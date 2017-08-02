@@ -1,6 +1,7 @@
-\chapter{Parametros del sistema}
+\chapter{Codigos de Matlab}
 
-%\newpage
+\subsection{Parametros del sistema}
+
 \begin{lstlisting}[frame=single]
 function [m,R_r,R_a,R_p,I_p,I_0] = system_parameters()
 %	UNTITLED3 Summary of this function goes here
@@ -33,4 +34,604 @@ m = m_shaft + m_collarin;
 
 end
 \end{lstlisting}
+
+\subsection{Matriz de interpolacion}
+
+\begin{lstlisting}[frame=single]
+function [Y_k] = matrix_interpolation(w,Y,w_k)
+
+Y_r = reshape(Y,[size(Y,1)*size(Y,2),size(Y,3)])';
+Y_r_k = interp1(w,Y_r,w_k,'linear','extrap');
+Y_k = reshape(Y_r_k,[size(Y,1),size(Y,2)]);
+end
+\end{lstlisting}
+
+\subsection{Modelo no lineal de RMH}
+
+%\newpage
+\begin{lstlisting}[frame=single]
+function [xp,y] = hmb_non_linear_model
+(x,u,ws,Fd_x,Fd_y,Fd_z,Md_y,Md_z,Fmcce1,Fmcce2)
+
+[m,R_r,R_a,R_p,I_p,I_0] = system_parameters();
+
+x1 = x(1);
+x2 = x(2);
+x3 = x(3);
+x4 = x(4);
+x5 = x(5);
+x6 = x(6);
+x7 = x(7);
+x8 = x(8);
+x9 = x(9);
+x10 = x(10);
+
+u1 = u(1);
+u2 = u(2);
+u3 = u(3);
+u4 = u(4);
+u5 = u(5);
+
+xp = [
+	x4;
+	x5;
+	x6;
+	(Fd_x + u5)/m;
+	(Fd_y + u1 + u3)/m;
+	(Fd_z + Fmcce1 + Fmcce2 - (49*m)/5 + u2 + u4)/m;
+	x9;
+	x10/cos(x8);
+	-(R_r*(u2*cos(x8) + u1*sin(x7)*sin(x8)) - 
+	Md_y - R_r*(u4*cos(x8) + u3*sin(x7)*sin(x8))   	
+	+ I_p*ws*x10 + Fmcce1*R_p*cos(x8) - 
+	Fmcce2*R_p*cos(x8) + R_a*abs(u5)*cos(x7)*sin(x8))/ I_0;
+	(Md_z + R_r*u1*cos(x7) - R_r*u3*cos(x7) - 
+	R_a*abs(u5)*sin(x7) + I_p*ws*x9)/I_0;
+];
+
+y = [
+	x1;
+	x2 + R_r*cos(x8)*sin(x7);
+	x3 - R_r*sin(x8);
+	x2 - R_r*cos(x8)*sin(x7);
+	x3 + R_r*sin(x8);
+];
+
+end
+
+\end{lstlisting}
+
+\subsection{Obtencion del modelo}
+
+%\newpage
+\begin{lstlisting}[frame=single]
+function [xp,y] = get_symbolic_model( model_type )
+%	UNTITLED Summary of this function goes here
+%   Detailed explanation goes here
+
+%% 	sybolic_constants
+
+syms ws;
+syms R_r
+syms R_a
+syms R_p
+syms I_p I_0
+syms m
+
+%% state variables
+syms x1 x2 x3 x4 x5 x6 x7 x8 x9 x10;
+syms u1 u2 u3 u4 u5;
+
+Rcm_x = x1;
+Rcm_y = x2;
+Rcm_z = x3;
+Rcm_p_x = x4;
+Rcm_p_y = x5;
+Rcm_p_z = x6;
+
+Rcm = [Rcm_x;Rcm_y;Rcm_z];
+Rcm_p = [Rcm_p_x;Rcm_p_y;Rcm_p_z];
+
+psi = x7;
+theta = x8;
+wy = x9;
+wz = x10;
+wx = ws;
+F1_Y = u1;
+F1_Z = u2;
+F2_Y = u3;
+F2_Z = u4;
+F3_X = u5;
+
+%% Fuerzas mcce
+syms Fmcce1 Fmcce2
+F4_Z = Fmcce1;
+F5_Z = Fmcce2;
+
+%% Fuerzas pertubadoras
+syms Fd_x Fd_y Fd_z Md_y Md_z;
+
+%% Matrices de transformacion al marco movil
+
+T_psi =     [ cos(psi), sin(psi), 0;
+            -sin(psi), cos(psi), 0;
+            0, 0, 1;];
+T_theta =   [ cos(theta), 0, -sin(theta);
+            0,1,0;
+            sin(theta), 0, cos(theta)];
+
+T_psi_inv = [ cos(psi), -sin(psi), 0;
+            sin(psi), cos(psi), 0;
+            0, 0, 1;];
+T_theta_inv =   [ cos(theta), 0, sin(theta);
+                0,1,0;
+                -sin(theta), 0, cos(theta)];
+
+T = T_theta*T_psi;
+T_inv = T_psi_inv*T_theta_inv;
+
+%% Fuerzas de actuadores
+F1 = [0; F1_Y; F1_Z];%%Fuerza RMR derecho
+F2 = [0; F2_Y; F2_Z];%%Fuerza RMR izquiero
+F3 = [F3_X; 0; 0];%%Fuerza RMA
+F4 = [0; 0; F4_Z];%%Fuerza MCCE derecho
+F5 = [0; 0; F5_Z];%%Fuerza MCCE izquiero
+
+%% Transformacion de fuerzas al marco movil
+F1_xyz = T*F1;
+F2_xyz = T*F2;
+F3_xyz = T*abs(F3);
+F4_xyz = T*F4;
+F5_xyz = T*F5;
+
+%% Puntos de accion del actuador respecto al centro del eje
+R1 = [R_r;0;0];
+R2 = -[R_r;0;0];
+R3 = [R_a;0;0];
+R4 = [R_p;0;0];
+R5 = -[R_p;0;0];
+
+%% Momentos torsores
+M1 = cross(R1,F1_xyz);
+M2 = cross(R2,F2_xyz);
+M3 = cross(R3,F3_xyz);
+M4 = cross(R4,F4_xyz);
+M5 = cross(R5,F5_xyz);
+
+%%Suma de momentos para control
+if(isequal(model_type,'control'))
+    M = M1 + M2;
+%%Suma de momentos para simulacion
+else
+    M = M1 + M2 + M3 + M4 + M5 + [0;Md_y;Md_z];
+end
+
+%%Matriz de inercia ???
+I_m = [I_p, 0, 0;
+       0, I_0, 0;
+       0 , 0 , I_0];
+
+I_m_inv = inv(I_m);
+
+%% Velocidades angulares
+w = [wx;wy;wz];
+omega = [wx-ws;wy;wz];
+
+H = I_m * w;
+
+w_p = I_m_inv*(M - cross(omega,H));
+
+%% angle equations
+angles_p = [wy;sec(theta)*wz];
+
+%% Suma de fuerzas
+if(isequal(model_type,'control'))
+%%Suma de fuerzas (para control)
+    F = F1 + F2 + F3;
+else
+%%Suma de fuerzas (para control)
+    Fw = 9.8*m * [0; 0; -1];
+    F = F1 + F2 + F3 + F4 + F5 + Fw + [Fd_x;Fd_y;Fd_z];
+end
+
+%% Ecuaciones dinamicas
+Rcm_pp = F/m;
+
+xp = [Rcm_p;
+      Rcm_pp;
+      angles_p;
+      w_p(2:3)];
+
+P1  = T_inv*R1 + Rcm;
+P2  = T_inv*R2 + Rcm;
+
+y = [Rcm(1);P1(2:3);P2(2:3)];
+end
+\end{lstlisting}
  
+\subsection{Modelo lineal}
+
+%\newpage
+\begin{lstlisting}[frame=single]
+function [Al,Bl,Cl] = get_linear_model(xp_nl,y_nl,ws)
+%	UNTITLED4 Summary of this function goes here
+%   Detailed explanation goes here
+syms x1 x2 x3 x4 x5 x6 x7 x8 x9 x10;
+syms u1 u2 u3 u4 u5;
+
+x_state = [x1,x2,x3,x4,x5,x6,x7,x8,x9,x10];
+u_state = [u1,u2,u3,u4,u5];
+
+A = jacobian(xp_nl,x_state);
+B = jacobian(xp_nl,u_state);
+C = jacobian(y_nl,x_state);
+
+for n = 1:length(x_state);
+    eval(sprintf('x%d = 0;',n));
+end
+
+for k = 1:length(u_state);
+    eval(sprintf('u%d = 0;',k));
+end
+
+[m,R_r,R_a,R_p,I_p,I_0] = system_parameters();
+
+Al = eval(A);
+Bl = eval(B);
+Cl = eval(C);
+end
+
+\end{lstlisting}
+ 
+\subsection{Polos discretizados}
+
+%\newpage
+\begin{lstlisting}[frame=single]
+function [Pd] = get_discrete_poles(P,Ts)
+%UNTITLED9 Summary of this function goes here
+%   Detailed explanation goes here
+
+my_sys = ss(diag(P),zeros(length(P),1),[1,zeros(1,length(P)-1)],0);
+my_sys_d = c2d(my_sys,Ts);
+Pd = eig(my_sys_d)';
+
+end
+
+\end{lstlisting}
+ 
+\subsection{Modelo lineal discretizado}
+
+%\newpage
+\begin{lstlisting}[frame=single]
+function [Ad,Bd,Cd] = get_discrete_linear_model(A,B,C,Ts)
+%UNTITLED6 Summary of this function goes here
+%   Detailed explanation goes here
+
+sys = ss(A,B,C,0); 
+sys_d  = c2d(sys,Ts);
+Ad = sys_d.A;
+Bd = sys_d.B;
+Cd = sys_d.C;
+end
+
+
+\end{lstlisting}
+ 
+\subsection{Modelo no lineal}
+
+%\newpage
+\begin{lstlisting}[frame=single]
+function [] = generate_non_linear_model()
+%UNTITLED5 Summary of this function goes here
+%   Detailed explanation goes here
+
+[xp,y] = get_symbolic_model('simulation');
+
+fileID = fopen('hmb_non_linear_model.m','w');
+head = 'function [xp,y] =
+hmb_non_linear_model(x,u,ws,Fd_x,Fd_y,Fd_z,Md_y,Md_z,Fmcce1,Fmcce2)';
+tail  = 'end';
+
+fprintf(fileID,'%s\n',head); %% function header
+%%
+fprintf(fileID,'\n[m,R_r,R_a,R_p,I_p,I_0] = 
+system_parameters();\n');
+%% assign input variables
+fprintf(fileID,'\n');
+for r = 1:size(xp,1)
+    fprintf(fileID,'x%d = x(%d);\n',r,r);
+end
+
+fprintf(fileID,'\n');
+
+for r = 1:5
+    fprintf(fileID,'u%d = u(%d);\n',r,r);
+end
+%% write xp
+fprintf(fileID,'\n');
+fprintf(fileID,'%s\n','xp = [');
+for r = 1:size(xp,1)
+    fprintf(fileID,'\t%s;\n',char(xp(r)));    
+end
+fprintf(fileID,'%s\n','];');
+
+%% write y
+fprintf(fileID,'\n');
+fprintf(fileID,'%s\n','y = [');
+for r = 1:size(y,1)
+    fprintf(fileID,'\t%s;\n',char(y(r)));
+end
+fprintf(fileID,'%s\n','];');
+%% function tail
+fprintf(fileID,'\n');
+fprintf(fileID,'%s\n',tail);
+fclose(fileID);
+
+end
+
+
+\end{lstlisting}
+
+\subsection{Ganancias de control}
+
+%\newpage
+\begin{lstlisting}[frame=single]
+function [K,Ko] = calc_linear_controller_gains(A,B,C,Pc,Po)
+%	UNTITLED2 Summary of this function goes here
+%   Detailed explanation goes here
+K = place(A,B,Pc);
+Ko = place(A',C',Po)';
+end
+
+
+\end{lstlisting}
+
+\subsection{Ganancias de control integral}
+
+%\newpage
+\begin{lstlisting}[frame=single]
+function [K,Ai,Bi,Ci] = calc_integral_controller_gains(A,B,C,P)
+%	UNTITLED6 Summary of this function goes here
+%   Detailed explanation goes here
+
+m = size(B,2);% inputs
+n = size(B,1);% states
+p =  size(C,1);% outputs
+
+Ai =[A zeros(n,p);
+      -C zeros(p,p)];
+Bi = [B;zeros(p,m)];
+
+Ci = [C zeros(p,p)];
+
+K = place(Ai,Bi,P);
+end
+
+
+\end{lstlisting}
+
+\subsection{Ganancias de control integral discreto}
+
+%\newpage
+\begin{lstlisting}[frame=single]
+function [Kdi,Adi,Bdi] = 
+		calc_discrete_integral_controller_gains(A,B,C,Pi,Ts)
+%	UNTITLED10 Summary of this function goes here
+%   Detailed explanation goes here
+[Ad,Bd,Cd] = get_discrete_linear_model(A,B,C,Ts);
+Pdi = get_discrete_poles(Pi,Ts);
+
+m = size(B,2);% inputs
+n = size(B,1);% states
+p =  size(C,1);% outputs
+
+Adi =[Ad zeros(n,p);
+      -Cd eye(p,p)];
+Bdi = [Bd;zeros(p,m)];
+
+Kdi = place(Adi,Bdi,Pdi);
+end
+
+\end{lstlisting}
+
+\subsection{Ganancias de control  discreto}
+
+%\newpage
+\begin{lstlisting}[frame=single]
+function [Kd,Kdo] = calc_discrete_controller_gains(A,B,C,P,Po,Ts)
+%UNTITLED7 Summary of this function goes here
+%   Detailed explanation goes here
+[Ad,Bd,Cd] = get_discrete_linear_model(A,B,C,Ts);
+Pd = get_discrete_poles(P,Ts);
+Pdo = get_discrete_poles(Po,Ts);
+[Kd,Kdo] = calc_linear_controller_gains(Ad,Bd,Cd,Pd,Pdo);
+end
+
+\end{lstlisting}
+
+\subsection{Capacitancia}
+
+%\newpage
+\begin{lstlisting}[frame=single]
+
+function [ capacitance, r_R ] = get_cap_vs_curv(y)
+%GET_CAP_VS_CURV Summary of this function goes here
+%   Detailed explanation goes here
+y_0 = 1.0;
+
+p1 = [0,y_0];
+p2 = [10,y_0];
+
+r_R = 0.1 : 0.1: 1;
+r = 10;
+R = r./r_R;
+alpha_rad = asin(r_R);
+alpha_deg = rad2deg(alpha_rad);
+cos_alpha = cos(alpha_rad);
+h = R.*(1-cos_alpha);
+
+capacitance = [];
+
+openfemm()
+for n = 1:length(h)
+opendocument('cds_param_sim.FEE');
+ei_saveas('temp.FEE');
+
+ei_clearselected();
+ei_selectgroup(4)
+ei_deleteselected();
+
+ei_clearselected();
+ei_selectnode(p2);
+ei_movetranslate(0,h(n));
+
+ei_addarc(p1(1),p1(2),p2(1),h(n)+p2(2),alpha_deg(n),1)
+
+ei_clearselected();
+ei_selectgroup(3)
+ei_movetranslate(0,y-y_0);
+
+ei_analyze(1);
+
+ei_loadsolution();
+conductor_properties = eo_getconductorproperties('sensor');
+capacitance = [capacitance conductor_properties(2)];
+eo_close()
+ei_close()
+end
+closefemm();
+%%
+openfemm()
+opendocument('curvature_simulation.FEE');
+ei_saveas('temp.FEE');
+ei_clearselected();
+ei_selectgroup(3)
+ei_movetranslate(0,y-y_0);
+ei_analyze(1);
+ei_loadsolution();
+conductor_properties = eo_getconductorproperties('sensor');
+capacitance = [conductor_properties(2) capacitance];
+r_R = [0 r_R];
+closefemm();
+end
+\end{lstlisting}
+
+\subsection{Sensor de distancia capacitiva}
+
+%\newpage
+\begin{lstlisting}[frame=single]
+function [ capacitance ] = cds_calc( y,d_i,r_R)
+%UNTITLED Summary of this function goes here
+%   Detailed explanation goes here
+y_0 = 1.0;
+d_0 = 1.0;
+
+p1 = [0,y_0];
+p2 = [10,y_0];
+
+r = 10;
+R = r./r_R;
+alpha_rad = asin(r_R);
+alpha_deg = rad2deg(alpha_rad);
+cos_alpha = cos(alpha_rad);
+h = R.*(1-cos_alpha);
+
+opendocument('cds_param_sim.FEE');
+ei_saveas('temp.FEE');
+
+if(r_R ~= 0)
+    ei_clearselected();
+    ei_selectgroup(4)
+    ei_deleteselected();
+
+    ei_clearselected();
+    ei_selectnode(p2);
+    ei_movetranslate(0,h);
+
+    ei_addarc(p1(1),p1(2),p2(1),h+p2(2),alpha_deg,1)
+end
+
+ei_clearselected();
+ei_selectgroup(2)
+ei_movetranslate(d_i-d_0,0);
+
+ei_clearselected();
+ei_selectgroup(3)
+ei_movetranslate(0,y-y_0);
+
+ei_analyze(1);
+
+ei_loadsolution();
+conductor_properties = eo_getconductorproperties('sensor');
+capacitance = conductor_properties(2);
+
+eo_close()
+ei_close()
+end
+
+\end{lstlisting}
+
+\subsection{Geometria del sensor}
+
+%\newpage
+\begin{lstlisting}[frame=single]
+function [ capacitance, r] = simulate_geometry_at(r_max,delta_r,y_i)
+%UNTITLED Summary of this function goes here
+%   Detailed explanation goes here
+r_min = 1;
+r = r_min:delta_r:r_max;
+%%
+capacitance = [];
+openfemm
+opendocument('gp_simulation.FEE');
+ei_saveas('temp.FEE');
+
+ei_clearselected
+ei_selectgroup(1);
+ei_movetranslate(0,y_i-0.5);
+%%
+for r_loop = r
+    
+    ei_analyze(1)
+    ei_loadsolution
+    conductor_properties = eo_getconductorproperties('sensor');
+    
+    capacitance_loop = conductor_properties(2);
+    capacitance = [capacitance capacitance_loop]; 
+    
+    ei_clearselected
+    ei_selectgroup(2);
+    ei_movetranslate(delta_r,0);
+end
+closefemm
+
+end
+
+\end{lstlisting}
+
+\subsection{Curva sensitiva}
+
+%\newpage
+\begin{lstlisting}[frame=single]
+function [ delta_c ] = sensitivity_at_curvature(y_0,y_1,d_i, curvature)
+%UNTITLED2 Summary of this function goes here
+%   y_0 miminum distance
+%   y1 maximum_distance
+%   d_i vector of diameters
+%   d_i vector of diameters
+c_0 = [];
+c_1 = [];
+
+openfemm();
+for d = d_i;
+c_0 = [c_0 cds_calc(y_0, d, curvature)];
+c_1 = [c_1 cds_calc(y_1, d, curvature)];
+end
+closefemm();
+
+delta_c = c_1 - c_0;
+end
+
+
+
+\end{lstlisting}
