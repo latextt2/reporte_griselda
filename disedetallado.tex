@@ -477,7 +477,7 @@ La fuerza que ejerce un imán permanente puede modelarse mediante la fórmula:
 	\label{eq:fuerza-iman-permanente}
 \end{equation}
 
-Esta fuerza depende tanto de la geometría del imán permanente como del material del que esté compuesto. Donde $H_c$, $B_r$ y $A_m$ son los términos dominantes.  
+Esta fuerza depende tanto de la geometría del imán permanente como del material del que esté compuesto, y donde $H_c$, $B_r$ y $A_m$ son los términos dominantes.  
 
 Es nuestro objetivo diseñar un conjunto imán-núcleo lo más pequeño posible, y debido a que las dimensiones y composición de los imanes permanentes están determinadas por el fabricante nos limitamos a seleccionar el imán más pequeño disponible. Este imán deberá generar al menos una fuerza $F_{min}$.   
 
@@ -490,13 +490,13 @@ Para el diseño del imán tenemos el siguiente proceso:
 \item Seleccionar el material del imán permanente con el $H_c$, $B_r$ más altos disponibles. 
 \item Seleccionar las dimensiones del imán permanente según disponibilidad del fabricante. 
 \item Dimensionar el núcleo guía de manera que acomode correctamente el imán permanente. 
-\item Usar la formula \ref{eq:fuerza-iman-permanente} para calcular la fuerza $F_{ip}$. 
+\item Usar la fórmula \ref{eq:fuerza-iman-permanente} para calcular la fuerza $F_{ip}$. 
 \item Si la fuerza $F_{min} > F_{ip}$ incrementar las dimensión y repetir los pasos.
 \end{enumerate}
 
 \subsubsection{Selección del imán permanente}
 
-Entre las diferentes composiciones de imanes permanentes destaca el Neodimio-Hierro-Boro comúnmente conocidos como imanes de neodimio. Los valores más altos $H_c$ y  $B_r$ son alcanzados por los imanes de grado $N52$, con valores de $B_r = 1400mT$ y $H_c=796kA/m$ [véase anexo B]. 
+Entre las diferentes composiciones de imanes permanentes destacan aquellas de Neodimio-Hierro-Boro, comúnmente conocidas como imanes de neodimio. Los valores más altos $H_c$ y  $B_r$ son alcanzados por los imanes de grado $N52$, con valores de $B_r = 1400mT$ y $H_c=796kA/m$ [véase anexo B]. 
 
 Siguiendo el procedimiento anterior para generar una fuerza $F_{min}$ de al menos $50 N$ resultó en un imán cúbico de 10 mm por lado \cite{cite_s21_2017_first4magnets}.
 
@@ -531,7 +531,7 @@ Para generar dicho desplazamiento se utiliza un mecanismo tornillo-tuerca, conoc
 \begin{figure}[H]
 \centering
 	\includegraphics[scale=.3]{images/Capitulo_3/Tornillo}
-	\caption{\textit{Mecanismo Tornillo Tuerca \citep{cite_17}}}
+	\caption{\textit{Mecanismo Tornillo Tuerca \citep{cite_17}.}}
 \end{figure}
 
 Este mecanismo se puede plantear de dos formas: un tornillo de posición fija que al girar provoca el desplazamiento de la tuerca, o una tuerca fija que produce el desplazamiento del tornillo cuando este gira. En este caso, utilizaremos el tornillo de posición fija y la tuerca consistirá en la base del imán permanente. 
@@ -669,7 +669,7 @@ Y la relación de los pares torsores será:
  T_2 = \frac{N_1}{N_2} T_1
 \end{equation}
 
-Finalmente se relaciona el par torsor con la fuerza de elevación y descenso del tornillo. Debido a la acción de la fricción se tiene una ecuación para el descenso y otra para la elevación. Para el par de elevación tenemos:
+Finalmente, se relaciona el par torsor con la fuerza de elevación y descenso del tornillo. Debido a la acción de la fricción se tiene una ecuación para el descenso y otra para la elevación. Para el par de elevación tenemos:
 
 \begin{equation}
     T = \frac{F \cdot d_m}{2} \cdot \frac{\rho + (\pi \cdot \mu \cdot d_m \cdot \sec \theta)}{(\pi \cdot d_m) - (\mu \cdot \rho \cdot  \sec \theta)} 
@@ -679,7 +679,7 @@ Donde: \\
     $F$ = Valor de la carga\\
     $\rho$ = Paso del tornillo \\
     $d_m$ = Diámetro medio del tornillo\\
-    $\mu$ = Coeficiente de rozamiento la rosca y le tornillo \\
+    $\mu$ = Coeficiente de rozamiento la rosca y el tornillo \\
     $\theta$ = $\frac{Angulo;de;la;rosca}{2}$\\
 
 Y para el par de descenso tenemos:
@@ -746,7 +746,7 @@ Para el sensor se utilizó un diseño similar al presentado en \citep{cite_14}, co
 
 El electrodo consiste en una placa frontal ($S_1$), un conductor cilíndrico externo que actúa como blindaje pasivo del sistema ($S_3$) y un conductor cilíndrico interno ($S_2$) que actúa como blindaje activo que reduce los efectos de la capacitancia parásita dentro del electrodo. Finalmente un conductor recubierto en el centro conecta el área sensitiva de la placa frontal con el circuito de acondicionamiento.
 
-La geometría del electrodo determina la capacitancia y por lo tanto la sensitividad del dispositivo. Modelar la relación entre la geometría del sensor y su capacitancia requiere solucionar la ecuación: 
+La geometría del electrodo determina la capacitancia y, por lo tanto, la sensitividad del dispositivo. Modelar la relación entre la geometría del sensor y su capacitancia requiere solucionar la ecuación: 
 
 \begin{equation}
 \nabla^2 V = 0
@@ -960,7 +960,7 @@ El ensamble final de los componentes descritos anteriormente se muestran en la f
 
 Un rodamiento magnético no estaría completo sin un sistema de control que se encarga de hacer las correcciones necesarias para mantener el eje en levitación. Este sistema de control consiste en un controlador retroalimentado en espacio de estados y un observador para determinar el estado del sistema. 
 
-El procedimiento realizado a continuación consiste en obtener un modelo dinámico del eje, linealizar la representación del sistema, especificar la respuesta deseada, calcular las ganancias del controlador-observador en modo continuo y discretizar el conjunto controlador-observador. Además mediante el control calendarizado se compensaran los efectos de controlar un sistema no lineal usando una aproximación linealizada. Finalmente se discuten los efectos que puede tener el ruido de los sensores y su solución mediante la implementación del observador de Kalman. 
+El procedimiento realizado a continuación consiste en obtener un modelo dinámico del eje, linealizar la representación del sistema, especificar la respuesta deseada, calcular las ganancias del controlador-observador en modo continuo y discretizar el conjunto controlador-observador. Además mediante el control calendarizado se compensarán los efectos de controlar un sistema no lineal usando una aproximación linealizada. Finalmente se discuten los efectos que puede tener el ruido de los sensores y su solución mediante la implementación del observador de Kalman. 
 
 \begin{figure}[H]
     \centering
@@ -1064,7 +1064,7 @@ Como indica la sección \ref{sec:angulos-euler} es necesario definir un marco de 
 \end{center}
 \end{figure}
 
-Podemos definir este nuevo maco de referencia como la transformación $T_O^B$ como se muestra en la ecuación:
+Podemos definir este nuevo marco de referencia como la transformación $T_O^B$ como se muestra en la ecuación:
 
 \begin{equation}
 	T_O^B (\theta,\psi)= {T_A}^B (\theta) {T_A}^O (\psi) 	
@@ -1106,7 +1106,7 @@ Estas ecuaciones se introducen dentro del modelo de \textbf{Simulink} mostrado e
 
 \subsection{Linealización}
 
-Podemos observar que este sistema de ecuaciones es no lineal, así que tenemos que linealizarlo para convertirlo en la forma canónica de espacio de estados, y aplicar las técnicas de control descritas en la sección \ref{sec:control} mediante las formulas \ref{eq:control:jacobiano}. 
+Podemos observar que este sistema de ecuaciones es no lineal, así que tenemos que linealizarlo para convertirlo en la forma canónica de espacio de estados, y aplicar las técnicas de control descritas en la sección \ref{sec:control} mediante las fórmulas \ref{eq:control:jacobiano}. 
 
 [..............]
 
@@ -1146,7 +1146,7 @@ Debido a que los controladores suelen ser implementados en un sistema digital, e
 
 Como se indica en la sección [...], para emular un sistema controlador-observador es necesario transformar los polos que definen la respuesta del sistema del dominio de Laplace al dominio de $Z$. Esto se realiza mediante la transformación de Tustin expresada en la ecuación [ecuacion de tustin].
 
-Para el calculo de las ganancias del controlador discreto, es necesario discretizar el sistema continuo y, con el nuevo conjunto de polos discretos, aplicar las técnicas de ubicación de polos descritas en la sección [...]. 
+Para el cálculo de las ganancias del controlador discreto, es necesario discretizar el sistema continuo y, con el nuevo conjunto de polos discretos, aplicar las técnicas de ubicación de polos descritas en la sección [...]. 
 
 El sistema queda implementado en el modelo de \textbf{Simulink} mostrado en la figura [...]. Cabe resaltar que lo que era un integrador en el sistema continuo ahora es un acumulador en lugar de un retardo unitario ($Z^{-1}$).  
 
@@ -1154,11 +1154,11 @@ El sistema queda implementado en el modelo de \textbf{Simulink} mostrado en la f
 
 \subsection{Observador de Kalman}
 
-Si el ruido en los sensores alcanza niveles excesivos la estabilidad del controlador podría verse comprometida, por motivos de seguridad s necesario contar con un sistema más robusto en cuanto a inmunidad al ruido. Esto puede alcanzarse mediante el filtro de Kalman. 
+Si el ruido en los sensores alcanza niveles excesivos la estabilidad del controlador podría verse comprometida, por motivos de seguridad es necesario contar con un sistema más robusto en cuanto a inmunidad al ruido. Esto puede alcanzarse mediante el filtro de Kalman. 
  
 El filtro de Kalman es un observador en tiempo discreto que permite mejorar la calidad de nuestras mediciones gracias a que incorpora información sobre la dinámica del sistema y los niveles de ruido (covarianza) presente en las mediciones de los sensores. En el caso del rodamiento magnético se añade la ventaja de que integra la información redundante de los tres sensores de posición radial. 
 
-A partir del sistema discretizado se aplican las formulas del filtro de Kalman descritas en la sección [...]. Cabe resaltar que las ganancias del filtro de Kalman son calculadas en linea y de manera iterativa, a diferencia de las ganancias del observador clásico. 
+A partir del sistema discretizado se aplican las fórmulas del filtro de Kalman descritas en la sección [...]. Cabe resaltar que las ganancias del filtro de Kalman son calculadas en línea y de manera iterativa, a diferencia de las ganancias del observador clásico. 
 
 El filtro queda implementado en el modelo de \textbf{Simulink} mostrado en la figura [...]. 
 
