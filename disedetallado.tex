@@ -1116,41 +1116,96 @@ Lo que resulta en el sistema descrito por las matrices:
 
 \subsection{Controlador}
 
-Con el fin de estabilizar el sistema descrito en la ecuación [sistema linealizado] utilizamos el esquema de control retroalimentado presentado en la sección [control retroalimentado]. 
+Con el fin de estabilizar el sistema descrito en la ecuación \textbf{[sistema linealizado]} utilizamos el esquema de control retroalimentado presentado en la sección \ref{sec:control-retroalimentado}. 
 
-Se selecciona un conjunto de polos para el nuevo sistema y se utiliza el script de \textbf{Matlab}[anexo] para calcular las ganancias del controlador $K$. Este esquema de control es implementado en el modelo de \textbf{Simulink} mostrado en la figura [...]. 
+Se selecciona un conjunto de polos para el nuevo sistema y se utiliza el script de \textbf{Matlab}\textbf{[anexo]} para calcular las ganancias del controlador $K$. Este esquema de control es implementado en el modelo de \textbf{Simulink} mostrado en la figura \ref{fig:esquema-controlador-retroalimentado}. 
 
-[insertar esquema de control retroalimentado]
+\begin{figure}[H]
+\begin{center}
+\centering
+\includegraphics[width=.7\textwidth]{images/Capitulo_3/Control_SIMULINK_MATLAB/controlador_retroalimentado}
+\caption{Esquema del controlador retroalimentado.}
+\label{fig:esquema-controlador-retroalimentado}
+\end{center}
+\end{figure}
 
-El esquema de control mostrado anteriormente es capaz de estabilizar el sistema pero no puede alcanzar un error de estado estable igual a $0$, por lo que se agrega un integrador y un vector de ganancias con el fin de producir un nuevo esquema como el mostrado en la sección [...]. Este nuevo vector de ganancias es calculado por el script [...] y su modelo de Simulink es el que se muestra en la figura [...].
+El esquema de control mostrado anteriormente es capaz de estabilizar el sistema pero no puede alcanzar un error de estado estable igual a $0$, por lo que se agrega un integrador y un vector de ganancias con el fin de producir un nuevo esquema como el mostrado en la sección \ref{sec:control-integral}. Este nuevo vector de ganancias es calculado por el \textbf{script [...]} y su modelo de Simulink es el que se muestra en la figura \ref{fig:esquema-controlador-integral}.
 
-[insertar modelo simulink]
+\begin{figure}[H]
+\begin{center}
+\centering
+\includegraphics[width=.8\textwidth]{images/Capitulo_3/Control_SIMULINK_MATLAB/controlador_integral}
+\caption{Esquema del controlador integral.}
+\label{fig:esquema-controlador-integral}
+\end{center}
+\end{figure}
 
 \subsection{Observador}
 
-Para realizar control en espacio de estados es necesario retroalimentar el estado completo del sistema. En el caso del sistema descrito en [...] no se puede medir de manera directa todo los parámetros del vector de estados por lo que es necesario un observador de estados como es descrito en la sección [ref observador de estados]. 
+Para realizar control en espacio de estados es necesario retroalimentar el estado completo del sistema. En el caso del RMH no se puede medir de manera directa todo los parámetros del vector de estados por lo que es necesario un observador de estados como es descrito en la sección \ref{sec:observador-estados}. 
 
-Las ganancias del observador de estados $K_o$ son calculadas mediante el script [...]. El modelo de \textbf{Simulink} correspondiente a este observador es mostrado en la figura [...].
+Las ganancias del observador de estados $K_o$ son calculadas mediante el\textbf{ script [...]}. El modelo de \textbf{Simulink} correspondiente a este observador es mostrado en la figura \ref{fig:esquema-observador-estados}.
 
-[figura modelo Simulink]
-
-\subsection{Control calendarizado}
-
-Con el fin de compensar los efectos de las no linealidades provocadas por la precisión del eje utilizamos el método de control calendarizado descrito en la sección [...], en donde linealizamos en diferentes valores de $\Omega$ para obtener el conjunto de matrices de transición $A$, $B$, $C$ y el conjunto de ganancias $K$ y $K_o$ para el observador de estados. Estos cálculos son realizados por el script [...] y el conjunto de matrices es interpolado durante la simulación del modelo de \textbf{Simulink} mostrado en la figura [...]. 
-
-[insertar modelo simulink]
+\begin{figure}[htb]
+\begin{center}
+\centering
+\includegraphics[width=.85\textwidth]{images/Capitulo_3/Control_SIMULINK_MATLAB/observador_de_estados}
+\caption{Esquema del observador de estados.}
+\label{fig:esquema-observador-estados}
+\end{center}
+\end{figure}
 
 \subsection{Discretización}
 
 Debido a que los controladores suelen ser implementados en un sistema digital, es necesario contar con una versión discreta de los controladores presentados anteriormente.  
 
-Como se indica en la sección [...], para emular un sistema controlador-observador es necesario transformar los polos que definen la respuesta del sistema del dominio de Laplace al dominio de $Z$. Esto se realiza mediante la transformación de Tustin expresada en la ecuación [ecuacion de tustin].
+Como se indica en la sección \ref{sec:discretizacion-controladores}, para emular un sistema controlador-observador es necesario transformar los polos que definen la respuesta del sistema del dominio de Laplace al dominio de $Z$. Esto se realiza mediante la transformación de Tustin expresada en la ecuación \ref{eq:ecuacion-Tustin}.
 
-Para el cálculo de las ganancias del controlador discreto, es necesario discretizar el sistema continuo y, con el nuevo conjunto de polos discretos, aplicar las técnicas de ubicación de polos descritas en la sección [...]. 
+Para el cálculo de las ganancias del controlador discreto, es necesario discretizar el sistema continuo y, con el nuevo conjunto de polos discretos, aplicar las técnicas de ubicación de polos descritas en la sección \ref{sec:discretizacion-controladores}. 
 
-El sistema queda implementado en el modelo de \textbf{Simulink} mostrado en la figura [...]. Cabe resaltar que lo que era un integrador en el sistema continuo ahora es un acumulador en lugar de un retardo unitario ($Z^{-1}$).  
+Los modelos continuos presentados anteriormente son discretizados y presentados en las figuras \ref{fig:esquema-controlador-discreto} y \ref{fig:esquema-observador-discreto}. Cabe resaltar que lo que era un integrador en el sistema continuo ahora es un acumulador en lugar de un retardo unitario ($Z^{-1}$).  
 
-[insertar modelo de simulink]
+\begin{figure}[htb]
+\begin{center}
+\centering
+\includegraphics[width=.85\textwidth]{images/Capitulo_3/Control_SIMULINK_MATLAB/controlador_discreto}
+\caption{Esquema del controlador discreto.}
+\label{fig:esquema-controlador-discreto}
+\end{center}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+\centering
+\includegraphics[width=.85\textwidth]{images/Capitulo_3/Control_SIMULINK_MATLAB/observador_discreto}
+\caption{Esquema del observador discreto.}
+\label{fig:esquema-observador-discreto}
+\end{center}
+\end{figure}
+
+\subsection{Control calendarizado}
+
+Con el fin de compensar los efectos de las no linealidades provocadas por la precesión del eje utilizamos el método de control calendarizado descrito en la sección \ref{sec:control-calendarizado}, en donde linealizamos en diferentes valores de $\Omega$ para obtener el conjunto de matrices de transición $A$, $B$, $C$ y el conjunto de ganancias $K$ y $K_o$ para el observador de estados. Estos cálculos son realizados por el \textbf{script [...]} y el conjunto de matrices es interpolado durante la simulación del modelo de \textbf{Simulink} mostrado en las figuras \ref{fig:esquema-controlador-calendarizado} y \ref{fig:esquema-observador-calendarizado} . 
+
+%\textbf{[insertar modelo simulink]}
+
+\begin{figure}[htb]
+\begin{center}
+\centering
+\includegraphics[width=.9\textwidth]{images/Capitulo_3/Control_SIMULINK_MATLAB/controlador_caliderizado_discreto}
+\caption{Esquema del controlador calendarizado.}
+\label{fig:esquema-controlador-calendarizado}
+\end{center}
+\end{figure}
+ \newpage
+\begin{figure}[t!]
+\begin{center}
+\centering
+\includegraphics[width=.85\textwidth]{images/Capitulo_3/Control_SIMULINK_MATLAB/observador_calendarizado}
+\caption{Esquema del observador calendarizado.}
+\label{fig:esquema-observador-calendarizado}
+\end{center}
+\end{figure}
 
 \subsection{Observador de Kalman}
 
@@ -1158,8 +1213,8 @@ Si el ruido en los sensores alcanza niveles excesivos la estabilidad del control
  
 El filtro de Kalman es un observador en tiempo discreto que permite mejorar la calidad de nuestras mediciones gracias a que incorpora información sobre la dinámica del sistema y los niveles de ruido (covarianza) presente en las mediciones de los sensores. En el caso del rodamiento magnético se añade la ventaja de que integra la información redundante de los tres sensores de posición radial. 
 
-A partir del sistema discretizado se aplican las fórmulas del filtro de Kalman descritas en la sección [...]. Cabe resaltar que las ganancias del filtro de Kalman son calculadas en línea y de manera iterativa, a diferencia de las ganancias del observador clásico. 
+A partir del sistema discretizado se aplican las fórmulas del filtro de Kalman descritas en la sección \ref{sec:filtro-kalman}. Cabe resaltar que las ganancias del filtro de Kalman son calculadas en línea y de manera iterativa, a diferencia de las ganancias del observador clásico. 
 
-El filtro queda implementado en el modelo de \textbf{Simulink} mostrado en la figura [...]. 
+%El filtro queda implementado en el modelo de \textbf{Simulink} mostrado en la \textbf{figura [...]}. 
 
-[insertar modelo de simulink]
+%\textbf{[insertar modelo de simulink]}
