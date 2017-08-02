@@ -1,3 +1,58 @@
 \chapter{Validación y Análisis de Resultados}\index{Validación}
 
+A continuación se muestran un conjunto de simulaciones realizadas en \textbf{Simulink} para analizar la efectividad de los diferentes esquemas de control definidos en la sección \ref{sec:Controlador-Capitulo-2} 
+
+Las primeras tres simulaciones se realizan con el fin de comparar los diferentes controladores 
+
+Las siguientes dos simulaciones tienen el fin de mostrar la efectividad del MCCE para reducir el consumo en los rodamientos radiales 
+
+
+\subsection{Controlador retroalimentado vs Controlador integral} 
+
+[imagen]
+
+Se simulan dos controladores de tipo continuo [referencia controladores seccion 3.6]
+
+ambos poseen un observador de estado en modo continuo 
+
+la simulacion empieza con condiciones iniciales de ...
+
+no hay carga ademas del peso del collarín
+
+como resultados el controlador retroalimentado nunca alcanza un error de estado estable igual a $0$ 
+
+\subsection{Controlador continuo vs Controlador discreto} 
+
+[imagen]
+
+Se simulan dos controladores, uno de tipo integral continuo y otro de tipo integral discreto [referencia controladores seccion 3.6]
+
+ambos poseen un observador de estado en modo continuo  y otro en discreto respectivamente
+
+la simulacion empieza con condiciones iniciales de ...
+
+no hay carga ademas del peso del collarín
+
+como resultados el controlador integral discreto emula bien al continuo
+
+\subsection{Controlador linealizado en un punto vs calendarizado}
+
+[imagen]
+
+Se simulan dos controladores de tipo integral discreto linealizado en un punto y otro integral discreto calendarizado [referencia 3.6]
+
+ambos poseen un observador discreto y otro uno discreto calendarizado
+
+la simulacion empieza con condiciones iniciales de ...
+
+no hay carga ademas del peso del collarín
+
+cuando la velocidad angular del rotor es la misma que se usó durante el proceso de linealizacion ambos controladores operan de la misma manera 
+
+cuando trabajan a velocidades angulares diferentes el controlador no calendarizado presenta problemas para estabilizar el rotor debido a los efectos de la precesión 
+
+el control calendarizado no presenta problemas 
+
+ 
+
 
