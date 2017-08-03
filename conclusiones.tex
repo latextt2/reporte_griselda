@@ -1,6 +1,6 @@
 \chapter{Conclusiones}
 %\todo[inline]{Efectos de control el rotor en 3d}
-%%\todo[inline]{Modelar en 3d mejora el desempeño del controlador}
+%%\todo[inline]{Modelar en 3d mejora el desempe\~no del controlador}
 %%\todo[inline]{pero esto requirio un modelo mas complejo y la implemetacion de un control calendarizado}
 %%\todo[inline]{Efectos del en sistema hibrido}
 %%\todo[inline]{El uso del iman permanente permitio reducir de manera considerable el consumo del rodamiento, inluso ante cargas de baja frecencia}
@@ -10,3 +10,26 @@
 %%\todo[inline]{El sensor de capacitancia tiene aplicaciones por separado}
 %%\todo[inline]{Los cualidadesdel sistema hibrido pueden exterse a futuros projectos donde el bajo consumo sea importante, ejemplo un riel de levitacion magnetica para el transporte de carga}
 
+La investigaci\'on mostr\'o una gran cantidad de trabajos e investigaciones sobre los rodamientos magn\'eticos,  cada uno mostraba diferentes propuestas, de las cuales, la idea predominante era sobre los rodamientos magn\'eticos radiales. Aunque se analizaron varias fuentes, ninguna de las consultadas mostr\'o una implementaci\'on de rodamientos magn\'eticos activos (tanto radial como axial) aplicando en conjunto un campo magn\'etico base para la levitaci\'on por medio de imanes permanentes, que en particular fue la propuesta sugerida. El estudio sobre el campo permiti\'o que se lograran resolver las problem\'aticas que se presentaron a lo largo del proyecto. 
+
+Las etapas de dise\~no fueron implementadas bas\'andose en la teor\'ia estudiada, quedando en libertad el equipo el modo de proceder, dado que en las fuentes citadas no se encontraron expl\'icitamente procedimentos estandarizados para el desarrollo de electroimanes.
+
+Se valid\'o el dise\~no realizado mediante el uso del software FEM y gracias a ello, podemos afirmar la validez de nuestro proceso en las geometr\'ias de electroim\'an radial y axial usadas.
+
+Las condiciones de ruido magn\'etico que existen en los RMA, adem\'as de las condiciones de operaci\'on (distancia y resoluci\'on) crearon un problema al momento de seleccionar el sensor de distancia. Despu\'es del estudio y comparaci\'on realizado entre distintos sensores, encontramos a los de tipo capacitivo como la mejor opci\'on para esta aplicaci\'on.
+
+El dise\~no de sensores capacitivos supuso un problema, ya que encontrar una geometr\'ia que maximice la sensitividad requiere el modelado de la capacitancia en geometr\'ias poco convencionales. Solucionamos esto mediante simulaciones electroestáticas y variaciones de los par\'ametros del modelo, con lo que se lleg\'o a una geometr\'ia funcional para un tama\~no de electrodo determinado.
+
+En los inicios del proyecto, el flujo marginal introdujo errores para el c\'alculo de electroimanes; al integrar el modelo de este flujo, se obtuvieron c\'alculos que coinciden con las simulaciones FEM.
+
+Aunque el software FEMM s\'olo sirve para calcular modelos fijos, fue posible usar el enlace con MATLAB para caracterizar las respuestas de los electroimanes, imanes pasivos y sensores.
+
+El sistema no lineal que representa al rotor del rodamiento requiri\'o de una linearizaci\'on para aplicar las t\'ecnicas de control retroalimentado convencional. Sin embargo, un controlador basado en un modelo linearizado sencillo presenta problemas de estabilidad ante las diferentes velocidades angulares a las que puede ser sometido. Este problema fue solucionado mediante la aplicaci\'on de un controlador calendarizado.
+
+En cuanto al control de la posici\'on, se observ\'o la superioridad del control integral para controlar la posici\'on del eje, alcanzando un error a estado estable igual a cero.
+
+Tambi\'en se discretiz\'o el controlador y observador para permitir su implementaci\'on en dispositivos digitales. Las simulaciones demostraron la correcta emulaci\'on del controlador continuo por parte del discreto.
+
+Gracias a las simulaciones de accionamiento h\'ibrido, se mostr\'o que el uso de un im\'an permanente y un mecanismo de retracci\'on (MCCE) elimina la componente constante en la fuerza ejercida por los electroimanes, y por lo tanto, la magnitud de corriente consumida.
+
+Es prudente mencionar que son necesarios avances en cuanto a materiales ferromagn\'eticos, pues los materiales actuales carecen de las propiedades requeridas. Esto obstaculiza el desarrollo de electroimanes potentes y de alta eficiencia. Sin embargo, dados los alcances logrados durante la realizaci\'on del proyecto, es posible darle continuidad desarrollando en trabajos posteriores un prototipo, optimizando el dise\~no al implementar metodolog\'ias como el Dise\~no para la Manufactura (DFM) y el Dise\~no para el Ensamble (DFA). Esto claro, implicar\'ia un an\'alisis m\'as completo para la selecci\'on de materiales y de procesos de manufactura que requerir\'ian cada uno de sus componentes. 
