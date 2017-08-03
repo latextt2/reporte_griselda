@@ -156,21 +156,26 @@ $$A_b = 287.13 \; mm^2 \; \approx \; 288 \; mm^2$$
 \subsection{Simulación FEM} \label{sec:simulacion-fem-electroiman}
 
 Con el fin de validar los cálculos y comprobar que el núcleo no alcance su punto de saturación, se realizó una simulación de elemento finito con ayuda del software FEMM donde se obtuvieron los siguientes resultados:
-\begin{figure}[H]
+
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/simulacion_radial}
     \caption{Simulación del electroimán radial en FEMM.}
     \label{fig:simulacion-femm-radial}
 \end{figure}
+
 En la figura \ref{fig:simulacion-femm-radial} se puede observar que el valor máximo de inducción magnética es de $0.917 T$ lo cuál está por debajo del punto de saturación del material.
 
 Existe una diferencia entre el modelo ideal y la simulación. Esta diferencia se debe a los efectos de la reluctancia del núcleo. Un modelo que incluya la reluctancia del núcleo se acerca más al modelo real tal y como se muestra en la figura \ref{fig:curva-fuerza-rmr}.
-\begin{figure}[H]
+
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/simulacion_vs_modelo_radial}
     \caption{Curva Fuerza - Distancia del RMR.}
     \label{fig:curva-fuerza-rmr}
 \end{figure}
+
+\newpage
 
 \subsection{Electrónica de accionamiento}
 
@@ -319,6 +324,8 @@ Esta atenuación coincide con la de un filtro pasabajas de primer orden, con frec
     \caption{Respuesta en frecuencia del circuito de accionamiento.}
     \label{fig:respuesta-frecuencia-electroiman}
 \end{figure}
+
+\newpage
 
 Una vez ensamblado el conjunto de electroimanes resulta en el modelo de la figura \ref{fig:Modelo-3D-RMR}.
 
@@ -956,7 +963,7 @@ El ensamble final de los componentes descritos anteriormente se muestran en la f
 
 \newpage
 
-\section{Controlador} \label{sec:Controlador-Capitulo-2}
+\section{Controlador} \label{sec:Controlador-Capitulo-2} 
 
 Todos los rodamientos magnéticos deben poseer un sistema de control que ejecute las correcciones necesarias para mantener el eje en levitación. El sistema de control de nuestra propuesta consiste en un controlador retroalimentado en espacio de estados y un observador para determinar el estado del sistema. 
 
@@ -1109,6 +1116,8 @@ Estas ecuaciones se introducen dentro del modelo de \textbf{Simulink} mostrado e
 \end{center}
 \end{figure}
 
+\newpage
+
 \subsection{Linealización}
 
 Podemos observar que este sistema de ecuaciones es no lineal, así que tenemos que linealizarlo para convertirlo en la forma canónica de espacio de estados, y aplicar las técnicas de control descritas en la sección \ref{sec:control} mediante las fórmulas \ref{eq:control:jacobiano}, lo que resulta en el sistema lineal calculado en el script \ref{ap:sistema-ecuaciones-lineales}
@@ -1117,9 +1126,9 @@ Podemos observar que este sistema de ecuaciones es no lineal, así que tenemos qu
 
 Con el fin de estabilizar el sistema descrito en la ecuación \textbf{[sistema linealizado]} utilizamos el esquema de control retroalimentado presentado en la sección \ref{sec:control-retroalimentado}. 
 
-Se selecciona un conjunto de polos para el nuevo sistema y se utiliza el script de \textbf{Matlab}\textbf{[anexo]} para calcular las ganancias del controlador $K$. Este esquema de control es implementado en el modelo de \textbf{Simulink} mostrado en la figura \ref{fig:esquema-controlador-retroalimentado}. 
+Se selecciona un conjunto de polos para el nuevo sistema y se utiliza el script de \textbf{Matlab} \ref{ap:ganancias-control} para calcular las ganancias del controlador $K$. Este esquema de control es implementado en el modelo de \textbf{Simulink} mostrado en la figura \ref{fig:esquema-controlador-retroalimentado}. 
 
-\begin{figure}[H]
+\begin{figure}[htb]
 \begin{center}
 \centering
 \includegraphics[width=.7\textwidth]{images/Capitulo_3/Control_SIMULINK_MATLAB/controlador_retroalimentado}
@@ -1128,9 +1137,9 @@ Se selecciona un conjunto de polos para el nuevo sistema y se utiliza el script 
 \end{center}
 \end{figure}
 
-El esquema de control mostrado anteriormente es capaz de estabilizar el sistema pero no puede alcanzar un error de estado estable igual a $0$, por lo que se agrega un integrador y un vector de ganancias con el fin de producir un nuevo esquema como el mostrado en la sección \ref{sec:control-integral}. Este nuevo vector de ganancias es calculado por el \textbf{script [...]} y su modelo de Simulink es el que se muestra en la figura \ref{fig:esquema-controlador-integral}.
+El esquema de control mostrado anteriormente es capaz de estabilizar el sistema pero no puede alcanzar un error de estado estable igual a $0$, por lo que se agrega un integrador y un vector de ganancias con el fin de producir un nuevo esquema como el mostrado en la sección \ref{sec:control-integral}. Este nuevo vector de ganancias es calculado por el script \ref{ap:ganancias-control-integral} y su modelo de Simulink es el que se muestra en la figura \ref{fig:esquema-controlador-integral}.
 
-\begin{figure}[H]
+\begin{figure}[htb]
 \begin{center}
 \centering
 \includegraphics[width=.8\textwidth]{images/Capitulo_3/Control_SIMULINK_MATLAB/controlador_integral}
@@ -1143,9 +1152,9 @@ El esquema de control mostrado anteriormente es capaz de estabilizar el sistema 
 
 Para realizar control en espacio de estados es necesario retroalimentar el estado completo del sistema. En el caso del RMH no se puede medir de manera directa todo los parámetros del vector de estados por lo que es necesario un observador de estados como es descrito en la sección \ref{sec:observador-estados}. 
 
-Las ganancias del observador de estados $K_o$ son calculadas mediante el\textbf{ script [...]}. El modelo de \textbf{Simulink} correspondiente a este observador es mostrado en la figura \ref{fig:esquema-observador-estados}.
+Las ganancias del observador de estados $K_o$ son calculadas mediante el script \ref{ap:ganancias-control}. El modelo de \textbf{Simulink} correspondiente a este observador es mostrado en la figura \ref{fig:esquema-observador-estados}.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center}
 \centering
 \includegraphics[width=.85\textwidth]{images/Capitulo_3/Control_SIMULINK_MATLAB/observador_de_estados}
@@ -1182,11 +1191,11 @@ Los modelos continuos presentados anteriormente son discretizados y presentados 
 \end{center}
 \end{figure}
 
+\newpage
+
 \subsection{Control calendarizado}
 
 Con el fin de compensar los efectos de las no linealidades provocadas por la precesión del eje utilizamos el método de control calendarizado descrito en la sección \ref{sec:control-calendarizado}, en donde linealizamos en diferentes valores de $\Omega$ para obtener el conjunto de matrices de transición $A$, $B$, $C$ y el conjunto de ganancias $K$ y $K_o$ para el observador de estados. Estos cálculos son realizados por el \textbf{script [...]} y el conjunto de matrices es interpolado durante la simulación del modelo de \textbf{Simulink} mostrado en las figuras \ref{fig:esquema-controlador-calendarizado} y \ref{fig:esquema-observador-calendarizado} . 
-
-%\textbf{[insertar modelo simulink]}
 
 \begin{figure}[htb]
 \begin{center}
@@ -1196,8 +1205,8 @@ Con el fin de compensar los efectos de las no linealidades provocadas por la pre
 \label{fig:esquema-controlador-calendarizado}
 \end{center}
 \end{figure}
- \newpage
-\begin{figure}[t!]
+
+\begin{figure}[h]
 \begin{center}
 \centering
 \includegraphics[width=.85\textwidth]{images/Capitulo_3/Control_SIMULINK_MATLAB/observador_calendarizado}
