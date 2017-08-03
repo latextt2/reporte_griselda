@@ -1,4 +1,4 @@
-\chapter{Validación y Análisis de Resultados}\index{Validación}
+\chapter{Validación y Análisis de Resultados} %\index{Validación}
 
 A continuación se muestran un conjunto de simulaciones realizadas en \textbf{Simulink} para analizar la efectividad de los diferentes esquemas de control definidos en la sección \ref{sec:Controlador-Capitulo-2} 
 
@@ -9,9 +9,20 @@ Las siguientes dos simulaciones tienen el fin de mostrar la efectividad del MCCE
 
 \subsection{Controlador retroalimentado vs Controlador integral} 
 
-[imagen]
+\begin{figure}[H]
+\begin{center}
+\centering
+\includegraphics[width=\textwidth]{images/Capitulo_4_resultados_simulacion/simu_retroalimentado_vs_integral}
+\caption{Controlador retroalimentado vs Controlador integral.}
+\label{fig:Controlador_retroalimentado_vs_Controlador_integral}
+\end{center}
+\end{figure}
 
-Se simulan dos controladores de tipo continuo [referencia controladores seccion 3.6]
+Se simulan dos controladores de tipo continuo 
+
+[referencia controladores seccion 3.6]:  
+
+\ref{fig:esquema-controlador-retroalimentado} y \ref{fig:esquema-controlador-integral}
 
 ambos poseen un observador de estado en modo continuo 
 
@@ -23,9 +34,20 @@ como resultados el controlador retroalimentado nunca alcanza un error de estado 
 
 \subsection{Controlador continuo vs Controlador discreto} 
 
-[imagen]
+\begin{figure}[H]
+\begin{center}
+\centering
+\includegraphics[width=\textwidth]{images/Capitulo_4_resultados_simulacion/simu_discreto_vs_continuo}
+\caption{Controlador continuo vs Controlador discreto.}
+\label{fig:Controlador_continuo_vs_Controlador_discreto}
+\end{center}
+\end{figure}
 
-Se simulan dos controladores, uno de tipo integral continuo y otro de tipo integral discreto [referencia controladores seccion 3.6]
+Se simulan dos controladores, uno de tipo integral continuo y otro de tipo integral discreto 
+
+[referencia controladores seccion 3.6]:
+
+\ref{fig:esquema-controlador-integral} y \ref{fig:esquema-controlador-discreto}
 
 ambos poseen un observador de estado en modo continuo  y otro en discreto respectivamente
 
@@ -37,9 +59,20 @@ como resultados el controlador integral discreto emula bien al continuo
 
 \subsection{Controlador linealizado en un punto vs calendarizado}
 
-[imagen]
+\begin{figure}[H]
+\begin{center}
+\centering
+\includegraphics[width=\textwidth]{images/Capitulo_4_resultados_simulacion/normal_vs_calendarizado}
+\caption{Controlador linealizado vs Controlador calendarizado.}
+\label{fig:Controlador_linealizado_vs_Controlador_calendarizado}
+\end{center}
+\end{figure}
 
-Se simulan dos controladores de tipo integral discreto linealizado en un punto y otro integral discreto calendarizado [referencia 3.6]
+Se simulan dos controladores de tipo integral discreto linealizado en un punto y otro integral discreto calendarizado 
+
+[referencia 3.6]:
+
+\ref{fig:esquema-controlador-discreto} y \ref{fig:esquema-controlador-calendarizado}
 
 ambos poseen un observador discreto y otro uno discreto calendarizado
 
@@ -53,6 +86,55 @@ cuando trabajan a velocidades angulares diferentes el controlador no calendariza
 
 el control calendarizado no presenta problemas 
 
- 
+\subsection{Simulación Accionamiento Híbrido} 
 
+\begin{figure}[H]
+\begin{center}
+\centering
+\includegraphics[width=\textwidth]{images/Capitulo_4_resultados_simulacion/simu_mcce_respuesta_carga_combinada}
+\caption{Simulación con carga combinada.}
+\label{fig:Simulacion_carga_combinada}
+\end{center}
+\end{figure}
 
+Se simulan el control calendarizado discreto integral y observador calendarizado discreto 
+
+la simulacion empieza con condiciones iniciales de ...
+
+se aplica una carga compuesta de ...
+
+a diferencia de las simulaciones pasadas se retroalimenta la señal de control del MCCE con la magnitud de la componente de fuerza en el eje $Z$  
+
+se simulan dos situaciones : la uno es con el MCCE activado y la otra con el MCCE desactivado 
+
+en cuanto a la salida del sistema (posición del eje) el resultado de la simulacion activada es el de la figura \ref{fig:Simulacion_MCCE_activado}
+
+\begin{figure}[H]
+\begin{center}
+\centering
+\includegraphics[width=\textwidth]{images/Capitulo_4_resultados_simulacion/simu_mcce_fuerzas_activo}
+\caption{Simulación con MCCE activado.}
+\label{fig:Simulacion_MCCE_activado}
+\end{center}
+\end{figure}
+
+con la simulacion desactivada el resultado en la salida del sistema es la figura \ref{fig:Simulacion_MCCE_desactivado}
+
+\begin{figure}[H]
+\begin{center}
+\centering
+\includegraphics[width=\textwidth]{images/Capitulo_4_resultados_simulacion/simu_mcce_fuerzas_desactivado}
+\caption{Simulación con MCCE desactivado.}
+\label{fig:Simulacion_MCCE_desactivado}
+\end{center}
+\end{figure}
+
+se puede apreciar que activar el lazo de control de MCCE no compromete la estabilidad del sistema 
+
+podemos comparar las fuerzas aplicadas por cada rodamiento en la figura [...] 
+
+\textbf{[figuras de fuerzas]}
+
+aqui podemos ver que cuando el MCCE está desactivado el $RMR_z$ mantiene una fuerza de (20 N) una vez el sistema se ha estabilizado, mientras que el MCCE mantiene la fuerza mínima del imán permanente de (6 N)
+
+cuando podemos ver que cuando el MCCE está activado el $RMR_z$ mantiene una fuerza de (0 N) una vez el sistema se ha estabilizado, mientras que el MCCE mantiene la fuerza mínima del imán permanente de (26 N)
