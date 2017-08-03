@@ -1,6 +1,6 @@
 \chapter{Codigos de Matlab}
 
-\subsection{Parametros del sistema}
+\section{Parametros del sistema}
 
 \begin{lstlisting}[frame=single]
 function [m,R_r,R_a,R_p,I_p,I_0] = system_parameters()
@@ -35,7 +35,7 @@ m = m_shaft + m_collarin;
 end
 \end{lstlisting}
 
-\subsection{Matriz de interpolacion}
+\section{Matriz de interpolacion}
 
 \begin{lstlisting}[frame=single]
 function [Y_k] = matrix_interpolation(w,Y,w_k)
@@ -46,7 +46,7 @@ Y_k = reshape(Y_r_k,[size(Y,1),size(Y,2)]);
 end
 \end{lstlisting}
 
-\subsection{Modelo no lineal de RMH}
+\section{Modelo no lineal de RMH}
 
 %\newpage
 \begin{lstlisting}[frame=single]
@@ -101,7 +101,7 @@ end
 
 \end{lstlisting}
 
-\subsection{Obtencion del modelo}
+\section{Obtencion del modelo}
 
 %\newpage
 \begin{lstlisting}[frame=single]
@@ -249,7 +249,7 @@ y = [Rcm(1);P1(2:3);P2(2:3)];
 end
 \end{lstlisting}
  
-\subsection{Modelo lineal}
+\section{Modelo lineal}
 
 %\newpage
 \begin{lstlisting}[frame=single]
@@ -283,7 +283,7 @@ end
 
 \end{lstlisting}
  
-\subsection{Polos discretizados}
+\section{Polos discretizados}
 
 %\newpage
 \begin{lstlisting}[frame=single]
@@ -299,7 +299,7 @@ end
 
 \end{lstlisting}
  
-\subsection{Modelo lineal discretizado}
+\section{Modelo lineal discretizado}
 
 %\newpage
 \begin{lstlisting}[frame=single]
@@ -317,7 +317,7 @@ end
 
 \end{lstlisting}
  
-\subsection{Modelo no lineal}
+\section{Modelo no lineal}
 
 %\newpage
 \begin{lstlisting}[frame=single]
@@ -372,7 +372,7 @@ end
 
 \end{lstlisting}
 
-\subsection{Ganancias de control}
+\section{Ganancias de control}
 
 %\newpage
 \begin{lstlisting}[frame=single]
@@ -386,7 +386,7 @@ end
 
 \end{lstlisting}
 
-\subsection{Ganancias de control integral}
+\section{Ganancias de control integral}
 
 %\newpage
 \begin{lstlisting}[frame=single]
@@ -410,7 +410,7 @@ end
 
 \end{lstlisting}
 
-\subsection{Ganancias de control integral discreto}
+\section{Ganancias de control integral discreto}
 
 %\newpage
 \begin{lstlisting}[frame=single]
@@ -434,7 +434,7 @@ end
 
 \end{lstlisting}
 
-\subsection{Ganancias de control  discreto}
+\section{Ganancias de control  discreto}
 
 %\newpage
 \begin{lstlisting}[frame=single]
@@ -449,7 +449,7 @@ end
 
 \end{lstlisting}
 
-\subsection{Capacitancia}
+\section{Capacitancia}
 
 %\newpage
 \begin{lstlisting}[frame=single]
@@ -516,7 +516,7 @@ closefemm();
 end
 \end{lstlisting}
 
-\subsection{Sensor de distancia capacitiva}
+\section{Sensor de distancia capacitiva}
 
 %\newpage
 \begin{lstlisting}[frame=single]
@@ -571,7 +571,7 @@ end
 
 \end{lstlisting}
 
-\subsection{Geometria del sensor}
+\section{Geometria del sensor}
 
 %\newpage
 \begin{lstlisting}[frame=single]
@@ -609,7 +609,7 @@ end
 
 \end{lstlisting}
 
-\subsection{Curva sensitiva}
+\section{Curva sensitiva}
 
 %\newpage
 \begin{lstlisting}[frame=single]
