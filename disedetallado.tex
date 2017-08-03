@@ -960,7 +960,7 @@ El ensamble final de los componentes descritos anteriormente se muestran en la f
 
 Todos los rodamientos magnéticos deben poseer un sistema de control que ejecute las correcciones necesarias para mantener el eje en levitación. El sistema de control de nuestra propuesta consiste en un controlador retroalimentado en espacio de estados y un observador para determinar el estado del sistema. 
 
-El procedimiento realizado a continuación permite obtener un modelo dinámico del eje, linealizar la representación del sistema, especificar la respuesta deseada, calcular las ganancias del controlador-observador en modo continuo y discretizar el conjunto controlador-observador. Además, mediante el control calendarizado se compensarán los efectos de controlar un sistema no lineal usando una aproximación linealizada. Finalmente se discuten los efectos que puede tener el ruido de los sensores y su solución mediante la implementación del observador de Kalman. 
+El procedimiento realizado a continuación permite obtener un modelo dinámico del eje, linealizar la representación del sistema, especificar la respuesta deseada, calcular las ganancias del controlador-observador en modo continuo y discretizar el conjunto controlador-observador. Además, mediante el control calendarizado se compensarán los efectos de controlar un sistema no lineal usando una aproximación linealizada. 
 
 \begin{figure}[H]
     \centering
@@ -1205,15 +1205,3 @@ Con el fin de compensar los efectos de las no linealidades provocadas por la pre
 \label{fig:esquema-observador-calendarizado}
 \end{center}
 \end{figure}
-
-\subsection{Observador de Kalman}
-
-Si el ruido en los sensores alcanza niveles excesivos la estabilidad del controlador podría verse comprometida, por motivos de seguridad es necesario contar con un sistema más robusto en cuanto a inmunidad al ruido. Esto puede alcanzarse mediante el filtro de Kalman. 
- 
-El filtro de Kalman es un observador en tiempo discreto que permite mejorar la calidad de nuestras mediciones gracias a que incorpora información sobre la dinámica del sistema y los niveles de ruido (covarianza) presente en las mediciones de los sensores. En el caso del rodamiento magnético se añade la ventaja de que integra la información redundante de los tres sensores de posición radial. 
-
-A partir del sistema discretizado se aplican las fórmulas del filtro de Kalman descritas en la sección \ref{sec:filtro-kalman}. Cabe resaltar que las ganancias del filtro de Kalman son calculadas en línea y de manera iterativa, a diferencia de las ganancias del observador clásico. 
-
-%El filtro queda implementado en el modelo de \textbf{Simulink} mostrado en la \textbf{figura [...]}. 
-
-%\textbf{[insertar modelo de simulink]}
