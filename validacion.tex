@@ -1,8 +1,8 @@
 \chapter{Validación y Análisis de Resultados} %\index{Validación}
 
-A continuación se muestran un conjunto de simulaciones dinámicas realizadas en \textbf{Simulink} para analizar la efectividad de los diferentes esquemas de control definidos en la sección \ref{sec:Controlador-Capitulo-2}. Las primeras tres simulaciones se realizan con el fin de comparar los diferentes controladores, mientras que las ultimas dos tienen el fin de mostrar la efectividad del MCCE en el caso del rodamiento híbrido. 
+A continuación se muestran un conjunto de simulaciones dinámicas realizadas en \textbf{Simulink} para analizar la efectividad de los diferentes esquemas de control definidos en la sección \ref{sec:Controlador-Capitulo-2}. Las primeras tres simulaciones se realizan con el fin de comparar los diferentes controladores, mientras que las últimas dos tienen el fin de mostrar la efectividad del MCCE en el caso del rodamiento híbrido. 
 
-\section{Controlador retroalimentado y Controlador integral} 
+\section{Controlador retroalimentado y controlador integral} 
 
 Esta simulación consiste en un controlador retroalimentado \ref{fig:esquema-controlador-retroalimentado} y un controlador integral \ref{fig:esquema-controlador-integral}, ambos con un observador de estado y en tiempo continuo. 
 
@@ -21,18 +21,18 @@ Esta simulación se realiza sin cargas externas y con las condiciones iniciales:
 \begin{center}
 \centering
 \includegraphics[width=\textwidth]{images/Capitulo_4_resultados_simulacion/simu_retroalimentado_vs_integral}
-\caption{Salida del sistema. Control retroalimentado (azul) y Control integral(rojo).}
+\caption{Salida del sistema. Control retroalimentado (azul) y control integral (rojo).}
 \label{fig:Controlador_retroalimentado_vs_Controlador_integral}
 \end{center}
 \end{figure}
 
-La salida del sistema simulado mostrado en la figura \ref{fig:Controlador_retroalimentado_vs_Controlador_integral} representa el desplazamiento del eje medido desde los extremos del rotor. Podemos observar que ambos controladores llegan a estabilizar la posición del eje, sin embargo el sistema con controlador retroalimentado no converge en la posición deseada ($0$), en cambio el sistema con controlador integral sí lo hace.
+La salida del sistema simulado, mostrado en la figura \ref{fig:Controlador_retroalimentado_vs_Controlador_integral}, representa el desplazamiento del eje medido desde los extremos del rotor. Podemos observar que ambos controladores llegan a estabilizar la posición del eje, sin embargo, el sistema con controlador retroalimentado no converge en la posición deseada ($0$), en cambio el sistema con controlador integral sí lo hace.
 
-\section{Controlador continuo y Controlador discreto} 
+\newpage
 
-Esta simulación consiste en un controlador integral continuo \ref{fig:esquema-controlador-integral} con observador de estados,  y sus versiones discretizadas \ref{fig:esquema-controlador-discreto} el cual opera con una frecuencia de muestreo de $10kHz$.
+\section{Controlador continuo y controlador discreto} 
 
-Esta simulación se realiza sin cargas externas y con las condiciones iniciales:
+Esta simulación consiste en un controlador integral continuo \ref{fig:esquema-controlador-integral} con observador de estados,  y sus versiones discretizadas \ref{fig:esquema-controlador-discreto} el cual opera con una frecuencia de muestreo de $10kHz$. Esta simulación se realiza sin cargas externas y con las condiciones iniciales:
 \begin{equation}
 	\begin{pmatrix}
 	x_c \\ y_c \\ z_c \\ \dot{x}_c \\ \dot{y}_c \\ \dot{z}_c \\ \phi \\ \theta \\ \dot{\phi} \\ \dot{\theta}
@@ -52,11 +52,11 @@ Esta simulación se realiza sin cargas externas y con las condiciones iniciales:
 
 En la figura \ref{fig:Controlador_continuo_vs_Controlador_discreto} podemos observar que ambos controladores se comportan de manera similar, validando que el controlador discreto emula correctamente al continuo.
 
+\newpage
+
 \section{Controlador calendarizado}
 
-Esta simulación consiste en un controlador integral discreto \ref{fig:esquema-controlador-discreto} y en un controlador integral discreto calendarizado \ref{fig:esquema-controlador-calendarizado}, el controlador integral discreto fue linealizado en $\omega_s = 10000$. Estos operan con una frecuencia de muestreo de $10kHz$.
-
-Esta simulación se realiza sin cargas externas, con un $\omega_s = -30000$ y con las condiciones iniciales:
+Esta simulación consiste en un controlador integral discreto (figura \ref{fig:esquema-controlador-discreto}) y en un controlador integral discreto calendarizado (figura \ref{fig:esquema-controlador-calendarizado}), el controlador integral discreto fue linealizado en $\omega_s = 10000$. Estos operan con una frecuencia de muestreo de $10kHz$. Esta simulación se realiza sin cargas externas, con un $\omega_s = -30000$ y con las condiciones iniciales:
 
 \begin{equation}
 	\begin{pmatrix}
@@ -66,29 +66,31 @@ Esta simulación se realiza sin cargas externas, con un $\omega_s = -30000$ y con
 	\end{pmatrix} 
 \end{equation}
 
-\begin{figure}[H]
+\begin{figure}[htb]
 \begin{center}
 \centering
 \includegraphics[width=\textwidth]{images/Capitulo_4_resultados_simulacion/simu_normal_cal_mismo_ws}
-\caption{Salida del sistema. Control integral discreto (azul) y Control integral discreto calendarizado (rojo)(ambas curvas superpuestas). $\omega_s = 10000$.}
+\caption{Salida del sistema. Control integral discreto (azul) y control integral discreto calendarizado (rojo), mostrando ambas curvas superpuestas en los gráficos. $\omega_s = 10000$.}
 \label{fig:Controlador_linealizado_vs_Controlador_calendarizado_ws_10000}
 \end{center}
 \end{figure}
 
-Cuando la velocidad angular del rotor ($\omega_s$) es la misma que se usó durante el proceso de linealización, ambos controladores operan de la misma manera. Por lo tanto tienen respuesta iguales \ref{fig:Controlador_linealizado_vs_Controlador_calendarizado_ws_10000}.
+Cuando la velocidad angular del rotor ($\omega_s$) es la misma que se usó durante el proceso de linealización, ambos controladores operan de la misma manera. Por lo tanto, tienen respuestas iguales, como se ilustra en la figura \ref{fig:Controlador_linealizado_vs_Controlador_calendarizado_ws_10000}.
 
 \begin{figure}[H]
 \begin{center}
 \centering
 \includegraphics[width=\textwidth]{images/Capitulo_4_resultados_simulacion/normal_vs_calendarizado}
-\caption{Salida del sistema. Control integral discreto (azul) y Control integral discreto calendarizado (rojo). $\omega_s = -30000$.}
+\caption{Salida del sistema. Control integral discreto (azul) y control integral discreto calendarizado (rojo). $\omega_s = -30000$.}
 \label{fig:Controlador_linealizado_vs_Controlador_calendarizado_ws_30000}
 \end{center}
 \end{figure}
 
 Cuando trabajan a velocidades angulares diferentes, el controlador no calendarizado presenta problemas para estabilizar el rotor debido a los efectos de la precesión. En cambio el control calendarizado no presenta problemas.  
 
-\section{Simulación Accionamiento Híbrido} 
+\newpage
+
+\section{Simulación del accionamiento híbrido} 
 
 Esta simulación consiste en un controlador integral y observador discreto calendarizado con un $\omega_s = 10000$ y con las condiciones iniciales:
 
@@ -100,7 +102,7 @@ Esta simulación consiste en un controlador integral y observador discreto calend
 	\end{pmatrix} 
 \end{equation}
 
-y con una fuerza aplicada en el centro con valor de: 
+Y con una fuerza aplicada en el centro con valor de: 
 
 \begin{equation}
 	\begin{pmatrix}
@@ -110,7 +112,7 @@ y con una fuerza aplicada en el centro con valor de:
 	\end{pmatrix}
 \end{equation}
 
-A diferencia de las simulaciones realizadas hasta ahora, la componente de fuerza $F_z$ del RMR es usada como señal de control para el MCCE. A continuación se simulan dos casos: (a) con el MCCE descativado y (b) con el MCCE activado.
+A diferencia de las simulaciones realizadas hasta ahora, la componente de fuerza $F_z$ del RMR es usada como señal de control para el MCCE. A continuación, se simulan dos casos: (a) con el MCCE descativado y (b) con el MCCE activado.
 
 \begin{figure}[H]
 \begin{center}
@@ -129,6 +131,8 @@ A diferencia de las simulaciones realizadas hasta ahora, la componente de fuerza
 \label{fig:Simulacion_carga_combinada_MCCE_activada}
 \end{center}
 \end{figure}
+
+\newpage
 
 Se puede apreciar en la figura \ref{fig:Simulacion_carga_combinada_MCCE_desactivado} y \ref{fig:Simulacion_carga_combinada_MCCE_activada} que activar el lazo de control del MCCE no compromete la estabilidad del sistema. A continuación se muestran los efectos en los electroimanes cuando se activa el MCCE. 
 
