@@ -78,58 +78,66 @@ Sin embargo, debido a que la cantidad de elementos mecánicos u otros componentes
 
 %\subsection{Rodamiento Magnético Activo Radial}
 
-En el caso del rodamiento magnético activo para la carga radial (RMR) se consideró que estos utilizan un arreglo de electroimanes opuestos para generar los campos magnéticos de levitación, y están diseñados para soportar las cargas radiales que actúan sobre el rotor, manteniéndolo centrado sobre el eje de rotación. Este es considerado el módulo central del rodamiento magnético híbrido, debido a que las dimensiones finales dependen principalmente del tamaño del arreglo de electroimanes. Considerando lo anterior, se planteó el siguiente concepto para la disposición de los electroimanes:
+En el caso del rodamiento magnético activo para la carga radial (RMR) se consideró que estos utilizan un arreglo de electroimanes opuestos para generar los campos magnéticos de levitación, y están diseñados para soportar las cargas radiales que actúan sobre el rotor, manteniéndolo centrado sobre el eje de rotación. Este es considerado el módulo central del rodamiento magnético híbrido, debido a que las dimensiones finales dependen principalmente del tamaño del arreglo de electroimanes. Considerando lo anterior, se planteó el concepto para la disposición de los electroimanes de la figura \ref{fig:conceptual-RMR}. 
 
-\begin{figure}[H]
+\begin{figure}[htb]
 \centering
 	\includegraphics[scale=.25]{images/Capitulo_2/Activo}
 	\caption{\textit{Diseño conceptual del rodamiento magnético activo radial (RMR).}}
+	\label{fig:conceptual-RMR}
 \end{figure}
 
 %\subsection{Rodamiento Magnético Activo Axial}
 
-El siguiente módulo consiste en el rodamiento magnético activo axial (RMA). Como su nombre lo indica, este está diseñado para soportar cargas axiales. Utilizan una pieza o collar de soporte constituido generalmente por un disco plano, sólido, de material ferromagnético fijado al rotor. Los electroimanes en forma de disco se encuentran situados en uno ó a ambos lados del disco y sujetos a la carcasa o armazón del rodamiento. Además utilizan un sensor o arreglo de sensores que mide la posición del rotor en dirección axial.\par 
-\begin{figure}[H]
-\centering
-	\includegraphics[width=.8\textwidth]{images/Capitulo_2/Axial}
-	\caption{\textit{Diseño conceptual del rodamiento magnético activo axial (RMA).}}
-\end{figure}
-Los rodamientos magnéticos que funcionan por medio de electroimanes utilizan sensores que miden la posición del eje y envían estas señales de posición al controlador. El controlador utiliza esta información para modificar el campo electromagnético en el rodamiento, haciendo las correcciones necesarias para estabilizarlo. Se plateó un arreglo de tres sensores dispuestos a 120° ya que por lo general este tipo de arreglo ofrece mejores mediciones.
+El siguiente módulo consiste en el rodamiento magnético activo axial (RMA). Como su nombre lo indica, este está diseñado para soportar cargas axiales. Utilizan una pieza o collar de soporte constituido generalmente por un disco plano, sólido, de material ferromagnético fijado al rotor. Los electroimanes en forma de disco se encuentran situados en uno ó a ambos lados del disco y sujetos a la carcasa o armazón del rodamiento (fig. \ref{fig:conceptual-RMA}). Además utilizan un sensor o arreglo de sensores que mide la posición del rotor en dirección axial.\par 
 
-\begin{figure}[H]
+\begin{figure}[h]
+\centering
+	\includegraphics[width=.75\textwidth]{images/Capitulo_2/Axial}
+	\caption{\textit{Diseño conceptual del rodamiento magnético activo axial (RMA).}}
+		\label{fig:conceptual-RMA}
+\end{figure}
+
+Los rodamientos magnéticos que funcionan por medio de electroimanes utilizan sensores que miden la posición del eje y envían estas señales de posición al controlador. El controlador utiliza esta información para modificar el campo electromagnético en el rodamiento, haciendo las correcciones necesarias para estabilizarlo. Se plateó un arreglo de tres sensores dispuestos a 120° (fig. \ref{fig:conceptual-sensores}) ya que por lo general este tipo de arreglo ofrece mejores mediciones.
+
+\begin{figure}[htb]
 \centering
 	\includegraphics[scale=.25]{images/Capitulo_2/Sensores}
 	\caption{\textit{Diseño conceptual del arreglo de sensores para el desplazamiento radial (SDC).}}
+		\label{fig:conceptual-sensores}
 \end{figure}
 
 Como se ha mencionado en otras secciones, el proyecto consiste en un rodamiento magnético híbrido debido a que, además de utilizar electroimanes como los rodamientos magnéticos activos, utiliza un imán permanente para generar un campo magnético como base de levitación siguiendo el principio de operación de los rodamientos magnéticos pasivos. Esto con el propósito de ayudar a disminuir el consumo de energía del rodamiento magnético radial.
 
-Debido a que el campo magnético que genera el imán permanente no puede ajustarse de la misma forma que los electroimanes, este debe acoplarse a un mecanismo de desplazamiento que varíe la distancia entre el imán permanente y el eje para ajustar el campo magnético. 
+Debido a que el campo magnético que genera el imán permanente no puede ajustarse de la misma forma que los electroimanes, este debe acoplarse a un mecanismo de desplazamiento que varíe la distancia entre el imán permanente y el eje para ajustar el campo magnético, como se muestra en el concepto de la figura \ref{fig:conceptual-MCCE}. 
 
 \begin{figure}[H]
 \centering
 	\includegraphics[scale=.25]{images/Capitulo_2/Pasivo}
 	\caption{\textit{Diseño conceptual del módulo de compensación para cargas estáticas (MCCE).}}
+		\label{fig:conceptual-MCCE}
 \end{figure}
 
 %\subsection{Collarín de Levitación}
 
 Sin embargo, tanto el imán permanente como los rodamientos magnéticos activos necesitan que el rotor sea de un material ferromagnético para conseguir un estado de levitación. 
 
-Con el propósito de lograr la levitación del rotor sin importar el material del que esté fabricado, se propone el uso de un collarín de material ferromagnético que contenga al eje dentro del rodamiento. 
+Con el propósito de lograr la levitación del rotor sin importar el material del que esté fabricado, se propone el uso de un collarín de material ferromagnético que contenga al eje dentro del rodamiento (fig. \ref{fig:conceptual-CL}). 
 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=.8\textwidth]{images/Capitulo_2/Collarin}
 	\caption{\textit{Diseño conceptual del collarín de levitación (CL).}}
+		\label{fig:conceptual-CL}
 \end{figure}
 
 %\subsection{Rodamiento Magnético Híbrido: Integración de los Módulos}
 
-Aunque cada uno de los módulos es diseñado individualmente, están contemplados para funcionar de manera conjunta y ser ensamblados dentro del mismo armazón, procurando simplificar las operaciones de ensamble. La integración de todos los módulos nos daría como resultado el Rodamiento Magnético Híbrido. 
+Aunque cada uno de los módulos es diseñado individualmente, están contemplados para funcionar de manera conjunta y ser ensamblados dentro del mismo armazón, procurando simplificar las operaciones de ensamble. La integración de todos los módulos nos daría como resultado el Rodamiento Magnético Híbrido (fig. \ref{fig:conceptual-RMH}). 
 
 \begin{figure}[H]
 \centering
 	\includegraphics[width=\textwidth]{images/Capitulo_2/Ensamble}
 	\caption{\textit{Diseño Conceptual del Rodamiento Magnético Híbrido (RMH).}}
-\end{figure}
+	\label{fig:conceptual-RMH}	
+	\end{figure}

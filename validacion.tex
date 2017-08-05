@@ -6,18 +6,19 @@ A continuación se muestran un conjunto de simulaciones dinámicas realizadas en \
 
 Esta simulación consiste en un controlador retroalimentado \ref{fig:esquema-controlador-retroalimentado} y un controlador integral \ref{fig:esquema-controlador-integral}, ambos con un observador de estado y en tiempo continuo. 
 
-\newpage
-
 Esta simulación se realiza sin cargas externas y con las condiciones iniciales:
-\begin{equation}
-	\begin{pmatrix}
-	x_c \\ y_c \\ z_c \\ \dot{x}_c \\ \dot{y}_c \\ \dot{z}_c \\ \phi \\ \theta \\ \dot{\phi} \\ \dot{\theta}
-	\end{pmatrix} = \begin{pmatrix}
-	0.25mm \\ -0.25mm \\ 0.25mm \\ 0\frac{mm}{s} \\ 0\frac{mm}{s} \\ 0\frac{mm}{s} \\ -0.0015rad \\ 0.0015rad \\ 0\frac{rad}{s} \\ 0\frac{rad}{s}
-	\end{pmatrix} 
-\end{equation}
 
-\begin{figure}[htb]
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+\hline
+$x_c$     & $y_c$      & $z_c$     & $\dot{x}_c$     & $\dot{y}_c$     & $\dot{z}_c$     & $\phi$       & $\theta$    & $\dot{\phi}$     & $\dot{\theta}$   \\ \hline
+$0.25 mm$ & $-0.25 mm$ & $0.25 mm$ & $0\frac{mm}{s}$ & $0\frac{mm}{s}$ & $0\frac{mm}{s}$ & $-0.0015rad$ & $0.0015rad$ & $0\frac{rad}{s}$ & $0\frac{rad}{s}$ \\ \hline
+\end{tabular}
+\caption{Condiciones Iniciales: Controlador retroalimentado y Controlador integral.}
+\end{table}
+
+\begin{figure}[H]
 \begin{center}
 \centering
 \includegraphics[width=\textwidth]{images/Capitulo_4_resultados_simulacion/simu_retroalimentado_vs_integral}
@@ -33,13 +34,16 @@ La salida del sistema simulado, mostrado en la figura \ref{fig:Controlador_retro
 \section{Controlador continuo y controlador discreto} 
 
 Esta simulación consiste en un controlador integral continuo \ref{fig:esquema-controlador-integral} con observador de estados,  y sus versiones discretizadas \ref{fig:esquema-controlador-discreto} el cual opera con una frecuencia de muestreo de $10kHz$. Esta simulación se realiza sin cargas externas y con las condiciones iniciales:
-\begin{equation}
-	\begin{pmatrix}
-	x_c \\ y_c \\ z_c \\ \dot{x}_c \\ \dot{y}_c \\ \dot{z}_c \\ \phi \\ \theta \\ \dot{\phi} \\ \dot{\theta}
-	\end{pmatrix} = \begin{pmatrix}
-	0.25mm \\ -0.25mm \\ 0.25mm \\ 0\frac{mm}{s} \\ 0\frac{mm}{s} \\ 0\frac{mm}{s} \\ -0.0015rad \\ 0.0015rad \\ 0\frac{rad}{s} \\ 0\frac{rad}{s}
-	\end{pmatrix} 
-\end{equation}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+\hline
+$x_c$     & $y_c$      & $z_c$     & $\dot{x}_c$     & $\dot{y}_c$     & $\dot{z}_c$     & $\phi$       & $\theta$    & $\dot{\phi}$     & $\dot{\theta}$   \\ \hline
+$0.25 mm$ & $-0.25 mm$ & $0.25 mm$ & $0\frac{mm}{s}$ & $0\frac{mm}{s}$ & $0\frac{mm}{s}$ & $-0.0015rad$ & $0.0015rad$ & $0\frac{rad}{s}$ & $0\frac{rad}{s}$ \\ \hline
+\end{tabular}
+\caption{Condiciones Iniciales: Controlador continuo y Controlador discreto.}
+\end{table}
 
 \begin{figure}[H]
 \begin{center}
@@ -58,13 +62,15 @@ En la figura \ref{fig:Controlador_continuo_vs_Controlador_discreto} podemos obse
 
 Esta simulación consiste en un controlador integral discreto (figura \ref{fig:esquema-controlador-discreto}) y en un controlador integral discreto calendarizado (figura \ref{fig:esquema-controlador-calendarizado}), el controlador integral discreto fue linealizado en $\omega_s = 10000$. Estos operan con una frecuencia de muestreo de $10kHz$. Esta simulación se realiza sin cargas externas, con un $\omega_s = -30000$ y con las condiciones iniciales:
 
-\begin{equation}
-	\begin{pmatrix}
-	x_c \\ y_c \\ z_c \\ \dot{x}_c \\ \dot{y}_c \\ \dot{z}_c \\ \phi \\ \theta \\ \dot{\phi} \\ \dot{\theta}
-	\end{pmatrix} = \begin{pmatrix}
-	0.25mm \\ -0.25mm \\ 0.25mm \\ 0\frac{mm}{s} \\ 0\frac{mm}{s} \\ 0\frac{mm}{s} \\ -0.0015rad \\ 0.0015rad \\ 0\frac{rad}{s} \\ 0\frac{rad}{s}
-	\end{pmatrix} 
-\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+\hline
+$x_c$     & $y_c$      & $z_c$     & $\dot{x}_c$     & $\dot{y}_c$     & $\dot{z}_c$     & $\phi$       & $\theta$    & $\dot{\phi}$     & $\dot{\theta}$   \\ \hline
+$0.25 mm$ & $-0.25 mm$ & $0.25 mm$ & $0\frac{mm}{s}$ & $0\frac{mm}{s}$ & $0\frac{mm}{s}$ & $-0.0015rad$ & $0.0015rad$ & $0\frac{rad}{s}$ & $0\frac{rad}{s}$ \\ \hline
+\end{tabular}
+\caption{Condiciones Iniciales: Controlador integral discreto y Controlador integral discreto calendarizado.}
+\end{table}
 
 \begin{figure}[htb]
 \begin{center}
@@ -86,7 +92,7 @@ Cuando la velocidad angular del rotor ($\omega_s$) es la misma que se usó durant
 \end{center}
 \end{figure}
 
-Cuando trabajan a velocidades angulares diferentes, el controlador no calendarizado presenta problemas para estabilizar el rotor debido a los efectos de la precesión. En cambio el control calendarizado no presenta problemas.  
+Cuando trabajan a velocidades angulares diferentes, el controlador no calendarizado presenta problemas para estabilizar el rotor debido a los efectos de la precesión. En cambio el control calendarizado no presenta problemas (fig. \ref{fig:Controlador_linealizado_vs_Controlador_calendarizado_ws_30000}).  
 
 \newpage
 
@@ -94,23 +100,26 @@ Cuando trabajan a velocidades angulares diferentes, el controlador no calendariz
 
 Esta simulación consiste en un controlador integral y observador discreto calendarizado con un $\omega_s = 10000$ y con las condiciones iniciales:
 
-\begin{equation}
-	\begin{pmatrix}
-	x_c \\ y_c \\ z_c \\ \dot{x}_c \\ \dot{y}_c \\ \dot{z}_c \\ \phi \\ \theta \\ \dot{\phi} \\ \dot{\theta}
-	\end{pmatrix} = \begin{pmatrix}
-	0.1mm \\ -0.1mm \\ 0.1mm \\ 0\frac{mm}{s} \\ 0\frac{mm}{s} \\ 0\frac{mm}{s} \\ -0.001rad \\ 0.001rad \\ 0\frac{rad}{s} \\ 0\frac{rad}{s}
-	\end{pmatrix} 
-\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+\hline
+$x_c$     & $y_c$      & $z_c$     & $\dot{x}_c$     & $\dot{y}_c$     & $\dot{z}_c$     & $\phi$       & $\theta$    & $\dot{\phi}$     & $\dot{\theta}$   \\ \hline
+$0.1 mm$ & $-0.1 mm$ & $0.1 mm$ & $0\frac{mm}{s}$ & $0\frac{mm}{s}$ & $0\frac{mm}{s}$ & $-0.001rad$ & $0.001rad$ & $0\frac{rad}{s}$ & $0\frac{rad}{s}$ \\ \hline
+\end{tabular}
+\caption{Condiciones Iniciales: Accionamiento híbrido.}
+\end{table}
 
-Y con una fuerza aplicada en el centro con valor de: 
+Y con una fuerza aplicada en el centro de masa con valor de: 
 
-\begin{equation}
-	\begin{pmatrix}
-	F_{dx} & F_{dy} & F_{dz}
-	\end{pmatrix} = \begin{pmatrix}
-		sen(100\pi)[N] & sen(200\pi)[N] & 3sen(200\pi) - 25 [N]
-	\end{pmatrix}
-\end{equation}
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{1}{|c|}{$F_{dx}$} & \multicolumn{1}{c|}{$F_{dy}$} & \multicolumn{1}{c|}{$F_{dz}$} \\ \hline
+$sen(100\pi)[N]$               & $sen(200\pi)[N]$              & $3sen(200\pi) - 25 [N]$       \\ \hline
+\end{tabular}
+\end{table}
 
 A diferencia de las simulaciones realizadas hasta ahora, la componente de fuerza $F_z$ del RMR es usada como señal de control para el MCCE. A continuación, se simulan dos casos: (a) con el MCCE descativado y (b) con el MCCE activado.
 
@@ -132,8 +141,6 @@ A diferencia de las simulaciones realizadas hasta ahora, la componente de fuerza
 \end{center}
 \end{figure}
 
-\newpage
-
 Se puede apreciar en la figura \ref{fig:Simulacion_carga_combinada_MCCE_desactivado} y \ref{fig:Simulacion_carga_combinada_MCCE_activada} que activar el lazo de control del MCCE no compromete la estabilidad del sistema. A continuación se muestran los efectos en los electroimanes cuando se activa el MCCE. 
 
 \begin{figure}[H]
@@ -154,6 +161,6 @@ Se puede apreciar en la figura \ref{fig:Simulacion_carga_combinada_MCCE_desactiv
 \end{center}
 \end{figure}
 
-En el caso \textbf{(a)}, cuando el sistema se estabiliza, el MCCE mantiene una fuerza constante de $6 N$, mientras que el $RMR_z$ converge a una fuerza de $23 N$ (fig. \ref{fig:Simulacion_MCCE_desactivado}). En el caso \textbf{b}, la fuerza del MCCE converge a $29 N$, mientras que el $RMR_z$ converge a una fuerza aproximada de $0 N$.
+En el caso \textbf{(a)}, cuando el sistema se estabiliza, el MCCE mantiene una fuerza constante de $6 N$, mientras que el $RMR_z$ converge a una fuerza de $23 N$ (fig. \ref{fig:Simulacion_MCCE_desactivado}). En el caso \textbf{(b)}, la fuerza del MCCE converge a $29 N$, mientras que el $RMR_z$ converge a una fuerza aproximada de $0 N$  \ref{fig:Simulacion_MCCE_activado}).
 
-En ambos casos, los controladores logran compensar las fuerzas combinadas que se les aplica y rápidamente convergen al origen (fig. \ref{fig:Simulacion_carga_combinada_MCCE_desactivado}, \ref{fig:Simulacion_carga_combinada_MCCE_activada}).
+En ambos casos, los controladores logran compensar las fuerzas combinadas que se les aplica y rápidamente convergen al origen (fig. \ref{fig:Simulacion_MCCE_desactivado}, \ref{fig:Simulacion_MCCE_activado}).
