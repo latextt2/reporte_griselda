@@ -79,7 +79,7 @@ Entre los materiales con estas características encontramos ferritas y aleaciones
 \centering
 \begin{tabular}{|l|c|c|c|c|c|c|}
 \hline
-\multicolumn{1}{|c|}{\textbf{Fabricante}} & \textbf{Clave} & \textbf{Material Base} & \textbf{$\mu_i$} & \textbf{$B_s$ {[}mT{]}} & \textbf{$H_c$ {[}A/m{]}} & \textbf{$F_{max}$ {[}Hz{]}} \\ \hline
+\multicolumn{1}{|c|}{\textbf{Fabricante}} & \textbf{Clave} & \textbf{Material Base} & \textbf{$\mu_i$} & \textbf{$B_s$ {[}mT{]}} & \textbf{$H_c$ {[}A/m{]}} & \textbf{$f_{max}$ {[}Hz{]}} \\ \hline
 TDK {[}Anexo C{]} & PC90 & MnZn & 2200 & 540 & 13 & 300k \\ \hline
 TDK {[}Anexo E{]} & N27 & MnZn & 2000 & 500 & 23 & 150k \\ \hline
 Ferroxcube {[}Anexo F{]} & 3C98 & MnZn & 2500 & 530 & 12 & 400k \\ \hline
@@ -220,7 +220,7 @@ Cuando se trata de conmutar una carga inductiva se generan picos de voltaje, pue
     \end{subfigure}
 \end{figure}
 
-La razón de cambio en la corriente en un inductor depende del voltaje aplicado en sus terminales. En el circuito \ref{fig:circuito-recirculacion}, cuando el transistor está activado el voltaje en las terminales es $V_{cc} \approx 20$, y cuando está desactivado (y la corriente circula por el diodo) el voltaje en las terminales es el voltaje de diodo $V_d \approx 0.5$. Entonces los valores de carga y descarga del inductor serán de:
+La razón de cambio en la corriente en un inductor depende del voltaje aplicado en sus terminales. En el circuito \ref{fig:circuito-recirculacion}, cuando el transistor está activado el voltaje en las terminales es $V_{cc} \approx 20 V$, y cuando está desactivado (y la corriente circula por el diodo) el voltaje en las terminales es el voltaje de diodo $V_d \approx 0.5 V$. Entonces los valores de carga y descarga del inductor serán de:
 
 \begin{equation}
 \frac{di}{dt}_{on} = \frac{V_{cc}}{L}
@@ -533,6 +533,13 @@ Así como se hizo en la sección \ref{sec:simulacion-fem-electroiman}, podemos val
 
 El servomecanismo que utilizará el imán permanente para su desplazamiento consiste en un par de rieles que se montarán sobre la base del motorreductor y la base del imán permanente; esta última será la que se desplazará a lo largo de los rieles. 
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{images/Capitulo_3/Mecanismo_ensamble}
+    \caption{Configuración final MCCE.}
+    \label{fig:configuracion-final-MCCE}
+\end{figure}
+
 Para generar dicho desplazamiento se utiliza un mecanismo tornillo-tuerca, conocido también como husillo-tuerca. Es un mecanismo de transformación circular a lineal compuesto por una tuerca alojada en un eje roscado (tornillo).
 
 \begin{figure}[H]
@@ -540,6 +547,8 @@ Para generar dicho desplazamiento se utiliza un mecanismo tornillo-tuerca, conoc
 	\includegraphics[scale=.3]{images/Capitulo_3/Tornillo}
 	\caption{\textit{Mecanismo Tornillo Tuerca \citep{cite_17}.}}
 \end{figure}
+
+\newpage
 
 Este mecanismo se puede plantear de dos formas: un tornillo de posición fija que al girar provoca el desplazamiento de la tuerca, o una tuerca fija que produce el desplazamiento del tornillo cuando este gira. En este caso, utilizaremos el tornillo de posición fija y la tuerca consistirá en la base del imán permanente. 
 Este tipo de mecanismos son utilizados en diferentes aplicaciones y son ideales como mecanismos de desplazamiento, debido en parte a su gran precisión y al reducido espacio que requieren. 
@@ -563,6 +572,8 @@ A = p * e
 Donde $p$ es el paso de la rosca y $e$ corresponde al número de entradas del tornillo. 
 
 Con el fin de reducir la fuerza producida por el imán permanente hasta un valor mínimo, se necesita un recorrido de 4 mm respecto a la distancia mínima entre éste y el collarín de levitación. Con estas consideraciones se determinó el uso de una rosca métrica M 2 x 0,4, que corresponde a un diámetro nominal de 2 mm, paso de rosca de 0.4 mm y una entrada [véase anexo A], con lo que únicamente requeriríamos generar 10 vueltas del motorreductor para el desplazamiento máximo de 4 mm. 
+
+\newpage
 
 \begin{figure}[H]
 \centering
@@ -593,6 +604,8 @@ Rosca Exterior (Tornillo):
 \item Diámetro del núcleo: $d_3$ = $d_1$ - $H$/6 = $1.51 mm$ (según la norma DIN ISO 724)
 \end{itemize}
 
+\newpage
+
 \subsubsection{Motorreductor} \label{sec:Motorreductor}
 
 Para el motorreductor se seleccionó el modelo \textbf{LP 6V 1000:1} de Pololu \cite{cite_s19_2017_polulu}. Este motorreductor miniatura de alto par tiene una caja de cambios de $1000: 1$, por lo que es una gran opción para aplicaciones que requieren un control preciso a velocidades muy bajas. Estas unidades tienen un eje de salida en forma de D de $3 mm$ de diámetro.
@@ -609,27 +622,20 @@ Estos motores están diseñados para poder operar a $6 V$, aunque en general, esto
     
 \newpage
 
-Finalmente el ensamble del MCCE queda ilustrado en la figura \ref{fig:configuracion-final-MCCE}.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{images/Capitulo_3/Mecanismo_ensamble}
-    \caption{Configuración final MCCE.}
-    \label{fig:configuracion-final-MCCE}
-\end{figure}
-
 \subsection{Accionamiento}
 
 Como se indica en la sección \ref{sec:Motorreductor}, la corriente máxima que demanda el motor es de $360 mA$. Como queremos mover el motor en ambas direcciones es necesario un circuito de puente H para su accionamiento. Para ello se seleccionó el circuito integrado L293 \cite{cite_s18_2017_l293}. 
 
 Este controlador de motor cuenta con dos puentes H que se pueden utilizar para el control bidireccional de dos motores de corriente continua o para controlar un solo motor de pasos. Funciona a partir de $4.5$ a $36 V$ y puede entregar una corriente pico de $1 A$ por canal. La conexión de este circuito integrado se muestra en la figura \ref{fig:puente-h-l293}.
 
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.7\textwidth]{images/Capitulo_3/CircuitoL293}
     \caption{Circuito Puente H L293.}
     \label{fig:puente-h-l293}
 \end{figure}
+
+\newpage
 
 \subsection{Modelado electromecánico}
 
@@ -759,7 +765,7 @@ La geometría del electrodo determina la capacitancia y, por lo tanto, la sensiti
 \nabla^2 V = 0
 \end{equation}
 
-Las soluciones analíticas de esta ecuación para la geometría usada en este sensor está fuera del alcance de este trabajo, en su lugar usando el software de simulación electrostática FEMM encontramos soluciones numéricas y de esta manera determinamos la capacitancia del electrodo, así como se realizó en [paper texas instruments...]. 
+Las soluciones analíticas de esta ecuación para la geometría usada en este sensor está fuera del alcance de este trabajo, en su lugar usando el software de simulación electrostática FEMM encontramos soluciones numéricas y de esta manera determinamos la capacitancia del electrodo, así como se realizó en \citep{cite_s15_2017_snoa928}. 
 
 El electrodo del SCD posee una geometría como se muestra en la figura \ref{fig:geometria-sdc}.
 

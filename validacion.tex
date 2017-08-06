@@ -60,7 +60,7 @@ En la figura \ref{fig:Controlador_continuo_vs_Controlador_discreto} podemos obse
 
 \section{Controlador calendarizado}
 
-Esta simulación consiste en un controlador integral discreto (figura \ref{fig:esquema-controlador-discreto}) y en un controlador integral discreto calendarizado (figura \ref{fig:esquema-controlador-calendarizado}), el controlador integral discreto fue linealizado en $\omega_s = 10000$. Estos operan con una frecuencia de muestreo de $10kHz$. Esta simulación se realiza sin cargas externas, con un $\omega_s = -30000$ y con las condiciones iniciales:
+Esta simulación consiste en un controlador integral discreto (figura \ref{fig:esquema-controlador-discreto}) y en un controlador integral discreto calendarizado (figura \ref{fig:esquema-controlador-calendarizado}), el controlador integral discreto fue linealizado en $\omega_s = 10000 \frac{rad}{s}$. Estos operan con una frecuencia de muestreo de $10kHz$. Esta simulación se realiza sin cargas externas, con un $\omega_s = -30000 \frac{rad}{s}$ y con las condiciones iniciales:
 
 \begin{table}[H]
 \centering
@@ -76,7 +76,7 @@ $0.25 mm$ & $-0.25 mm$ & $0.25 mm$ & $0\frac{mm}{s}$ & $0\frac{mm}{s}$ & $0\frac
 \begin{center}
 \centering
 \includegraphics[width=\textwidth]{images/Capitulo_4_resultados_simulacion/simu_normal_cal_mismo_ws}
-\caption{Salida del sistema. Control integral discreto (azul) y control integral discreto calendarizado (rojo), mostrando ambas curvas superpuestas en los gráficos. $\omega_s = 10000$.}
+\caption{Salida del sistema. Control integral discreto (azul) y control integral discreto calendarizado (rojo), mostrando ambas curvas superpuestas en los gráficos. $\omega_s = 10000 \frac{rad}{s}$.}
 \label{fig:Controlador_linealizado_vs_Controlador_calendarizado_ws_10000}
 \end{center}
 \end{figure}
@@ -87,7 +87,7 @@ Cuando la velocidad angular del rotor ($\omega_s$) es la misma que se usó durant
 \begin{center}
 \centering
 \includegraphics[width=\textwidth]{images/Capitulo_4_resultados_simulacion/normal_vs_calendarizado}
-\caption{Salida del sistema. Control integral discreto (azul) y control integral discreto calendarizado (rojo). $\omega_s = -30000$.}
+\caption{Salida del sistema. Control integral discreto (azul) y control integral discreto calendarizado (rojo). $\omega_s = -30000 \frac{rad}{s}$.}
 \label{fig:Controlador_linealizado_vs_Controlador_calendarizado_ws_30000}
 \end{center}
 \end{figure}
@@ -98,7 +98,7 @@ Cuando trabajan a velocidades angulares diferentes, el controlador no calendariz
 
 \section{Simulación del accionamiento híbrido} 
 
-Esta simulación consiste en un controlador integral y observador discreto calendarizado con un $\omega_s = 10000$ y con las condiciones iniciales:
+Esta simulación consiste en un controlador integral y observador discreto calendarizado con un $\omega_s = 10000 \frac{rad}{s}$ y con las condiciones iniciales:
 
 \begin{table}[H]
 \centering
