@@ -1136,10 +1136,23 @@ Estas ecuaciones se introducen dentro del modelo de \textbf{Simulink} mostrado e
 
 \subsection{Linealización}
 
-Podemos observar que este sistema de ecuaciones es no lineal, así que tenemos que linealizarlo para convertirlo en la forma canónica de espacio de estados, y aplicar las técnicas de control descritas en la sección \ref{sec:control} mediante las siguientes fórmulas \ref{eq:control:jacobiano}: 
+Podemos observar que este sistema de ecuaciones es no lineal, así que tenemos que linealizarlo para convertirlo en la forma canónica de espacio de estados, y aplicar las técnicas de control descritas en la sección \ref{sec:control} mediante las siguientes ecuaciones \ref{eq:control:jacobiano}: 
 
-
+Sistema no lineal: $\dot{x} = f(x,u)$
 %FORMULAS
+\begin{description} 
+\item $\dot{x}_1 = x_{4}$ 
+\item $\dot{x}_2 = x_{5}$ 
+\item $\dot{x}_3 = x_{6}$ 
+\item $\dot{x}_4 = \frac{Fd_{x}+u_{5}}{m}$ 
+\item $\dot{x}_5 = \frac{Fd_{y}+u_{1}+u_{3}}{m}$ 
+\item $\dot{x}_6 = \frac{Fd_{z}+F_{mcce_{1}}+F_{mcce_{2}}-\frac{49 m}{5}+u_{2}+u_{4}}{m}$ 
+\item $\dot{x}_7 = x_{9}$
+\item $\dot{x}_8 = \frac{x_{10}}{cos(x_{8})}$ 
+\item $\dot{x}_9 = \frac{1}{{I_{0}}}*[-R_{r}*(u_{2}*cos(x_{8}) + u_{1}*sin(x_{7})*sin(x_{8})) - Md_{y} - R_{r}*(u_{4}*cos(x_{8}) +$ 
+\\$u_{3}*sin(x_{7})*sin(x_{8}) + I_{p}*w_{s}*x_{10} + F_{mcce_{1}}*R_{p}*cos(x_{8}) - F_{mcce_{2}}*R_{p}*cos(x_{8}) + R_{a}*abs(u_{5})*cos(x_{7})*sin(x_{8})]$
+\item $\dot{x}_{10} = \frac{1}{{I_{0}}}*[Md_{z} + (R_{r}*u_{1}*cos(x_{7})) - (R_{r}*u_{3}*cos(x_{7})) - (R_{a}*abs(u_{5})*sin(x_{7})) + (I_{p}*w_{s}*x_{9})]$
+\end{description}
 
 Lo que resulta en el sistema lineal de la ecuación \ref{ap:sistema-ecuaciones-lineales}:
 
