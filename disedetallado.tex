@@ -316,16 +316,21 @@ En caso de operar mas allá de los limites frecuencia-amplitud, se presentará una
 A = \frac{L}{2 \pi V f} 
 \end{equation} 
 
-Esta atenuación coincide con la de un filtro pasabajas de primer orden, con frecuencia de corte $f_{max}$ y una caída de $20dB$ por década. Para los electroimanes presentados en \ref{sec:radial-calculo-bobina} esta respuesta corresponde a las gráficas de la figura \ref{fig:respuesta-frecuencia-electroiman}. 
+Esta atenuación coincide con la de un filtro pasabajas de primer orden, con frecuencia de corte $f_{max}$ y una caída de $20dB$ por década. Para los electroimanes presentados en \ref{sec:radial-calculo-bobina} esta respuesta corresponde a las gráficas de la figura \ref{fig:respuesta-frecuencia-electroiman} y \ref{fig:limite-frecuencia-electroiman}. 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{images/Capitulo_3/respuesta_dinamica_cp}
+    \includegraphics[width=.7\textwidth]{images/Capitulo_3/respuesta_frecuencia}
     \caption{Respuesta en frecuencia del circuito de accionamiento.}
     \label{fig:respuesta-frecuencia-electroiman}
 \end{figure}
 
-\newpage
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.7\textwidth]{images/Capitulo_3/limite_en_frecuencia}
+    \caption{Límite en frecuencia del circuito de accionamiento.}
+    \label{fig:limite-frecuencia-electroiman}
+\end{figure}
 
 Una vez ensamblado el conjunto de electroimanes resulta en el modelo de la figura \ref{fig:Modelo-3D-RMR}.
 
@@ -805,7 +810,7 @@ Sin embargo el rotor es un objetivo con una superficie curva por lo que hay que 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/grafica_desfasamiento_capacitancia}
+    \includegraphics[width=0.7\textwidth]{images/Capitulo_3/capacitancia_alpha}
     \caption{Desfasamiento de punto óptimo en el SDC.}
     \label{fig:grafica_desfasamiento_capacitancia}
 \end{figure}
@@ -814,7 +819,7 @@ Entonces para calcular el punto óptimo es necesario realizar un conjunto de simu
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/Capitulo_3/grafica_capacitancia_optima}
+    \includegraphics[width=0.7\textwidth]{images/Capitulo_3/punto_optimo_alpha}
     \caption{Configuración óptima del SDC.}
     \label{fig:grafica_capacitancia_optima}
 \end{figure}
@@ -828,19 +833,24 @@ Finalmente se ejecuta otro script que varía la distancia entre el objetivo y el 
     \label{fig:sensor_caracterizacion_final_radial}
 \end{figure}
 
+\newpage
+
 \subsection{Circuito de acondicionamiento}
 
 Una vez conocidos el rango de capacitancias es posible diseñar un circuito que se encargará de convertir la capacitancia del electrodo en una señal cuadrada con una frecuencia variable, seguido de la conversión de la señal cuadrada a una señal diferencial para aumentar su inmunidad al ruido. Este circuito además se encarga de aplicar un voltaje al blindaje activo del electrodo hasta llevarlo al mismo potencial eléctrico que la placa frontal con el fin de reducir los efectos de la capactitancia parásita. 
 
-La conversión es realizada por un circuito integrado 555 en configuración de multivibrador astable, usando el electrodo como capacitor de temporización. Este  circuito debe de ser la versión CMOS del 555 que presenta menores corrientes de polarización, las cuales podrían alterar la frecuencia de oscilación.
-
-El potencial del blindaje activo es controlado por un amplificador operacional en modo seguidor de voltaje, el cual tiene una salida idéntica al voltaje de su entrada además de una alta impedancia de entrada con el fin de no alterar las mediciones de frecuencia. Además la conversión de señal simple a señal balanceada es realizada por un driver diferencial.
-
-\begin{figure}[H]
+\begin{figure}[htb]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Capitulo_3/Circuito_acondicionamiento}
     \caption{Circuito de acondicionamiento.}
 \end{figure}
+
+\newpage
+
+
+La conversión es realizada por un circuito integrado 555 en configuración de multivibrador astable, usando el electrodo como capacitor de temporización. Este  circuito debe de ser la versión CMOS del 555 que presenta menores corrientes de polarización, las cuales podrían alterar la frecuencia de oscilación.
+
+El potencial del blindaje activo es controlado por un amplificador operacional en modo seguidor de voltaje, el cual tiene una salida idéntica al voltaje de su entrada además de una alta impedancia de entrada con el fin de no alterar las mediciones de frecuencia. Además la conversión de señal simple a señal balanceada es realizada por un driver diferencial.
 
 Finalmente el circuito queda dentro de una caja metálica a fin de operar como jaula de Faraday y aislarlo del posible ruido eléctrico en el ambiente como se muestra en la figura \ref{fig:explosionado-sdc}. 
 
