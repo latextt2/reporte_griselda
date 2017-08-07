@@ -248,7 +248,7 @@ El problema es que el incremento y decremento de la corriente actúan de forma as
     \end{subfigure}
 \end{figure}
 
-Esta configuración es comúnmente conocida como puente "H" e implica varios detalles para su implementación, el primero de estos es la activación de los transistores. Como ya se ha mencionado, para operar de la manera más eficiente es necesario llevar los transistores a su punto de saturación, en la mayoría de los transistores de potencia el voltaje de compuerta en saturación $V_{sat}$ oscila entre los 10 y 15 volts, y dado que la mayoría de los circuitos de procesamiento operan entre los 5 y 1.8 volts, es necesario de un circuito complementario para elevar los niveles de voltaje. No hacer esto causaría la polarización de los transistores en la zona lineal, lo que resultaría en el calentamiento de estos y una operación con baja eficiencia. 
+Esta configuración es comúnmente conocida como puente \textbf{"H"} e implica varios detalles para su implementación, el primero de estos es la activación de los transistores. Como ya se ha mencionado, para operar de la manera más eficiente es necesario llevar los transistores a su punto de saturación, en la mayoría de los transistores de potencia el voltaje de compuerta en saturación $V_{sat}$ oscila entre los 10 y 15 volts, y dado que la mayoría de los circuitos de procesamiento operan entre los 5 y 1.8 volts, es necesario de un circuito complementario para elevar los niveles de voltaje. No hacer esto causaría la polarización de los transistores en la zona lineal, lo que resultaría en el calentamiento de estos y una operación con baja eficiencia. 
 
 Otro problema consiste en polarizar los transistores de la figura \ref{fig:puente-h}, ya que para su correcta activación es necesario un voltaje de compuerta de hasta $V_{cc} + V{sat}$. 
 
@@ -293,7 +293,7 @@ f_{max} = \frac{L}{2 \pi V A}
 \label{eq:respuesta-frecuencia-accionamiento-2}
 \end{equation} 
 
-Podemos ver que la frecuencia máxima de la señal de salida depende de la amplitud de la misma. Esta condición  conocida como "slew rate limiting" es un fenómeno común en los amplificadores y basta con conocer los limites de operación del dispositivo para evitar esta situación.
+Podemos ver que la frecuencia máxima de la señal de salida depende de la amplitud de la misma. Esta condición  conocida como \textbf{"slew rate limiting"} es un fenómeno común en los amplificadores y basta con conocer los limites de operación del dispositivo para evitar esta situación.
 
 \begin{figure}[H]
     \centering
@@ -381,7 +381,7 @@ $$A = \frac{36 \pi}{4} = 1017[mm^2]$$
 
 Con el fin de usar la misma electrónica de accionamiento para controlar el electroimán axial, se optó por usar el mismo valor de corriente en las bobinas de $I = 2 A$. 
 
-Retomando la sección \ref{sec:radial-calculo-bobina}, para una corriente de $2 A$ corresponde un calibre AWG $18$ [ver tabla \ref{tabla:awg-18}.
+Retomando la sección \ref{sec:radial-calculo-bobina}, para una corriente de $2 A$ corresponde un calibre AWG $18$ [ver tabla \ref{tabla:awg-18}].
 
 Para el cálculo del número de vueltas se utiliza la ecuación \ref{eq:vueltas-bobina} resultando en $162$ vueltas.
 
