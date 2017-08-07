@@ -1151,7 +1151,7 @@ Nótese que debido al orden multivariable del sistema, lo que en la ecuación \ref
 \end{equation}
 
 \subsection{Controlabilidad}
-Se dice que un sistema es controlable si se puede trasferir desde cualquier estado inicial $x(t_0)$ a cualquier otro estado mediante un vector de control sin restricciones en un intevalo de tiempo finito.\\
+Se dice que un sistema es controlable si se puede trasferir desde cualquier estado inicial $x(t_0)$ a cualquier otro estado mediante un vector de control sin restricciones en un intervalo de tiempo finito.\\
 Para un sistema de la forma:
 \begin{equation}
 	\label{eq:control:sistema-lti}
@@ -1169,7 +1169,7 @@ Se define la matriz de controlabilidad asociada $M_c$ como:
 El sistema es de estado completamente controlable sí y solo sí la matriz $M_c$ de $n \times nr$ tiene rango $n$, o sea, que contenga n vectores columna linealmente independientes.
 
 \subsection{Observabilidad} \label{sec:observavilidad}
-Para un sistema descrito por las ecuaciones \ref{eq:control:sistema-lti} y \ref{eq:control:salida}, se dice que es completamente observable si el estado $x(t_0)$ se puede determinar a partir de las observaciones de $y(t)$ durante un intervalo de tiempo finito $t_0 < t < t_1$. Por tanto, el sistema es completamente obsevable si todas la transiciones del estado afectan eventualmente a todos los elementos del vector de salida. El concepto de observabilidad es útil al resolver el problema de reconstruir variables de estado no medibles a partir de variables que sí lo son.\\
+Para un sistema descrito por las ecuaciones \ref{eq:control:sistema-lti} y \ref{eq:control:salida}, se dice que es completamente observable si el estado $x(t_0)$ se puede determinar a partir de las observaciones de $y(t)$ durante un intervalo de tiempo finito $t_0 < t < t_1$. Por tanto, el sistema es completamente observable si todas la transiciones del estado afectan eventualmente a todos los elementos del vector de salida. El concepto de observabilidad es útil al resolver el problema de reconstruir variables de estado no medibles a partir de variables que sí lo son.\\
 Se define la matriz de observabilidad $M_o$ como:
 \begin{equation}
 	\label{eq:control:observabilidad}
@@ -1181,7 +1181,7 @@ Se define la matriz de observabilidad $M_o$ como:
 	CA^{n-1}
 	\end{pmatrix}
 \end{equation}
-El sistema descrito por las ecuaciones es completamente obsevable sí y solo sí la matriz ${M_o}^T$ es de rango n ó $M_o$ tiene n vectores fila linealmente independientes.
+El sistema descrito por las ecuaciones es completamente observable sí y solo sí la matriz ${M_o}^T$ es de rango n ó $M_o$ tiene n vectores fila linealmente independientes.
 
 \subsection{Control retroalimentado} \label{sec:control-retroalimentado}
 En esta sección se presenta un método de diseño conocido comúnmente como técnicas de ubicación o de asignación de polos. Se supondrá que todas las variables de estado son medibles y que están disponibles para su realimentación. Si el sistema considerado es de estado completamente controlable, los polos del sistema en lazo cerrado se pueden colocar en cualquier posición deseada mediante una realimentación del estado a través de una matriz de ganancia adecuada.
@@ -1213,7 +1213,7 @@ Sustituyendo esta nueva entrada en la ecuación \ref{eq:control:sistema-lti} obte
 
 Esta nueva ecuación tiene una dinámica establecida por los polos de la matriz $\tilde{A}$. Luego entonces con la correcta selección de la matriz $K$ podemos cambiar de manera arbitraria la dinámica del sistema, siempre y cuando, este sea completamente controlable.
 
-Exiten varios métodos para calcular la matriz $K$ entre los que destacan el método de Kalman y el método de Ackerman. Para el caso de sistemas con una sola entrada existen soluciones únicas para esta matriz, sin embargo, para sistemas con múltiples entradas existen infinita cantidad de soluciones. Por tanto, el método de Kalman y Ackerman no funcionan para estos últimos.
+Existen varios métodos para calcular la matriz $K$ entre los que destacan el método de Kalman y el método de Ackerman. Para el caso de sistemas con una sola entrada existen soluciones únicas para esta matriz, sin embargo, para sistemas con múltiples entradas existen infinita cantidad de soluciones. Por tanto, el método de Kalman y Ackerman no funcionan para estos últimos.
 
 Debido a las infinitas soluciones, se necesitan restricciones adicionales para obtener soluciones concretas. Un método que resulta robusto es el desarrollado en \cite{cite_s9_2017_Kautsky}, donde se minimiza la sensitivdad del sistema a las perturbaciones. Este método es el que implementa el comando 'place' de Matlab.
 
@@ -1243,7 +1243,7 @@ El observador es un subsistema para reconstruir el vector de estado de la planta
 	\label{eq:control:sistema-lti-tilde}
 \end{equation}
 
-Donde $\tilde{x}$ es el estado estimado y $C \tilde{x}$ es la salida estimada. Las entradas al observador son la salida y la entrada de control $u$. La matriz $K_o$, que se llama matriz de gananacia del observador, es una matriz de ponderación al término de corrección que involucra la diferencia entre la salida media y la salida estimada  $C \tilde{x}$. Este término corrige de forma continua la salida del modelo y mejora el comportamiento del observador. La figura \ref{fig:control:diagrama-observador-estados} muestra el diagrama de bloques del observador de estados de orden completo del sistema.
+Donde $\tilde{x}$ es el estado estimado y $C \tilde{x}$ es la salida estimada. Las entradas al observador son la salida y la entrada de control $u$. La matriz $K_o$, que se llama matriz de ganancia del observador, es una matriz de ponderación al término de corrección que involucra la diferencia entre la salida media y la salida estimada  $C \tilde{x}$. Este término corrige de forma continua la salida del modelo y mejora el comportamiento del observador. La figura \ref{fig:control:diagrama-observador-estados} muestra el diagrama de bloques del observador de estados de orden completo del sistema.
 
 Para obtener la ecuación de error del observador se resta la ecuación \ref{eq:control:sistema-lti-tilde} de la ecuación \ref{eq:control:sistema-lti} y se obtiene:
 
