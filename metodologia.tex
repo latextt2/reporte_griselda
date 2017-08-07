@@ -398,7 +398,7 @@ Si comparamos los resultados de estas ecuaciones con la simulación de elemento f
 
 Si analizamos los resultados de la simulación podemos observar que las líneas del flujo magnético se curvan de manera significativa en los extremos del imán. A esta distorsión en el campo magnético debido a las discontinuidades del medio se le conoce como flujo marginal.
 
-Entonces para el correcto modelado del electroimán necesitamos incluir los efectos del flujo marginal. En \cite{cite_s8_2017_paper} se presenta un nuevo método para modelar la reluctancia de un entrehierro.    
+Entonces para el correcto modelado del electroimán necesitamos incluir los efectos del flujo marginal. En el trabajo realizado por J. Mühlethaler, J.W. Kolar y A. Ecklebe \cite{cite_s8_2017_paper} se presenta un nuevo método para modelar la reluctancia de un entrehierro.    
 
 \subsection{Proceso de diseño} \label{sec:diseno-elec}
 
@@ -482,7 +482,7 @@ Se conocen dos enfoques para la consideración en el flujo marginal para calcular
 
 \begin{enumerate}
 \item El enfoque del Método de la Transformación Conformal Schwarz-Christoffel:	se basa en la analogía capacitancia-reluctancia para calcular la reluctancia del entehierro. Sin embargo, este enfoque nos conduce a una solución relativamente compleja y difícil de manejar. 
-\item Aumento del área transversal del entre hierro: el flujo marginal puede ser tomado en consideración aumentando la sección transversal del entrehierro, y con esto reduciendo la reluctancia a su valor real. Este incremento de la sección transversal debe estar en función de la longitud del entrehierro $l_g$. La aproximación más común presentada en \citep{cite_s24_2017_Soft-Ferrites} consiste en extender la sección transversal en una magnitud de $l_g$ como se muestra en la ecuación:
+\item Aumento del área transversal del entre hierro: el flujo marginal puede ser tomado en consideración aumentando la sección transversal del entrehierro, y con esto reduciendo la reluctancia a su valor real. Este incremento de la sección transversal debe estar en función de la longitud del entrehierro $l_g$. La aproximación más común presentada por E. C. Snelling \citep{cite_s24_2017_Soft-Ferrites} consiste en extender la sección transversal en una magnitud de $l_g$ como se muestra en la ecuación:
 
 \begin{equation}
 	\mathcal{R}_g = \frac{l_g}{\mu_0(a+l_g)(d+l_g)}
@@ -492,7 +492,7 @@ Se conocen dos enfoques para la consideración en el flujo marginal para calcular
 Esta aproximación carece de una derivación y explicación formal y sus resultados difieren de la simulación FEM. 
 \end{enumerate}
 
-En \cite{cite_s8_2017_paper} se presenta un método para modelar la reluctancia tomando en cuenta el flujo marginal, el cual considera el flujo en tres dimensiones, es fácil de manejar y cuenta con un alto grado de exactitud. 
+En (J. Mühlethaler, J.W. Kolar, A. Ecklebe)\cite{cite_s8_2017_paper} se presenta un método para modelar la reluctancia tomando en cuenta el flujo marginal, el cual considera el flujo en tres dimensiones, es fácil de manejar y cuenta con un alto grado de exactitud. 
 Este método surge a partir de aplicar la transformación Schwarz-Christoffel al sistema de la figura \ref{fig:Geometria-basica-gap} con el fin de calcular su reluctancia por unidad de longitud (reluctancia planar). Esta reluctancia queda determinada por: 
 
 \begin{equation}
@@ -1215,7 +1215,7 @@ Esta nueva ecuación tiene una dinámica establecida por los polos de la matriz $\
 
 Existen varios métodos para calcular la matriz $K$ entre los que destacan el método de Kalman y el método de Ackerman. Para el caso de sistemas con una sola entrada existen soluciones únicas para esta matriz, sin embargo, para sistemas con múltiples entradas existen infinita cantidad de soluciones. Por tanto, el método de Kalman y Ackerman no funcionan para estos últimos.
 
-Debido a las infinitas soluciones, se necesitan restricciones adicionales para obtener soluciones concretas. Un método que resulta robusto es el desarrollado en \cite{cite_s9_2017_Kautsky}, donde se minimiza la sensitivdad del sistema a las perturbaciones. Este método es el que implementa el comando 'place' de Matlab.
+Debido a las infinitas soluciones, se necesitan restricciones adicionales para obtener soluciones concretas. Un método que resulta robusto es el desarrollado por J. Kautsky, N.K. Nichols y P.Van Dooren \cite{cite_s9_2017_Kautsky}, donde se minimiza la sensitivdad del sistema a las perturbaciones. Este método es el que implementa el comando 'place' de Matlab.
 
 \subsubsection{Observador de estados} \label{sec:observador-estados}
 
