@@ -1146,6 +1146,67 @@ Lo que resulta en el sistema lineal de la ecuación \ref{ap:sistema-ecuaciones-li
 
 %MATRICES
 
+\begin{equation}
+	A = \begin{pmatrix}
+	0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & A_{8,8} & 0 & A_{8,10}\\
+	0 & 0 & 0 & 0 & 0 & 0 & A_{9,7} & A_{9,8} & 0 & A_{9,10} \\
+	0 & 0 & 0 & 0 & 0 & 0 & A_{10,7} & 0 & A_{10,9} & 0 \\
+	\end{pmatrix}
+	\label{eq:matrices_modelo_linearizado_a}
+\end{equation}
+$$
+A_{8,8} = (x_{10} sin(x_8)) / cos(x_8)^2
+$$
+$$
+A_{8,10} = 1/cos(x_8)
+$$
+$$
+A_{9,7} = -(R_r u_1 cos(x_7) sin(x_8) - R_r u_3 cos(x_7) sin(x_8)) / I_0
+$$
+$$
+A_{9,8} = (R_r (u_2 sin(x_8) - u_1 cos(x_8) sin(x_7)) - R_r (u_4 sin(x_8) - u_3 cos(x_8) sin(x_7)))/I_0
+$$
+$$
+A_{9,10} = -(I_\rho \omega_s) / I_0
+$$
+$$
+A_{10,7} = -(R_r u_1 sin(x_7) - R_r u_3 sin(x_7))/I_0
+$$
+$$
+A_{10,9} = (I_\rho \omega_s) / I_0
+$$
+
+
+\begin{equation}
+	A = \begin{pmatrix}
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 1/m \\
+	1/m & 0 & 1/m & 0 & 0 \\
+	0 & 1/m & 0 & 1/m & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	B_{9,1} & B_{9,2} & B_{9,3} & B_{9,4} & 0 \\
+	B_{10,1} & 0 & B_{10,3} & 0 & 0\\
+	\end{pmatrix}
+	\label{eq:matrices_modelo_linearizado_b}
+\end{equation}
+
+$$B_{9,1} = -(R_r sin(x_7) sin(x_8))/I_0 $$ 
+$$B_{9,2} =  -(R_r cos(x_8))/I_0 $$
+$$B_{9,3} = (R_r sin(x_7) sin(x_8))/I_0 $$
+$$B_{9,4} = (R_r cos(x_8))/I_0 $$
+$$B_{10,1} = (R_r cos(x_7))/I_0 $$
+$$B_{10,3} = -(R_r cos(x_7))/I_0 $$
+
 
 \subsection{Controlador}
 
