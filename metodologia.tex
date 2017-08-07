@@ -362,7 +362,7 @@ Aplicando la ecuación \ref{eq:electroiman:formula-general-fuerza}, la fuerza se 
 	\label{eq:electroiman:fuerza-ideal}
 \end{equation}
 
-La ecuación \ref{eq:electroiman:fuerza-ideal} puede encontrarse en la literatura \cite{cite_s4_2017},\cite{cite_s6_2017} y \cite{cite_s7_2017}. Esta ecuación se considera un caso ideal, ya que son despreciados los efectos del flujo de fuga, flujo marginal y la reluctancia del núcleo. En el caso de un entrehierro pequeño la reluctancia del núcleo podría volverse significativa causando errores en el cálculo de la fuerza. Esta situación podría detectarse mediante una simulación de elemento finito. 
+La ecuación \ref{eq:electroiman:fuerza-ideal} puede encontrarse en la literatura \cite{cite_s4_2017} \cite{cite_s6_2017}   \cite{cite_s7_2017}. Esta ecuación se considera un caso ideal, ya que son despreciados los efectos del flujo de fuga, flujo marginal y la reluctancia del núcleo. En el caso de un entrehierro pequeño la reluctancia del núcleo podría volverse significativa causando errores en el cálculo de la fuerza. Esta situación podría detectarse mediante una simulación de elemento finito. 
 
 %En cambio si realizamos simulacion en FEM, para el mismo sistema, la simulación arroja un valor de N.
 
@@ -412,7 +412,7 @@ Empezando por los requerimientos de fuerza y tamaño, en la ecuación \ref{eq:elec
 	B = \frac{\phi}{A} = \frac{\mu_0 NI}{2y}
 \end{equation} 
 
-Esto significa que el punto de saturación del material impone un límite en el valor máximo aplicable de $NI$, si es que queremos mantenernos en el régimen lineal del material. Esto para minimizar las pérdidas por histéresis y facilitar el modelado.Esto implica que materiales con un punto de saturación más alto son mejores para aplicaciones con electroimanes. Entonces el número máximo de amperes/vuelta quedará determinado por:
+Esto significa que el punto de saturación del material impone un límite en el valor máximo aplicable de $NI$, si es que queremos mantenernos en el régimen lineal del material. Esto para minimizar las pérdidas por histéresis y facilitar el modelado. Esto implica que materiales con un punto de saturación más alto son mejores para aplicaciones con electroimanes. Entonces el número máximo de amperes/vuelta quedará determinado por:
 
 \begin{equation}
 NI_{max}= \frac{2yB_{sat}}{\mu_0}
@@ -747,7 +747,7 @@ La distancia máxima que el sensor de proximidad es capaz de detectar es conocido
 Los electrodos del sensor poseen capacitancias en el rango de fracción de picofaradios y conectar esas señales a un cable coaxial de $60 pF$ por metro podría obscurecer totalmente la señal. Sin embargo, con el blindaje correcto al igual que cualquier otra capacitancia parásita, es posible eliminar en mayor medida los efectos  del ruido.
 
 \subsubsection{Susceptibilidad al ruido}
-Un peligro para los circuitos osciladores es que la frecuencia variaría de manera intermitente en el caso de existiría interferencia cruzada causada por circuitos adyacentes. Estos problemas pueden ser resueltos mediante un blindaje, una correcta disposición de pistas e integrados en el circuito y el uso de capacitores de "bypass" en las fuentes de alimentación.
+Un peligro para los circuitos osciladores es que la frecuencia variaría de manera intermitente en el caso de existiría interferencia cruzada causada por circuitos adyacentes. Estos problemas pueden ser resueltos mediante un blindaje, una correcta disposición de pistas e integrados en el circuito y el uso de capacitores de \textbf{bypass} en las fuentes de alimentación.
 
 \subsubsection{Distancia entre los electrodos}
 La capacitancia depende del entrehierro o distancia entre los electrodos conductivos. Esta distancia puede incrementar o decrementar dependiendo de las condiciones ambientales, y del material que podrían generar mediciones poco exactas, por ejemplo suciedad en la superficie del sensor.
@@ -795,7 +795,7 @@ La relación de entrada-salida para los sistemas LTI se describe en términos de u
 \begin{itemize}
 \item Muchos procesos físicos son LTI $\Rightarrow$ si pueden modelarse como sistemas LTI.
 \item Poseen la propiedad de superposición (linealidad) $\Rightarrow$ si la entrada a un sistema LTI se puede representar como combinación lineal de un conjunto de señales
-básicas (concepto de base de señales),así la salida será la misma combinación lineal
+básicas (concepto de base de señales), así la salida será la misma combinación lineal
 de las respuestas del sistema a esas señales básicas.
 \item Cualquier señal se puede representar como combinación lineal de impulsos unitarios retardados. Esto nos permitirá caracterizar cualquier sistema LTI mediante su respuesta al impulso unitario. Esta representación se conoce como suma de convolución (sistemas LTI discretos) o integral de convolución (sistemas continuos) y proporciona una gran comodidad al tratar los sistemas LTI.
 \end{itemize}
