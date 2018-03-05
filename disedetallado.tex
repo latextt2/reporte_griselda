@@ -1119,7 +1119,28 @@ La ecuación \ref{eq:angulos-intrinsecos-marco-movil} relaciona la variación de l
 	\label{eq:angulos-intrinsecos-marco-movil}
 \end{equation}
 
-Sustituyendo los términos descritos en la sección \ref{sec:modelo-dinamico}, en la ecuación \ref{eq:derivada-inercia-coriolis} se obtiene las ecuaciones usado en el script \ref{ap:sistema-ecuaciones-no-lineal}. 
+Sustituyendo los términos descritos en la sección \ref{sec:modelo-dinamico}, en la ecuación \ref{eq:derivada-inercia-coriolis} se obtiene el sistema de ecuaciones \ref{eq:sistema-ecuaciones-no-lineal-linealizacion} usado en el script \ref{ap:sistema-ecuaciones-no-lineal}. 
+
+\begin{equation}
+\dot{x} = f(x,u)
+\label{eq:sistema-ecuaciones-no-lineal-linealizacion}
+\end{equation}
+%FORMULAS
+\begin{description} 
+\item $\dot{x}_1 = x_{4}$ 
+\item $\dot{x}_2 = x_{5}$ 
+\item $\dot{x}_3 = x_{6}$ 
+\item $\dot{x}_4 = \frac{Fd_{x}+u_{5}}{m}$ 
+\item $\dot{x}_5 = \frac{Fd_{y}+u_{1}+u_{3}}{m}$ 
+\item $\dot{x}_6 = \frac{Fd_{z}+F_{mcce_{1}}+F_{mcce_{2}}-\frac{49 m}{5}+u_{2}+u_{4}}{m}$ 
+\item $\dot{x}_7 = x_{9}$
+\item $\dot{x}_8 = \frac{x_{10}}{cos(x_{8})}$ 
+\item $\dot{x}_9 = \frac{1}{{I_{0}}}*[-R_{r}*(u_{2}*cos(x_{8}) + u_{1}*sin(x_{7})*sin(x_{8})) - Md_{y} - R_{r}*(u_{4}*cos(x_{8}) +$ 
+\\$u_{3}*sin(x_{7})*sin(x_{8}) + I_{p}*w_{s}*x_{10} + F_{mcce_{1}}*R_{p}*cos(x_{8}) - F_{mcce_{2}}*R_{p}*cos(x_{8}) + R_{a}*abs(u_{5})*cos(x_{7})*sin(x_{8})]$
+\item $\dot{x}_{10} = \frac{1}{{I_{0}}}*[Md_{z} + (R_{r}*u_{1}*cos(x_{7})) - (R_{r}*u_{3}*cos(x_{7})) - (R_{a}*abs(u_{5})*sin(x_{7})) + (I_{p}*w_{s}*x_{9})]$
+\end{description}
+
+\newpage
 
 Estas ecuaciones se introducen dentro del modelo de \textbf{Simulink} mostrado en la figura \ref{fig:modelo-sistema} para realizar la simulación.   
 
@@ -1132,20 +1153,80 @@ Estas ecuaciones se introducen dentro del modelo de \textbf{Simulink} mostrado e
 \end{center}
 \end{figure}
 
-\newpage
-
 \subsection{Linealización}
 
-Podemos observar que este sistema de ecuaciones es no lineal, así que tenemos que linealizarlo para convertirlo en la forma canónica de espacio de estados, y aplicar las técnicas de control descritas en la sección \ref{sec:control} mediante las siguientes fórmulas \ref{eq:control:jacobiano}: 
+Podemos observar que el sistema de ecuaciones es no lineal, así que tenemos que linealizarlo para convertirlo en la forma canónica de espacio de estados, y aplicar las técnicas de control descritas en la sección \ref{sec:control}. Aplicando las ecuaciones de linealización \ref{eq:control:jacobiano} en el sistema de ecuaciones \ref{eq:sistema-ecuaciones-no-lineal-linealizacion}, se obtienen las matrices de transición de estado \ref{eq:matrices_modelo_linearizado_a}, \ref{eq:matrices_modelo_linearizado_b}, \ref{eq:matrices_modelo_linearizado_c}. 
 
+\begin{equation}
+	A = \begin{pmatrix}
+	0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
+	0 & 0 & 0 & 0 & 0 & 0 & 0 & A_{8,8} & 0 & A_{8,10}\\
+	0 & 0 & 0 & 0 & 0 & 0 & A_{9,7} & A_{9,8} & 0 & A_{9,10} \\
+	0 & 0 & 0 & 0 & 0 & 0 & A_{10,7} & 0 & A_{10,9} & 0 \\
+	\end{pmatrix}
+	\label{eq:matrices_modelo_linearizado_a}
+\end{equation}
+$$
+A_{8,8} = (x_{10} sin(x_8)) / cos(x_8)^2
+$$
+$$
+A_{8,10} = 1/cos(x_8)
+$$
+$$
+A_{9,7} = -(R_r u_1 cos(x_7) sin(x_8) - R_r u_3 cos(x_7) sin(x_8)) / I_0
+$$
+$$
+A_{9,8} = (R_r (u_2 sin(x_8) - u_1 cos(x_8) sin(x_7)) - R_r (u_4 sin(x_8) - u_3 cos(x_8) sin(x_7)))/I_0
+$$
+$$
+A_{9,10} = -(I_\rho \omega_s) / I_0
+$$
+$$
+A_{10,7} = -(R_r u_1 sin(x_7) - R_r u_3 sin(x_7))/I_0
+$$
+$$
+A_{10,9} = (I_\rho \omega_s) / I_0
+$$
 
-%FORMULAS
+\begin{equation}
+	B = \begin{pmatrix}
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 1/m \\
+	1/m & 0 & 1/m & 0 & 0 \\
+	0 & 1/m & 0 & 1/m & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	B_{9,1} & B_{9,2} & B_{9,3} & B_{9,4} & 0 \\
+	B_{10,1} & 0 & B_{10,3} & 0 & 0\\
+	\end{pmatrix}
+	\label{eq:matrices_modelo_linearizado_b}
+\end{equation}
 
-Lo que resulta en el sistema lineal de la ecuación \ref{ap:sistema-ecuaciones-lineales}:
+$$B_{9,1} = -(R_r sin(x_7) sin(x_8))/I_0 $$ 
+$$B_{9,2} =  -(R_r cos(x_8))/I_0 $$
+$$B_{9,3} = (R_r sin(x_7) sin(x_8))/I_0 $$
+$$B_{9,4} = (R_r cos(x_8))/I_0 $$
+$$B_{10,1} = (R_r cos(x_7))/I_0 $$
+$$B_{10,3} = -(R_r cos(x_7))/I_0 $$
 
-
-%MATRICES
-
+\begin{equation}
+	C = \begin{pmatrix}
+	1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0 & 0 & 0 & R_r*cos(x7)*cos(x8) & -R_r*sin(x7)*sin(x8) & 0 & 0 \\
+	0 & 0 & 1 & 0 & 0 & 0 & 0 & -R_r*cos(x8) & 0 & 0 \\
+	0 & 1 & 0 & 0 & 0 & 0 & -R_r*cos(x7)*cos(x8) & R_r*sin(x7)*sin(x8) & 0 & 0 \\
+	0 & 0 & 1 & 0 & 0 & 0 & 0 & R_r*cos(x8) & 0 & 0
+	\end{pmatrix}
+	\label{eq:matrices_modelo_linearizado_c} 
+\end{equation}
 
 \subsection{Controlador}
 
@@ -1153,7 +1234,7 @@ Con el fin de estabilizar el sistema descrito en la ecuación \textbf{[sistema li
 
 Se selecciona un conjunto de polos para el nuevo sistema y se utiliza el script de \textbf{Matlab} \ref{ap:ganancias-control} para calcular las ganancias del controlador $K$. Este esquema de control es implementado en el modelo de \textbf{Simulink} mostrado en la figura \ref{fig:esquema-controlador-retroalimentado}. 
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center}
 \centering
 \includegraphics[width=.7\textwidth]{images/Capitulo_3/Control_SIMULINK_MATLAB/controlador_retroalimentado}
@@ -1161,6 +1242,8 @@ Se selecciona un conjunto de polos para el nuevo sistema y se utiliza el script 
 \label{fig:esquema-controlador-retroalimentado}
 \end{center}
 \end{figure}
+
+\newpage
 
 El esquema de control mostrado anteriormente es capaz de estabilizar el sistema pero no puede alcanzar un error de estado estable igual a $0$, por lo que se agrega un integrador y un vector de ganancias con el fin de producir un nuevo esquema como el mostrado en la sección \ref{sec:control-integral}. Este nuevo vector de ganancias es calculado por el script \ref{ap:ganancias-control-integral} y su modelo de Simulink es el que se muestra en la figura \ref{fig:esquema-controlador-integral}.
 
@@ -1225,16 +1308,16 @@ Con el fin de compensar los efectos de las no linealidades provocadas por la pre
 \begin{figure}[htb]
 \begin{center}
 \centering
-\includegraphics[width=.9\textwidth]{images/Capitulo_3/Control_SIMULINK_MATLAB/controlador_caliderizado_discreto}
+\includegraphics[width=.65\textwidth]{images/Capitulo_3/Control_SIMULINK_MATLAB/controlador_caliderizado_discreto}
 \caption{Esquema del controlador calendarizado.}
 \label{fig:esquema-controlador-calendarizado}
 \end{center}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[htb]
 \begin{center}
 \centering
-\includegraphics[width=.85\textwidth]{images/Capitulo_3/Control_SIMULINK_MATLAB/observador_calendarizado}
+\includegraphics[width=.65\textwidth]{images/Capitulo_3/Control_SIMULINK_MATLAB/observador_calendarizado}
 \caption{Esquema del observador calendarizado.}
 \label{fig:esquema-observador-calendarizado}
 \end{center}
