@@ -249,7 +249,7 @@ Los materiales ferromagnéticos suaves son usados en electroimanes, motores, tran
 
 Los imanes permanentes son una de las clases más importantes de materiales magnéticos, junto con los aceros eléctricos y los imanes de grabación. Los imanes permanentes tienen aplicaciones en motores eléctricos y generadores, parlantes, televisiones, galvanómetros y dispositivos de suspensión magnética.
 
-El material se  determina a partir de su histéresis, la coercitividad y remanencia para estas aplicaciones. Es importante resaltar que estas propiedades magnéticas dependen fuertemente de los tratamientos a los que fue sometido el material. En años recientes se han descubierto algunos materiales para imanes permanentes basados en neodimio-hierro-boro, donde su coercitividad puede ser tan alta como $1.12x10^6 K \frac{A}{m}$, comparada con $0.72x 10^6 K \frac{A}{m}$ para el samario-cobalto.
+El material se  determina a partir de su histéresis, coercitividad y remanencia para estas aplicaciones. Es importante resaltar que estas propiedades magnéticas dependen fuertemente de los tratamientos a los que fue sometido el material. En años recientes se han descubierto algunos materiales para imanes permanentes basados en neodimio-hierro-boro, donde su coercitividad puede ser tan alta como $1.12x10^6 K \frac{A}{m}$, comparada con $0.72x 10^6 K \frac{A}{m}$ para el samario-cobalto.
 
 Además de la coercitividad, otro parámetro de vital importancia es el producto energético $BH_{max}$. Este es obtenido mediante el producto máximo $BH$ en el segundo cuadrante  de la curva de histéresis y representa la energía magnética almacenada en el material y es usualmente especificado por los fabricantes de imanes permanentes.
 
@@ -570,7 +570,7 @@ Existen tablas que relacionan un calibre AWG con la corriente máxima que soporta
 \centering
 \begin{tabular}{|c|l|c|c|c|c|}
 \hline 
-AWG & Di\'ametro & Area\;($mm^2$) & Resistencia (ohms/km) & Corriente Máxima & Frecuencia Máxima\\ 
+AWG & Di\'ametro & Área\;($mm^2$) & Resistencia (ohms/km) & Corriente Máxima & Frecuencia Máxima\\ 
 \hline 
 17 & 1.15062 & 1.04 & 16.60992 & 2.9 & 13 $kHz$ \\ 
 \hline 
@@ -628,7 +628,7 @@ Proponiendo un imán permanente y guía de flujo magnético con la siguiente geomet
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
         \includegraphics[width=5cm, height=5cm]{images/Capitulo_1/Circuito_magnetico_de_iman_permanente}
-        \caption{Circuito Magnético de imán permanente.}
+        \caption{Circuito magnético de imán permanente.}
     \end{subfigure}
     ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
       %(or a blank line to force the subfigure onto a new line)
@@ -828,7 +828,7 @@ Y su forma est\'andar de la funci\'on de tranferencia es la siguiente:
 	G_{(s)} =  \frac{\omega^2_n}{s^2 + 2\varsigma \omega_ns + \omega^2_n}
 \end{equation}
 
-En la que el polinomio del denominador se denomina polinomio característico, cuyas raíces (solución de la ecuación característica) son los polos de la función de transferencia; donde $ \omega_n$ es la frecuencia natural no amortiguada y $\varsigma$ es el factor de amortiguamiento de la se\~nal. El comportamiento d\'inamico del sistema de segundo orden se describe en términos de los parámetros $\omega$ y $\varsigma$. En el comportamiento subamortiguado, donde $0 < \varsigma < 1$, se aproxima a cero más rápidamente que en el comportamiento críticamente  amortiguado pero termina oscilando alrededor de cero. Para el comportamiento críticamente  amortiguado, donde $\varsigma = 1$, se proporciona la forma más rápida de aproximarse a cero y para el comportamiento sobreamortiguado, donde $\varsigma > 1$, se aproxima a cero pero más lento que en el caso críticamente amortiguado.
+En la que el polinomio del denominador se denomina polinomio característico, cuyas raíces (solución de la ecuación característica) son los polos de la función de transferencia; donde $ \omega_n$ es la frecuencia natural no amortiguada y $\varsigma$ es el factor de amortiguamiento de la se\~nal. El comportamiento din\'amico del sistema de segundo orden se describe en términos de los parámetros $\omega$ y $\varsigma$. En el comportamiento subamortiguado, donde $0 < \varsigma < 1$, se aproxima a cero más rápidamente que en el comportamiento críticamente  amortiguado pero termina oscilando alrededor de cero. Para el comportamiento críticamente  amortiguado, donde $\varsigma = 1$, se proporciona la forma más rápida de aproximarse a cero y para el comportamiento sobreamortiguado, donde $\varsigma > 1$, se aproxima a cero pero más lento que en el caso críticamente amortiguado.
 
 \subsubsection{Estabilidad}
 
@@ -840,7 +840,7 @@ La estabilidad interna recibe el nombre del científico ruso Alexander Mikhailovi
 
 \subsection{LTI discretos}
 
-Un sistema discreto se caracteriza por que su variable independiente sólo puede tomar determinados valores y es descrito mediante una ecuación en diferencias con coeficientes constantes: 
+Un sistema discreto se caracteriza porque su variable independiente sólo puede tomar determinados valores y es descrito mediante una ecuación en diferencias con coeficientes constantes: 
 
 \begin{equation}
 	\sum_{i=0}^{N}a_iy[n - i] = \sum_{k=0}^M b_k x[n - k] 
@@ -867,7 +867,7 @@ La ecuación de salida es simplentente una ecuación algebraica.
 
 \subsubsection{Polinomio característico}
 
-Para cada matriz $A$ de orden $m$ se tiene que en $det(A - \lambda I)$ es un polinomio de grado $m$ que se llama polinomio característico de $A$ y se denota por $pA(\lambda)$. La ecuación $det(A - \lambda I) = 0$ se llama ecuación característica de $A$, donde se denota $I$ como la matriz indentidad. Las relaciones que ligan las entradas de una matriz con los coeficientes del polinomio característico son muy complicadas. No obstante, ciertos coeficientes de dicho polinomio son conocidos.
+Para cada matriz $A$ de orden $m$ se tiene que en $det(A - \lambda I)$ es un polinomio de grado $m$ que se llama polinomio característico de $A$ y se denota por $pA(\lambda)$. La ecuación $det(A - \lambda I) = 0$ se llama ecuación característica de $A$, donde se denota $I$ como la matriz identidad. Las relaciones que ligan las entradas de una matriz con los coeficientes del polinomio característico son muy complicadas. No obstante, ciertos coeficientes de dicho polinomio son conocidos.
 
 \subsubsection{Función de transferencia y la transformada z}
 
@@ -884,12 +884,12 @@ La transformada $Z$ definida por la ecuación anterior se denomina unilateral, ya
 
 \subsubsection{Estabilidad discreta}
 
-Al igual que en el caso continuo, un sistema discreto es estable si se presenta un cambio pequeño en las entradas, un sistema estable presentará modificaciones pequeñas en su respuesta. La estabilidad se puede determinar a partir de la localizacion de los polos de lazo cerrado en el plano z. EL sistema es estable si los polos de las raíces de la ecuación característica quedan localizadas dentro del círculo unitario en el plano Z. Por el contrario, si un par de polos conjugados complejos están fuera el círculo unitario o polos múltiples el sistema es inestable, pero si al menos un polo  está ubicado en $z=1$ o $z = -1$, el sistema es marginalmente estable.
+Al igual que en el caso continuo, un sistema discreto es estable si se presenta un cambio pequeño en las entradas, un sistema estable presentará modificaciones pequeñas en su respuesta. La estabilidad se puede determinar a partir de la localización de los polos de lazo cerrado en el plano z. El sistema es estable si los polos de las raíces de la ecuación característica quedan localizadas dentro del círculo unitario en el plano Z. Por el contrario, si un par de polos conjugados complejos están fuera el círculo unitario o polos múltiples el sistema es inestable, pero si al menos un polo  está ubicado en $z=1$ o $z = -1$, el sistema es marginalmente estable.
 
 \newpage
 
 \section{Dinámica}
-\subsection{Movimiento translacional}
+\subsection{Movimiento traslacional}
 Para modelar el comportamiento de los cuerpos en movimiento es necesario aplicar las ecuaciones de la mecánica clásica. Un cuerpo rígido ubicado en el espacio posee 6 grados de libertad (cantidad mínima de parámetros necesarios para describir su configuración), la posición espacial de su centro de masa, y su orientación. La segunda ley de Newton nos permite calcular la traslación del objeto, mientras que las ecuaciones de Euler nos permiten calcular su orientación.
 
 Para el sistema de coordenadas cartesiano, se define el vector de posición $\vec{r}$ como:
@@ -1000,7 +1000,7 @@ Para el caso especial donde la velocidad angular del objeto $\vec{\omega}$ es la
 \begin{equation} \label{eq:fisica:eq_euler_3}
 	M_z = I_{zz}\dot{\omega}_z - (I_{xx} - I_{yy}) \omega_x\omega_y
 \end{equation} 
-Este conjunto de ecuaciones se les conoce como ecuaciones de Euler, y nos proveen de un medio para calcular el movimiento de un cuerpo rígido en tres dimensions. Sin embargo, estas ecuaciones presentan problemas para encontrar sus soluciones ya que poseen productos de $\omega$ y esto representa no linealidades. El otro problema consiste en definir la forma en la que se represetará la rotación del marco móvil.
+Este conjunto de ecuaciones se les conoce como ecuaciones de Euler, y nos proveen de un medio para calcular el movimiento de un cuerpo rígido en tres dimensiones. Sin embargo, estas ecuaciones presentan problemas para encontrar sus soluciones ya que poseen productos de $\omega$ y esto representa no linealidades. El otro problema consiste en definir la forma en la que se represetará la rotación del marco móvil.
 
 \subsubsection{Ángulos de Euler} \label{sec:angulos-euler}
 Para determinar la posición del marco móvil se utilizan un conjunto de rotaciones consecutivas, al conjunto de ángulos que definen estas rotaciones se les conoce como ángulos de Euler. Existen 12 secuencias distintas de rotaciones entre las que más destacan la rotación ZXZ (ángulos de Euler clásicos), y la rotación ZXY (ángulos de Tyat-Bryan), estos últimos son usualmente usados para la navegación.
@@ -1106,7 +1106,7 @@ Finalmente se calcula la transformada inversa (debemos tener en cuenta que $[(Q)
 	\end{pmatrix} = (Q^B)^{-1} \Omega_B
 \end{equation}
 
-Nótese que matriz ${Q_B^l}$ se indetermina para valores de $\theta = \pm\pi/2$. Para todos los juegos de ángulos de Euler existen puntos donde la matriz inversa se indetermina, por eso es importante la correcta selección del juego de ángulos.
+Nótese que la matriz ${Q_B^l}$ se indetermina para valores de $\theta = \pm\pi/2$. Para todos los juegos de ángulos de Euler existen puntos donde la matriz inversa se indetermina, por eso es importante la correcta selección del juego de ángulos.
 
 \newpage
 
@@ -1151,7 +1151,7 @@ Nótese que debido al orden multivariable del sistema, lo que en la ecuación \ref
 \end{equation}
 
 \subsection{Controlabilidad}
-Se dice que un sistema es controlable si se puede trasferir desde cualquier estado inicial $x(t_0)$ a cualquier otro estado mediante un vector de control sin restricciones en un intervalo de tiempo finito.\\
+Se dice que un sistema es controlable si se puede transferir desde cualquier estado inicial $x(t_0)$ a cualquier otro estado mediante un vector de control sin restricciones en un intervalo de tiempo finito.\\
 Para un sistema de la forma:
 \begin{equation}
 	\label{eq:control:sistema-lti}
@@ -1190,7 +1190,7 @@ La técnica de diseño empieza con la determinación de los polos en lazo cerrado d
 
 En lugar de especificar sólo los polos dominantes en lazo cerrado (enfoque del diseño por convención), en el enfoque actual de asignación de polos, se especifican todos los polos en lazo cerrado. Sin embargo, hay un costo asociado con colocar todo los polos en lazo cerrado, porque hacerlo requiere tener buenas medidas de todas las variables, o bien incluir un obsevador de estado en el sistema. También existe un requisito por parte del sistema para que los polos en lazo cerrado se puedan situar en posiciones elegidas de forma arbitraria. La exigencia es que el sistema sea de estado completamente controlable.
 \subsubsection{Controlador de estados}
-Consideremos el esquema de control de la figura \ref{fig:control:control-retroalimentado}, en este esquema de control conocida como retrolimentación de estado completo, se usa como entrada el producto de vector de estados $x$ y la matriz de ganancias $K$ de manera que:
+Consideremos el esquema de control de la figura \ref{fig:control:control-retroalimentado}, en este esquema de control conocido como retrolimentación de estado completo, se usa como entrada el producto de vector de estados $x$ y la matriz de ganancias $K$ de manera que:
 
 \begin{figure}[H]
 \begin{center}
@@ -1329,7 +1329,7 @@ Se diseñará un sistema asintóticamente estable tal que se tienda respectivamente
 	\end{pmatrix}
 \end{equation}
 
-Si los valores propios deseados de la matriz $\hat{A}-\hat{B}\hat{K}$ (los polos en lazo cerrado deseados $\mu$) son estables, entonces la matriz de ganancias de realimentación del estado $K$ y la constante de ganancia integral $K_i$ pueden determinarse mediante el método de asiganción de polos \cite{cite_s9_2017_Kautsky}, a condición de que el sistema definido por la ecuación sea completamente controlable.
+Si los valores propios deseados de la matriz $\hat{A}-\hat{B}\hat{K}$ (los polos en lazo cerrado deseados $\mu$) son estables, entonces la matriz de ganancias de realimentación del estado $K$ y la constante de ganancia integral $K_i$ pueden determinarse mediante el método de asignación de polos \cite{cite_s9_2017_Kautsky}, a condición de que el sistema definido por la ecuación sea completamente controlable.
 
 \subsection{Servocontrol discreto}
 
@@ -1396,7 +1396,7 @@ Para una salida retroalimentada, asumimos que $(A,C)$ es detectable y designamos
 \subsection{Control calendarizado} \label{sec:control-calendarizado}
 Uno de los problemas que surgen a partir de tratar de controlar un sistema no lineal usando una aproximación linealizada, es que cuando nos alejamos del punto de equilibro la diferencia entre el sistema no lineal y el linealizado puede volverse significativa, hasta el punto en que el sistema controlador-observador se vuelva inefectivo y en el peor de los casos inestable.
 
-Para resolver este problema existen diferentes soluciones, entre las que encontramos el control calendarizado interpolante. Este esquema consiste en linealizar en diferentes puntos de equilibro dentro del espacio de operación del sistema, para obtener el conjunto de matrices $A, B$ y $C$. Además de recalcular las matrices de ganancia del controlador-observador $K, Ki$ y $Ko$. Finalmente dependiendo del estado del sistema se interpolan las matrices anteriormente calculadas para obtener el conjunto de matrices que se utilizarán en este nuevo punto de operación. 
+Para resolver este problema existen diferentes soluciones, entre las que encontramos el control calendarizado interpolante. Este esquema consiste en linealizar en diferentes puntos de equilibro dentro del espacio de operación del sistema, para obtener el conjunto de matrices $A, B$ y $C$, además de recalcular las matrices de ganancia del controlador-observador $K, Ki$ y $Ko$. Finalmente dependiendo del estado del sistema se interpolan las matrices anteriormente calculadas para obtener el conjunto de matrices que se utilizarán en este nuevo punto de operación. 
 
 Para asegurar la estabilidad del sistema, este debe de ser controlable y observable dentro de toda la región de operación.
 
@@ -1411,7 +1411,7 @@ Este método fue desarrollado por el profesor Arnold Tustin y es una técnica de m
 	\label{eq:ecuacion-Tustin}
 \end{equation}   
 
-Toma la función $H(s)$ y todas sus variables acompañados por $s$ y sustituye los términos equivalentes en $z$. Lo que esto implica que si el sistema es controlable y es estable, al hacer la tranformación se garantiza la controlabilidad y la estabilidad en $z$.
+Toma la función $H(s)$ y todas sus variables acompañadas por $s$ y sustituye los términos equivalentes en $z$. Lo que esto implica que si el sistema es controlable y es estable, al hacer la tranformación se garantiza la controlabilidad y la estabilidad en $z$.
 
 \begin{figure}[H]
 \centering
@@ -1423,7 +1423,7 @@ Toma la función $H(s)$ y todas sus variables acompañados por $s$ y sustituye los
 
 \section{Diseño de ingeniería}
 
-Comúnmente se asocia el diseño a una actividad relacionada con la estética de los objetos o una mejora en la apariencia de algún producto. Sin embargo, en ingeniería implica una serie de conocimientos, métodos y herramientas más complejos para llevar a cabo esta actividad, entre los que podemos destacar \cite{cite_1_2017}:
+Comúnmente se asocia el diseño a una actividad relacionada con la estética de los objetos o una mejora en la apariencia de algún producto. Sin embargo, en ingeniería implica una serie de conocimientos, métodos y herramientas más complejas para llevar a cabo esta actividad, entre las que podemos destacar \cite{cite_1_2017}:
 
 \begin{itemize}
 \item Definir los requerimientos y las necesidades de los usuarios.
