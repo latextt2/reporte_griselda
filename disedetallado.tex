@@ -13,7 +13,7 @@ El Rodamiento Magnético Radial (RMR) consiste en un conjunto de electroimanes co
 
 \subsection{Número de polos} \label{sec:numero-polos}
 
-Antes de diseñar los electroimanes es necesario determinar en número de polos que conformarán el EIR.
+Antes de diseñar los electroimanes es necesario determinar el número de polos que conformarán el EIR.
 Suponiendo que tenemos $N$ polos, la distancia angular $\alpha$ entre ellos será de $360/N$ (fig. \ref{fig:rmr:diagrama-de-polos}). El EIR debe ser capaz de generar una fuerza arbitraria $F_r$ dentro del plano $YZ$. Teniendo en cuenta que los electroimanes sólo son capaces de ejercer fuerzas de atracción sobre los materiales ferromagnéticos. La fuerza $F_r$ deberá ser proporcionada únicamente por las fuerzas de los electroimanes adyacentes $F_1$ y $F_2$ (fig. \ref{fig:rmr:diagrama-de-fuerzas}).  
 
 \begin{figure}[H]
@@ -71,7 +71,7 @@ En \cite{cite_s13_2017_matsuda2007_polos} se estudia de manera más detallada los
 
 \subsubsection{Selecci\'on de Material} \label{sec:seleccion-somaloy}
 
-En el caso de las aplicaciones de electroimanes, lo ideal es utilizar materiales con un alto punto de saturación y permeabilidad relativa. El punto de saturación limita la fuerza máxima que puede ejercer un electroimán [vease sección \ref{sec:diseno-elec}] y al tener una permeabilidad relativa alta podemos confiar que la mayoría del flujo magnético circula dentro del núcleo. 
+En el caso de las aplicaciones de electroimanes, lo ideal es utilizar materiales con un alto punto de saturación y permeabilidad relativa. El punto de saturación limita la fuerza máxima que puede ejercer un electroimán [v\'ease sección \ref{sec:diseno-elec}] y al tener una permeabilidad relativa alta podemos confiar que la mayoría del flujo magnético circula dentro del núcleo. 
 
 Entre los materiales con estas características encontramos ferritas y aleaciones de hierro laminadas. Las ferritas poseen una alta permeabilidad pero tienen un punto de saturación más bajo, mientras que las aleaciones de hierro poseen un punto de saturación más alto y permeabilidad intermedia. Estos últimos al ser conductores presentan pérdidas por corrientes parásitas (corrientes de Foucault) que disminuye la eficiencia total del electroimán.  
 
@@ -126,7 +126,7 @@ De acuerdo a la tabla \ref{tabla:AWG-COBRE} para una corriente de 2 A correspond
 \centering
 \begin{tabular}{|c|l|c|c|c|c|}
 \hline 
-AWG & Di\'ametro & Area\;($mm^2$) & Resistencia (ohms/km) & Corriente Máxima & Frecuencia Máxima\\ 
+AWG & Di\'ametro & Área\;($mm^2$) & Resistencia (ohms/km) & Corriente Máxima & Frecuencia Máxima\\ 
 \hline 
 18 & 1.023 & 0.823 & 20.94 & 2.3 & 17 $kHz$ \\
 \hline  
@@ -200,7 +200,7 @@ De manera pragmática, esta conmutación se realiza mediante transistores MOSFET d
 I_d = G(V_g - V_{th})^2
 \end{equation}
 
-Donde $V_{th}$, conocido como voltaje de treshhold, es el voltaje mínimo para activar el transistor. Una vez el voltaje de compuerta $Vg$ llega sobrepasa el valor $V{sat}$ el transistor no deja incrementar más la corriente y simplemente se comporta como una resistencia de valor $R_{on}$. A este modo de operación se le conoce como saturación.
+Donde $V_{th}$, conocido como voltaje de treshhold, es el voltaje mínimo para activar el transistor. Una vez el voltaje de compuerta $Vg$ llega a sobrepasa el valor $V{sat}$ el transistor no deja incrementar más la corriente y simplemente se comporta como una resistencia de valor $R_{on}$. A este modo de operación se le conoce como saturación.
 
 Cuando se trata de conmutar una carga inductiva se generan picos de voltaje, pues la corriente que circula por un inductor no puede cambiar de manera instantánea o discontinua. Es por eso que se necesita de un diodo para proveer un camino por el que la corriente logre recircular y disminuir de manera controlada.
 
@@ -293,7 +293,7 @@ f_{max} = \frac{L}{2 \pi V A}
 \label{eq:respuesta-frecuencia-accionamiento-2}
 \end{equation} 
 
-Podemos ver que la frecuencia máxima de la señal de salida depende de la amplitud de la misma. Esta condición  conocida como \textbf{"slew rate limiting"} es un fenómeno común en los amplificadores y basta con conocer los limites de operación del dispositivo para evitar esta situación.
+Podemos ver que la frecuencia máxima de la señal de salida depende de la amplitud de la misma. Esta condición  conocida como \textbf{"slew rate limiting"} es un fenómeno común en los amplificadores y basta con conocer los límites de operación del dispositivo para evitar esta situación.
 
 \begin{figure}[H]
     \centering
@@ -454,7 +454,7 @@ P = (\frac{R F}{K_e}) \label{eq:consumo-electroiman}
 
 En la ecuación \ref{eq:consumo-electroiman} se puede observar que el consumo depende de manera proporcionada a la fuerza aplicada por el electroimán. Si descomponemos esta fuerza en sus componentes de Fourier tenemos un término constante y la suma de las componentes armónicas a diversas frecuencias.
 
-El término constate que usualmente corresponde al peso del objeto representa la mayor parte la fuerza, y por lo tanto, de las pérdidas. Eliminar esa componente de fuerza reduciría la corriente y el consumo energético total del rodamiento.
+El término constante que usualmente corresponde al peso del objeto representa la mayor parte la fuerza, y por lo tanto, de las pérdidas. Eliminar esa componente de fuerza reduciría la corriente y el consumo energético total del rodamiento.
 
 Usar un imán permanente con fuerza $F_{ip}$ como en el caso de un rodamiento pasivo, reduce las pérdidas del sistema a un valor de: 
 
